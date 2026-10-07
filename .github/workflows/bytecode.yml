@@ -1,0 +1,42 @@
+name: Extract Bytecode
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bytecode:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract JAR
+        run: |
+          mkdir -p work
+          unzip -o original/prehistoric-tribes-0.1.38.jar -d work
+
+      - name: Create bytecode reports
+        run: |
+          mkdir -p analysis/bytecode
+
+          for file in work/*.class; do
+            name=$(basename "$file" .class)
+            javap -classpath work -c -p -verbose "$name" \
+              > "analysis/bytecode/${name}.txt"
+          done
+
+      - name: Commit bytecode reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add analysis/bytecode
+
+          git diff --cached --quiet || \
+            git commit -m "Add bytecode analysis"
+
+          git push
