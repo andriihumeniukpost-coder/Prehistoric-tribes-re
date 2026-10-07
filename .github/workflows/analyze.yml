@@ -2,7 +2,10 @@ name: Analyze JAR
 
 on:
   workflow_dispatch:
-
+  
+permissions:
+  contents: write
+  
 jobs:
   analyze:
     runs-on: ubuntu-latest
