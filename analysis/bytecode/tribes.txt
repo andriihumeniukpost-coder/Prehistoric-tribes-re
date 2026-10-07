@@ -1,0 +1,265 @@
+Classfile /home/runner/work/Prehistoric-tribes-re/Prehistoric-tribes-re/work/tribes.class
+  Last modified May 20, 2008; size 1268 bytes
+  SHA-256 checksum 64bd0d8a2459fb8581522500bcd29a43c60e527bbe9cd350b01ed5f809f8d3e2
+public class tribes extends javax.microedition.midlet.MIDlet implements java.lang.Runnable
+  minor version: 3
+  major version: 45
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #9                          // tribes
+  super_class: #8                         // javax/microedition/midlet/MIDlet
+  interfaces: 1, fields: 3, methods: 6, attributes: 0
+Constant pool:
+   #1 = Class              #66            // e
+   #2 = Class              #67            // g
+   #3 = Class              #70            // java/lang/InterruptedException
+   #4 = Class              #71            // java/lang/Runnable
+   #5 = Class              #72            // java/lang/System
+   #6 = Class              #73            // java/lang/Thread
+   #7 = Class              #74            // javax/microedition/lcdui/Display
+   #8 = Class              #75            // javax/microedition/midlet/MIDlet
+   #9 = Class              #82            // tribes
+  #10 = Fieldref           #9.#33         // tribes.a:Lg;
+  #11 = Fieldref           #9.#34         // tribes.a:Ljavax/microedition/lcdui/Display;
+  #12 = Fieldref           #9.#35         // tribes.a:Le;
+  #13 = Fieldref           #1.#37         // e.a:B
+  #14 = Methodref          #8.#30         // javax/microedition/midlet/MIDlet."<init>":()V
+  #15 = Methodref          #6.#31         // java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+  #16 = Methodref          #1.#32         // e."<init>":(Ltribes;)V
+  #17 = Methodref          #2.#32         // g."<init>":(Ltribes;)V
+  #18 = Methodref          #1.#36         // e.a:()V
+  #19 = Methodref          #9.#38         // tribes.a:(I)V
+  #20 = Methodref          #2.#36         // g.a:()V
+  #21 = Methodref          #2.#39         // g.b:()V
+  #22 = Methodref          #2.#40         // g.d:()V
+  #23 = Methodref          #2.#41         // g.e:()V
+  #24 = Methodref          #5.#42         // java/lang/System.gc:()V
+  #25 = Methodref          #7.#43         // javax/microedition/lcdui/Display.getDisplay:(Ljavax/microedition/midlet/MIDlet;)Ljavax/microedition/lcdui/Display;
+  #26 = Methodref          #7.#44         // javax/microedition/lcdui/Display.setCurrent:(Ljavax/microedition/lcdui/Displayable;)V
+  #27 = Methodref          #6.#45         // java/lang/Thread.sleep:(J)V
+  #28 = Methodref          #6.#46         // java/lang/Thread.start:()V
+  #29 = Methodref          #6.#47         // java/lang/Thread.yield:()V
+  #30 = NameAndType        #56:#48        // "<init>":()V
+  #31 = NameAndType        #56:#51        // "<init>":(Ljava/lang/Runnable;)V
+  #32 = NameAndType        #56:#54        // "<init>":(Ltribes;)V
+  #33 = NameAndType        #62:#60        // a:Lg;
+  #34 = NameAndType        #62:#61        // a:Ljavax/microedition/lcdui/Display;
+  #35 = NameAndType        #62:#59        // a:Le;
+  #36 = NameAndType        #62:#48        // a:()V
+  #37 = NameAndType        #62:#57        // a:B
+  #38 = NameAndType        #62:#49        // a:(I)V
+  #39 = NameAndType        #63:#48        // b:()V
+  #40 = NameAndType        #64:#48        // d:()V
+  #41 = NameAndType        #66:#48        // e:()V
+  #42 = NameAndType        #68:#48        // gc:()V
+  #43 = NameAndType        #69:#53        // getDisplay:(Ljavax/microedition/midlet/MIDlet;)Ljavax/microedition/lcdui/Display;
+  #44 = NameAndType        #78:#52        // setCurrent:(Ljavax/microedition/lcdui/Displayable;)V
+  #45 = NameAndType        #79:#50        // sleep:(J)V
+  #46 = NameAndType        #80:#48        // start:()V
+  #47 = NameAndType        #83:#48        // yield:()V
+  #48 = Utf8               ()V
+  #49 = Utf8               (I)V
+  #50 = Utf8               (J)V
+  #51 = Utf8               (Ljava/lang/Runnable;)V
+  #52 = Utf8               (Ljavax/microedition/lcdui/Displayable;)V
+  #53 = Utf8               (Ljavax/microedition/midlet/MIDlet;)Ljavax/microedition/lcdui/Display;
+  #54 = Utf8               (Ltribes;)V
+  #55 = Utf8               (Z)V
+  #56 = Utf8               <init>
+  #57 = Utf8               B
+  #58 = Utf8               Code
+  #59 = Utf8               Le;
+  #60 = Utf8               Lg;
+  #61 = Utf8               Ljavax/microedition/lcdui/Display;
+  #62 = Utf8               a
+  #63 = Utf8               b
+  #64 = Utf8               d
+  #65 = Utf8               destroyApp
+  #66 = Utf8               e
+  #67 = Utf8               g
+  #68 = Utf8               gc
+  #69 = Utf8               getDisplay
+  #70 = Utf8               java/lang/InterruptedException
+  #71 = Utf8               java/lang/Runnable
+  #72 = Utf8               java/lang/System
+  #73 = Utf8               java/lang/Thread
+  #74 = Utf8               javax/microedition/lcdui/Display
+  #75 = Utf8               javax/microedition/midlet/MIDlet
+  #76 = Utf8               pauseApp
+  #77 = Utf8               run
+  #78 = Utf8               setCurrent
+  #79 = Utf8               sleep
+  #80 = Utf8               start
+  #81 = Utf8               startApp
+  #82 = Utf8               tribes
+  #83 = Utf8               yield
+  #84 = Utf8               StackMap
+{
+  g a;
+    descriptor: Lg;
+    flags: (0x0000)
+
+  e a;
+    descriptor: Le;
+    flags: (0x0000)
+
+  javax.microedition.lcdui.Display a;
+    descriptor: Ljavax/microedition/lcdui/Display;
+    flags: (0x0000)
+
+  public tribes();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #14                 // Method javax/microedition/midlet/MIDlet."<init>":()V
+         4: return
+
+  public void startApp();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field a:Lg;
+         4: ifnull        15
+         7: aload_0
+         8: getfield      #10                 // Field a:Lg;
+        11: invokevirtual #23                 // Method g.e:()V
+        14: return
+        15: aload_0
+        16: aload_0
+        17: invokestatic  #25                 // Method javax/microedition/lcdui/Display.getDisplay:(Ljavax/microedition/midlet/MIDlet;)Ljavax/microedition/lcdui/Display;
+        20: putfield      #11                 // Field a:Ljavax/microedition/lcdui/Display;
+        23: new           #6                  // class java/lang/Thread
+        26: dup
+        27: aload_0
+        28: invokespecial #15                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+        31: dup
+        32: astore_1
+        33: invokevirtual #28                 // Method java/lang/Thread.start:()V
+        36: return
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 15
+          locals = [ class tribes ]
+          stack = []
+
+  public void pauseApp();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field a:Lg;
+         4: ifnull        14
+         7: aload_0
+         8: getfield      #10                 // Field a:Lg;
+        11: invokevirtual #22                 // Method g.d:()V
+        14: return
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 14
+          locals = [ class tribes ]
+          stack = []
+
+  public void destroyApp(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #10                 // Field a:Lg;
+         4: ifnull        14
+         7: aload_0
+         8: getfield      #10                 // Field a:Lg;
+        11: invokevirtual #21                 // Method g.b:()V
+        14: return
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 14
+          locals = [ class tribes, int ]
+          stack = []
+
+  public void run();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: invokestatic  #24                 // Method java/lang/System.gc:()V
+         3: invokestatic  #29                 // Method java/lang/Thread.yield:()V
+         6: aload_0
+         7: new           #1                  // class e
+        10: dup
+        11: aload_0
+        12: invokespecial #16                 // Method e."<init>":(Ltribes;)V
+        15: putfield      #12                 // Field a:Le;
+        18: aload_0
+        19: getfield      #12                 // Field a:Le;
+        22: invokevirtual #18                 // Method e.a:()V
+        25: aload_0
+        26: getfield      #12                 // Field a:Le;
+        29: iconst_0
+        30: putfield      #13                 // Field e.a:B
+        33: aload_0
+        34: getfield      #11                 // Field a:Ljavax/microedition/lcdui/Display;
+        37: aload_0
+        38: getfield      #12                 // Field a:Le;
+        41: invokevirtual #26                 // Method javax/microedition/lcdui/Display.setCurrent:(Ljavax/microedition/lcdui/Displayable;)V
+        44: sipush        1000
+        47: invokestatic  #19                 // Method a:(I)V
+        50: aload_0
+        51: getfield      #12                 // Field a:Le;
+        54: invokevirtual #18                 // Method e.a:()V
+        57: sipush        2000
+        60: invokestatic  #19                 // Method a:(I)V
+        63: aload_0
+        64: getfield      #12                 // Field a:Le;
+        67: iconst_1
+        68: putfield      #13                 // Field e.a:B
+        71: aload_0
+        72: getfield      #12                 // Field a:Le;
+        75: invokevirtual #18                 // Method e.a:()V
+        78: invokestatic  #24                 // Method java/lang/System.gc:()V
+        81: invokestatic  #29                 // Method java/lang/Thread.yield:()V
+        84: sipush        2000
+        87: invokestatic  #19                 // Method a:(I)V
+        90: aload_0
+        91: getfield      #12                 // Field a:Le;
+        94: iconst_2
+        95: putfield      #13                 // Field e.a:B
+        98: aload_0
+        99: getfield      #12                 // Field a:Le;
+       102: invokevirtual #18                 // Method e.a:()V
+       105: invokestatic  #29                 // Method java/lang/Thread.yield:()V
+       108: aload_0
+       109: getfield      #12                 // Field a:Le;
+       112: iconst_5
+       113: putfield      #13                 // Field e.a:B
+       116: aload_0
+       117: new           #2                  // class g
+       120: dup
+       121: aload_0
+       122: invokespecial #17                 // Method g."<init>":(Ltribes;)V
+       125: putfield      #10                 // Field a:Lg;
+       128: aload_0
+       129: getfield      #10                 // Field a:Lg;
+       132: invokevirtual #20                 // Method g.a:()V
+       135: return
+
+  static void a(int);
+    descriptor: (I)V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: iload_0
+         1: i2l
+         2: invokestatic  #27                 // Method java/lang/Thread.sleep:(J)V
+         5: return
+         6: pop
+         7: return
+      Exception table:
+         from    to  target type
+             0     5     6   Class java/lang/InterruptedException
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 6
+          locals = [ int ]
+          stack = [ class java/lang/InterruptedException ]
+}
