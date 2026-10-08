@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 
-INPUT = Path("analysis/bytecode/g.txt")
+INPUT = Path("analysis/bytecode/c.txt")
 OUTPUT = Path("analysis/method_map.txt")
 
 
