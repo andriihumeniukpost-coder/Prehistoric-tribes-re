@@ -1,4 +1,4 @@
- name: Extract Bytecode
+name: Extract Bytecode
 
 on:
   workflow_dispatch:
