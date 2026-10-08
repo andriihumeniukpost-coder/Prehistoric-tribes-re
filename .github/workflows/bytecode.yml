@@ -52,6 +52,10 @@ jobs:
         run: |
           python3 tools/field_trace.py
 
+      - name: Create index trace report
+        run: |
+          python3 tools/index_trace.py
+
       - name: Commit analysis
         run: |
           git config user.name "github-actions[bot]"
@@ -63,6 +67,7 @@ jobs:
           git add analysis/hot_fields.txt
           git add analysis/field_usage.txt
           git add analysis/field_trace.txt
+          git add analysis/index_trace.txt
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
