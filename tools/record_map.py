@@ -35,55 +35,84 @@ def find_method_blocks(text):
     return methods
 
 
+def get_constant(line):
+    line = line.strip()
+
+    match = re.search(r"\bbipush\s+(-?\d+)", line)
+    if match:
+        return int(match.group(1))
+
+    match = re.search(r"\bsipush\s+(-?\d+)", line)
+    if match:
+        return int(match.group(1))
+
+    if "iconst_m1" in line:
+        return -1
+
+    match = re.search(r"\biconst_([0-5])\b", line)
+    if match:
+        return int(match.group(1))
+
+    return None
+
+
 def find_v_offsets(lines):
     results = []
 
-    for index in range(len(lines) - 3):
+    for index, line in enumerate(lines):
 
-        # Ищем:
-        #
-        # sipush/bipush <number>
-        # aload_0
-        # getfield ... // Field v:I
-        # iadd
-        #
-        # Это означает:
-        # <number> + v
-
-        line1 = lines[index]
-        line2 = lines[index + 1]
-        line3 = lines[index + 2]
-        line4 = lines[index + 3]
-
-        match = re.search(
-            r"\b(?:sipush|bipush|iconst_\d+)\s+(-?\d+)",
-            line1
-        )
-
-        if not match:
+        if "Field v:I" not in line:
             continue
 
-        if "getfield" not in line2:
+        # Search backwards for the integer constant.
+        constant = None
+        constant_index = None
+
+        for previous in range(
+            max(0, index - 5),
+            index
+        ):
+            value = get_constant(lines[previous])
+
+            if value is not None:
+                constant = value
+                constant_index = previous
+
+        if constant is None:
             continue
 
-        if "Field v:I" not in line2:
-            continue
+        # Search forward for iadd.
+        iadd_index = None
 
-        if "iadd" not in line3:
+        for following in range(
+            index + 1,
+            min(len(lines), index + 6)
+        ):
+            if re.search(r"\biadd\b", lines[following]):
+                iadd_index = following
+                break
+
+        if iadd_index is None:
             continue
 
         results.append({
-            "offset": int(match.group(1)),
-            "line": index + 1,
-            "context": lines[max(0, index - 2):min(len(lines), index + 6)]
+            "offset": constant,
+            "line": constant_index + 1,
+            "context": lines[
+                max(0, constant_index - 3):
+                min(len(lines), iadd_index + 5)
+            ]
         })
 
     return results
 
 
 def main():
+
     if not INPUT.exists():
-        raise SystemExit(f"File not found: {INPUT}")
+        raise SystemExit(
+            f"File not found: {INPUT}"
+        )
 
     text = INPUT.read_text(
         encoding="utf-8",
@@ -99,6 +128,7 @@ def main():
         offsets = find_v_offsets(lines)
 
         for item in offsets:
+
             all_records.append({
                 "method": method_name,
                 "offset": item["offset"],
@@ -106,7 +136,6 @@ def main():
                 "context": item["context"],
             })
 
-    # Группируем offsets
     grouped = {}
 
     for item in all_records:
@@ -117,16 +146,26 @@ def main():
 
     output = []
 
-    output.append("PREHISTORIC TRIBES - RECORD MAP")
-    output.append("Class: c")
+    output.append(
+        "PREHISTORIC TRIBES - RECORD MAP"
+    )
+
+    output.append(
+        "Class: c"
+    )
+
     output.append("")
+
     output.append(
         "Offsets used as BASE + v inside the large byte array a:[B."
     )
+
     output.append("")
+
     output.append(
         "The offset itself does not yet have a known semantic meaning."
     )
+
     output.append("")
 
     output.append("=" * 80)
@@ -139,7 +178,10 @@ def main():
         items = grouped[offset]
 
         methods_used = sorted(
-            set(item["method"] for item in items)
+            set(
+                item["method"]
+                for item in items
+            )
         )
 
         output.append(
@@ -151,7 +193,8 @@ def main():
         )
 
         output.append(
-            "  METHODS: " + ", ".join(methods_used)
+            "  METHODS: " +
+            ", ".join(methods_used)
         )
 
         output.append("")
@@ -163,14 +206,17 @@ def main():
     for offset in sorted(grouped):
 
         output.append("")
+
         output.append(
             f"OFFSET {offset} + v"
         )
+
         output.append("-" * 80)
 
         for item in grouped[offset]:
 
             output.append("")
+
             output.append(
                 f"METHOD: {item['method']}"
             )
@@ -182,18 +228,25 @@ def main():
             output.append("")
 
             for line in item["context"]:
+
                 output.append(
                     f"    {line}"
                 )
 
     output.append("")
+
     output.append("=" * 80)
+
     output.append(
-        f"TOTAL BASE+v ACCESS EVENTS: {len(all_records)}"
+        f"TOTAL BASE+v ACCESS EVENTS: "
+        f"{len(all_records)}"
     )
+
     output.append(
-        f"TOTAL UNIQUE OFFSETS: {len(grouped)}"
+        f"TOTAL UNIQUE OFFSETS: "
+        f"{len(grouped)}"
     )
+
     output.append("=" * 80)
 
     OUTPUT.parent.mkdir(
@@ -206,7 +259,17 @@ def main():
         encoding="utf-8"
     )
 
-    print(f"Created: {OUTPUT}")
+    print(
+        f"Created: {OUTPUT}"
+    )
+
+    print(
+        f"Access events: {len(all_records)}"
+    )
+
+    print(
+        f"Unique offsets: {len(grouped)}"
+    )
 
 
 if __name__ == "__main__":
