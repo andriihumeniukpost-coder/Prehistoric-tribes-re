@@ -7,89 +7,157 @@ OUTPUT = Path("analysis/field_map.txt")
 
 text = INPUT.read_text(encoding="utf-8", errors="ignore")
 
-# Все обращения к полям c.class
-field_usage = defaultdict(lambda: {
-    "read": set(),
-    "write": set()
-})
+# ------------------------------------------------------------
+# 1. Read Constant Pool Fieldref entries
+#
+# Example:
+# #6 = Fieldref #1.#444 // c.A:B
+# #20 = Fieldref #3.#464 // g.G:Z
+# ------------------------------------------------------------
 
-# Разбиваем bytecode на методы
-method_blocks = re.split(
-    r"\n(?=(?:public|private|protected|static|final|native|synchronized|abstract|\s{2,})"
-    r".*\n\s+(?:descriptor:|Code:))",
-    text
+fieldrefs = {}
+
+fieldref_pattern = re.compile(
+    r"^\s*#(\d+)\s*=\s*Fieldref\s+#\d+\.\#\d+\s+//\s+"
+    r"([^./\s]+)\.([A-Za-z_$][\w$]*):(.+)$"
+)
+
+for line in text.splitlines():
+    m = fieldref_pattern.match(line)
+
+    if not m:
+        continue
+
+    index = int(m.group(1))
+    owner = m.group(2)
+    name = m.group(3)
+    desc = m.group(4).strip()
+
+    fieldrefs[index] = (owner, name, desc)
+
+
+# ------------------------------------------------------------
+# 2. Find field accesses inside methods
+# ------------------------------------------------------------
+
+usage = defaultdict(
+    lambda: {
+        "read": set(),
+        "write": set(),
+    }
 )
 
 current_method = "UNKNOWN"
 
-for block in method_blocks:
-    # Пытаемся определить имя метода
-    m = re.search(
-        r"\n\s*(?:public|private|protected|static|final|native|synchronized|abstract|\s)+"
-        r"([A-Za-z_$][\w$]*)\([^;]*\);",
-        block
-    )
+# Method declaration looks like:
+#
+#   private void A();
+#   final boolean b(byte);
+#   public c(g);
+#
+# Fields do not contain "(" so this is safe enough for javap output.
 
-    if m:
-        current_method = m.group(1)
+method_pattern = re.compile(
+    r"^\s{2}.*$begin:math:text$\[\^\;\]\*$end:math:text$;\s*$"
+)
 
-    # getfield = чтение
-    for m in re.finditer(
-        r"getfield\s+#\d+\s+// Field ([A-Za-z_$][\w$]*):([^\s]+)",
-        block
-    ):
-        name, desc = m.groups()
-        field_usage[(name, desc)]["read"].add(current_method)
+instruction_pattern = re.compile(
+    r"^\s*\d+:\s+"
+    r"(getfield|putfield|getstatic|putstatic)"
+    r"\s+#(\d+)"
+)
 
-    # putfield = запись
-    for m in re.finditer(
-        r"putfield\s+#\d+\s+// Field ([A-Za-z_$][\w$]*):([^\s]+)",
-        block
-    ):
-        name, desc = m.groups()
-        field_usage[(name, desc)]["write"].add(current_method)
+for line in text.splitlines():
 
-    # static fields
-    for m in re.finditer(
-        r"getstatic\s+#\d+\s+// Field ([A-Za-z_$][\w$]*):([^\s]+)",
-        block
-    ):
-        name, desc = m.groups()
-        field_usage[(name, desc)]["read"].add(current_method)
+    # Detect method declaration
+    if method_pattern.match(line):
 
-    for m in re.finditer(
-        r"putstatic\s+#\d+\s+// Field ([A-Za-z_$][\w$]*):([^\s]+)",
-        block
-    ):
-        name, desc = m.groups()
-        field_usage[(name, desc)]["write"].add(current_method)
+        declaration = line.strip()
 
+        # Remove trailing semicolon
+        declaration = declaration[:-1]
+
+        # Extract method name
+        name_match = re.search(
+            r"([A-Za-z_$<>][\w$<>]*)\s*$begin:math:text$\[\^\)\]\*$end:math:text$$",
+            declaration
+        )
+
+        if name_match:
+            current_method = name_match.group(1)
+
+        continue
+
+    # Detect field access instruction
+    m = instruction_pattern.match(line)
+
+    if not m:
+        continue
+
+    opcode = m.group(1)
+    cp_index = int(m.group(2))
+
+    if cp_index not in fieldrefs:
+        continue
+
+    owner, field_name, descriptor = fieldrefs[cp_index]
+
+    # We only want fields belonging to c.class.
+    if owner != "c":
+        continue
+
+    key = (field_name, descriptor)
+
+    if opcode in ("getfield", "getstatic"):
+        usage[key]["read"].add(current_method)
+
+    elif opcode in ("putfield", "putstatic"):
+        usage[key]["write"].add(current_method)
+
+
+# ------------------------------------------------------------
+# 3. Write report
+# ------------------------------------------------------------
 
 lines = []
+
 lines.append("PREHISTORIC TRIBES - FIELD MAP: c")
 lines.append("=" * 70)
 lines.append("")
-lines.append("Fields referenced by c.class bytecode")
+lines.append("Fields of c.class referenced by c.class bytecode")
 lines.append("")
 
-for (name, desc), usage in sorted(field_usage.items()):
+for (name, descriptor) in sorted(
+    usage.keys(),
+    key=lambda x: (x[0], x[1])
+):
+
+    data = usage[(name, descriptor)]
+
     lines.append(f"FIELD: {name}")
-    lines.append(f"TYPE:  {desc}")
+    lines.append(f"TYPE:  {descriptor}")
 
-    reads = sorted(usage["read"])
-    writes = sorted(usage["write"])
+    reads = sorted(data["read"])
+    writes = sorted(data["write"])
 
     lines.append(
-        "READ:  " + (", ".join(reads) if reads else "-")
+        "READ:  " +
+        (", ".join(reads) if reads else "-")
     )
+
     lines.append(
-        "WRITE: " + (", ".join(writes) if writes else "-")
+        "WRITE: " +
+        (", ".join(writes) if writes else "-")
     )
 
     lines.append("")
 
+
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-OUTPUT.write_text("\n".join(lines), encoding="utf-8")
+OUTPUT.write_text(
+    "\n".join(lines),
+    encoding="utf-8"
+)
 
 print(f"Created {OUTPUT}")
-print(f"Fields found: {len(field_usage)}")
+print(f"Field references found: {len(usage)}")
