@@ -1,4 +1,4 @@
-name: Extract Bytecode
+ name: Extract Bytecode
 
 on:
   workflow_dispatch:
@@ -56,6 +56,10 @@ jobs:
         run: |
           python3 tools/index_trace.py
 
+      - name: Create record map
+        run: |
+          python3 tools/record_map.py
+
       - name: Commit analysis
         run: |
           git config user.name "github-actions[bot]"
@@ -68,6 +72,7 @@ jobs:
           git add analysis/field_usage.txt
           git add analysis/field_trace.txt
           git add analysis/index_trace.txt
+          git add analysis/record_map.txt
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
