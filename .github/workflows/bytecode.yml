@@ -40,6 +40,10 @@ jobs:
         run: |
           python3 tools/method_map.py
 
+      - name: Create hot fields report
+        run: |
+          python3 tools/hot_fields.py
+
       - name: Commit analysis
         run: |
           git config user.name "github-actions[bot]"
@@ -48,6 +52,7 @@ jobs:
           git add analysis/bytecode
           git add analysis/field_map.txt
           git add analysis/method_map.txt
+          git add analysis/hot_fields.txt
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
