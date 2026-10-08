@@ -1,0 +1,61 @@
+PREHISTORIC TRIBES - METHOD MAP: d
+======================================================================
+
+final void a();
+  calls: none
+
+final void a(int);
+  calls: none
+
+final void b(int);
+  calls:
+    -> java/lang/Object.getClass
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/String.valueOf
+    -> java/lang/StringBuffer.toString
+    -> java/lang/Class.getResourceAsStream
+    -> java/io/InputStream.read
+    -> java/lang/String.length
+    -> java/lang/String.charAt
+    -> java/io/InputStream.close
+
+final void a(int, int, int, java.lang.String, int);
+  calls:
+    -> java/lang/String.length
+    -> java/lang/String.charAt
+
+final void a(int, int, int, int, int);
+  calls:
+    -> g.a
+
+final void a(int, int, int, int, int, int, int);
+  calls: none
+
+final void a(javax.microedition.lcdui.Graphics);
+  calls:
+    -> g.a
+
+final void b();
+  calls:
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+
+final void a(int, int, int);
+  calls:
+    -> g.a
+
+final void b(int, int, int, int, int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Font.charWidth
+
+final void a(javax.microedition.lcdui.Graphics, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.setFont
+    -> javax/microedition/lcdui/Graphics.setColor
+    -> g.a
+    -> java/lang/String.valueOf
+    -> javax/microedition/lcdui/Font.charWidth
+    -> javax/microedition/lcdui/Graphics.drawChar
+
