@@ -1,0 +1,27 @@
+FIELD SEMANTICS REPORT
+========================================================================
+Bytecode report files scanned: 8
+Target field references found: 0
+
+IMPORTANT:
+- Names are obfuscated; meanings are not proven by names alone.
+- Fields with different descriptors are treated separately.
+- Context windows are evidence for manual inspection, not
+  proof of the field's gameplay meaning.
+
+1. SUMMARY BY FIELD
+------------------------------------------------------------------------
+No matching field accesses found.
+
+2. METHODS USING MORE THAN ONE TARGET FIELD
+------------------------------------------------------------------------
+No methods with multiple target fields were found.
+
+3. ACCESS CONTEXTS
+------------------------------------------------------------------------
+No target field accesses found.
+
+4. NEXT INVESTIGATION TARGETS
+------------------------------------------------------------------------
+Inspect methods that read and write the same field, then follow the values through their callers and array accesses.
+Do not assign meanings such as position, health, animation, or resource count until conditions and call sites support them.
