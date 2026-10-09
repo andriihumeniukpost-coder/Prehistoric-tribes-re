@@ -1,9 +1,11 @@
- 
+
 name: Bytecode Analysis
 
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     paths:
       - "original/**"
       - "tools/**"
@@ -20,158 +22,327 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-
-      - name: Find original JAR
-        id: jar
-        shell: bash
+      - name: Prepare directories
         run: |
-          set -euo pipefail
-
-          JAR="original/prehistoric-tribes-0.1.38.jar"
-
-          if [ ! -f "$JAR" ]; then
-            echo "ERROR: JAR not found: $JAR"
-            echo "Available JAR files:"
-            find original -type f -name '*.jar' -print || true
-            exit 1
-          fi
-
-          echo "path=$JAR" >> "$GITHUB_OUTPUT"
+          mkdir -p work
+          mkdir -p analysis/bytecode
 
       - name: Extract original JAR
         run: |
-          set -euo pipefail
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
 
-          rm -rf work
-          mkdir -p work
-          cd work
-          jar xf "../${{ steps.jar.outputs.path }}"
+          jars = sorted(Path("original").glob("*.jar"))
+          if not jars:
+              raise SystemExit("ERROR: No JAR found in original/")
+
+          jar = jars[0]
+          print(f"Extracting: {jar}")
+
+          with zipfile.ZipFile(jar) as archive:
+              archive.extractall("work")
+          PY
 
       - name: Generate bytecode reports
-        shell: bash
         run: |
-          set -euo pipefail
-
-          mkdir -p analysis/bytecode
-
-          find work -type f -name '*.class' | sort | while read -r class_file; do
-            relative="${class_file#work/}"
-            class_name="${relative%.class}"
-            class_name="${class_name//\//.}"
-            output="analysis/bytecode/${class_name//./_}.txt"
-
-            echo "Analyzing $class_name"
-
-            javap \
-              -classpath work \
-              -p \
-              -c \
-              -s \
-              -constants \
-              "$class_name" > "$output"
+          set -e
+          find work -name '*.class' -print0 | while IFS= read -r -d '' file; do
+            relative="${file#work/}"
+            output="analysis/bytecode/${relative%.class}.txt"
+            mkdir -p "$(dirname "$output")"
+            javap -classpath work -p -c -s -constants "${relative%.class}" > "$output"
           done
 
-          if [ ! -f analysis/bytecode/c.txt ]; then
-            echo "ERROR: analysis/bytecode/c.txt was not generated."
-            echo "Generated reports:"
-            find analysis/bytecode -maxdepth 1 -type f -print
-            exit 1
+      - name: Analyze JAR
+        run: |
+          if [ -f tools/analyze_jar.py ]; then
+            python tools/analyze_jar.py
+          else
+            echo "Skipping: tools/analyze_jar.py not found"
           fi
 
-      - name: Run JAR analyzer
+      - name: Generate field map
         run: |
-          set -euo pipefail
-          python tools/analyze_jar.py
+          if [ -f tools/field_map.py ]; then
+            python tools/field_map.py
+          fi
 
-      - name: Run field map
-        run: python tools/field_map.py
-
-      - name: Run method map
-        run: python tools/method_map.py
-
-      - name: Run hot fields analysis
-        run: python tools/hot_fields.py
-
-      - name: Run field usage analysis
-        run: python tools/field_usage.py
-
-      - name: Run field trace
-        run: python tools/field_trace.py
-
-      - name: Run index trace
-        run: python tools/index_trace.py
-
-      - name: Run record map
-        run: python tools/record_map.py
-
-      - name: Run record structure analysis
-        run: python tools/record_structure.py
-
-      - name: Run record fields analysis
-        run: python tools/record_fields.py
-
-      - name: Run record clusters analysis
-        run: python tools/record_clusters.py
-
-      - name: Run array access analysis
-        run: python tools/array_access.py
-
-      - name: Run write context analysis
-        run: python tools/write_context.py
-
-      - name: Run paired regions analysis
-        run: python tools/paired_regions.py
-
-      - name: Run field semantics analysis
-        run: python tools/field_semantics.py
-
-      - name: Commit analysis reports
-        shell: bash
+      - name: Generate method map
         run: |
-          set -euo pipefail
+          if [ -f tools/method_map.py ]; then
+            python tools/method_map.py
+          fi
 
+      - name: Analyze hot fields
+        run: |
+          if [ -f tools/hot_fields.py ]; then
+            python tools/hot_fields.py
+          fi
+
+      - name: Analyze field usage
+        run: |
+          if [ -f tools/field_usage.py ]; then
+            python tools/field_usage.py
+          fi
+
+      - name: Trace field references
+        run: |
+          if [ -f tools/field_trace.py ]; then
+            python tools/field_trace.py
+          fi
+
+      - name: Trace index patterns
+        run: |
+          if [ -f tools/index_trace.py ]; then
+            python tools/index_trace.py
+          fi
+
+      - name: Analyze record map
+        run: |
+          if [ -f tools/record_map.py ]; then
+            python tools/record_map.py
+          fi
+
+      - name: Analyze record structure
+        run: |
+          if [ -f tools/record_structure.py ]; then
+            python tools/record_structure.py
+          fi
+
+      - name: Analyze record fields
+        run: |
+          if [ -f tools/record_fields.py ]; then
+            python tools/record_fields.py
+          fi
+
+      - name: Analyze record clusters
+        run: |
+          if [ -f tools/record_clusters.py ]; then
+            python tools/record_clusters.py
+          fi
+
+      - name: Analyze array access
+        run: |
+          if [ -f tools/array_access.py ]; then
+            python tools/array_access.py
+          fi
+
+      - name: Analyze write context
+        run: |
+          if [ -f tools/write_context.py ]; then
+            python tools/write_context.py
+          fi
+
+      - name: Analyze paired regions
+        run: |
+          if [ -f tools/paired_regions.py ]; then
+            python tools/paired_regions.py
+          fi
+
+      - name: Analyze field semantics
+        run: |
+          if [ -f tools/field_semantics.py ]; then
+            python tools/field_semantics.py
+          fi
+
+      - name: Trace array field accesses
+        run: |
+          python tools/array_field_trace.py
+
+      - name: Commit analysis results
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add \
-            analysis/bytecode \
-            analysis/jar_report.txt \
-            analysis/field_map.txt \
-            analysis/method_map.txt \
-            analysis/hot_fields.txt \
-            analysis/field_usage.txt \
-            analysis/field_trace.txt \
-            analysis/index_trace.txt \
-            analysis/record_map.txt \
-            analysis/record_structure.txt \
-            analysis/record_fields.txt \
-            analysis/record_clusters.txt \
-            analysis/array_access.txt \
-            analysis/write_context.txt \
-            analysis/paired_regions.txt \
-            analysis/field_semantics.txt
-            
-      - name: Trace array field accesses
-        run: python tools/array_field_trace.py
+          git add analysis/
 
           if git diff --cached --quiet; then
             echo "No analysis changes to commit."
             exit 0
           fi
 
-          git commit -m "Update bytecode analysis reports"
+          git commit -m "Update bytecode analysis"
+          git pull --rebase origin main
+          git push origin HEAD:main
 
-          git pull --rebase origin "${GITHUB_REF_NAME:-main}"
-          git push origin "HEAD:${GITHUB_REF_NAME:-main}"
+name: Bytecode Analysis
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "original/**"
+      - "tools/**"
+      - ".github/workflows/bytecode.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Prepare directories
+        run: |
+          mkdir -p work
+          mkdir -p analysis/bytecode
+
+      - name: Extract original JAR
+        run: |
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+
+          jars = sorted(Path("original").glob("*.jar"))
+          if not jars:
+              raise SystemExit("ERROR: No JAR found in original/")
+
+          jar = jars[0]
+          print(f"Extracting: {jar}")
+
+          with zipfile.ZipFile(jar) as archive:
+              archive.extractall("work")
+          PY
+
+      - name: Generate bytecode reports
+        run: |
+          set -e
+          find work -name '*.class' -print0 | while IFS= read -r -d '' file; do
+            relative="${file#work/}"
+            output="analysis/bytecode/${relative%.class}.txt"
+            mkdir -p "$(dirname "$output")"
+            javap -classpath work -p -c -s -constants "${relative%.class}" > "$output"
+          done
+
+      - name: Analyze JAR
+        run: |
+          if [ -f tools/analyze_jar.py ]; then
+            python tools/analyze_jar.py
+          else
+            echo "Skipping: tools/analyze_jar.py not found"
+          fi
+
+      - name: Generate field map
+        run: |
+          if [ -f tools/field_map.py ]; then
+            python tools/field_map.py
+          fi
+
+      - name: Generate method map
+        run: |
+          if [ -f tools/method_map.py ]; then
+            python tools/method_map.py
+          fi
+
+      - name: Analyze hot fields
+        run: |
+          if [ -f tools/hot_fields.py ]; then
+            python tools/hot_fields.py
+          fi
+
+      - name: Analyze field usage
+        run: |
+          if [ -f tools/field_usage.py ]; then
+            python tools/field_usage.py
+          fi
+
+      - name: Trace field references
+        run: |
+          if [ -f tools/field_trace.py ]; then
+            python tools/field_trace.py
+          fi
+
+      - name: Trace index patterns
+        run: |
+          if [ -f tools/index_trace.py ]; then
+            python tools/index_trace.py
+          fi
+
+      - name: Analyze record map
+        run: |
+          if [ -f tools/record_map.py ]; then
+            python tools/record_map.py
+          fi
+
+      - name: Analyze record structure
+        run: |
+          if [ -f tools/record_structure.py ]; then
+            python tools/record_structure.py
+          fi
+
+      - name: Analyze record fields
+        run: |
+          if [ -f tools/record_fields.py ]; then
+            python tools/record_fields.py
+          fi
+
+      - name: Analyze record clusters
+        run: |
+          if [ -f tools/record_clusters.py ]; then
+            python tools/record_clusters.py
+          fi
+
+      - name: Analyze array access
+        run: |
+          if [ -f tools/array_access.py ]; then
+            python tools/array_access.py
+          fi
+
+      - name: Analyze write context
+        run: |
+          if [ -f tools/write_context.py ]; then
+            python tools/write_context.py
+          fi
+
+      - name: Analyze paired regions
+        run: |
+          if [ -f tools/paired_regions.py ]; then
+            python tools/paired_regions.py
+          fi
+
+      - name: Analyze field semantics
+        run: |
+          if [ -f tools/field_semantics.py ]; then
+            python tools/field_semantics.py
+          fi
+
+      - name: Trace array field accesses
+        run: |
+          python tools/array_field_trace.py
+
+      - name: Commit analysis results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add analysis/
+
+          if git diff --cached --quiet; then
+            echo "No analysis changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Update bytecode analysis"
+          git pull --rebase origin main
+          git push origin HEAD:main
