@@ -1,0 +1,2649 @@
+PREHISTORIC TRIBES - RECORD CLUSTER ANALYSIS
+Class: c
+
+This report groups BASE + v offsets according to their bytecode-derived co-occurrence.
+
+IMPORTANT: A cluster does NOT automatically represent a game object or semantic record.
+It only represents offsets that frequently appear together in detected methods.
+
+================================================================================
+STATISTICS
+================================================================================
+
+METHODS: 74
+UNIQUE OFFSETS: 154
+OFFSET PAIRS: 4270
+
+================================================================================
+MOST CONNECTED OFFSETS
+================================================================================
+
+0 + v
+  METHOD COUNT: 42
+  STRONGEST CONNECTIONS:
+    101 + v  -> 36 shared methods
+    2828 + v  -> 29 shared methods
+    3131 + v  -> 25 shared methods
+    3232 + v  -> 25 shared methods
+    4444 + v  -> 23 shared methods
+    6161 + v  -> 20 shared methods
+    2929 + v  -> 18 shared methods
+    7979 + v  -> 18 shared methods
+    1 + v  -> 17 shared methods
+    1313 + v  -> 17 shared methods
+
+2828 + v
+  METHOD COUNT: 41
+  STRONGEST CONNECTIONS:
+    0 + v  -> 29 shared methods
+    4444 + v  -> 29 shared methods
+    101 + v  -> 26 shared methods
+    3131 + v  -> 25 shared methods
+    3232 + v  -> 25 shared methods
+    2929 + v  -> 22 shared methods
+    1313 + v  -> 18 shared methods
+    6161 + v  -> 17 shared methods
+    7979 + v  -> 17 shared methods
+    4646 + v  -> 16 shared methods
+
+101 + v
+  METHOD COUNT: 37
+  STRONGEST CONNECTIONS:
+    0 + v  -> 36 shared methods
+    2828 + v  -> 26 shared methods
+    3131 + v  -> 24 shared methods
+    3232 + v  -> 24 shared methods
+    4444 + v  -> 20 shared methods
+    6161 + v  -> 20 shared methods
+    2929 + v  -> 16 shared methods
+    7979 + v  -> 16 shared methods
+    1313 + v  -> 15 shared methods
+    6464 + v  -> 15 shared methods
+
+4444 + v
+  METHOD COUNT: 33
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 29 shared methods
+    0 + v  -> 23 shared methods
+    3131 + v  -> 21 shared methods
+    3232 + v  -> 21 shared methods
+    101 + v  -> 20 shared methods
+    2929 + v  -> 17 shared methods
+    4646 + v  -> 17 shared methods
+    1313 + v  -> 16 shared methods
+    7979 + v  -> 15 shared methods
+    3636 + v  -> 13 shared methods
+
+3232 + v
+  METHOD COUNT: 28
+  STRONGEST CONNECTIONS:
+    3131 + v  -> 28 shared methods
+    0 + v  -> 25 shared methods
+    2828 + v  -> 25 shared methods
+    101 + v  -> 24 shared methods
+    4444 + v  -> 21 shared methods
+    6161 + v  -> 17 shared methods
+    7979 + v  -> 15 shared methods
+    1 + v  -> 14 shared methods
+    2929 + v  -> 14 shared methods
+    4646 + v  -> 13 shared methods
+
+3131 + v
+  METHOD COUNT: 28
+  STRONGEST CONNECTIONS:
+    3232 + v  -> 28 shared methods
+    0 + v  -> 25 shared methods
+    2828 + v  -> 25 shared methods
+    101 + v  -> 24 shared methods
+    4444 + v  -> 21 shared methods
+    6161 + v  -> 17 shared methods
+    7979 + v  -> 15 shared methods
+    1 + v  -> 14 shared methods
+    2929 + v  -> 14 shared methods
+    4646 + v  -> 13 shared methods
+
+2929 + v
+  METHOD COUNT: 26
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 22 shared methods
+    0 + v  -> 18 shared methods
+    4444 + v  -> 17 shared methods
+    101 + v  -> 16 shared methods
+    1313 + v  -> 14 shared methods
+    3030 + v  -> 14 shared methods
+    3131 + v  -> 14 shared methods
+    3232 + v  -> 14 shared methods
+    1 + v  -> 13 shared methods
+    4646 + v  -> 13 shared methods
+
+1 + v
+  METHOD COUNT: 24
+  STRONGEST CONNECTIONS:
+    0 + v  -> 17 shared methods
+    2828 + v  -> 15 shared methods
+    101 + v  -> 14 shared methods
+    3131 + v  -> 14 shared methods
+    3232 + v  -> 14 shared methods
+    2929 + v  -> 13 shared methods
+    4444 + v  -> 12 shared methods
+    7979 + v  -> 12 shared methods
+    1414 + v  -> 11 shared methods
+    1919 + v  -> 11 shared methods
+
+6161 + v
+  METHOD COUNT: 21
+  STRONGEST CONNECTIONS:
+    0 + v  -> 20 shared methods
+    101 + v  -> 20 shared methods
+    2828 + v  -> 17 shared methods
+    3131 + v  -> 17 shared methods
+    3232 + v  -> 17 shared methods
+    1313 + v  -> 12 shared methods
+    2929 + v  -> 12 shared methods
+    4444 + v  -> 12 shared methods
+    1 + v  -> 11 shared methods
+    6464 + v  -> 11 shared methods
+
+1313 + v
+  METHOD COUNT: 21
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 18 shared methods
+    0 + v  -> 17 shared methods
+    4444 + v  -> 16 shared methods
+    101 + v  -> 15 shared methods
+    2929 + v  -> 14 shared methods
+    3131 + v  -> 12 shared methods
+    3232 + v  -> 12 shared methods
+    4646 + v  -> 12 shared methods
+    6161 + v  -> 12 shared methods
+    3030 + v  -> 10 shared methods
+
+4646 + v
+  METHOD COUNT: 19
+  STRONGEST CONNECTIONS:
+    4444 + v  -> 17 shared methods
+    2828 + v  -> 16 shared methods
+    0 + v  -> 13 shared methods
+    2929 + v  -> 13 shared methods
+    3131 + v  -> 13 shared methods
+    3232 + v  -> 13 shared methods
+    101 + v  -> 12 shared methods
+    1313 + v  -> 12 shared methods
+    7979 + v  -> 10 shared methods
+    3030 + v  -> 9 shared methods
+
+7979 + v
+  METHOD COUNT: 19
+  STRONGEST CONNECTIONS:
+    0 + v  -> 18 shared methods
+    2828 + v  -> 17 shared methods
+    101 + v  -> 16 shared methods
+    3131 + v  -> 15 shared methods
+    3232 + v  -> 15 shared methods
+    4444 + v  -> 15 shared methods
+    1 + v  -> 12 shared methods
+    1414 + v  -> 11 shared methods
+    6161 + v  -> 11 shared methods
+    1313 + v  -> 10 shared methods
+
+6464 + v
+  METHOD COUNT: 17
+  STRONGEST CONNECTIONS:
+    0 + v  -> 15 shared methods
+    101 + v  -> 15 shared methods
+    2828 + v  -> 14 shared methods
+    3131 + v  -> 13 shared methods
+    3232 + v  -> 13 shared methods
+    4444 + v  -> 12 shared methods
+    6161 + v  -> 11 shared methods
+    6262 + v  -> 10 shared methods
+    6363 + v  -> 10 shared methods
+    7979 + v  -> 9 shared methods
+
+1414 + v
+  METHOD COUNT: 15
+  STRONGEST CONNECTIONS:
+    0 + v  -> 13 shared methods
+    3131 + v  -> 12 shared methods
+    3232 + v  -> 12 shared methods
+    1 + v  -> 11 shared methods
+    101 + v  -> 11 shared methods
+    2828 + v  -> 11 shared methods
+    7979 + v  -> 11 shared methods
+    4444 + v  -> 10 shared methods
+    1919 + v  -> 9 shared methods
+    2929 + v  -> 8 shared methods
+
+6565 + v
+  METHOD COUNT: 15
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 12 shared methods
+    4444 + v  -> 12 shared methods
+    0 + v  -> 11 shared methods
+    7979 + v  -> 10 shared methods
+    1 + v  -> 9 shared methods
+    101 + v  -> 9 shared methods
+    2929 + v  -> 9 shared methods
+    3131 + v  -> 9 shared methods
+    3232 + v  -> 9 shared methods
+    1313 + v  -> 8 shared methods
+
+3030 + v
+  METHOD COUNT: 15
+  STRONGEST CONNECTIONS:
+    2929 + v  -> 14 shared methods
+    0 + v  -> 13 shared methods
+    2828 + v  -> 13 shared methods
+    101 + v  -> 12 shared methods
+    4444 + v  -> 12 shared methods
+    1313 + v  -> 10 shared methods
+    3131 + v  -> 10 shared methods
+    3232 + v  -> 10 shared methods
+    4646 + v  -> 9 shared methods
+    1414 + v  -> 8 shared methods
+
+3636 + v
+  METHOD COUNT: 14
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 13 shared methods
+    4444 + v  -> 13 shared methods
+    0 + v  -> 9 shared methods
+    2929 + v  -> 9 shared methods
+    3131 + v  -> 9 shared methods
+    3232 + v  -> 9 shared methods
+    1313 + v  -> 8 shared methods
+    101 + v  -> 7 shared methods
+    4646 + v  -> 7 shared methods
+    3535 + v  -> 6 shared methods
+
+303 + v
+  METHOD COUNT: 13
+  STRONGEST CONNECTIONS:
+    202 + v  -> 13 shared methods
+    0 + v  -> 12 shared methods
+    101 + v  -> 11 shared methods
+    1313 + v  -> 9 shared methods
+    2828 + v  -> 8 shared methods
+    3131 + v  -> 8 shared methods
+    3232 + v  -> 8 shared methods
+    4444 + v  -> 8 shared methods
+    6161 + v  -> 8 shared methods
+    7979 + v  -> 8 shared methods
+
+202 + v
+  METHOD COUNT: 13
+  STRONGEST CONNECTIONS:
+    303 + v  -> 13 shared methods
+    0 + v  -> 12 shared methods
+    101 + v  -> 11 shared methods
+    1313 + v  -> 9 shared methods
+    2828 + v  -> 8 shared methods
+    3131 + v  -> 8 shared methods
+    3232 + v  -> 8 shared methods
+    4444 + v  -> 8 shared methods
+    6161 + v  -> 8 shared methods
+    7979 + v  -> 8 shared methods
+
+1919 + v
+  METHOD COUNT: 13
+  STRONGEST CONNECTIONS:
+    0 + v  -> 11 shared methods
+    1 + v  -> 11 shared methods
+    101 + v  -> 10 shared methods
+    1414 + v  -> 9 shared methods
+    2828 + v  -> 9 shared methods
+    6161 + v  -> 9 shared methods
+    3131 + v  -> 8 shared methods
+    3232 + v  -> 8 shared methods
+    7979 + v  -> 8 shared methods
+    1313 + v  -> 6 shared methods
+
+808 + v
+  METHOD COUNT: 12
+  STRONGEST CONNECTIONS:
+    0 + v  -> 11 shared methods
+    101 + v  -> 11 shared methods
+    2828 + v  -> 10 shared methods
+    3131 + v  -> 10 shared methods
+    3232 + v  -> 10 shared methods
+    4444 + v  -> 10 shared methods
+    6161 + v  -> 9 shared methods
+    1 + v  -> 8 shared methods
+    2929 + v  -> 8 shared methods
+    202 + v  -> 7 shared methods
+
+6363 + v
+  METHOD COUNT: 12
+  STRONGEST CONNECTIONS:
+    0 + v  -> 12 shared methods
+    101 + v  -> 12 shared methods
+    6262 + v  -> 12 shared methods
+    2828 + v  -> 11 shared methods
+    3131 + v  -> 11 shared methods
+    3232 + v  -> 11 shared methods
+    6464 + v  -> 10 shared methods
+    4444 + v  -> 9 shared methods
+    6161 + v  -> 8 shared methods
+    7979 + v  -> 8 shared methods
+
+6262 + v
+  METHOD COUNT: 12
+  STRONGEST CONNECTIONS:
+    0 + v  -> 12 shared methods
+    101 + v  -> 12 shared methods
+    6363 + v  -> 12 shared methods
+    2828 + v  -> 11 shared methods
+    3131 + v  -> 11 shared methods
+    3232 + v  -> 11 shared methods
+    6464 + v  -> 10 shared methods
+    4444 + v  -> 9 shared methods
+    6161 + v  -> 8 shared methods
+    7979 + v  -> 8 shared methods
+
+606 + v
+  METHOD COUNT: 11
+  STRONGEST CONNECTIONS:
+    0 + v  -> 10 shared methods
+    101 + v  -> 9 shared methods
+    202 + v  -> 7 shared methods
+    303 + v  -> 7 shared methods
+    1313 + v  -> 7 shared methods
+    2828 + v  -> 7 shared methods
+    2929 + v  -> 7 shared methods
+    4444 + v  -> 7 shared methods
+    1 + v  -> 6 shared methods
+    1111 + v  -> 6 shared methods
+
+1111 + v
+  METHOD COUNT: 9
+  STRONGEST CONNECTIONS:
+    0 + v  -> 8 shared methods
+    101 + v  -> 8 shared methods
+    202 + v  -> 6 shared methods
+    303 + v  -> 6 shared methods
+    606 + v  -> 6 shared methods
+    1313 + v  -> 6 shared methods
+    2828 + v  -> 6 shared methods
+    2929 + v  -> 6 shared methods
+    4444 + v  -> 6 shared methods
+    3131 + v  -> 5 shared methods
+
+4545 + v
+  METHOD COUNT: 9
+  STRONGEST CONNECTIONS:
+    0 + v  -> 9 shared methods
+    1313 + v  -> 9 shared methods
+    101 + v  -> 8 shared methods
+    2828 + v  -> 7 shared methods
+    2929 + v  -> 6 shared methods
+    4444 + v  -> 6 shared methods
+    202 + v  -> 5 shared methods
+    303 + v  -> 5 shared methods
+    1111 + v  -> 5 shared methods
+    3131 + v  -> 5 shared methods
+
+4747 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    0 + v  -> 8 shared methods
+    4444 + v  -> 8 shared methods
+    101 + v  -> 7 shared methods
+    2828 + v  -> 7 shared methods
+    3131 + v  -> 7 shared methods
+    3232 + v  -> 7 shared methods
+    1 + v  -> 5 shared methods
+    808 + v  -> 5 shared methods
+    1313 + v  -> 5 shared methods
+    3636 + v  -> 5 shared methods
+
+3535 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 6 shared methods
+    2929 + v  -> 6 shared methods
+    3636 + v  -> 6 shared methods
+    0 + v  -> 5 shared methods
+    1313 + v  -> 5 shared methods
+    3131 + v  -> 5 shared methods
+    3232 + v  -> 5 shared methods
+    4444 + v  -> 5 shared methods
+    6161 + v  -> 5 shared methods
+    101 + v  -> 4 shared methods
+
+4949 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    0 + v  -> 7 shared methods
+    101 + v  -> 7 shared methods
+    3131 + v  -> 7 shared methods
+    3232 + v  -> 7 shared methods
+    4444 + v  -> 7 shared methods
+    808 + v  -> 6 shared methods
+    2828 + v  -> 6 shared methods
+    6464 + v  -> 6 shared methods
+    1 + v  -> 5 shared methods
+    1313 + v  -> 5 shared methods
+
+4848 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    0 + v  -> 7 shared methods
+    101 + v  -> 7 shared methods
+    202 + v  -> 6 shared methods
+    303 + v  -> 6 shared methods
+    606 + v  -> 6 shared methods
+    808 + v  -> 6 shared methods
+    2828 + v  -> 6 shared methods
+    1313 + v  -> 5 shared methods
+    2929 + v  -> 5 shared methods
+    3131 + v  -> 5 shared methods
+
+50 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    1 + v  -> 7 shared methods
+    0 + v  -> 6 shared methods
+    7979 + v  -> 6 shared methods
+    101 + v  -> 5 shared methods
+    202 + v  -> 5 shared methods
+    303 + v  -> 5 shared methods
+    1919 + v  -> 5 shared methods
+    2828 + v  -> 5 shared methods
+    4444 + v  -> 5 shared methods
+    6565 + v  -> 5 shared methods
+
+8627 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    8749 + v  -> 5 shared methods
+    0 + v  -> 4 shared methods
+    4646 + v  -> 4 shared methods
+    9237 + v  -> 4 shared methods
+    101 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+    6161 + v  -> 3 shared methods
+    8505 + v  -> 3 shared methods
+
+8749 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    8627 + v  -> 5 shared methods
+    2929 + v  -> 4 shared methods
+    4646 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    1 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    1313 + v  -> 3 shared methods
+    2828 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+
+8810 + v
+  METHOD COUNT: 8
+  STRONGEST CONNECTIONS:
+    4444 + v  -> 5 shared methods
+    0 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    4646 + v  -> 4 shared methods
+    101 + v  -> 3 shared methods
+    1313 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+    6161 + v  -> 3 shared methods
+
+3 + v
+  METHOD COUNT: 7
+  STRONGEST CONNECTIONS:
+    3131 + v  -> 6 shared methods
+    3232 + v  -> 6 shared methods
+    0 + v  -> 5 shared methods
+    101 + v  -> 5 shared methods
+    2828 + v  -> 5 shared methods
+    1 + v  -> 4 shared methods
+    2929 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+    15 + v  -> 3 shared methods
+    3030 + v  -> 3 shared methods
+
+1717 + v
+  METHOD COUNT: 7
+  STRONGEST CONNECTIONS:
+    6565 + v  -> 7 shared methods
+    0 + v  -> 5 shared methods
+    1 + v  -> 5 shared methods
+    1616 + v  -> 5 shared methods
+    2828 + v  -> 5 shared methods
+    4444 + v  -> 5 shared methods
+    7979 + v  -> 5 shared methods
+    50 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    202 + v  -> 4 shared methods
+
+1616 + v
+  METHOD COUNT: 7
+  STRONGEST CONNECTIONS:
+    6565 + v  -> 6 shared methods
+    1717 + v  -> 5 shared methods
+    1 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    6464 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    1414 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+
+505 + v
+  METHOD COUNT: 7
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 6 shared methods
+    2929 + v  -> 5 shared methods
+    4444 + v  -> 5 shared methods
+    0 + v  -> 4 shared methods
+    1 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    1414 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    3434 + v  -> 4 shared methods
+
+7777 + v
+  METHOD COUNT: 7
+  STRONGEST CONNECTIONS:
+    0 + v  -> 6 shared methods
+    101 + v  -> 6 shared methods
+    3131 + v  -> 6 shared methods
+    3232 + v  -> 6 shared methods
+    2828 + v  -> 5 shared methods
+    1 + v  -> 4 shared methods
+    2929 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+    7979 + v  -> 4 shared methods
+
+7575 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    7979 + v  -> 6 shared methods
+    0 + v  -> 5 shared methods
+    1 + v  -> 5 shared methods
+    101 + v  -> 5 shared methods
+    1414 + v  -> 5 shared methods
+    2828 + v  -> 5 shared methods
+    3131 + v  -> 5 shared methods
+    3232 + v  -> 5 shared methods
+    4444 + v  -> 5 shared methods
+    4646 + v  -> 5 shared methods
+
+5959 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    5252 + v  -> 4 shared methods
+    5353 + v  -> 4 shared methods
+    6565 + v  -> 4 shared methods
+    1 + v  -> 3 shared methods
+    1313 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    4646 + v  -> 3 shared methods
+    5858 + v  -> 3 shared methods
+
+3434 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 5 shared methods
+    505 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    2020 + v  -> 3 shared methods
+    2121 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+    4444 + v  -> 3 shared methods
+
+6767 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    0 + v  -> 5 shared methods
+    1919 + v  -> 5 shared methods
+    7979 + v  -> 5 shared methods
+    1 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    1414 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+    202 + v  -> 3 shared methods
+    303 + v  -> 3 shared methods
+
+3939 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 6 shared methods
+    0 + v  -> 5 shared methods
+    101 + v  -> 4 shared methods
+    1313 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+    1 + v  -> 3 shared methods
+    404 + v  -> 3 shared methods
+    1717 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+
+69 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    0 + v  -> 5 shared methods
+    101 + v  -> 5 shared methods
+    6161 + v  -> 5 shared methods
+    2828 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    59 + v  -> 3 shared methods
+    808 + v  -> 3 shared methods
+    1313 + v  -> 3 shared methods
+    3030 + v  -> 3 shared methods
+
+2020 + v
+  METHOD COUNT: 6
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 6 shared methods
+    0 + v  -> 4 shared methods
+    2121 + v  -> 4 shared methods
+    2929 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    7979 + v  -> 4 shared methods
+    1 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    505 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+
+1818 + v
+  METHOD COUNT: 5
+  STRONGEST CONNECTIONS:
+    6464 + v  -> 5 shared methods
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    202 + v  -> 4 shared methods
+    303 + v  -> 4 shared methods
+    1313 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+
+9535 + v
+  METHOD COUNT: 5
+  STRONGEST CONNECTIONS:
+    9557 + v  -> 4 shared methods
+    9601 + v  -> 4 shared methods
+    9359 + v  -> 3 shared methods
+    9381 + v  -> 3 shared methods
+    9491 + v  -> 3 shared methods
+    9645 + v  -> 3 shared methods
+    9667 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+
+8282 + v
+  METHOD COUNT: 5
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    3 + v  -> 3 shared methods
+    4444 + v  -> 3 shared methods
+    6161 + v  -> 3 shared methods
+    19 + v  -> 2 shared methods
+    44 + v  -> 2 shared methods
+
+1515 + v
+  METHOD COUNT: 5
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    1414 + v  -> 4 shared methods
+    1919 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3030 + v  -> 4 shared methods
+    1 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    202 + v  -> 3 shared methods
+    303 + v  -> 3 shared methods
+    808 + v  -> 3 shared methods
+
+1010 + v
+  METHOD COUNT: 5
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    202 + v  -> 4 shared methods
+    303 + v  -> 4 shared methods
+    1313 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+
+404 + v
+  METHOD COUNT: 5
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 5 shared methods
+    4444 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3939 + v  -> 3 shared methods
+    1 + v  -> 2 shared methods
+    70 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1313 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+
+2 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    1 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    1414 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    6464 + v  -> 4 shared methods
+    -1 + v  -> 3 shared methods
+    2828 + v  -> 3 shared methods
+
+5252 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    5353 + v  -> 4 shared methods
+    5959 + v  -> 4 shared methods
+    1 + v  -> 2 shared methods
+    1616 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    5454 + v  -> 2 shared methods
+    5555 + v  -> 2 shared methods
+    5656 + v  -> 2 shared methods
+    5757 + v  -> 2 shared methods
+
+3333 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3636 + v  -> 3 shared methods
+    4444 + v  -> 3 shared methods
+    6565 + v  -> 3 shared methods
+    7979 + v  -> 3 shared methods
+    1 + v  -> 2 shared methods
+    85 + v  -> 2 shared methods
+    202 + v  -> 2 shared methods
+
+7 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    2929 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    1 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    1414 + v  -> 3 shared methods
+    2828 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+    4444 + v  -> 3 shared methods
+    4646 + v  -> 3 shared methods
+
+9601 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    9535 + v  -> 4 shared methods
+    9557 + v  -> 3 shared methods
+    9645 + v  -> 3 shared methods
+    9667 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    9359 + v  -> 2 shared methods
+    9381 + v  -> 2 shared methods
+    9447 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+
+15 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    6565 + v  -> 4 shared methods
+    1 + v  -> 3 shared methods
+    3 + v  -> 3 shared methods
+    2828 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    4646 + v  -> 3 shared methods
+
+9645 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    9667 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    1 + v  -> 3 shared methods
+    9359 + v  -> 3 shared methods
+    9381 + v  -> 3 shared methods
+    9535 + v  -> 3 shared methods
+    9601 + v  -> 3 shared methods
+    9689 + v  -> 3 shared methods
+    7 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+
+5050 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    606 + v  -> 4 shared methods
+    1313 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    4646 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+
+707 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    1 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    606 + v  -> 4 shared methods
+    808 + v  -> 4 shared methods
+    1313 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    2929 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    4848 + v  -> 4 shared methods
+
+9667 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    9645 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    1 + v  -> 3 shared methods
+    9359 + v  -> 3 shared methods
+    9381 + v  -> 3 shared methods
+    9535 + v  -> 3 shared methods
+    9601 + v  -> 3 shared methods
+    9689 + v  -> 3 shared methods
+    7 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+
+4040 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    4444 + v  -> 4 shared methods
+    1 + v  -> 3 shared methods
+    606 + v  -> 3 shared methods
+    707 + v  -> 3 shared methods
+    808 + v  -> 3 shared methods
+
+87 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    1 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    6161 + v  -> 4 shared methods
+    505 + v  -> 3 shared methods
+    808 + v  -> 3 shared methods
+    1414 + v  -> 3 shared methods
+    1919 + v  -> 3 shared methods
+
+5353 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    5252 + v  -> 4 shared methods
+    5959 + v  -> 4 shared methods
+    1 + v  -> 2 shared methods
+    1616 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    5454 + v  -> 2 shared methods
+    5555 + v  -> 2 shared methods
+    5656 + v  -> 2 shared methods
+    5757 + v  -> 2 shared methods
+
+-1 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    1 + v  -> 4 shared methods
+    6464 + v  -> 4 shared methods
+    0 + v  -> 3 shared methods
+    2 + v  -> 3 shared methods
+    101 + v  -> 3 shared methods
+    1414 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+    4444 + v  -> 3 shared methods
+    4949 + v  -> 3 shared methods
+
+9359 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    9381 + v  -> 4 shared methods
+    9491 + v  -> 3 shared methods
+    9535 + v  -> 3 shared methods
+    9557 + v  -> 3 shared methods
+    9645 + v  -> 3 shared methods
+    9667 + v  -> 3 shared methods
+    9689 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+
+9381 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 4 shared methods
+    9491 + v  -> 3 shared methods
+    9535 + v  -> 3 shared methods
+    9557 + v  -> 3 shared methods
+    9645 + v  -> 3 shared methods
+    9667 + v  -> 3 shared methods
+    9689 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+
+59 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    0 + v  -> 4 shared methods
+    101 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    3030 + v  -> 4 shared methods
+    3131 + v  -> 4 shared methods
+    3232 + v  -> 4 shared methods
+    69 + v  -> 3 shared methods
+    808 + v  -> 3 shared methods
+    1313 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+
+9237 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    8627 + v  -> 4 shared methods
+    8505 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    8749 + v  -> 2 shared methods
+    9054 + v  -> 2 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    255 + v  -> 1 shared methods
+
+8505 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    8627 + v  -> 3 shared methods
+    8749 + v  -> 3 shared methods
+    9237 + v  -> 3 shared methods
+    1 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    30 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+
+8932 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    4646 + v  -> 3 shared methods
+    8627 + v  -> 3 shared methods
+    8749 + v  -> 3 shared methods
+    8810 + v  -> 3 shared methods
+    8383 + v  -> 2 shared methods
+    8444 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+
+2121 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    2020 + v  -> 4 shared methods
+    2828 + v  -> 4 shared methods
+    505 + v  -> 3 shared methods
+    2929 + v  -> 3 shared methods
+    3434 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    3030 + v  -> 2 shared methods
+
+9557 + v
+  METHOD COUNT: 4
+  STRONGEST CONNECTIONS:
+    9535 + v  -> 4 shared methods
+    9359 + v  -> 3 shared methods
+    9381 + v  -> 3 shared methods
+    9491 + v  -> 3 shared methods
+    9601 + v  -> 3 shared methods
+    9403 + v  -> 2 shared methods
+    9425 + v  -> 2 shared methods
+    9447 + v  -> 2 shared methods
+    9579 + v  -> 2 shared methods
+    9623 + v  -> 2 shared methods
+
+5858 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    5959 + v  -> 3 shared methods
+    1313 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3030 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    4646 + v  -> 2 shared methods
+    5252 + v  -> 2 shared methods
+    5353 + v  -> 2 shared methods
+    5454 + v  -> 2 shared methods
+
+60 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    0 + v  -> 3 shared methods
+    2828 + v  -> 3 shared methods
+    3131 + v  -> 3 shared methods
+    3232 + v  -> 3 shared methods
+    3636 + v  -> 3 shared methods
+    4444 + v  -> 3 shared methods
+    12 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    3535 + v  -> 2 shared methods
+
+9689 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 3 shared methods
+    9381 + v  -> 3 shared methods
+    9645 + v  -> 3 shared methods
+    9667 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    9447 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+    9535 + v  -> 2 shared methods
+    9557 + v  -> 2 shared methods
+
+9469 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    7 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+    3232 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+
+3838 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 3 shared methods
+    0 + v  -> 2 shared methods
+    70 + v  -> 2 shared methods
+    404 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3636 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    4646 + v  -> 2 shared methods
+    1 + v  -> 1 shared methods
+    36 + v  -> 1 shared methods
+
+8993 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    1313 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    4545 + v  -> 2 shared methods
+    1 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+
+9491 + v
+  METHOD COUNT: 3
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 3 shared methods
+    9381 + v  -> 3 shared methods
+    9535 + v  -> 3 shared methods
+    9557 + v  -> 3 shared methods
+    9403 + v  -> 2 shared methods
+    9425 + v  -> 2 shared methods
+    9447 + v  -> 2 shared methods
+    9579 + v  -> 2 shared methods
+    9601 + v  -> 2 shared methods
+    9623 + v  -> 2 shared methods
+
+6666 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    202 + v  -> 2 shared methods
+    303 + v  -> 2 shared methods
+    808 + v  -> 2 shared methods
+    1313 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    1515 + v  -> 2 shared methods
+    1818 + v  -> 2 shared methods
+    1919 + v  -> 2 shared methods
+
+19 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1919 + v  -> 2 shared methods
+    6161 + v  -> 2 shared methods
+    6767 + v  -> 2 shared methods
+    8282 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+
+5656 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    5252 + v  -> 2 shared methods
+    5353 + v  -> 2 shared methods
+    5454 + v  -> 2 shared methods
+    5555 + v  -> 2 shared methods
+    5757 + v  -> 2 shared methods
+    5858 + v  -> 2 shared methods
+    5959 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+
+44 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    3 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    110 + v  -> 2 shared methods
+    202 + v  -> 2 shared methods
+    303 + v  -> 2 shared methods
+    808 + v  -> 2 shared methods
+    1515 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+
+5555 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    5252 + v  -> 2 shared methods
+    5353 + v  -> 2 shared methods
+    5454 + v  -> 2 shared methods
+    5656 + v  -> 2 shared methods
+    5757 + v  -> 2 shared methods
+    5858 + v  -> 2 shared methods
+    5959 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+
+7878 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    1616 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    5252 + v  -> 2 shared methods
+    5353 + v  -> 2 shared methods
+    5959 + v  -> 2 shared methods
+    6565 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+
+5454 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    5252 + v  -> 2 shared methods
+    5353 + v  -> 2 shared methods
+    5555 + v  -> 2 shared methods
+    5656 + v  -> 2 shared methods
+    5757 + v  -> 2 shared methods
+    5858 + v  -> 2 shared methods
+    5959 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+
+85 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    202 + v  -> 2 shared methods
+    303 + v  -> 2 shared methods
+    606 + v  -> 2 shared methods
+    1313 + v  -> 2 shared methods
+    1717 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3333 + v  -> 2 shared methods
+
+110 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    3 + v  -> 2 shared methods
+    44 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    202 + v  -> 2 shared methods
+    303 + v  -> 2 shared methods
+    808 + v  -> 2 shared methods
+    1515 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+
+5757 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    5252 + v  -> 2 shared methods
+    5353 + v  -> 2 shared methods
+    5454 + v  -> 2 shared methods
+    5555 + v  -> 2 shared methods
+    5656 + v  -> 2 shared methods
+    5858 + v  -> 2 shared methods
+    5959 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+
+12 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    60 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+    3232 + v  -> 2 shared methods
+    3535 + v  -> 2 shared methods
+    3636 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    4747 + v  -> 2 shared methods
+
+31 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    50 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    202 + v  -> 2 shared methods
+    303 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+    3232 + v  -> 2 shared methods
+    7979 + v  -> 2 shared methods
+
+63 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1414 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3030 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+    3232 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+
+4 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    1 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    808 + v  -> 2 shared methods
+    1313 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+    3232 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+
+70 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    404 + v  -> 2 shared methods
+    2828 + v  -> 2 shared methods
+    2929 + v  -> 2 shared methods
+    3636 + v  -> 2 shared methods
+    3838 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    4646 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+
+8383 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    8444 + v  -> 2 shared methods
+    8627 + v  -> 2 shared methods
+    8749 + v  -> 2 shared methods
+    8932 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    255 + v  -> 1 shared methods
+
+9054 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    8627 + v  -> 2 shared methods
+    9237 + v  -> 2 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    255 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+
+8444 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    8383 + v  -> 2 shared methods
+    8627 + v  -> 2 shared methods
+    8749 + v  -> 2 shared methods
+    8932 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    255 + v  -> 1 shared methods
+
+107 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    1616 + v  -> 2 shared methods
+    6464 + v  -> 2 shared methods
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+
+109 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    5 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1313 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+    3636 + v  -> 1 shared methods
+
+9447 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 2 shared methods
+    9381 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+    9535 + v  -> 2 shared methods
+    9557 + v  -> 2 shared methods
+    9579 + v  -> 2 shared methods
+    9601 + v  -> 2 shared methods
+    9645 + v  -> 2 shared methods
+    9667 + v  -> 2 shared methods
+    9689 + v  -> 2 shared methods
+
+9579 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 2 shared methods
+    9381 + v  -> 2 shared methods
+    9447 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+    9535 + v  -> 2 shared methods
+    9557 + v  -> 2 shared methods
+    9601 + v  -> 2 shared methods
+    9645 + v  -> 2 shared methods
+    9667 + v  -> 2 shared methods
+    9689 + v  -> 2 shared methods
+
+9425 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 2 shared methods
+    9381 + v  -> 2 shared methods
+    9403 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+    9535 + v  -> 2 shared methods
+    9557 + v  -> 2 shared methods
+    9623 + v  -> 2 shared methods
+    101 + v  -> 1 shared methods
+    9447 + v  -> 1 shared methods
+    9579 + v  -> 1 shared methods
+
+9623 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 2 shared methods
+    9381 + v  -> 2 shared methods
+    9403 + v  -> 2 shared methods
+    9425 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+    9535 + v  -> 2 shared methods
+    9557 + v  -> 2 shared methods
+    101 + v  -> 1 shared methods
+    9447 + v  -> 1 shared methods
+    9579 + v  -> 1 shared methods
+
+9403 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    9359 + v  -> 2 shared methods
+    9381 + v  -> 2 shared methods
+    9425 + v  -> 2 shared methods
+    9491 + v  -> 2 shared methods
+    9535 + v  -> 2 shared methods
+    9557 + v  -> 2 shared methods
+    9623 + v  -> 2 shared methods
+    101 + v  -> 1 shared methods
+    9447 + v  -> 1 shared methods
+    9579 + v  -> 1 shared methods
+
+57 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    0 + v  -> 2 shared methods
+    101 + v  -> 2 shared methods
+    1 + v  -> 1 shared methods
+    404 + v  -> 1 shared methods
+    808 + v  -> 1 shared methods
+    1111 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+
+160 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    2828 + v  -> 2 shared methods
+    3131 + v  -> 2 shared methods
+    3232 + v  -> 2 shared methods
+    3636 + v  -> 2 shared methods
+    4444 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    60 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    808 + v  -> 1 shared methods
+
+9115 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    8627 + v  -> 2 shared methods
+    8810 + v  -> 2 shared methods
+    0 + v  -> 1 shared methods
+    8383 + v  -> 1 shared methods
+    8444 + v  -> 1 shared methods
+    8749 + v  -> 1 shared methods
+    8932 + v  -> 1 shared methods
+    9054 + v  -> 1 shared methods
+    9237 + v  -> 1 shared methods
+    9298 + v  -> 1 shared methods
+
+17 + v
+  METHOD COUNT: 2
+  STRONGEST CONNECTIONS:
+    69 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    3434 + v  -> 1 shared methods
+
+10 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    11 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    19 + v  -> 1 shared methods
+    44 + v  -> 1 shared methods
+
+11 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    10 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    19 + v  -> 1 shared methods
+    44 + v  -> 1 shared methods
+
+159 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    10 + v  -> 1 shared methods
+    11 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    19 + v  -> 1 shared methods
+
+80 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    10 + v  -> 1 shared methods
+    11 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    19 + v  -> 1 shared methods
+
+7676 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    10 + v  -> 1 shared methods
+    11 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    19 + v  -> 1 shared methods
+
+999 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    4 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+    707 + v  -> 1 shared methods
+    808 + v  -> 1 shared methods
+    1111 + v  -> 1 shared methods
+    1313 + v  -> 1 shared methods
+
+35 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    59 + v  -> 1 shared methods
+    69 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    808 + v  -> 1 shared methods
+    1010 + v  -> 1 shared methods
+    1313 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+
+8181 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    35 + v  -> 1 shared methods
+    59 + v  -> 1 shared methods
+    69 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    808 + v  -> 1 shared methods
+    1010 + v  -> 1 shared methods
+    1313 + v  -> 1 shared methods
+
+22 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    39 + v  -> 1 shared methods
+    100 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+
+39 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    22 + v  -> 1 shared methods
+    100 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+
+9513 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    22 + v  -> 1 shared methods
+    39 + v  -> 1 shared methods
+    100 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+
+100 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    7 + v  -> 1 shared methods
+    22 + v  -> 1 shared methods
+    39 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+
+299 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+    70 + v  -> 1 shared methods
+    85 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    301 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    404 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+
+301 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+    70 + v  -> 1 shared methods
+    85 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    299 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    404 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+
+8566 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    255 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+
+255 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    606 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+    3535 + v  -> 1 shared methods
+
+61 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    4 + v  -> 1 shared methods
+    59 + v  -> 1 shared methods
+    69 + v  -> 1 shared methods
+    87 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    808 + v  -> 1 shared methods
+    1313 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+
+14 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    63 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    2020 + v  -> 1 shared methods
+    2121 + v  -> 1 shared methods
+
+7373 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    14 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    63 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    2020 + v  -> 1 shared methods
+
+18 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    2 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+    87 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    505 + v  -> 1 shared methods
+
+79 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    87 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    505 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    1919 + v  -> 1 shared methods
+    2020 + v  -> 1 shared methods
+    2121 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+
+114 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    15 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1717 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+
+73 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    12 + v  -> 1 shared methods
+    60 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+    3333 + v  -> 1 shared methods
+    3535 + v  -> 1 shared methods
+    3636 + v  -> 1 shared methods
+
+2626 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    108 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2222 + v  -> 1 shared methods
+
+8 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    108 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2222 + v  -> 1 shared methods
+    2525 + v  -> 1 shared methods
+
+9 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    108 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2222 + v  -> 1 shared methods
+    2525 + v  -> 1 shared methods
+
+108 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2222 + v  -> 1 shared methods
+    2525 + v  -> 1 shared methods
+
+2222 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    108 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2525 + v  -> 1 shared methods
+
+26 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    108 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2222 + v  -> 1 shared methods
+    2525 + v  -> 1 shared methods
+
+2525 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    -1 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    8 + v  -> 1 shared methods
+    9 + v  -> 1 shared methods
+    26 + v  -> 1 shared methods
+    107 + v  -> 1 shared methods
+    108 + v  -> 1 shared methods
+    1616 + v  -> 1 shared methods
+    1818 + v  -> 1 shared methods
+    2222 + v  -> 1 shared methods
+
+9711 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    9359 + v  -> 1 shared methods
+    9381 + v  -> 1 shared methods
+    9447 + v  -> 1 shared methods
+    9491 + v  -> 1 shared methods
+    9535 + v  -> 1 shared methods
+    9557 + v  -> 1 shared methods
+    9579 + v  -> 1 shared methods
+    9601 + v  -> 1 shared methods
+
+51 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    31 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    202 + v  -> 1 shared methods
+    303 + v  -> 1 shared methods
+    1414 + v  -> 1 shared methods
+    1919 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+
+106 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    1 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    1313 + v  -> 1 shared methods
+    1919 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+    4545 + v  -> 1 shared methods
+
+7272 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    70 + v  -> 1 shared methods
+    404 + v  -> 1 shared methods
+    505 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3636 + v  -> 1 shared methods
+    3737 + v  -> 1 shared methods
+    3838 + v  -> 1 shared methods
+    4444 + v  -> 1 shared methods
+    4646 + v  -> 1 shared methods
+
+3737 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    70 + v  -> 1 shared methods
+    404 + v  -> 1 shared methods
+    505 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3636 + v  -> 1 shared methods
+    3838 + v  -> 1 shared methods
+    4444 + v  -> 1 shared methods
+    4646 + v  -> 1 shared methods
+    7272 + v  -> 1 shared methods
+
+56 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    505 + v  -> 1 shared methods
+    2020 + v  -> 1 shared methods
+    2121 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    2929 + v  -> 1 shared methods
+    3333 + v  -> 1 shared methods
+    3434 + v  -> 1 shared methods
+
+99 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    3 + v  -> 1 shared methods
+    404 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    3131 + v  -> 1 shared methods
+    3232 + v  -> 1 shared methods
+    4444 + v  -> 1 shared methods
+    8282 + v  -> 1 shared methods
+
+9298 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    8383 + v  -> 1 shared methods
+    8444 + v  -> 1 shared methods
+    8627 + v  -> 1 shared methods
+    8749 + v  -> 1 shared methods
+    8810 + v  -> 1 shared methods
+    8932 + v  -> 1 shared methods
+    9115 + v  -> 1 shared methods
+
+30 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    1 + v  -> 1 shared methods
+    50 + v  -> 1 shared methods
+    1919 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    8505 + v  -> 1 shared methods
+    8749 + v  -> 1 shared methods
+
+8080 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    4444 + v  -> 1 shared methods
+    7979 + v  -> 1 shared methods
+
+36 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    0 + v  -> 1 shared methods
+    101 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    3838 + v  -> 1 shared methods
+
+6060 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    1 + v  -> 1 shared methods
+    5252 + v  -> 1 shared methods
+    5353 + v  -> 1 shared methods
+    5959 + v  -> 1 shared methods
+
+83 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    1313 + v  -> 1 shared methods
+    2828 + v  -> 1 shared methods
+    3939 + v  -> 1 shared methods
+
+5 + v
+  METHOD COUNT: 1
+  STRONGEST CONNECTIONS:
+    1 + v  -> 1 shared methods
+    3 + v  -> 1 shared methods
+    109 + v  -> 1 shared methods
+
+================================================================================
+CLUSTERS - CO-OCCURRENCE >= 20
+================================================================================
+
+CLUSTER 1
+  SIZE: 8
+  AVERAGE PAIR SCORE: 21.32
+  OFFSETS:
+    0 + v  (42 methods)
+    101 + v  (37 methods)
+    2828 + v  (41 methods)
+    2929 + v  (26 methods)
+    3131 + v  (28 methods)
+    3232 + v  (28 methods)
+    4444 + v  (33 methods)
+    6161 + v  (21 methods)
+
+================================================================================
+CLUSTERS - CO-OCCURRENCE >= 15
+================================================================================
+
+CLUSTER 1
+  SIZE: 13
+  AVERAGE PAIR SCORE: 15.87
+  OFFSETS:
+    0 + v  (42 methods)
+    1 + v  (24 methods)
+    101 + v  (37 methods)
+    1313 + v  (21 methods)
+    2828 + v  (41 methods)
+    2929 + v  (26 methods)
+    3131 + v  (28 methods)
+    3232 + v  (28 methods)
+    4444 + v  (33 methods)
+    4646 + v  (19 methods)
+    6161 + v  (21 methods)
+    6464 + v  (17 methods)
+    7979 + v  (19 methods)
+
+================================================================================
+CLUSTERS - CO-OCCURRENCE >= 10
+================================================================================
+
+CLUSTER 1
+  SIZE: 24
+  AVERAGE PAIR SCORE: 9.84
+  OFFSETS:
+    0 + v  (42 methods)
+    1 + v  (24 methods)
+    101 + v  (37 methods)
+    202 + v  (13 methods)
+    303 + v  (13 methods)
+    606 + v  (11 methods)
+    808 + v  (12 methods)
+    1313 + v  (21 methods)
+    1414 + v  (15 methods)
+    1919 + v  (13 methods)
+    2828 + v  (41 methods)
+    2929 + v  (26 methods)
+    3030 + v  (15 methods)
+    3131 + v  (28 methods)
+    3232 + v  (28 methods)
+    3636 + v  (14 methods)
+    4444 + v  (33 methods)
+    4646 + v  (19 methods)
+    6161 + v  (21 methods)
+    6262 + v  (12 methods)
+    6363 + v  (12 methods)
+    6464 + v  (17 methods)
+    6565 + v  (15 methods)
+    7979 + v  (19 methods)
+
+================================================================================
+CLUSTERS - CO-OCCURRENCE >= 5
+================================================================================
+
+CLUSTER 1
+  SIZE: 45
+  AVERAGE PAIR SCORE: 4.76
+  OFFSETS:
+    0 + v  (42 methods)
+    1 + v  (24 methods)
+    3 + v  (7 methods)
+    50 + v  (8 methods)
+    69 + v  (6 methods)
+    101 + v  (37 methods)
+    202 + v  (13 methods)
+    303 + v  (13 methods)
+    404 + v  (5 methods)
+    505 + v  (7 methods)
+    606 + v  (11 methods)
+    808 + v  (12 methods)
+    1111 + v  (9 methods)
+    1313 + v  (21 methods)
+    1414 + v  (15 methods)
+    1616 + v  (7 methods)
+    1717 + v  (7 methods)
+    1818 + v  (5 methods)
+    1919 + v  (13 methods)
+    2020 + v  (6 methods)
+    2828 + v  (41 methods)
+    2929 + v  (26 methods)
+    3030 + v  (15 methods)
+    3131 + v  (28 methods)
+    3232 + v  (28 methods)
+    3434 + v  (6 methods)
+    3535 + v  (8 methods)
+    3636 + v  (14 methods)
+    3939 + v  (6 methods)
+    4444 + v  (33 methods)
+    4545 + v  (9 methods)
+    4646 + v  (19 methods)
+    4747 + v  (8 methods)
+    4848 + v  (8 methods)
+    4949 + v  (8 methods)
+    6161 + v  (21 methods)
+    6262 + v  (12 methods)
+    6363 + v  (12 methods)
+    6464 + v  (17 methods)
+    6565 + v  (15 methods)
+    6767 + v  (6 methods)
+    7575 + v  (6 methods)
+    7777 + v  (7 methods)
+    7979 + v  (19 methods)
+    8810 + v  (8 methods)
+
+CLUSTER 2
+  SIZE: 2
+  AVERAGE PAIR SCORE: 5.00
+  OFFSETS:
+    8627 + v  (8 methods)
+    8749 + v  (8 methods)
+
+================================================================================
+STRONGEST OFFSET PAIRS
+================================================================================
+
+0 + v  <->  101 + v
+  SHARED METHODS: 36
+
+0 + v  <->  2828 + v
+  SHARED METHODS: 29
+
+2828 + v  <->  4444 + v
+  SHARED METHODS: 29
+
+3131 + v  <->  3232 + v
+  SHARED METHODS: 28
+
+101 + v  <->  2828 + v
+  SHARED METHODS: 26
+
+0 + v  <->  3131 + v
+  SHARED METHODS: 25
+
+0 + v  <->  3232 + v
+  SHARED METHODS: 25
+
+2828 + v  <->  3131 + v
+  SHARED METHODS: 25
+
+2828 + v  <->  3232 + v
+  SHARED METHODS: 25
+
+101 + v  <->  3131 + v
+  SHARED METHODS: 24
+
+101 + v  <->  3232 + v
+  SHARED METHODS: 24
+
+0 + v  <->  4444 + v
+  SHARED METHODS: 23
+
+2828 + v  <->  2929 + v
+  SHARED METHODS: 22
+
+3131 + v  <->  4444 + v
+  SHARED METHODS: 21
+
+3232 + v  <->  4444 + v
+  SHARED METHODS: 21
+
+0 + v  <->  6161 + v
+  SHARED METHODS: 20
+
+101 + v  <->  4444 + v
+  SHARED METHODS: 20
+
+101 + v  <->  6161 + v
+  SHARED METHODS: 20
+
+0 + v  <->  2929 + v
+  SHARED METHODS: 18
+
+0 + v  <->  7979 + v
+  SHARED METHODS: 18
+
+1313 + v  <->  2828 + v
+  SHARED METHODS: 18
+
+0 + v  <->  1 + v
+  SHARED METHODS: 17
+
+0 + v  <->  1313 + v
+  SHARED METHODS: 17
+
+2828 + v  <->  6161 + v
+  SHARED METHODS: 17
+
+2828 + v  <->  7979 + v
+  SHARED METHODS: 17
+
+2929 + v  <->  4444 + v
+  SHARED METHODS: 17
+
+3131 + v  <->  6161 + v
+  SHARED METHODS: 17
+
+3232 + v  <->  6161 + v
+  SHARED METHODS: 17
+
+4444 + v  <->  4646 + v
+  SHARED METHODS: 17
+
+101 + v  <->  2929 + v
+  SHARED METHODS: 16
+
+101 + v  <->  7979 + v
+  SHARED METHODS: 16
+
+1313 + v  <->  4444 + v
+  SHARED METHODS: 16
+
+2828 + v  <->  4646 + v
+  SHARED METHODS: 16
+
+0 + v  <->  6464 + v
+  SHARED METHODS: 15
+
+1 + v  <->  2828 + v
+  SHARED METHODS: 15
+
+101 + v  <->  1313 + v
+  SHARED METHODS: 15
+
+101 + v  <->  6464 + v
+  SHARED METHODS: 15
+
+3131 + v  <->  7979 + v
+  SHARED METHODS: 15
+
+3232 + v  <->  7979 + v
+  SHARED METHODS: 15
+
+4444 + v  <->  7979 + v
+  SHARED METHODS: 15
+
+1 + v  <->  101 + v
+  SHARED METHODS: 14
+
+1 + v  <->  3131 + v
+  SHARED METHODS: 14
+
+1 + v  <->  3232 + v
+  SHARED METHODS: 14
+
+1313 + v  <->  2929 + v
+  SHARED METHODS: 14
+
+2828 + v  <->  6464 + v
+  SHARED METHODS: 14
+
+2929 + v  <->  3030 + v
+  SHARED METHODS: 14
+
+2929 + v  <->  3131 + v
+  SHARED METHODS: 14
+
+2929 + v  <->  3232 + v
+  SHARED METHODS: 14
+
+0 + v  <->  1414 + v
+  SHARED METHODS: 13
+
+0 + v  <->  3030 + v
+  SHARED METHODS: 13
+
+0 + v  <->  4646 + v
+  SHARED METHODS: 13
+
+1 + v  <->  2929 + v
+  SHARED METHODS: 13
+
+202 + v  <->  303 + v
+  SHARED METHODS: 13
+
+2828 + v  <->  3030 + v
+  SHARED METHODS: 13
+
+2828 + v  <->  3636 + v
+  SHARED METHODS: 13
+
+2929 + v  <->  4646 + v
+  SHARED METHODS: 13
+
+3131 + v  <->  4646 + v
+  SHARED METHODS: 13
+
+3131 + v  <->  6464 + v
+  SHARED METHODS: 13
+
+3232 + v  <->  4646 + v
+  SHARED METHODS: 13
+
+3232 + v  <->  6464 + v
+  SHARED METHODS: 13
+
+3636 + v  <->  4444 + v
+  SHARED METHODS: 13
+
+0 + v  <->  202 + v
+  SHARED METHODS: 12
+
+0 + v  <->  303 + v
+  SHARED METHODS: 12
+
+0 + v  <->  6262 + v
+  SHARED METHODS: 12
+
+0 + v  <->  6363 + v
+  SHARED METHODS: 12
+
+1 + v  <->  4444 + v
+  SHARED METHODS: 12
+
+1 + v  <->  7979 + v
+  SHARED METHODS: 12
+
+101 + v  <->  3030 + v
+  SHARED METHODS: 12
+
+101 + v  <->  4646 + v
+  SHARED METHODS: 12
+
+101 + v  <->  6262 + v
+  SHARED METHODS: 12
+
+101 + v  <->  6363 + v
+  SHARED METHODS: 12
+
+1313 + v  <->  3131 + v
+  SHARED METHODS: 12
+
+1313 + v  <->  3232 + v
+  SHARED METHODS: 12
+
+1313 + v  <->  4646 + v
+  SHARED METHODS: 12
+
+1313 + v  <->  6161 + v
+  SHARED METHODS: 12
+
+1414 + v  <->  3131 + v
+  SHARED METHODS: 12
+
+1414 + v  <->  3232 + v
+  SHARED METHODS: 12
+
+2828 + v  <->  6565 + v
+  SHARED METHODS: 12
+
+2929 + v  <->  6161 + v
+  SHARED METHODS: 12
+
+3030 + v  <->  4444 + v
+  SHARED METHODS: 12
+
+4444 + v  <->  6161 + v
+  SHARED METHODS: 12
+
+4444 + v  <->  6464 + v
+  SHARED METHODS: 12
+
+4444 + v  <->  6565 + v
+  SHARED METHODS: 12
+
+6262 + v  <->  6363 + v
+  SHARED METHODS: 12
+
+0 + v  <->  808 + v
+  SHARED METHODS: 11
+
+0 + v  <->  1919 + v
+  SHARED METHODS: 11
+
+0 + v  <->  6565 + v
+  SHARED METHODS: 11
+
+1 + v  <->  1414 + v
+  SHARED METHODS: 11
+
+1 + v  <->  1919 + v
+  SHARED METHODS: 11
+
+1 + v  <->  6161 + v
+  SHARED METHODS: 11
+
+101 + v  <->  202 + v
+  SHARED METHODS: 11
+
+101 + v  <->  303 + v
+  SHARED METHODS: 11
+
+101 + v  <->  808 + v
+  SHARED METHODS: 11
+
+101 + v  <->  1414 + v
+  SHARED METHODS: 11
+
+1414 + v  <->  2828 + v
+  SHARED METHODS: 11
+
+1414 + v  <->  7979 + v
+  SHARED METHODS: 11
+
+2828 + v  <->  6262 + v
+  SHARED METHODS: 11
+
+2828 + v  <->  6363 + v
+  SHARED METHODS: 11
+
+3131 + v  <->  6262 + v
+  SHARED METHODS: 11
+
+3131 + v  <->  6363 + v
+  SHARED METHODS: 11
+
+================================================================================
+REGULAR 101-STEP OFFSETS
+================================================================================
+
+0 + v  (42 methods)
+101 + v  (37 methods)
+202 + v  (13 methods)
+303 + v  (13 methods)
+404 + v  (5 methods)
+505 + v  (7 methods)
+606 + v  (11 methods)
+707 + v  (4 methods)
+808 + v  (12 methods)
+1010 + v  (5 methods)
+1111 + v  (9 methods)
+1313 + v  (21 methods)
+1414 + v  (15 methods)
+1515 + v  (5 methods)
+1616 + v  (7 methods)
+1717 + v  (7 methods)
+1818 + v  (5 methods)
+1919 + v  (13 methods)
+2020 + v  (6 methods)
+2121 + v  (4 methods)
+2222 + v  (1 methods)
+2525 + v  (1 methods)
+2626 + v  (1 methods)
+2828 + v  (41 methods)
+2929 + v  (26 methods)
+3030 + v  (15 methods)
+3131 + v  (28 methods)
+3232 + v  (28 methods)
+3333 + v  (4 methods)
+3434 + v  (6 methods)
+3535 + v  (8 methods)
+3636 + v  (14 methods)
+3737 + v  (1 methods)
+3838 + v  (3 methods)
+3939 + v  (6 methods)
+4040 + v  (4 methods)
+4444 + v  (33 methods)
+4545 + v  (9 methods)
+4646 + v  (19 methods)
+4747 + v  (8 methods)
+4848 + v  (8 methods)
+4949 + v  (8 methods)
+5050 + v  (4 methods)
+5252 + v  (4 methods)
+5353 + v  (4 methods)
+5454 + v  (2 methods)
+5555 + v  (2 methods)
+5656 + v  (2 methods)
+5757 + v  (2 methods)
+5858 + v  (3 methods)
+5959 + v  (6 methods)
+6060 + v  (1 methods)
+6161 + v  (21 methods)
+6262 + v  (12 methods)
+6363 + v  (12 methods)
+6464 + v  (17 methods)
+6565 + v  (15 methods)
+6666 + v  (2 methods)
+6767 + v  (6 methods)
+7272 + v  (1 methods)
+7373 + v  (1 methods)
+7575 + v  (6 methods)
+7676 + v  (1 methods)
+7777 + v  (7 methods)
+7878 + v  (2 methods)
+7979 + v  (19 methods)
+8080 + v  (1 methods)
+8181 + v  (1 methods)
+8282 + v  (5 methods)
+8383 + v  (2 methods)
+
+================================================================================
+ANALYSIS NOTES
+================================================================================
+
+1. Input comes from record_fields.txt.
+2. Two offsets are connected when they occur in the same detected method.
+3. Cluster thresholds are based on shared method counts.
+4. Clusters are mathematical/structural observations only.
+5. A cluster is NOT automatically a unit, building, character, map tile or other object.
+6. The 101-step section is reported because many offsets follow this numerical pattern.
+7. Further bytecode analysis is required to assign semantic field names.
+
