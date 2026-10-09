@@ -24,35 +24,27 @@ jobs:
               > "analysis/bytecode/${name}.txt"
           done
       - name: Create field map
-        run: |
-          python3 tools/field_map.py
+        run: python3 tools/field_map.py
       - name: Create method map
-        run: |
-          python3 tools/method_map.py
+        run: python3 tools/method_map.py
       - name: Create hot fields report
-        run: |
-          python3 tools/hot_fields.py
+        run: python3 tools/hot_fields.py
       - name: Create field usage report
-        run: |
-          python3 tools/field_usage.py
+        run: python3 tools/field_usage.py
       - name: Create field trace report
-        run: |
-          python3 tools/field_trace.py
+        run: python3 tools/field_trace.py
       - name: Create index trace report
-        run: |
-          python3 tools/index_trace.py
+        run: python3 tools/index_trace.py
       - name: Create record map
-        run: |
-          python3 tools/record_map.py
+        run: python3 tools/record_map.py
       - name: Create record structure
-        run: |
-          python3 tools/record_structure.py
+        run: python3 tools/record_structure.py
       - name: Create record fields
-        run: |
-          python3 tools/record_fields.py
+        run: python3 tools/record_fields.py
       - name: Create record clusters
-        run: |
-          python3 tools/record_clusters.py
+        run: python3 tools/record_clusters.py
+      - name: Create array access report
+        run: python3 tools/array_access.py
       - name: Commit analysis
         run: |
           git config user.name "github-actions[bot]"
@@ -68,6 +60,7 @@ jobs:
           git add analysis/record_structure.txt
           git add analysis/record_fields.txt
           git add analysis/record_clusters.txt
+          git add analysis/array_access.txt
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
