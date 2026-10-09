@@ -1,0 +1,1453 @@
+PREHISTORIC TRIBES - ARRAY ACCESS ANALYSIS
+Class: c
+
+Analysis type: symbolic operand-stack pattern matching
+Target: a[offset + v]
+
+IMPORTANT:
+This is a partial JVM stack simulation, not a full verifier.
+Unknown instructions and branches reset the symbolic stack.
+Only matches with array a:[B and index offset + v are reported.
+A missing match does not prove that an access does not exist.
+
+================================================================================
+SUMMARY
+================================================================================
+
+PARSED METHODS: 177
+CONFIRMED PATTERN MATCHES: 945
+
+================================================================================
+OFFSET 0 + v
+================================================================================
+
+READ MATCHES: 110
+METHODS: 51
+
+EXAMPLE 1 | private void o(); | BYTECODE OFFSET 73
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:         73: baload
+
+EXAMPLE 2 | private void p(); | BYTECODE OFFSET 15
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:         15: baload
+
+EXAMPLE 3 | private byte a(int, int, int); | BYTECODE OFFSET 39
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:         39: baload
+
+EXAMPLE 4 | private void g(int); | BYTECODE OFFSET 151
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        151: baload
+
+EXAMPLE 5 | private void g(int); | BYTECODE OFFSET 247
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        247: baload
+
+EXAMPLE 6 | private void b(int, int); | BYTECODE OFFSET 196
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        196: baload
+
+EXAMPLE 7 | private void b(int, int); | BYTECODE OFFSET 212
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        212: baload
+
+EXAMPLE 8 | private void q(); | BYTECODE OFFSET 137
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        137: baload
+
+EXAMPLE 9 | private void q(); | BYTECODE OFFSET 675
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        675: baload
+
+EXAMPLE 10 | private void r(); | BYTECODE OFFSET 424
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        424: baload
+
+EXAMPLE 11 | private void b(boolean); | BYTECODE OFFSET 165
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        165: baload
+
+EXAMPLE 12 | private boolean a(); | BYTECODE OFFSET 274
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        274: baload
+
+EXAMPLE 13 | private boolean a(); | BYTECODE OFFSET 296
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        296: baload
+
+EXAMPLE 14 | private boolean a(); | BYTECODE OFFSET 551
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        551: baload
+
+EXAMPLE 15 | private void t(); | BYTECODE OFFSET 507
+    OPERATION: READ
+    INDEX: 0 + v
+    INSTRUCTION:        507: baload
+
+WRITE MATCHES: 3
+METHODS: 3
+
+EXAMPLE 1 | private void x(); | BYTECODE OFFSET 621
+    OPERATION: WRITE
+    INDEX: 0 + v
+    INSTRUCTION:        621: bastore
+
+EXAMPLE 2 | private void D(); | BYTECODE OFFSET 287
+    OPERATION: WRITE
+    INDEX: 0 + v
+    INSTRUCTION:        287: bastore
+
+EXAMPLE 3 | private void H(); | BYTECODE OFFSET 706
+    OPERATION: WRITE
+    INDEX: 0 + v
+    INSTRUCTION:        706: bastore
+
+================================================================================
+OFFSET 101 + v
+================================================================================
+
+READ MATCHES: 110
+METHODS: 51
+
+EXAMPLE 1 | private void o(); | BYTECODE OFFSET 62
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:         62: baload
+
+EXAMPLE 2 | private void p(); | BYTECODE OFFSET 31
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:         31: baload
+
+EXAMPLE 3 | private byte a(int, int, int); | BYTECODE OFFSET 24
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:         24: baload
+
+EXAMPLE 4 | private void g(int); | BYTECODE OFFSET 139
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        139: baload
+
+EXAMPLE 5 | private void g(int); | BYTECODE OFFSET 272
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        272: baload
+
+EXAMPLE 6 | private void b(int, int); | BYTECODE OFFSET 230
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        230: baload
+
+EXAMPLE 7 | private void b(int, int); | BYTECODE OFFSET 247
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        247: baload
+
+EXAMPLE 8 | private void q(); | BYTECODE OFFSET 149
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        149: baload
+
+EXAMPLE 9 | private void q(); | BYTECODE OFFSET 700
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        700: baload
+
+EXAMPLE 10 | private void r(); | BYTECODE OFFSET 449
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        449: baload
+
+EXAMPLE 11 | private void b(boolean); | BYTECODE OFFSET 190
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        190: baload
+
+EXAMPLE 12 | private boolean a(); | BYTECODE OFFSET 262
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        262: baload
+
+EXAMPLE 13 | private boolean a(); | BYTECODE OFFSET 308
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        308: baload
+
+EXAMPLE 14 | private boolean a(); | BYTECODE OFFSET 539
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        539: baload
+
+EXAMPLE 15 | private void t(); | BYTECODE OFFSET 519
+    OPERATION: READ
+    INDEX: 101 + v
+    INSTRUCTION:        519: baload
+
+WRITE MATCHES: 3
+METHODS: 3
+
+EXAMPLE 1 | private void x(); | BYTECODE OFFSET 646
+    OPERATION: WRITE
+    INDEX: 101 + v
+    INSTRUCTION:        646: bastore
+
+EXAMPLE 2 | private void D(); | BYTECODE OFFSET 331
+    OPERATION: WRITE
+    INDEX: 101 + v
+    INSTRUCTION:        331: bastore
+
+EXAMPLE 3 | private void H(); | BYTECODE OFFSET 740
+    OPERATION: WRITE
+    INDEX: 101 + v
+    INSTRUCTION:        740: bastore
+
+================================================================================
+OFFSET 2828 + v
+================================================================================
+
+READ MATCHES: 335
+METHODS: 62
+
+EXAMPLE 1 | private void p(); | BYTECODE OFFSET 146
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        146: baload
+
+EXAMPLE 2 | private void p(); | BYTECODE OFFSET 204
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        204: baload
+
+EXAMPLE 3 | private void p(); | BYTECODE OFFSET 222
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        222: baload
+
+EXAMPLE 4 | private void p(); | BYTECODE OFFSET 240
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        240: baload
+
+EXAMPLE 5 | private void p(); | BYTECODE OFFSET 258
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        258: baload
+
+EXAMPLE 6 | private void p(); | BYTECODE OFFSET 276
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        276: baload
+
+EXAMPLE 7 | private void p(); | BYTECODE OFFSET 294
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        294: baload
+
+EXAMPLE 8 | private void p(); | BYTECODE OFFSET 312
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        312: baload
+
+EXAMPLE 9 | private void p(); | BYTECODE OFFSET 330
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        330: baload
+
+EXAMPLE 10 | private void p(); | BYTECODE OFFSET 364
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        364: baload
+
+EXAMPLE 11 | private void p(); | BYTECODE OFFSET 383
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        383: baload
+
+EXAMPLE 12 | private void p(); | BYTECODE OFFSET 664
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        664: baload
+
+EXAMPLE 13 | private void p(); | BYTECODE OFFSET 682
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        682: baload
+
+EXAMPLE 14 | private void p(); | BYTECODE OFFSET 700
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        700: baload
+
+EXAMPLE 15 | private byte a(int, int, int); | BYTECODE OFFSET 459
+    OPERATION: READ
+    INDEX: 2828 + v
+    INSTRUCTION:        459: baload
+
+WRITE MATCHES: 8
+METHODS: 6
+
+EXAMPLE 1 | private boolean c(); | BYTECODE OFFSET 365
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        365: bastore
+
+EXAMPLE 2 | private boolean f(); | BYTECODE OFFSET 232
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        232: bastore
+
+EXAMPLE 3 | private void H(); | BYTECODE OFFSET 1041
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:       1041: bastore
+
+EXAMPLE 4 | private boolean m(); | BYTECODE OFFSET 169
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        169: bastore
+
+EXAMPLE 5 | private boolean m(); | BYTECODE OFFSET 728
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        728: bastore
+
+EXAMPLE 6 | private void Z(); | BYTECODE OFFSET 755
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        755: bastore
+
+EXAMPLE 7 | private void aw(); | BYTECODE OFFSET 154
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        154: bastore
+
+EXAMPLE 8 | private void aw(); | BYTECODE OFFSET 376
+    OPERATION: WRITE
+    INDEX: 2828 + v
+    INSTRUCTION:        376: bastore
+
+================================================================================
+OFFSET 2929 + v
+================================================================================
+
+READ MATCHES: 70
+METHODS: 25
+
+EXAMPLE 1 | private void r(); | BYTECODE OFFSET 392
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        392: baload
+
+EXAMPLE 2 | final void e(); | BYTECODE OFFSET 505
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        505: baload
+
+EXAMPLE 3 | private boolean a(); | BYTECODE OFFSET 68
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:         68: baload
+
+EXAMPLE 4 | private boolean a(); | BYTECODE OFFSET 757
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        757: baload
+
+EXAMPLE 5 | private boolean a(); | BYTECODE OFFSET 775
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        775: baload
+
+EXAMPLE 6 | private boolean a(); | BYTECODE OFFSET 793
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        793: baload
+
+EXAMPLE 7 | private boolean b(); | BYTECODE OFFSET 186
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        186: baload
+
+EXAMPLE 8 | private boolean b(); | BYTECODE OFFSET 455
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        455: baload
+
+EXAMPLE 9 | private void u(); | BYTECODE OFFSET 125
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        125: baload
+
+EXAMPLE 10 | private void u(); | BYTECODE OFFSET 361
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        361: baload
+
+EXAMPLE 11 | private boolean c(); | BYTECODE OFFSET 783
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        783: baload
+
+EXAMPLE 12 | private void v(); | BYTECODE OFFSET 155
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        155: baload
+
+EXAMPLE 13 | private void v(); | BYTECODE OFFSET 250
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        250: baload
+
+EXAMPLE 14 | private void v(); | BYTECODE OFFSET 316
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:        316: baload
+
+EXAMPLE 15 | private void w(); | BYTECODE OFFSET 42
+    OPERATION: READ
+    INDEX: 2929 + v
+    INSTRUCTION:         42: baload
+
+WRITE MATCHES: 13
+METHODS: 10
+
+EXAMPLE 1 | private void v(); | BYTECODE OFFSET 210
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        210: bastore
+
+EXAMPLE 2 | private void i(int); | BYTECODE OFFSET 403
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        403: bastore
+
+EXAMPLE 3 | private boolean f(); | BYTECODE OFFSET 370
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        370: bastore
+
+EXAMPLE 4 | private boolean f(); | BYTECODE OFFSET 852
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        852: bastore
+
+EXAMPLE 5 | private boolean b(int); | BYTECODE OFFSET 222
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        222: bastore
+
+EXAMPLE 6 | private boolean b(int); | BYTECODE OFFSET 858
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        858: bastore
+
+EXAMPLE 7 | private boolean a(byte, boolean); | BYTECODE OFFSET 533
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        533: bastore
+
+EXAMPLE 8 | private boolean h(); | BYTECODE OFFSET 570
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        570: bastore
+
+EXAMPLE 9 | private boolean h(); | BYTECODE OFFSET 689
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        689: bastore
+
+EXAMPLE 10 | private void H(); | BYTECODE OFFSET 929
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        929: bastore
+
+EXAMPLE 11 | private boolean i(); | BYTECODE OFFSET 978
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        978: bastore
+
+EXAMPLE 12 | private boolean n(); | BYTECODE OFFSET 523
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        523: bastore
+
+EXAMPLE 13 | private void Z(); | BYTECODE OFFSET 726
+    OPERATION: WRITE
+    INDEX: 2929 + v
+    INSTRUCTION:        726: bastore
+
+================================================================================
+OFFSET 3131 + v
+================================================================================
+
+READ MATCHES: 24
+METHODS: 17
+
+EXAMPLE 1 | private void o(); | BYTECODE OFFSET 99
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:         99: baload
+
+EXAMPLE 2 | private void p(); | BYTECODE OFFSET 534
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        534: baload
+
+EXAMPLE 3 | private void g(int); | BYTECODE OFFSET 178
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        178: baload
+
+EXAMPLE 4 | private void h(int); | BYTECODE OFFSET 32
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:         32: baload
+
+EXAMPLE 5 | private void h(int); | BYTECODE OFFSET 737
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        737: baload
+
+EXAMPLE 6 | private void h(int); | BYTECODE OFFSET 815
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        815: baload
+
+EXAMPLE 7 | private void q(); | BYTECODE OFFSET 396
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        396: baload
+
+EXAMPLE 8 | private void t(); | BYTECODE OFFSET 93
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:         93: baload
+
+EXAMPLE 9 | private boolean b(); | BYTECODE OFFSET 473
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        473: baload
+
+EXAMPLE 10 | private boolean b(); | BYTECODE OFFSET 791
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        791: baload
+
+EXAMPLE 11 | private void x(); | BYTECODE OFFSET 620
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        620: baload
+
+EXAMPLE 12 | private boolean e(); | BYTECODE OFFSET 80
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:         80: baload
+
+EXAMPLE 13 | private void y(); | BYTECODE OFFSET 381
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        381: baload
+
+EXAMPLE 14 | final boolean a(int, int, int, int); | BYTECODE OFFSET 849
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        849: baload
+
+EXAMPLE 15 | private boolean k(); | BYTECODE OFFSET 440
+    OPERATION: READ
+    INDEX: 3131 + v
+    INSTRUCTION:        440: baload
+
+WRITE MATCHES: 35
+METHODS: 22
+
+EXAMPLE 1 | private void p(); | BYTECODE OFFSET 617
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        617: bastore
+
+EXAMPLE 2 | private void g(int); | BYTECODE OFFSET 248
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        248: bastore
+
+EXAMPLE 3 | private void h(int); | BYTECODE OFFSET 741
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        741: bastore
+
+EXAMPLE 4 | private void h(int); | BYTECODE OFFSET 819
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        819: bastore
+
+EXAMPLE 5 | private void b(int, int); | BYTECODE OFFSET 343
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        343: bastore
+
+EXAMPLE 6 | private void q(); | BYTECODE OFFSET 326
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        326: bastore
+
+EXAMPLE 7 | private void q(); | BYTECODE OFFSET 487
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        487: bastore
+
+EXAMPLE 8 | private void q(); | BYTECODE OFFSET 676
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        676: bastore
+
+EXAMPLE 9 | private void q(); | BYTECODE OFFSET 734
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        734: bastore
+
+EXAMPLE 10 | private void r(); | BYTECODE OFFSET 425
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        425: bastore
+
+EXAMPLE 11 | private void b(boolean); | BYTECODE OFFSET 166
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        166: bastore
+
+EXAMPLE 12 | private int a(int, int, int); | BYTECODE OFFSET 395
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        395: bastore
+
+EXAMPLE 13 | private void t(); | BYTECODE OFFSET 443
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        443: bastore
+
+EXAMPLE 14 | private void t(); | BYTECODE OFFSET 669
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        669: bastore
+
+EXAMPLE 15 | private boolean b(); | BYTECODE OFFSET 970
+    OPERATION: WRITE
+    INDEX: 3131 + v
+    INSTRUCTION:        970: bastore
+
+================================================================================
+OFFSET 3232 + v
+================================================================================
+
+READ MATCHES: 22
+METHODS: 17
+
+EXAMPLE 1 | private void o(); | BYTECODE OFFSET 86
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:         86: baload
+
+EXAMPLE 2 | private void p(); | BYTECODE OFFSET 563
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        563: baload
+
+EXAMPLE 3 | private void g(int); | BYTECODE OFFSET 191
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        191: baload
+
+EXAMPLE 4 | private void h(int); | BYTECODE OFFSET 49
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:         49: baload
+
+EXAMPLE 5 | private void q(); | BYTECODE OFFSET 431
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        431: baload
+
+EXAMPLE 6 | private void t(); | BYTECODE OFFSET 106
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        106: baload
+
+EXAMPLE 7 | private boolean b(); | BYTECODE OFFSET 500
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        500: baload
+
+EXAMPLE 8 | private boolean b(); | BYTECODE OFFSET 820
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        820: baload
+
+EXAMPLE 9 | private void x(); | BYTECODE OFFSET 645
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        645: baload
+
+EXAMPLE 10 | private boolean e(); | BYTECODE OFFSET 107
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        107: baload
+
+EXAMPLE 11 | private void y(); | BYTECODE OFFSET 408
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        408: baload
+
+EXAMPLE 12 | final boolean a(int, int, int, int); | BYTECODE OFFSET 875
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        875: baload
+
+EXAMPLE 13 | private boolean k(); | BYTECODE OFFSET 426
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        426: baload
+
+EXAMPLE 14 | private boolean k(); | BYTECODE OFFSET 563
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        563: baload
+
+EXAMPLE 15 | private void K(); | BYTECODE OFFSET 531
+    OPERATION: READ
+    INDEX: 3232 + v
+    INSTRUCTION:        531: baload
+
+WRITE MATCHES: 33
+METHODS: 21
+
+EXAMPLE 1 | private void p(); | BYTECODE OFFSET 634
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        634: bastore
+
+EXAMPLE 2 | private void g(int); | BYTECODE OFFSET 273
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        273: bastore
+
+EXAMPLE 3 | private void b(int, int); | BYTECODE OFFSET 389
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        389: bastore
+
+EXAMPLE 4 | private void q(); | BYTECODE OFFSET 360
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        360: bastore
+
+EXAMPLE 5 | private void q(); | BYTECODE OFFSET 521
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        521: bastore
+
+EXAMPLE 6 | private void q(); | BYTECODE OFFSET 701
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        701: bastore
+
+EXAMPLE 7 | private void q(); | BYTECODE OFFSET 768
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        768: bastore
+
+EXAMPLE 8 | private void r(); | BYTECODE OFFSET 450
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        450: bastore
+
+EXAMPLE 9 | private void b(boolean); | BYTECODE OFFSET 191
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        191: bastore
+
+EXAMPLE 10 | private int a(int, int, int); | BYTECODE OFFSET 412
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        412: bastore
+
+EXAMPLE 11 | private void t(); | BYTECODE OFFSET 495
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        495: bastore
+
+EXAMPLE 12 | private void t(); | BYTECODE OFFSET 694
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        694: bastore
+
+EXAMPLE 13 | private boolean b(); | BYTECODE OFFSET 996
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        996: bastore
+
+EXAMPLE 14 | private boolean b(); | BYTECODE OFFSET 1153
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:       1153: bastore
+
+EXAMPLE 15 | private boolean d(); | BYTECODE OFFSET 105
+    OPERATION: WRITE
+    INDEX: 3232 + v
+    INSTRUCTION:        105: bastore
+
+================================================================================
+OFFSET 4444 + v
+================================================================================
+
+READ MATCHES: 171
+METHODS: 34
+
+EXAMPLE 1 | private void p(); | BYTECODE OFFSET 173
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        173: baload
+
+EXAMPLE 2 | private void p(); | BYTECODE OFFSET 188
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        188: baload
+
+EXAMPLE 3 | private void q(); | BYTECODE OFFSET 13
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:         13: baload
+
+EXAMPLE 4 | private void q(); | BYTECODE OFFSET 251
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        251: baload
+
+EXAMPLE 5 | private void r(); | BYTECODE OFFSET 173
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        173: baload
+
+EXAMPLE 6 | private int a(int, int, int); | BYTECODE OFFSET 16
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:         16: baload
+
+EXAMPLE 7 | private void t(); | BYTECODE OFFSET 440
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        440: baload
+
+EXAMPLE 8 | private void t(); | BYTECODE OFFSET 492
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        492: baload
+
+EXAMPLE 9 | private boolean b(); | BYTECODE OFFSET 528
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        528: baload
+
+EXAMPLE 10 | private boolean b(); | BYTECODE OFFSET 545
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        545: baload
+
+EXAMPLE 11 | private boolean b(); | BYTECODE OFFSET 1287
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:       1287: baload
+
+EXAMPLE 12 | private boolean b(); | BYTECODE OFFSET 1310
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:       1310: baload
+
+EXAMPLE 13 | private void v(); | BYTECODE OFFSET 451
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        451: baload
+
+EXAMPLE 14 | private void v(); | BYTECODE OFFSET 478
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        478: baload
+
+EXAMPLE 15 | private void v(); | BYTECODE OFFSET 500
+    OPERATION: READ
+    INDEX: 4444 + v
+    INSTRUCTION:        500: baload
+
+WRITE MATCHES: 8
+METHODS: 8
+
+EXAMPLE 1 | private void h(int); | BYTECODE OFFSET 18
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:         18: bastore
+
+EXAMPLE 2 | private void b(boolean); | BYTECODE OFFSET 123
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        123: bastore
+
+EXAMPLE 3 | final boolean a(int, int, int, int); | BYTECODE OFFSET 696
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        696: bastore
+
+EXAMPLE 4 | private void N(); | BYTECODE OFFSET 463
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        463: bastore
+
+EXAMPLE 5 | private void O(); | BYTECODE OFFSET 928
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        928: bastore
+
+EXAMPLE 6 | private void Z(); | BYTECODE OFFSET 630
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        630: bastore
+
+EXAMPLE 7 | private void am(); | BYTECODE OFFSET 186
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        186: bastore
+
+EXAMPLE 8 | private void an(); | BYTECODE OFFSET 301
+    OPERATION: WRITE
+    INDEX: 4444 + v
+    INSTRUCTION:        301: bastore
+
+================================================================================
+METHOD SUMMARY
+================================================================================
+
+final boolean a(int);
+    READ      0 + v    occurrences: 4
+    READ    101 + v    occurrences: 4
+    READ   2828 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+final boolean a(int, int, int, int);
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 3
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    WRITE  4444 + v    occurrences: 1
+
+final void b();
+    READ   2828 + v    occurrences: 1
+
+final void c();
+    READ   2828 + v    occurrences: 1
+
+final void e();
+    READ   2828 + v    occurrences: 1
+    READ   2929 + v    occurrences: 1
+
+private boolean a();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    READ   2828 + v    occurrences: 4
+    READ   2929 + v    occurrences: 4
+
+private boolean a(byte, boolean);
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 7
+    READ   2929 + v    occurrences: 5
+    WRITE  2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 4
+
+private boolean a(int, byte);
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+
+private boolean a(int, int, int, int, int, int, int, int);
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+
+private boolean b();
+    READ      0 + v    occurrences: 5
+    READ    101 + v    occurrences: 5
+    READ   2828 + v    occurrences: 13
+    READ   2929 + v    occurrences: 2
+    READ   3131 + v    occurrences: 2
+    WRITE  3131 + v    occurrences: 2
+    READ   3232 + v    occurrences: 2
+    WRITE  3232 + v    occurrences: 2
+    READ   4444 + v    occurrences: 4
+
+private boolean b(boolean);
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+private boolean b(int);
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 7
+    READ   2929 + v    occurrences: 6
+    WRITE  2929 + v    occurrences: 2
+    READ   4444 + v    occurrences: 5
+
+private boolean c();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 3
+    WRITE  2828 + v    occurrences: 1
+    READ   2929 + v    occurrences: 1
+
+private boolean c(byte);
+    READ   2828 + v    occurrences: 10
+
+private boolean c(int);
+    READ   2828 + v    occurrences: 1
+
+private boolean d();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 2
+    READ   2929 + v    occurrences: 7
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+private boolean d(int);
+    READ   2828 + v    occurrences: 1
+
+private boolean e();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 6
+    READ   2929 + v    occurrences: 2
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 7
+
+private boolean f();
+    READ   2828 + v    occurrences: 4
+    WRITE  2828 + v    occurrences: 1
+    READ   2929 + v    occurrences: 2
+    WRITE  2929 + v    occurrences: 2
+    READ   4444 + v    occurrences: 11
+
+private boolean g();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+
+private boolean h();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 3
+    READ   2929 + v    occurrences: 4
+    WRITE  2929 + v    occurrences: 2
+
+private boolean i();
+    READ   2828 + v    occurrences: 21
+    READ   2929 + v    occurrences: 4
+    WRITE  2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 6
+
+private boolean j();
+    READ   2828 + v    occurrences: 25
+    READ   2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 13
+
+private boolean k();
+    READ   2828 + v    occurrences: 20
+    READ   3131 + v    occurrences: 2
+    READ   3232 + v    occurrences: 2
+    READ   4444 + v    occurrences: 3
+
+private boolean l();
+    READ   2828 + v    occurrences: 2
+    READ   2929 + v    occurrences: 1
+
+private boolean m();
+    READ      0 + v    occurrences: 4
+    READ    101 + v    occurrences: 4
+    READ   2828 + v    occurrences: 1
+    WRITE  2828 + v    occurrences: 2
+    READ   3131 + v    occurrences: 2
+    WRITE  3131 + v    occurrences: 2
+    READ   3232 + v    occurrences: 2
+    WRITE  3232 + v    occurrences: 2
+    READ   4444 + v    occurrences: 1
+
+private boolean n();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    READ   2828 + v    occurrences: 6
+    WRITE  2929 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 2
+    WRITE  3232 + v    occurrences: 2
+
+private boolean o();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 2
+    READ   2929 + v    occurrences: 1
+
+private boolean p();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 2
+
+private boolean q();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+
+private boolean r();
+    READ   2828 + v    occurrences: 3
+    READ   2929 + v    occurrences: 2
+
+private boolean s();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+
+private byte a();
+    READ   2828 + v    occurrences: 1
+
+private byte a(int, int, int);
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 2
+
+private int a(int);
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    READ   2828 + v    occurrences: 2
+    READ   2929 + v    occurrences: 1
+
+private int a(int, int, int);
+    READ   2828 + v    occurrences: 5
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 1
+
+private void B();
+    READ   2828 + v    occurrences: 3
+    READ   2929 + v    occurrences: 3
+
+private void C();
+    READ   2828 + v    occurrences: 4
+    READ   2929 + v    occurrences: 2
+
+private void D();
+    READ      0 + v    occurrences: 4
+    WRITE     0 + v    occurrences: 1
+    READ    101 + v    occurrences: 4
+    WRITE   101 + v    occurrences: 1
+
+private void F();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 2
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 28
+
+private void G();
+    READ   4444 + v    occurrences: 17
+
+private void H();
+    READ      0 + v    occurrences: 10
+    WRITE     0 + v    occurrences: 1
+    READ    101 + v    occurrences: 10
+    WRITE   101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 3
+    WRITE  2828 + v    occurrences: 1
+    WRITE  2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 2
+
+private void I();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 11
+
+private void J();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 14
+
+private void K();
+    READ   2828 + v    occurrences: 5
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 5
+
+private void L();
+    READ   4444 + v    occurrences: 1
+
+private void M();
+    READ   2828 + v    occurrences: 1
+
+private void N();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 11
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 7
+    WRITE  4444 + v    occurrences: 1
+
+private void O();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 10
+    WRITE  3131 + v    occurrences: 6
+    WRITE  3232 + v    occurrences: 6
+    WRITE  4444 + v    occurrences: 1
+
+private void S();
+    READ   2828 + v    occurrences: 5
+    READ   4444 + v    occurrences: 1
+
+private void U();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 2
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 10
+
+private void W();
+    READ   2828 + v    occurrences: 5
+    READ   4444 + v    occurrences: 2
+
+private void X();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 3
+    READ   4444 + v    occurrences: 1
+
+private void Y();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+
+private void Z();
+    WRITE  2828 + v    occurrences: 1
+    WRITE  2929 + v    occurrences: 1
+    WRITE  4444 + v    occurrences: 1
+
+private void a(byte, byte, byte, byte);
+    READ   2828 + v    occurrences: 1
+
+private void a(byte, byte, int, int);
+    READ   2828 + v    occurrences: 1
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 9
+
+private void al();
+    READ   2828 + v    occurrences: 1
+
+private void am();
+    READ   2828 + v    occurrences: 6
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 1
+    WRITE  4444 + v    occurrences: 1
+
+private void an();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 7
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    WRITE  4444 + v    occurrences: 1
+
+private void ap();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+
+private void as();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+private void at();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    READ   2828 + v    occurrences: 7
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+private void au();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+
+private void aw();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    WRITE  2828 + v    occurrences: 2
+
+private void b(boolean);
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    WRITE  4444 + v    occurrences: 1
+
+private void b(int, int);
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+private void c(int, int, int);
+    READ   2828 + v    occurrences: 1
+    READ   2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 1
+
+private void f(boolean);
+    READ   2828 + v    occurrences: 1
+    READ   3131 + v    occurrences: 3
+    READ   3232 + v    occurrences: 3
+    READ   4444 + v    occurrences: 1
+
+private void g(int);
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   3131 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+
+private void h(int);
+    READ   2828 + v    occurrences: 5
+    READ   3131 + v    occurrences: 3
+    WRITE  3131 + v    occurrences: 2
+    READ   3232 + v    occurrences: 1
+    WRITE  4444 + v    occurrences: 1
+
+private void i(int);
+    READ   2828 + v    occurrences: 6
+    READ   2929 + v    occurrences: 3
+    WRITE  2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 1
+
+private void j(int);
+    READ   4444 + v    occurrences: 1
+
+private void o();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+
+private void o(int);
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 3
+
+private void p();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 14
+    READ   3131 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 2
+
+private void q();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   2828 + v    occurrences: 2
+    READ   3131 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 4
+    READ   3232 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 4
+    READ   4444 + v    occurrences: 2
+
+private void r();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 12
+    READ   2929 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 1
+
+private void t();
+    READ      0 + v    occurrences: 2
+    READ    101 + v    occurrences: 2
+    READ   3131 + v    occurrences: 1
+    WRITE  3131 + v    occurrences: 2
+    READ   3232 + v    occurrences: 1
+    WRITE  3232 + v    occurrences: 2
+    READ   4444 + v    occurrences: 2
+
+private void u();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+    READ   2929 + v    occurrences: 2
+
+private void v();
+    READ   2828 + v    occurrences: 7
+    READ   2929 + v    occurrences: 3
+    WRITE  2929 + v    occurrences: 1
+    READ   4444 + v    occurrences: 3
+
+private void w();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    READ   2828 + v    occurrences: 11
+    READ   2929 + v    occurrences: 9
+    READ   4444 + v    occurrences: 1
+
+private void x();
+    READ      0 + v    occurrences: 4
+    WRITE     0 + v    occurrences: 1
+    READ    101 + v    occurrences: 4
+    WRITE   101 + v    occurrences: 1
+    READ   2828 + v    occurrences: 4
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 16
+
+private void y();
+    READ      0 + v    occurrences: 3
+    READ    101 + v    occurrences: 3
+    READ   2828 + v    occurrences: 7
+    READ   2929 + v    occurrences: 2
+    READ   3131 + v    occurrences: 1
+    READ   3232 + v    occurrences: 1
+    READ   4444 + v    occurrences: 1
+
+private void z();
+    READ      0 + v    occurrences: 1
+    READ    101 + v    occurrences: 1
+
+================================================================================
+LIMITATIONS
+================================================================================
+
+1. The JVM operand stack is simulated only partially.
+2. Branches and unknown instructions reset the stack.
+3. Calls and complex stack manipulation may hide accesses.
+4. Only byte-array instructions baload and bastore are counted.
+5. Array offsets have no automatic semantic meaning.
+
