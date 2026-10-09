@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """Strictly trace byte-array accesses indexed by CONSTANT + field v:I.
 
