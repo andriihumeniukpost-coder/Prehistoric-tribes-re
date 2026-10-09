@@ -1,4 +1,4 @@
-
+ 
 name: Bytecode Analysis
 
 on:
@@ -162,6 +162,9 @@ jobs:
             analysis/write_context.txt \
             analysis/paired_regions.txt \
             analysis/field_semantics.txt
+            
+      - name: Trace array field accesses
+        run: python tools/array_field_trace.py
 
           if git diff --cached --quiet; then
             echo "No analysis changes to commit."
