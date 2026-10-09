@@ -1,3 +1,4 @@
+
 from pathlib import Path
 from collections import Counter, defaultdict
 import re
@@ -6,519 +7,345 @@ INPUT = Path("analysis/bytecode/c.txt")
 OUTPUT = Path("analysis/array_access.txt")
 
 TARGET_OFFSETS = [0, 101, 2828, 2929, 3131, 3232, 4444]
+MAX_EXAMPLES = 20
 
 INSTRUCTION_RE = re.compile(
     r"^\s*(\d+):\s+([a-z][a-z0-9_]*)\s*(.*?)\s*$"
 )
-
-FIELD_RE = re.compile(
-    r"// Field ([^:]+):([^\s]+)"
-)
-
-MAX_EXAMPLES = 15
+FIELD_RE = re.compile(r"// Field ([^:]+):([^\s]+)")
 
 
 def read_text(path):
     if not path.exists():
         raise SystemExit(f"File not found: {path}")
-
-    return path.read_text(
-        encoding="utf-8",
-        errors="replace",
-    )
+    return path.read_text(encoding="utf-8", errors="replace")
 
 
-def parse_instructions(text):
+def parse_methods(text):
     methods = []
-    current_method = "(unknown method)"
-    current = []
+    name = "(unknown method)"
+    instructions = []
 
     for line in text.splitlines():
         stripped = line.strip()
 
-        # javap method declarations end with ); or )V etc.
         if (
             stripped.endswith(";")
             and "(" in stripped
-            and not stripped.startswith("//")
-            and not stripped.startswith("descriptor:")
-            and not stripped.startswith("Signature:")
+            and not stripped.startswith(
+                ("//", "descriptor:", "Signature:")
+            )
             and not INSTRUCTION_RE.match(line)
         ):
-            if current:
-                methods.append((current_method, current))
-                current = []
-
-            current_method = stripped
+            if instructions:
+                methods.append((name, instructions))
+                instructions = []
+            name = stripped
             continue
 
         match = INSTRUCTION_RE.match(line)
-
         if match:
-            offset = int(match.group(1))
-            opcode = match.group(2)
-            operand = match.group(3)
-
-            current.append({
-                "offset": offset,
-                "opcode": opcode,
-                "operand": operand,
+            instructions.append({
+                "pc": int(match.group(1)),
+                "op": match.group(2),
+                "arg": match.group(3),
                 "raw": line.rstrip(),
             })
 
-    if current:
-        methods.append((current_method, current))
+    if instructions:
+        methods.append((name, instructions))
 
     return methods
 
 
-def const_from_opcode(opcode, operand):
-    if opcode == "iconst_m1":
+def constant_value(op, arg):
+    if op == "iconst_m1":
         return -1
 
-    if re.fullmatch(r"iconst_[0-5]", opcode):
-        return int(opcode[-1])
+    if re.fullmatch(r"iconst_[0-5]", op):
+        return int(op[-1])
 
-    if opcode in ("bipush", "sipush"):
-        match = re.match(r"(-?\d+)", operand)
-
+    if op in ("bipush", "sipush"):
+        match = re.match(r"-?\d+", arg)
         if match:
-            return int(match.group(1))
+            return int(match.group())
 
     return None
 
 
-def local_from_opcode(opcode):
-    match = re.fullmatch(
-        r"[ailfd]load(?:_(\d+))?",
-        opcode,
-    )
-
+def field_name(arg):
+    match = FIELD_RE.search(arg)
     if not match:
         return None
-
-    if match.group(1) is not None:
-        return int(match.group(1))
-
-    return -1
+    return f"{match.group(1)}:{match.group(2)}"
 
 
-def is_branch(opcode):
-    return (
-        opcode.startswith("if")
-        or opcode in {
-            "goto", "goto_w",
-            "tableswitch", "lookupswitch",
-            "jsr", "jsr_w",
-            "ireturn", "lreturn", "freturn",
-            "dreturn", "areturn", "return",
-            "athrow",
-        }
-    )
-
-
-def is_target_index(expression):
-    if not isinstance(expression, tuple):
+def index_offset(expr):
+    if not isinstance(expr, tuple) or len(expr) != 3:
         return None
 
-    if len(expression) != 3 or expression[0] != "add":
+    if expr[0] != "add":
         return None
 
-    left, right = expression[1], expression[2]
-
-    candidates = [(left, right), (right, left)]
-
-    for constant, variable in candidates:
+    for constant, variable in (
+        (expr[1], expr[2]),
+        (expr[2], expr[1]),
+    ):
         if (
             isinstance(constant, tuple)
             and constant[0] == "const"
-            and isinstance(variable, tuple)
             and variable == ("field", "v:I")
         ):
-            value = constant[1]
-
-            if value in TARGET_OFFSETS:
-                return value
+            if constant[1] in TARGET_OFFSETS:
+                return constant[1]
 
     return None
 
 
-def field_expression(operand):
-    match = FIELD_RE.search(operand)
-
-    if not match:
-        return ("field", "unknown")
-
-    name = match.group(1)
-    descriptor = match.group(2)
-
-    if name == "a" and descriptor == "[B":
-        return ("array", "a:[B")
-
-    if name == "v" and descriptor == "I":
-        return ("field", "v:I")
-
-    return ("field", f"{name}:{descriptor}")
-
-
-def simulate_method(method_name, instructions):
+def analyse_method(method_name, instructions):
     stack = []
-    accesses = []
+    results = []
 
     def pop():
-        if stack:
-            return stack.pop()
-
-        return ("unknown",)
+        return stack.pop() if stack else ("unknown",)
 
     def push(value):
         stack.append(value)
 
-    def record_access(operation, array_expr, index_expr, instruction):
-        if array_expr != ("array", "a:[B"):
+    def record(kind, array, index, value, instruction):
+        if array != ("array", "a:[B"):
             return
 
-        target = is_target_index(index_expr)
-
-        if target is None:
+        base = index_offset(index)
+        if base is None:
             return
 
-        accesses.append({
+        results.append({
             "method": method_name,
-            "offset": target,
-            "operation": operation,
-            "line": instruction["offset"],
-            "expression": index_expr,
+            "offset": base,
+            "operation": kind,
+            "pc": instruction["pc"],
+            "value": value,
             "instruction": instruction["raw"],
         })
 
-    for instruction in instructions:
-        opcode = instruction["opcode"]
-        operand = instruction["operand"]
+    for ins in instructions:
+        op = ins["op"]
+        arg = ins["arg"]
+        number = constant_value(op, arg)
 
-        value = const_from_opcode(opcode, operand)
-
-        if value is not None:
-            push(("const", value))
+        if number is not None:
+            push(("const", number))
             continue
 
-        if opcode in ("aconst_null",):
-            push(("null",))
+        if op in ("aload_0", "aload_1", "aload_2", "aload_3",
+                  "iload_0", "iload_1", "iload_2", "iload_3",
+                  "lload_0", "lload_1", "lload_2", "lload_3",
+                  "fload_0", "fload_1", "fload_2", "fload_3",
+                  "dload_0", "dload_1", "dload_2", "dload_3"):
+            push(("local", op))
             continue
 
-        if opcode.startswith(("aload", "iload", "lload",
-                              "fload", "dload")):
-            local = local_from_opcode(opcode)
+        if op in ("aload", "iload", "lload", "fload", "dload"):
+            push(("local", arg.strip()))
+            continue
 
-            if local is None:
-                push(("local", opcode))
+        if op in ("getfield", "getstatic"):
+            field = field_name(arg)
+
+            if op == "getfield":
+                pop()
+
+            if field == "a:[B":
+                push(("array", "a:[B"))
+            elif field == "v:I":
+                push(("field", "v:I"))
+            elif field:
+                push(("field", field))
             else:
-                push(("local", local))
-
+                push(("unknown",))
             continue
 
-        if opcode in ("getfield", "getstatic"):
-            expression = field_expression(operand)
-
-            if opcode == "getfield":
-                pop()
-
-            push(expression)
-            continue
-
-        if opcode in ("iadd", "ladd"):
+        if op in ("iadd", "ladd", "isub", "lsub",
+                  "imul", "lmul", "idiv", "ldiv"):
             right = pop()
             left = pop()
-            push(("add", left, right))
+            operation = {
+                "iadd": "add", "ladd": "add",
+                "isub": "sub", "lsub": "sub",
+                "imul": "mul", "lmul": "mul",
+                "idiv": "div", "ldiv": "div",
+            }[op]
+            push((operation, left, right))
             continue
 
-        if opcode in ("isub", "lsub"):
-            right = pop()
-            left = pop()
-            push(("sub", left, right))
+        if op in ("i2b", "i2c", "i2s", "i2l", "i2f",
+                  "i2d", "l2i", "f2i", "d2i", "ineg"):
+            push((op, pop()))
             continue
 
-        if opcode in ("imul", "lmul"):
-            right = pop()
-            left = pop()
-            push(("mul", left, right))
+        if op == "dup":
+            value = pop()
+            push(value)
+            push(value)
             continue
 
-        if opcode in ("idiv", "ldiv", "irem", "lrem"):
-            right = pop()
-            left = pop()
-            push((opcode, left, right))
-            continue
-
-        if opcode in ("ineg", "lneg"):
-            push(("neg", pop()))
-            continue
-
-        if opcode in (
-            "i2b", "i2c", "i2s",
-            "i2l", "i2f", "i2d",
-            "l2i", "f2i", "d2i",
-        ):
-            push((opcode, pop()))
-            continue
-
-        if opcode in ("baload", "caload", "saload",
-                      "iaload", "laload", "faload",
-                      "daload", "aaload"):
-            index_expr = pop()
-            array_expr = pop()
-
-            if opcode == "baload":
-                record_access(
-                    "READ",
-                    array_expr,
-                    index_expr,
-                    instruction,
-                )
-
-            push(("loaded", opcode))
-            continue
-
-        if opcode in ("bastore", "castore", "sastore",
-                      "iastore", "lastore", "fastore",
-                      "dastore", "aastore"):
-            value_expr = pop()
-            index_expr = pop()
-            array_expr = pop()
-
-            if opcode == "bastore":
-                record_access(
-                    "WRITE",
-                    array_expr,
-                    index_expr,
-                    instruction,
-                )
-
-            continue
-
-        if opcode == "dup":
-            first = pop()
-            push(first)
-            push(first)
-            continue
-
-        if opcode == "dup_x1":
-            first = pop()
-            second = pop()
-            push(first)
-            push(second)
-            push(first)
-            continue
-
-        if opcode == "dup2":
-            if len(stack) >= 2:
-                first = stack[-2]
-                second = stack[-1]
-                push(first)
-                push(second)
-            elif stack:
-                push(stack[-1])
-            continue
-
-        if opcode == "pop":
-            pop()
-            continue
-
-        if opcode == "pop2":
-            pop()
-            pop()
-            continue
-
-        if opcode == "swap":
+        if op == "swap":
             first = pop()
             second = pop()
             push(first)
             push(second)
             continue
 
-        if opcode.startswith("invoke"):
-            # Method descriptors determine argument counts.
-            # Without a complete descriptor-aware JVM stack model,
-            # discard the current stack to avoid false attribution.
-            stack.clear()
-
-            if opcode != "invokestatic":
-                # The receiver and arguments were discarded together.
-                pass
-
-            if opcode == "invokestatic":
-                if " )" in operand:
-                    pass
-
-            # Return values are not reconstructed here.
+        if op == "baload":
+            index = pop()
+            array = pop()
+            record("READ", array, index, None, ins)
+            push(("loaded-byte",))
             continue
 
-        if opcode in ("new", "newarray", "anewarray"):
-            if opcode != "new":
-                pop()
-
-            push(("object", opcode))
+        if op == "bastore":
+            value = pop()
+            index = pop()
+            array = pop()
+            record("WRITE", array, index, value, ins)
             continue
 
-        if opcode == "arraylength":
+        if op in ("pop", "pop2"):
             pop()
-            push(("length",))
+            if op == "pop2":
+                pop()
             continue
 
-        if opcode in ("checkcast", "instanceof"):
-            original = pop()
-            push((opcode, original))
-            continue
-
-        if opcode in ("iinc",):
-            continue
-
-        # Branch targets change control flow. A linear scan cannot
-        # safely carry one stack state into the next basic block.
-        if is_branch(opcode):
+        if op.startswith("invoke"):
+            # Calls have variable stack effects. Do not guess their
+            # arguments or return values in this partial analyzer.
             stack.clear()
             continue
 
-        # Unknown instructions invalidate the current stack model.
-        # Continue at the next instruction with a clean stack.
+        # Branches, unsupported instructions and complex operations
+        # invalidate the symbolic stack to avoid stale conclusions.
         stack.clear()
 
-    return accesses
+    return results
+
+
+def describe_value(value):
+    if value is None:
+        return "not applicable"
+
+    if isinstance(value, tuple):
+        if len(value) == 2 and value[0] == "const":
+            return f"constant {value[1]}"
+
+        if len(value) == 2 and value[0] == "field":
+            return f"field {value[1]}"
+
+        if len(value) == 2 and value[0] == "local":
+            return f"local {value[1]}"
+
+        if value[0] in ("i2b", "i2c", "i2s", "i2l",
+                        "i2f", "i2d", "l2i", "f2i",
+                        "d2i", "ineg"):
+            return f"{value[0]}({describe_value(value[1])})"
+
+        if value[0] in ("add", "sub", "mul", "div"):
+            return (
+                f"{describe_value(value[1])} {value[0]} "
+                f"{describe_value(value[2])}"
+            )
+
+        return repr(value)
+
+    return str(value)
 
 
 def main():
-    text = read_text(INPUT)
-    methods = parse_instructions(text)
+    methods = parse_methods(read_text(INPUT))
+    all_results = []
 
-    all_accesses = []
-
-    for method_name, instructions in methods:
-        all_accesses.extend(
-            simulate_method(method_name, instructions)
-        )
+    for name, instructions in methods:
+        all_results.extend(analyse_method(name, instructions))
 
     counts = Counter()
     method_sets = defaultdict(set)
     examples = defaultdict(list)
+    written_values = defaultdict(Counter)
 
-    for access in all_accesses:
-        key = (access["offset"], access["operation"])
+    for item in all_results:
+        key = (item["offset"], item["operation"])
         counts[key] += 1
-        method_sets[key].add(access["method"])
+        method_sets[key].add(item["method"])
 
         if len(examples[key]) < MAX_EXAMPLES:
-            examples[key].append(access)
+            examples[key].append(item)
 
-    output = [
-        "PREHISTORIC TRIBES - ARRAY ACCESS ANALYSIS",
+        if item["operation"] == "WRITE":
+            written_values[item["offset"]][
+                describe_value(item["value"])
+            ] += 1
+
+    out = [
+        "PREHISTORIC TRIBES - ARRAY ACCESS AND WRITE VALUE ANALYSIS",
         "Class: c",
         "",
-        "Analysis type: symbolic operand-stack pattern matching",
         "Target: a[offset + v]",
-        "",
-        "IMPORTANT:",
-        "This is a partial JVM stack simulation, not a full verifier.",
-        "Unknown instructions and branches reset the symbolic stack.",
-        "Only matches with array a:[B and index offset + v are reported.",
-        "A missing match does not prove that an access does not exist.",
-        "",
-        "=" * 80,
-        "SUMMARY",
-        "=" * 80,
+        "This is partial symbolic analysis, not a complete JVM interpreter.",
+        "Reported values are symbolic candidates, not game semantics.",
         "",
         f"PARSED METHODS: {len(methods)}",
-        f"CONFIRMED PATTERN MATCHES: {len(all_accesses)}",
+        f"TOTAL MATCHES: {len(all_results)}",
         "",
     ]
 
-    for offset in TARGET_OFFSETS:
-        output.extend([
-            "=" * 80,
-            f"OFFSET {offset} + v",
-            "=" * 80,
-            "",
-        ])
+    for base in TARGET_OFFSETS:
+        out.extend(["=" * 80, f"OFFSET {base} + v", "=" * 80, ""])
 
         for operation in ("READ", "WRITE"):
-            key = (offset, operation)
+            key = (base, operation)
+            out.append(f"{operation} MATCHES: {counts[key]}")
+            out.append(f"METHODS: {len(method_sets[key])}")
 
-            output.append(f"{operation} MATCHES: {counts[key]}")
-            output.append(
-                f"METHODS: {len(method_sets[key])}"
-            )
-
-            for number, access in enumerate(
-                examples[key],
-                start=1,
-            ):
-                output.append("")
-                output.append(
-                    f"EXAMPLE {number} | "
-                    f"{access['method']} | "
-                    f"BYTECODE OFFSET {access['line']}"
+            for i, item in enumerate(examples[key], 1):
+                out.append("")
+                out.append(
+                    f"EXAMPLE {i} | {item['method']} | PC {item['pc']}"
                 )
-                output.append(
-                    f"    OPERATION: {access['operation']}"
-                )
-                output.append(
-                    f"    INDEX: {access['offset']} + v"
-                )
-                output.append(
-                    f"    INSTRUCTION: {access['instruction']}"
-                )
+                out.append(f"    INSTRUCTION: {item['instruction']}")
 
-            output.append("")
+                if operation == "WRITE":
+                    out.append(
+                        "    VALUE CANDIDATE: "
+                        + describe_value(item["value"])
+                    )
 
-    output.extend([
-        "=" * 80,
-        "METHOD SUMMARY",
-        "=" * 80,
-        "",
-    ])
+            out.append("")
 
-    by_method = defaultdict(list)
+        out.append("WRITE VALUE SUMMARY")
+        if written_values[base]:
+            for value, count in written_values[base].most_common():
+                out.append(f"    {value}: {count}")
+        else:
+            out.append("    No recognized writes")
+        out.append("")
 
-    for access in all_accesses:
-        by_method[access["method"]].append(access)
-
-    for method_name in sorted(by_method):
-        output.append(method_name)
-
-        summary = Counter(
-            (item["offset"], item["operation"])
-            for item in by_method[method_name]
-        )
-
-        for (offset, operation), count in sorted(summary.items()):
-            output.append(
-                f"    {operation:5s} {offset:5d} + v"
-                f"    occurrences: {count}"
-            )
-
-        output.append("")
-
-    output.extend([
+    out.extend([
         "=" * 80,
         "LIMITATIONS",
         "=" * 80,
-        "",
-        "1. The JVM operand stack is simulated only partially.",
-        "2. Branches and unknown instructions reset the stack.",
-        "3. Calls and complex stack manipulation may hide accesses.",
-        "4. Only byte-array instructions baload and bastore are counted.",
-        "5. Array offsets have no automatic semantic meaning.",
+        "1. Unknown JVM instructions reset the symbolic stack.",
+        "2. Method calls and branches may hide valid accesses.",
+        "3. A value candidate may be incomplete if stack state was lost.",
+        "4. Numeric values do not establish what a game field means.",
         "",
     ])
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(
-        "\n".join(output) + "\n",
-        encoding="utf-8",
-    )
+    OUTPUT.write_text("\n".join(out) + "\n", encoding="utf-8")
 
     print(f"Created: {OUTPUT}")
     print(f"Parsed methods: {len(methods)}")
-    print(f"Pattern matches: {len(all_accesses)}")
+    print(f"Matches: {len(all_results)}")
 
 
 if __name__ == "__main__":
