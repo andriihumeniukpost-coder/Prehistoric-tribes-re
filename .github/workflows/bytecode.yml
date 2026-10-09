@@ -1,4 +1,3 @@
-
 name: Extract Bytecode
 
 on:
@@ -34,52 +33,43 @@ jobs:
           done
 
       - name: Create field map
-        run: |
-          python3 tools/field_map.py
+        run: python3 tools/field_map.py
 
       - name: Create method map
-        run: |
-          python3 tools/method_map.py
+        run: python3 tools/method_map.py
 
       - name: Create hot fields report
-        run: |
-          python3 tools/hot_fields.py
+        run: python3 tools/hot_fields.py
 
       - name: Create field usage report
-        run: |
-          python3 tools/field_usage.py
+        run: python3 tools/field_usage.py
 
       - name: Create field trace report
-        run: |
-          python3 tools/field_trace.py
+        run: python3 tools/field_trace.py
 
       - name: Create index trace report
-        run: |
-          python3 tools/index_trace.py
+        run: python3 tools/index_trace.py
 
       - name: Create record map
-        run: |
-          python3 tools/record_map.py
+        run: python3 tools/record_map.py
 
       - name: Create record structure
-        run: |
-          python3 tools/record_structure.py
+        run: python3 tools/record_structure.py
 
       - name: Create record fields
-        run: |
-          python3 tools/record_fields.py
+        run: python3 tools/record_fields.py
 
       - name: Create record clusters
-        run: |
-          python3 tools/record_clusters.py
+        run: python3 tools/record_clusters.py
 
       - name: Create array access report
-        run: |
-          python3 tools/array_access.py
+        run: python3 tools/array_access.py
 
       - name: Create write context report
-        run: |
-          python3 tools/write_context.py
+        run: python3 tools/write_context.py
+
+      - name: Create paired regions report
+        run: python3 tools/paired_regions.py
 
       - name: Commit analysis
         run: |
@@ -87,6 +77,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add analysis/bytecode
+          git add analysis/jar_report.txt
           git add analysis/field_map.txt
           git add analysis/method_map.txt
           git add analysis/hot_fields.txt
@@ -99,6 +90,7 @@ jobs:
           git add analysis/record_clusters.txt
           git add analysis/array_access.txt
           git add analysis/write_context.txt
+          git add analysis/paired_regions.txt
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
