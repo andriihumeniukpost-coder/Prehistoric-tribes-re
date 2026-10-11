@@ -58,7 +58,7 @@ jobs:
             relative="${file#work/}"
             output="analysis/bytecode/${relative%.class}.txt"
             mkdir -p "$(dirname "$output")"
-            javap -classpath work -p -c -s -constants "${relative%.class}" > "$output"
+            javap -classpath work -v -p -c -s -constants "${relative%.class}" > "$output"
           done
 
       - name: Analyze JAR
