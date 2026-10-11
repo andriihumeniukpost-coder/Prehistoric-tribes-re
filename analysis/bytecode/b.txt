@@ -1,284 +1,136 @@
-Classfile /home/runner/work/Prehistoric-tribes-re/Prehistoric-tribes-re/work/b.class
-  Last modified Oct 11, 2026; size 1561 bytes
-  SHA-256 checksum d74ce6a8e5386da56edc2cf00df9eca59c001c290e3d738a20a5ef574ba6d7ec
-public final class b implements java.lang.Runnable
-  minor version: 3
-  major version: 45
-  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
-  this_class: #1                          // b
-  super_class: #4                         // java/lang/Object
-  interfaces: 1, fields: 7, methods: 3, attributes: 0
-Constant pool:
-   #1 = Class              #72            // b
-   #2 = Class              #75            // java/io/IOException
-   #3 = Class              #76            // java/lang/Exception
-   #4 = Class              #77            // java/lang/Object
-   #5 = Class              #78            // java/lang/Runnable
-   #6 = Class              #79            // java/lang/String
-   #7 = Class              #80            // java/lang/StringBuffer
-   #8 = Class              #81            // java/lang/Thread
-   #9 = Class              #82            // javax/microedition/io/Connection
-  #10 = Class              #83            // javax/microedition/io/Connector
-  #11 = Class              #84            // javax/wireless/messaging/MessageConnection
-  #12 = Class              #85            // javax/wireless/messaging/TextMessage
-  #13 = Fieldref           #1.#38         // b.a:Ljava/lang/String;
-  #14 = Fieldref           #1.#39         // b.a:Ljava/lang/Thread;
-  #15 = Fieldref           #1.#40         // b.a:Z
-  #16 = Fieldref           #1.#41         // b.a:Ljavax/wireless/messaging/MessageConnection;
-  #17 = Fieldref           #1.#43         // b.b:Ljava/lang/String;
-  #18 = Fieldref           #1.#44         // b.b:Z
-  #19 = Fieldref           #1.#45         // b.c:Ljava/lang/String;
-  #20 = Methodref          #4.#36         // java/lang/Object."<init>":()V
-  #21 = Methodref          #8.#37         // java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
-  #22 = Methodref          #7.#36         // java/lang/StringBuffer."<init>":()V
-  #23 = Methodref          #7.#42         // java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
-  #24 = Methodref          #10.#48        // javax/microedition/io/Connector.open:(Ljava/lang/String;)Ljavax/microedition/io/Connection;
-  #25 = Methodref          #8.#51         // java/lang/Thread.start:()V
-  #26 = Methodref          #6.#52         // java/lang/String.toString:()Ljava/lang/String;
-  #27 = Methodref          #7.#52         // java/lang/StringBuffer.toString:()Ljava/lang/String;
-  #28 = InterfaceMethodref #9.#46         // javax/microedition/io/Connection.close:()V
-  #29 = InterfaceMethodref #11.#47        // javax/wireless/messaging/MessageConnection.newMessage:(Ljava/lang/String;)Ljavax/wireless/messaging/Message;
-  #30 = InterfaceMethodref #11.#49        // javax/wireless/messaging/MessageConnection.send:(Ljavax/wireless/messaging/Message;)V
-  #31 = InterfaceMethodref #12.#50        // javax/wireless/messaging/TextMessage.setPayloadText:(Ljava/lang/String;)V
-  #32 = String             #62            // 3001
-  #33 = String             #63            // 7171
-  #34 = String             #91            // sms://
-  #35 = String             #93            // text
-  #36 = NameAndType        #64:#54        // "<init>":()V
-  #37 = NameAndType        #64:#56        // "<init>":(Ljava/lang/Runnable;)V
-  #38 = NameAndType        #70:#66        // a:Ljava/lang/String;
-  #39 = NameAndType        #70:#67        // a:Ljava/lang/Thread;
-  #40 = NameAndType        #70:#69        // a:Z
-  #41 = NameAndType        #70:#68        // a:Ljavax/wireless/messaging/MessageConnection;
-  #42 = NameAndType        #71:#57        // append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
-  #43 = NameAndType        #72:#66        // b:Ljava/lang/String;
-  #44 = NameAndType        #72:#69        // b:Z
-  #45 = NameAndType        #73:#66        // c:Ljava/lang/String;
-  #46 = NameAndType        #74:#54        // close:()V
-  #47 = NameAndType        #86:#59        // newMessage:(Ljava/lang/String;)Ljavax/wireless/messaging/Message;
-  #48 = NameAndType        #87:#58        // open:(Ljava/lang/String;)Ljavax/microedition/io/Connection;
-  #49 = NameAndType        #89:#61        // send:(Ljavax/wireless/messaging/Message;)V
-  #50 = NameAndType        #90:#60        // setPayloadText:(Ljava/lang/String;)V
-  #51 = NameAndType        #92:#54        // start:()V
-  #52 = NameAndType        #94:#53        // toString:()Ljava/lang/String;
-  #53 = Utf8               ()Ljava/lang/String;
-  #54 = Utf8               ()V
-  #55 = Utf8               ()Z
-  #56 = Utf8               (Ljava/lang/Runnable;)V
-  #57 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuffer;
-  #58 = Utf8               (Ljava/lang/String;)Ljavax/microedition/io/Connection;
-  #59 = Utf8               (Ljava/lang/String;)Ljavax/wireless/messaging/Message;
-  #60 = Utf8               (Ljava/lang/String;)V
-  #61 = Utf8               (Ljavax/wireless/messaging/Message;)V
-  #62 = Utf8               3001
-  #63 = Utf8               7171
-  #64 = Utf8               <init>
-  #65 = Utf8               Code
-  #66 = Utf8               Ljava/lang/String;
-  #67 = Utf8               Ljava/lang/Thread;
-  #68 = Utf8               Ljavax/wireless/messaging/MessageConnection;
-  #69 = Utf8               Z
-  #70 = Utf8               a
-  #71 = Utf8               append
-  #72 = Utf8               b
-  #73 = Utf8               c
-  #74 = Utf8               close
-  #75 = Utf8               java/io/IOException
-  #76 = Utf8               java/lang/Exception
-  #77 = Utf8               java/lang/Object
-  #78 = Utf8               java/lang/Runnable
-  #79 = Utf8               java/lang/String
-  #80 = Utf8               java/lang/StringBuffer
-  #81 = Utf8               java/lang/Thread
-  #82 = Utf8               javax/microedition/io/Connection
-  #83 = Utf8               javax/microedition/io/Connector
-  #84 = Utf8               javax/wireless/messaging/MessageConnection
-  #85 = Utf8               javax/wireless/messaging/TextMessage
-  #86 = Utf8               newMessage
-  #87 = Utf8               open
-  #88 = Utf8               run
-  #89 = Utf8               send
-  #90 = Utf8               setPayloadText
-  #91 = Utf8               sms://
-  #92 = Utf8               start
-  #93 = Utf8               text
-  #94 = Utf8               toString
-  #95 = Utf8               StackMap
-{
+public final class b implements java.lang.Runnable {
   public java.lang.Thread a;
     descriptor: Ljava/lang/Thread;
-    flags: (0x0001) ACC_PUBLIC
 
   private javax.wireless.messaging.MessageConnection a;
     descriptor: Ljavax/wireless/messaging/MessageConnection;
-    flags: (0x0002) ACC_PRIVATE
 
   private java.lang.String c;
     descriptor: Ljava/lang/String;
-    flags: (0x0002) ACC_PRIVATE
 
   public java.lang.String a;
     descriptor: Ljava/lang/String;
-    flags: (0x0001) ACC_PUBLIC
 
   public java.lang.String b;
     descriptor: Ljava/lang/String;
-    flags: (0x0001) ACC_PUBLIC
 
   public boolean a;
     descriptor: Z
-    flags: (0x0001) ACC_PUBLIC
 
   public boolean b;
     descriptor: Z
-    flags: (0x0001) ACC_PUBLIC
 
   public b();
     descriptor: ()V
-    flags: (0x0001) ACC_PUBLIC
     Code:
-      stack=2, locals=1, args_size=1
-         0: aload_0
-         1: invokespecial #20                 // Method java/lang/Object."<init>":()V
-         4: aload_0
-         5: ldc           #33                 // String 7171
-         7: putfield      #13                 // Field a:Ljava/lang/String;
-        10: aload_0
-        11: ldc           #32                 // String 3001
-        13: putfield      #17                 // Field b:Ljava/lang/String;
-        16: return
+       0: aload_0
+       1: invokespecial #20                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc           #33                 // String 7171
+       7: putfield      #13                 // Field a:Ljava/lang/String;
+      10: aload_0
+      11: ldc           #32                 // String 3001
+      13: putfield      #17                 // Field b:Ljava/lang/String;
+      16: return
 
   final boolean a();
     descriptor: ()Z
-    flags: (0x0010) ACC_FINAL
     Code:
-      stack=4, locals=1, args_size=1
-         0: aload_0
-         1: getfield      #14                 // Field a:Ljava/lang/Thread;
-         4: ifnonnull     38
-         7: aload_0
-         8: iconst_1
-         9: putfield      #15                 // Field a:Z
-        12: aload_0
-        13: iconst_1
-        14: putfield      #18                 // Field b:Z
-        17: aload_0
-        18: new           #8                  // class java/lang/Thread
-        21: dup
-        22: aload_0
-        23: invokespecial #21                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
-        26: putfield      #14                 // Field a:Ljava/lang/Thread;
-        29: aload_0
-        30: getfield      #14                 // Field a:Ljava/lang/Thread;
-        33: invokevirtual #25                 // Method java/lang/Thread.start:()V
-        36: iconst_1
-        37: ireturn
-        38: iconst_0
-        39: ireturn
-      StackMap: number_of_entries = 1
-        frame_type = 255 offset = 38
-          locals = [ class b ]
-          stack = []
+       0: aload_0
+       1: getfield      #14                 // Field a:Ljava/lang/Thread;
+       4: ifnonnull     38
+       7: aload_0
+       8: iconst_1
+       9: putfield      #15                 // Field a:Z
+      12: aload_0
+      13: iconst_1
+      14: putfield      #18                 // Field b:Z
+      17: aload_0
+      18: new           #8                  // class java/lang/Thread
+      21: dup
+      22: aload_0
+      23: invokespecial #21                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+      26: putfield      #14                 // Field a:Ljava/lang/Thread;
+      29: aload_0
+      30: getfield      #14                 // Field a:Ljava/lang/Thread;
+      33: invokevirtual #25                 // Method java/lang/Thread.start:()V
+      36: iconst_1
+      37: ireturn
+      38: iconst_0
+      39: ireturn
 
   public final void run();
     descriptor: ()V
-    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
     Code:
-      stack=3, locals=2, args_size=1
-         0: aload_0
-         1: new           #7                  // class java/lang/StringBuffer
-         4: dup
-         5: invokespecial #22                 // Method java/lang/StringBuffer."<init>":()V
-         8: ldc           #34                 // String sms://
-        10: invokevirtual #23                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
-        13: aload_0
-        14: getfield      #13                 // Field a:Ljava/lang/String;
-        17: invokevirtual #26                 // Method java/lang/String.toString:()Ljava/lang/String;
-        20: invokevirtual #23                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
-        23: invokevirtual #27                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
-        26: putfield      #19                 // Field c:Ljava/lang/String;
-        29: aload_0
-        30: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
-        33: ifnonnull     59
-        36: aload_0
-        37: aload_0
-        38: getfield      #19                 // Field c:Ljava/lang/String;
-        41: invokestatic  #24                 // Method javax/microedition/io/Connector.open:(Ljava/lang/String;)Ljavax/microedition/io/Connection;
-        44: checkcast     #11                 // class javax/wireless/messaging/MessageConnection
-        47: putfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
-        50: goto          59
-        53: pop
-        54: aload_0
-        55: iconst_0
-        56: putfield      #18                 // Field b:Z
-        59: aload_0
-        60: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
-        63: ldc           #35                 // String text
-        65: invokeinterface #29,  2           // InterfaceMethod javax/wireless/messaging/MessageConnection.newMessage:(Ljava/lang/String;)Ljavax/wireless/messaging/Message;
-        70: checkcast     #12                 // class javax/wireless/messaging/TextMessage
-        73: dup
-        74: astore_1
-        75: aload_0
-        76: getfield      #17                 // Field b:Ljava/lang/String;
-        79: invokeinterface #31,  2           // InterfaceMethod javax/wireless/messaging/TextMessage.setPayloadText:(Ljava/lang/String;)V
-        84: aload_0
-        85: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
-        88: aload_1
-        89: invokeinterface #30,  2           // InterfaceMethod javax/wireless/messaging/MessageConnection.send:(Ljavax/wireless/messaging/Message;)V
-        94: goto          103
-        97: pop
-        98: aload_0
-        99: iconst_0
-       100: putfield      #18                 // Field b:Z
-       103: aload_0
-       104: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
-       107: invokeinterface #28,  1           // InterfaceMethod javax/microedition/io/Connection.close:()V
-       112: goto          116
-       115: pop
-       116: aload_0
-       117: aconst_null
-       118: putfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
-       121: goto          130
-       124: pop
-       125: aload_0
-       126: iconst_0
-       127: putfield      #18                 // Field b:Z
-       130: aload_0
-       131: iconst_0
-       132: putfield      #15                 // Field a:Z
-       135: aload_0
-       136: aconst_null
-       137: putfield      #14                 // Field a:Ljava/lang/Thread;
-       140: return
-      Exception table:
-         from    to  target type
-            36    50    53   Class java/io/IOException
-            59    94    97   Class java/lang/Exception
-           103   112   115   Class java/lang/Exception
-             0   121   124   Class java/lang/Exception
-      StackMap: number_of_entries = 8
-        frame_type = 255 offset = 53
-          locals = [ class b ]
-          stack = [ class java/io/IOException ]
-        frame_type = 255 offset = 59
-          locals = [ class b ]
-          stack = []
-        frame_type = 255 offset = 97
-          locals = [ class b ]
-          stack = [ class java/lang/Exception ]
-        frame_type = 255 offset = 103
-          locals = [ class b ]
-          stack = []
-        frame_type = 255 offset = 115
-          locals = [ class b ]
-          stack = [ class java/lang/Exception ]
-        frame_type = 255 offset = 116
-          locals = [ class b ]
-          stack = []
-        frame_type = 255 offset = 124
-          locals = [ class b ]
-          stack = [ class java/lang/Exception ]
-        frame_type = 255 offset = 130
-          locals = [ class b ]
-          stack = []
+       0: aload_0
+       1: new           #7                  // class java/lang/StringBuffer
+       4: dup
+       5: invokespecial #22                 // Method java/lang/StringBuffer."<init>":()V
+       8: ldc           #34                 // String sms://
+      10: invokevirtual #23                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      13: aload_0
+      14: getfield      #13                 // Field a:Ljava/lang/String;
+      17: invokevirtual #26                 // Method java/lang/String.toString:()Ljava/lang/String;
+      20: invokevirtual #23                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+      23: invokevirtual #27                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+      26: putfield      #19                 // Field c:Ljava/lang/String;
+      29: aload_0
+      30: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
+      33: ifnonnull     59
+      36: aload_0
+      37: aload_0
+      38: getfield      #19                 // Field c:Ljava/lang/String;
+      41: invokestatic  #24                 // Method javax/microedition/io/Connector.open:(Ljava/lang/String;)Ljavax/microedition/io/Connection;
+      44: checkcast     #11                 // class javax/wireless/messaging/MessageConnection
+      47: putfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
+      50: goto          59
+      53: pop
+      54: aload_0
+      55: iconst_0
+      56: putfield      #18                 // Field b:Z
+      59: aload_0
+      60: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
+      63: ldc           #35                 // String text
+      65: invokeinterface #29,  2           // InterfaceMethod javax/wireless/messaging/MessageConnection.newMessage:(Ljava/lang/String;)Ljavax/wireless/messaging/Message;
+      70: checkcast     #12                 // class javax/wireless/messaging/TextMessage
+      73: dup
+      74: astore_1
+      75: aload_0
+      76: getfield      #17                 // Field b:Ljava/lang/String;
+      79: invokeinterface #31,  2           // InterfaceMethod javax/wireless/messaging/TextMessage.setPayloadText:(Ljava/lang/String;)V
+      84: aload_0
+      85: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
+      88: aload_1
+      89: invokeinterface #30,  2           // InterfaceMethod javax/wireless/messaging/MessageConnection.send:(Ljavax/wireless/messaging/Message;)V
+      94: goto          103
+      97: pop
+      98: aload_0
+      99: iconst_0
+     100: putfield      #18                 // Field b:Z
+     103: aload_0
+     104: getfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
+     107: invokeinterface #28,  1           // InterfaceMethod javax/microedition/io/Connection.close:()V
+     112: goto          116
+     115: pop
+     116: aload_0
+     117: aconst_null
+     118: putfield      #16                 // Field a:Ljavax/wireless/messaging/MessageConnection;
+     121: goto          130
+     124: pop
+     125: aload_0
+     126: iconst_0
+     127: putfield      #18                 // Field b:Z
+     130: aload_0
+     131: iconst_0
+     132: putfield      #15                 // Field a:Z
+     135: aload_0
+     136: aconst_null
+     137: putfield      #14                 // Field a:Ljava/lang/Thread;
+     140: return
+    Exception table:
+       from    to  target type
+          36    50    53   Class java/io/IOException
+          59    94    97   Class java/lang/Exception
+         103   112   115   Class java/lang/Exception
+           0   121   124   Class java/lang/Exception
 }
