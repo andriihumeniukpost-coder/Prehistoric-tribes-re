@@ -8,8 +8,17 @@ from pathlib import Path
 JAR = Path("original/prehistoric-tribes-0.1.38.jar")
 OUTPUT_DIR = Path("analysis/bytecode")
 
-# Пока выгружаем только основной класс игры.
-CLASSES = ["g"]
+# Основные классы игры и вспомогательные классы.
+CLASSES = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "tribes",
+]
 
 
 def main():
@@ -21,13 +30,17 @@ def main():
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+    success = []
+    missing = []
+    errors = []
+
     for class_name in CLASSES:
         entry = f"{class_name}.class"
 
         if entry not in entries:
-            raise SystemExit(
-                f"ERROR: {entry} not found inside {JAR}"
-            )
+            missing.append(class_name)
+            print(f"SKIP: {entry} not found in JAR")
+            continue
 
         command = [
             "javap",
@@ -49,30 +62,43 @@ def main():
         )
 
         if result.returncode != 0:
-            raise SystemExit(
-                f"ERROR: javap failed for {class_name}:\n"
-                f"{result.stderr}"
-            )
+            errors.append(class_name)
+            print(f"ERROR: javap failed for {class_name}")
+            print(result.stderr)
+            continue
 
         output = result.stdout
 
-        if not output.strip():
-            raise SystemExit(
-                f"ERROR: javap returned empty output for {class_name}"
-            )
-
-        if "Code:" not in output:
-            raise SystemExit(
-                f"ERROR: No bytecode instructions found for {class_name}"
-            )
+        if not output.strip() or "Code:" not in output:
+            errors.append(class_name)
+            print(f"ERROR: No bytecode found for {class_name}")
+            continue
 
         output_file = OUTPUT_DIR / f"{class_name}.txt"
         output_file.write_text(output, encoding="utf-8")
 
-        print(f"Created: {output_file}")
-        print(f"Output size: {len(output)} characters")
+        success.append(class_name)
+        print(
+            f"OK: {output_file} "
+            f"({len(output)} characters)"
+        )
 
-    print("Bytecode extraction completed successfully.")
+    print("\n=== BYTECODE DUMP SUMMARY ===")
+    print(f"Successful: {len(success)}")
+    print(f"Missing: {len(missing)}")
+    print(f"Errors: {len(errors)}")
+
+    if missing:
+        print("Missing classes:", ", ".join(missing))
+
+    if errors:
+        print("Failed classes:", ", ".join(errors))
+        raise SystemExit(1)
+
+    if not success:
+        raise SystemExit("ERROR: No classes were dumped")
+
+    print("Bytecode extraction completed.")
 
 
 if __name__ == "__main__":
