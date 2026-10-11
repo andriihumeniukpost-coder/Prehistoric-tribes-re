@@ -1,470 +1,267 @@
+
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Prehistoric Tribes v0.1.38
-Автоматический первичный анализ индексов кадров и ресурса /a.
-
-Вход:
-    analysis/bytecode/g.txt
-    analysis/a_dump/a_dump.json
-
-Выход:
-    analysis/animation_report.txt
-    analysis/frame_field_access.csv
-    analysis/record_154_analysis.txt
-
-Скрипт ничего не изменяет в игровом коде и исходных данных.
-"""
+"""Collect animation-related evidence from the Prehistoric Tribes analysis files."""
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import re
-import sys
-from pathlib import Path
 from collections import Counter
+from datetime import datetime
+from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+ANALYSIS = ROOT / "analysis"
+OUTPUT = ANALYSIS / "animation_report.txt"
 
-ROOT = Path(__file__).resolve().parent.parent
-BYTECODE = ROOT / "analysis" / "bytecode" / "g.txt"
-DUMP_JSON = ROOT / "analysis" / "a_dump" / "a_dump.json"
-OUT_DIR = ROOT / "analysis"
+TARGETS = (
+    "frame_index_trace.txt",
+    "frame_methods.txt",
+    "field_usage.txt",
+    "record_fields.txt",
+    "record_map.txt",
+    "record_structure.txt",
+    "record_clusters.txt",
+)
 
-REPORT = OUT_DIR / "animation_report.txt"
-FIELDS_CSV = OUT_DIR / "frame_field_access.csv"
-RECORD_REPORT = OUT_DIR / "record_154_analysis.txt"
-
-
-# Поля, связанные с вычислением индекса изображения/кадра.
-TARGET_FIELDS = {
-    "o:B",
-    "q:B",
-    "ai:B",
-    "a:[B",
-    "a:[S",
-    "aS:[S",
-    "aR:I",
-    "ag:B",
-    "ah:B",
-    "aj:B",
-    "ak:B",
-    "p:[B",
-    "v:B",
-}
-
-TARGET_NAMES = {
-    "o", "q", "ai", "a", "aS", "aR", "ag", "ah",
-    "aj", "ak", "p", "v",
-}
-
+PATTERNS = (
+    re.compile(r"\b(?:o|q|ai)\s*:\s*[BISZ]"),
+    re.compile(r"\ba\s*\[\s*aS?\s*\[\s*154\s*\]"),
+    re.compile(r"\b(?:154|7587|pi8|pi9|pi0)\b", re.I),
+    re.compile(r"Image\.createImage|drawRegion|drawImage"),
+    re.compile(r"\b(?:frame|animation|sprite|record|offset)\b", re.I),
+)
 
 def read_text(path: Path) -> str:
-    if not path.exists():
-        raise FileNotFoundError(f"Не найден файл: {path}")
-    return path.read_text(encoding="utf-8", errors="replace")
+    try:
+        return path.read_text(encoding="utf-8", errors="replace")
+    except OSError as exc:
+        return f"[READ ERROR: {exc}]"
 
+def section(title: str, content: str) -> str:
+    return f"\n{'=' * 78}\n{title}\n{'=' * 78}\n{content.rstrip()}\n"
 
-def normalize_field(raw: str) -> str:
-    return re.sub(r"\s+", "", raw.strip())
+def find_context(path: Path, terms: list[str], radius: int = 3,
+                 max_hits: int = 80) -> str:
+    if not path.is_file():
+        return f"[NOT FOUND] {path.relative_to(ROOT)}"
 
-
-def parse_methods(text: str) -> list[dict]:
-    """
-    Выделяет методы из текстового дизассемблера.
-    Ожидаемый формат содержит строки наподобие:
-        final void b(int);
-        private void U();
-        descriptor: (I)V
-        Code:
-    """
-    lines = text.splitlines()
-    starts = []
-
-    method_re = re.compile(
-        r"^\s*(?:(?:public|private|protected|static|final|"
-        r"synchronized|native|abstract)\s+)*"
-        r"[\w.$\[\]/<>]+\s+[\w$<>]+\([^;]*\);\s*$"
-    )
-
+    lines = read_text(path).splitlines()
+    hits = []
     for i, line in enumerate(lines):
-        if method_re.match(line):
-            # Заголовок метода должен сопровождаться дескриптором
-            # в ближайших следующих строках.
-            nearby = "\n".join(lines[i + 1:i + 5])
-            if "descriptor:" in nearby:
-                starts.append(i)
+        if any(term.lower() in line.lower() for term in terms):
+            start = max(0, i - radius)
+            end = min(len(lines), i + radius + 1)
+            hits.append((start, end))
 
-    methods = []
-    for n, start in enumerate(starts):
-        end = starts[n + 1] if n + 1 < len(starts) else len(lines)
-        block = lines[start:end]
-        header = lines[start].strip()
-        descriptor = ""
+    merged = []
+    for start, end in hits:
+        if merged and start <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+        else:
+            merged.append((start, end))
 
-        for line in block[:8]:
-            match = re.search(r"descriptor:\s*(\S+)", line)
-            if match:
-                descriptor = match.group(1)
-                break
+    out = []
+    for start, end in merged[:max_hits]:
+        out.append(f"\n--- lines {start + 1}-{end} ---")
+        out.extend(f"{i + 1}: {lines[i]}" for i in range(start, end))
 
-        methods.append({
-            "header": header,
-            "descriptor": descriptor,
-            "start_line": start + 1,
-            "lines": block,
-            "text": "\n".join(block),
-        })
+    omitted = max(0, len(merged) - max_hits)
+    if omitted:
+        out.append(f"\n[Omitted {omitted} additional matching blocks]")
+    return "\n".join(out) if out else "[No matching lines]"
 
-    return methods
+def inspect_json(path: Path) -> str:
+    if not path.is_file():
+        return f"[NOT FOUND] {path.relative_to(ROOT)}"
 
+    raw = read_text(path)
+    try:
+        obj = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        return f"File exists but is not valid JSON: {exc}\nFirst 2000 chars:\n{raw[:2000]}"
 
-def find_field_accesses(methods: list[dict]) -> list[dict]:
-    """
-    Извлекает getfield/putfield/getstatic/putstatic,
-    сохраняя метод, строку и окружающий контекст.
-    """
-    results = []
-    instruction_re = re.compile(
-        r"^\s*(\d+):\s+"
-        r"(getfield|putfield|getstatic|putstatic)\s+"
-        r"#\d+.*?//\s*Field\s+(.+?)\s*$"
-    )
-
-    for method in methods:
-        for i, line in enumerate(method["lines"]):
-            match = instruction_re.match(line)
-            if not match:
-                continue
-
-            offset, opcode, raw_field = match.groups()
-            field = normalize_field(raw_field)
-            simple_name = field.split(":")[0].split(".")[-1]
-
-            # Берём целевые поля и похожие записи/чтения массивов.
-            relevant = (
-                field in TARGET_FIELDS
-                or simple_name in TARGET_NAMES
-                or (
-                    simple_name == "o"
-                    and opcode in {"putfield", "getfield"}
-                )
-            )
-            if not relevant:
-                continue
-
-            context_start = max(0, i - 5)
-            context_end = min(len(method["lines"]), i + 4)
-            context = " | ".join(
-                x.strip() for x in method["lines"][context_start:context_end]
-            )
-
-            results.append({
-                "method": method["header"],
-                "descriptor": method["descriptor"],
-                "method_start_line": method["start_line"],
-                "instruction_offset": offset,
-                "opcode": opcode,
-                "field": field,
-                "context": context,
-            })
-
-    return results
-
-
-def find_method_calls(methods: list[dict]) -> list[dict]:
-    """Собирает вызовы методов из invoke-инструкций."""
-    results = []
-    invoke_re = re.compile(
-        r"^\s*(\d+):\s+(invoke\w+)\s+#\d+.*?//\s*Method\s+(.+?)\s*$"
-    )
-
-    for method in methods:
-        for line in method["lines"]:
-            match = invoke_re.match(line)
-            if not match:
-                continue
-
-            offset, opcode, target = match.groups()
-            results.append({
-                "method": method["header"],
-                "offset": offset,
-                "opcode": opcode,
-                "target": target.strip(),
-            })
-
-    return results
-
-
-def find_relevant_methods(methods: list[dict]) -> list[dict]:
-    """
-    Отбирает методы, где встречаются целевые поля или загрузка изображений.
-    """
-    selected = []
-
-    for method in methods:
-        text = method["text"]
-        reasons = []
-
-        for field in sorted(TARGET_FIELDS):
-            if field in text:
-                reasons.append(field)
-
-        if "Image.createImage" in text:
-            reasons.append("Image.createImage")
-        if "drawImage" in text or "drawRegion" in text:
-            reasons.append("drawImage/drawRegion")
-
-        if reasons:
-            selected.append({
-                "header": method["header"],
-                "descriptor": method["descriptor"],
-                "line": method["start_line"],
-                "reasons": sorted(set(reasons)),
-                "text": text,
-            })
-
-    return selected
-
-
-def walk_for_record(obj, target_key="record_154", path="$"):
-    """
-    Находит record_154 в JSON независимо от глубины вложенности.
-    """
-    found = []
+    lines = [
+        f"File: {path.relative_to(ROOT)}",
+        f"Root type: {type(obj).__name__}",
+    ]
 
     if isinstance(obj, dict):
+        lines.append("Top-level keys: " + ", ".join(map(str, list(obj)[:100])))
         for key, value in obj.items():
-            child_path = f"{path}.{key}"
-            if key == target_key and isinstance(value, dict):
-                found.append((child_path, value))
-            found.extend(walk_for_record(value, target_key, child_path))
-
+            if isinstance(value, list):
+                lines.append(f"{key}: list, {len(value)} items")
+            elif isinstance(value, dict):
+                lines.append(f"{key}: object, {len(value)} keys")
+            else:
+                lines.append(f"{key}: {type(value).__name__} = {str(value)[:160]}")
     elif isinstance(obj, list):
-        for i, value in enumerate(obj):
-            found.extend(
-                walk_for_record(value, target_key, f"{path}[{i}]")
-            )
+        lines.append(f"List length: {len(obj)}")
+        for item in obj[:5]:
+            lines.append(json.dumps(item, ensure_ascii=False)[:1000])
 
-    return found
+    return "\n".join(lines)
 
+def inspect_csv(path: Path) -> str:
+    if not path.is_file():
+        return f"[NOT FOUND] {path.relative_to(ROOT)}"
 
-def decode_record(record: dict) -> tuple[int | None, list[int]]:
-    offset = record.get("offset")
-    raw = record.get("bytes", [])
+    try:
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            sample = handle.read(4096)
+            handle.seek(0)
+            dialect = csv.Sniffer().sniff(sample) if sample.strip() else csv.excel
+            reader = csv.DictReader(handle, dialect=dialect)
+            rows = list(reader)
+        out = [
+            f"File: {path.relative_to(ROOT)}",
+            f"Rows: {len(rows)}",
+            f"Columns: {reader.fieldnames}",
+        ]
+        for row in rows[:8]:
+            out.append(json.dumps(row, ensure_ascii=False))
+        return "\n".join(out)
+    except Exception as exc:
+        return f"CSV inspection failed: {exc}"
 
-    if isinstance(raw, str):
-        # Поддерживаем hex-строки с пробелами и префиксом 0x.
-        cleaned = re.sub(r"[^0-9a-fA-F]", "", raw)
-        if len(cleaned) % 2 == 1:
-            cleaned = "0" + cleaned
-        data = bytes.fromhex(cleaned) if cleaned else b""
-        values = list(data)
-    elif isinstance(raw, list):
-        values = []
-        for item in raw:
-            if isinstance(item, int):
-                values.append(item & 0xFF)
-            elif isinstance(item, str):
+def inventory() -> str:
+    roots = [
+        ANALYSIS / "a_dump",
+        ANALYSIS / "pd0_tables",
+        ANALYSIS / "bytecode",
+        ROOT / "tools",
+    ]
+    out = []
+    for folder in roots:
+        out.append(f"\n{folder.relative_to(ROOT)}/")
+        if not folder.exists():
+            out.append("  [directory missing]")
+            continue
+        for path in sorted(folder.rglob("*")):
+            if path.is_file():
                 try:
-                    values.append(int(item, 0) & 0xFF)
-                except ValueError:
-                    pass
-    else:
-        values = []
+                    size = path.stat().st_size
+                except OSError:
+                    size = -1
+                out.append(f"  {path.relative_to(ROOT)} ({size} bytes)")
+    return "\n".join(out)
 
-    try:
-        offset = int(offset) if offset is not None else None
-    except (TypeError, ValueError):
-        offset = None
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Build a single report of animation and sprite evidence."
+    )
+    parser.add_argument(
+        "--output", default=str(OUTPUT),
+        help="Report path (default: analysis/animation_report.txt)",
+    )
+    args = parser.parse_args()
+    output = Path(args.output)
+    if not output.is_absolute():
+        output = ROOT / output
 
-    return offset, values
-
-
-def write_record_report(data: dict) -> str:
-    matches = walk_for_record(data)
-    output = [
-        "АНАЛИЗ RECORD 154",
-        "=" * 60,
-        f"Файл: {DUMP_JSON.relative_to(ROOT)}",
-        f"Найдено записей record_154: {len(matches)}",
-        "",
+    parts = [
+        "PREHISTORIC TRIBES — ANIMATION RESEARCH REPORT",
+        f"Generated: {datetime.now().astimezone().isoformat(timespec='seconds')}",
+        f"Repository root: {ROOT}",
+        "\nThis report gathers evidence; it does not modify game code or source dumps.",
+        section("1. PROJECT FILE INVENTORY", inventory()),
     ]
 
-    if not matches:
-        output += [
-            "Запись record_154 не найдена по ожидаемому ключу.",
-            "Проверьте структуру a_dump.json.",
-            "Верхний уровень JSON:",
-            ", ".join(str(k) for k in data.keys())
-            if isinstance(data, dict) else type(data).__name__,
-        ]
-        return "\n".join(output) + "\n"
+    for name in TARGETS:
+        path = ANALYSIS / name
+        parts.append(section(
+            f"2. EVIDENCE: {name}",
+            find_context(
+                path,
+                ["154", "7587", "pi8", "pi9", "pi0",
+                 "Field o:B", "Field q:B", "Field ai:B",
+                 "drawRegion", "drawImage", "createImage"],
+            ),
+        ))
 
-    for path, record in matches:
-        offset, values = decode_record(record)
-        output += [
-            f"Путь JSON: {path}",
-            f"Offset: {offset}",
-            f"Длина из JSON: {record.get('length', 'не указана')}",
-            f"Количество декодированных байтов: {len(values)}",
-            f"Байты: {values}",
-            "Hex: " + bytes(values).hex(),
-            "",
-            "Индексы внутри записи:",
-        ]
+    g_path = ANALYSIS / "bytecode" / "g.txt"
+    parts.append(section(
+        "3. MAIN GAME CLASS — ANIMATION AND DRAWING",
+        find_context(
+            g_path,
+            ["private void U()", "final void b(int)",
+             "private void c(byte)", "drawRegion", "drawImage",
+             "Field o:B", "Field q:B", "Field ai:B"],
+            radius=5,
+            max_hits=100,
+        ),
+    ))
 
-        for i, value in enumerate(values):
-            absolute = offset + i if offset is not None else "?"
-            output.append(
-                f"  q={i:3d}  абсолютное смещение={str(absolute):>6}  "
-                f"unsigned={value:3d}  signed={value if value < 128 else value - 256:4d}"
-            )
+    dump_json = ANALYSIS / "a_dump" / "a_dump.json"
+    parts.append(section("4. RESOURCE /a JSON STRUCTURE", inspect_json(dump_json)))
 
-        output.append("")
-        output.append(
-            "Важно: индекс записи в JSON и индекс кадра — не одно и то же. "
-            "Значения интерпретируются только после подтверждения формулы "
-            "в байткоде."
-        )
-        output.append("")
+    records_csv = ANALYSIS / "a_dump" / "a_records.csv"
+    parts.append(section("5. RESOURCE /a RECORDS CSV", inspect_csv(records_csv)))
 
-    return "\n".join(output) + "\n"
+    csv_dir = ANALYSIS / "pd0_tables"
+    if csv_dir.exists():
+        for path in sorted(csv_dir.glob("j_*.csv")):
+            parts.append(section(
+                f"6. SPRITE TABLE: {path.name}",
+                inspect_csv(path),
+            ))
 
-
-def main() -> int:
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-
-    try:
-        bytecode_text = read_text(BYTECODE)
-        json_text = read_text(DUMP_JSON)
-        dump_data = json.loads(json_text)
-    except (FileNotFoundError, json.JSONDecodeError) as exc:
-        print(f"ОШИБКА: {exc}", file=sys.stderr)
-        print(
-            "Проверь пути analysis/bytecode/g.txt и "
-            "analysis/a_dump/a_dump.json.",
-            file=sys.stderr,
-        )
-        return 1
-
-    methods = parse_methods(bytecode_text)
-    accesses = find_field_accesses(methods)
-    calls = find_method_calls(methods)
-    relevant = find_relevant_methods(methods)
-
-    with FIELDS_CSV.open("w", newline="", encoding="utf-8-sig") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=[
-                "method", "descriptor", "method_start_line",
-                "instruction_offset", "opcode", "field", "context",
-            ],
-        )
-        writer.writeheader()
-        writer.writerows(accesses)
-
-    RECORD_REPORT.write_text(
-        write_record_report(dump_data), encoding="utf-8"
+    # Search the repository's text/CSV/JSON files for the most relevant clues.
+    matches = []
+    excluded_parts = {".git", ".venv", "__pycache__", "node_modules"}
+    candidate_files = (
+        p for p in ROOT.rglob("*")
+        if p.is_file()
+        and not excluded_parts.intersection(p.parts)
+        and p.suffix.lower() in {".txt", ".csv", ".json", ".py", ".md"}
+        and p != output
     )
 
-    field_counts = Counter(
-        (row["field"], row["opcode"]) for row in accesses
-    )
+    for path in candidate_files:
+        try:
+            if path.stat().st_size > 5_000_000:
+                continue
+            text = read_text(path)
+        except OSError:
+            continue
 
-    report = [
-        "PREHISTORIC TRIBES v0.1.38 — ANIMATION ANALYSIS",
-        "=" * 72,
-        "",
-        f"Байткод: {BYTECODE.relative_to(ROOT)}",
-        f"Дамп ресурса: {DUMP_JSON.relative_to(ROOT)}",
-        "",
-        "1. ОБЩАЯ СТАТИСТИКА",
-        "-" * 72,
-        f"Методов распознано: {len(methods)}",
-        f"Обращений к интересующим полям: {len(accesses)}",
-        f"Методов с целевыми полями/отрисовкой: {len(relevant)}",
-        f"Вызовов методов найдено: {len(calls)}",
-        "",
-        "2. ЧТЕНИЕ И ЗАПИСЬ ПОЛЕЙ",
-        "-" * 72,
+        for number, line in enumerate(text.splitlines(), 1):
+            if any(pattern.search(line) for pattern in PATTERNS):
+                matches.append(
+                    f"{path.relative_to(ROOT)}:{number}: {line.strip()[:350]}"
+                )
+
+    counts = Counter(line.split(":", 1)[0] for line in matches)
+    summary = [
+        f"Matching lines found: {len(matches)}",
+        "Files with most matches:",
     ]
+    summary.extend(f"  {name}: {count}" for name, count in counts.most_common(30))
+    summary.append("\nMatching lines:")
+    summary.extend(matches[:1500])
+    if len(matches) > 1500:
+        summary.append(f"\n[Truncated: {len(matches) - 1500} more matching lines]")
 
-    if field_counts:
-        for (field, opcode), count in sorted(field_counts.items()):
-            report.append(f"{field:16} {opcode:12} {count:5}")
-    else:
-        report.append(
-            "Не удалось распознать обращения к полям. "
-            "Возможно, формат комментариев байткода отличается."
-        )
+    parts.append(section("7. CROSS-REPOSITORY SEARCH", "\n".join(summary)))
+    parts.append(section(
+        "8. NEXT INVESTIGATION CHECKLIST",
+        "\n".join([
+            "- Confirm the exact resource /a record at index 154.",
+            "- Separate byte-array offsets from short-array offsets.",
+            "- Trace every write to fields o, q, and ai.",
+            "- Identify callers of c(byte) and the selected pi8 record.",
+            "- Compare runtime frame selection with resource record lengths.",
+            "- Do not infer animation order from CSV row order alone.",
+        ]),
+    ))
 
-    report += [
-        "",
-        "3. МЕТОДЫ, СВЯЗАННЫЕ С КАДРАМИ И ОТРИСОВКОЙ",
-        "-" * 72,
-    ]
-
-    for method in relevant:
-        report += [
-            f"[строка {method['line']}] {method['header']}",
-            f"  дескриптор: {method['descriptor']}",
-            f"  признаки: {', '.join(method['reasons'])}",
-        ]
-
-    report += [
-        "",
-        "4. ВЫЗОВЫ h(byte), b(int), U() И c(byte)",
-        "-" * 72,
-    ]
-
-    wanted = ("h(byte)", "b(int)", "U()", "c(byte)")
-    matching_calls = [
-        call for call in calls
-        if any(name in call["target"] for name in wanted)
-    ]
-
-    for call in matching_calls:
-        report.append(
-            f"{call['method']} @ {call['offset']}: "
-            f"{call['opcode']} -> {call['target']}"
-        )
-
-    if not matching_calls:
-        report.append(
-            "Точные имена вызовов не распознаны; см. полный CSV "
-            "и исходный g.txt."
-        )
-
-    report += [
-        "",
-        "5. ФАЙЛЫ РЕЗУЛЬТАТА",
-        "-" * 72,
-        str(REPORT.relative_to(ROOT)),
-        str(FIELDS_CSV.relative_to(ROOT)),
-        str(RECORD_REPORT.relative_to(ROOT)),
-        "",
-        "ОГРАНИЧЕНИЯ",
-        "-" * 72,
-        "Это статический первичный анализ, а не окончательная расшифровка.",
-        "Обфусцированные имена полей могут повторяться у полей разных типов.",
-        "Числовое значение байта не считается индексом кадра без подтверждения.",
-        "Скрипт не меняет игровые ресурсы и исходный код.",
-        "",
-    ]
-
-    REPORT.write_text("\n".join(report), encoding="utf-8")
-
-    print("Анализ завершён.")
-    print(f"Методов распознано: {len(methods)}")
-    print(f"Обращений к полям: {len(accesses)}")
-    print(f"Релевантных методов: {len(relevant)}")
-    print()
-    print(f"Отчёт: {REPORT.relative_to(ROOT)}")
-    print(f"Поля CSV: {FIELDS_CSV.relative_to(ROOT)}")
-    print(f"Record 154: {RECORD_REPORT.relative_to(ROOT)}")
-    return 0
-
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(parts) + "\n", encoding="utf-8")
+    print(f"Report written: {output}")
+    print(f"Size: {output.stat().st_size:,} bytes")
+    print("No game source files were changed.")
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()
