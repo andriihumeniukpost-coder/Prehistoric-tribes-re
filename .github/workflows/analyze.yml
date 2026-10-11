@@ -15,6 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Python dependencies
+        run: python3 -m pip install Pillow
+
       - name: Run JAR analysis
         run: python3 tools/analyze_jar.py
 
@@ -23,6 +26,9 @@ jobs:
 
       - name: Dump /pd0 graphics tables
         run: python3 tools/dump_pd0.py
+
+      - name: Extract sprites and map commands
+        run: python3 tools/extract_sprites.py
 
       - name: Commit analysis reports
         run: |
@@ -33,7 +39,9 @@ jobs:
           git add analysis/bytecode/g.txt
           git add analysis/pd0_graphics.txt
           git add analysis/pd0_tables/
+          git add analysis/sprites/
+          git add analysis/pd0_sprite_commands.csv
 
-          git diff --cached --quiet || git commit -m "Dump game bytecode and pd0 graphics tables"
+          git diff --cached --quiet || git commit -m "Extract sprites and map graphics commands"
 
           git push
