@@ -16,74 +16,74 @@ READ MATCHES: 109
 METHODS: 51
 
 EXAMPLE 1 | private void o(); | PC 73
-    INSTRUCTION:       73: baload
+    INSTRUCTION:         73: baload
 
 EXAMPLE 2 | private void p(); | PC 15
-    INSTRUCTION:       15: baload
+    INSTRUCTION:         15: baload
 
 EXAMPLE 3 | private byte a(int, int, int); | PC 39
-    INSTRUCTION:       39: baload
+    INSTRUCTION:         39: baload
 
 EXAMPLE 4 | private void g(int); | PC 151
-    INSTRUCTION:      151: baload
+    INSTRUCTION:        151: baload
 
 EXAMPLE 5 | private void g(int); | PC 247
-    INSTRUCTION:      247: baload
+    INSTRUCTION:        247: baload
 
 EXAMPLE 6 | private void b(int, int); | PC 196
-    INSTRUCTION:      196: baload
+    INSTRUCTION:        196: baload
 
 EXAMPLE 7 | private void b(int, int); | PC 212
-    INSTRUCTION:      212: baload
+    INSTRUCTION:        212: baload
 
 EXAMPLE 8 | private void q(); | PC 137
-    INSTRUCTION:      137: baload
+    INSTRUCTION:        137: baload
 
 EXAMPLE 9 | private void q(); | PC 675
-    INSTRUCTION:      675: baload
+    INSTRUCTION:        675: baload
 
 EXAMPLE 10 | private void r(); | PC 424
-    INSTRUCTION:      424: baload
+    INSTRUCTION:        424: baload
 
 EXAMPLE 11 | private void b(boolean); | PC 165
-    INSTRUCTION:      165: baload
+    INSTRUCTION:        165: baload
 
 EXAMPLE 12 | private boolean a(); | PC 274
-    INSTRUCTION:      274: baload
+    INSTRUCTION:        274: baload
 
 EXAMPLE 13 | private boolean a(); | PC 296
-    INSTRUCTION:      296: baload
+    INSTRUCTION:        296: baload
 
 EXAMPLE 14 | private boolean a(); | PC 551
-    INSTRUCTION:      551: baload
+    INSTRUCTION:        551: baload
 
 EXAMPLE 15 | private void t(); | PC 507
-    INSTRUCTION:      507: baload
+    INSTRUCTION:        507: baload
 
 EXAMPLE 16 | private void t(); | PC 668
-    INSTRUCTION:      668: baload
+    INSTRUCTION:        668: baload
 
 EXAMPLE 17 | private boolean b(); | PC 434
-    INSTRUCTION:      434: baload
+    INSTRUCTION:        434: baload
 
 EXAMPLE 18 | private boolean b(); | PC 484
-    INSTRUCTION:      484: baload
+    INSTRUCTION:        484: baload
 
 EXAMPLE 19 | private boolean b(); | PC 1212
-    INSTRUCTION:     1212: baload
+    INSTRUCTION:       1212: baload
 
 EXAMPLE 20 | private boolean b(); | PC 1358
-    INSTRUCTION:     1358: baload
+    INSTRUCTION:       1358: baload
 
 WRITE MATCHES: 2
 METHODS: 2
 
 EXAMPLE 1 | private void x(); | PC 621
-    INSTRUCTION:      621: bastore
+    INSTRUCTION:        621: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 2 | private void H(); | PC 706
-    INSTRUCTION:      706: bastore
+    INSTRUCTION:        706: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 WRITE VALUE SUMMARY
@@ -97,74 +97,74 @@ READ MATCHES: 109
 METHODS: 51
 
 EXAMPLE 1 | private void o(); | PC 62
-    INSTRUCTION:       62: baload
+    INSTRUCTION:         62: baload
 
 EXAMPLE 2 | private void p(); | PC 31
-    INSTRUCTION:       31: baload
+    INSTRUCTION:         31: baload
 
 EXAMPLE 3 | private byte a(int, int, int); | PC 24
-    INSTRUCTION:       24: baload
+    INSTRUCTION:         24: baload
 
 EXAMPLE 4 | private void g(int); | PC 139
-    INSTRUCTION:      139: baload
+    INSTRUCTION:        139: baload
 
 EXAMPLE 5 | private void g(int); | PC 272
-    INSTRUCTION:      272: baload
+    INSTRUCTION:        272: baload
 
 EXAMPLE 6 | private void b(int, int); | PC 230
-    INSTRUCTION:      230: baload
+    INSTRUCTION:        230: baload
 
 EXAMPLE 7 | private void b(int, int); | PC 247
-    INSTRUCTION:      247: baload
+    INSTRUCTION:        247: baload
 
 EXAMPLE 8 | private void q(); | PC 149
-    INSTRUCTION:      149: baload
+    INSTRUCTION:        149: baload
 
 EXAMPLE 9 | private void q(); | PC 700
-    INSTRUCTION:      700: baload
+    INSTRUCTION:        700: baload
 
 EXAMPLE 10 | private void r(); | PC 449
-    INSTRUCTION:      449: baload
+    INSTRUCTION:        449: baload
 
 EXAMPLE 11 | private void b(boolean); | PC 190
-    INSTRUCTION:      190: baload
+    INSTRUCTION:        190: baload
 
 EXAMPLE 12 | private boolean a(); | PC 262
-    INSTRUCTION:      262: baload
+    INSTRUCTION:        262: baload
 
 EXAMPLE 13 | private boolean a(); | PC 308
-    INSTRUCTION:      308: baload
+    INSTRUCTION:        308: baload
 
 EXAMPLE 14 | private boolean a(); | PC 539
-    INSTRUCTION:      539: baload
+    INSTRUCTION:        539: baload
 
 EXAMPLE 15 | private void t(); | PC 519
-    INSTRUCTION:      519: baload
+    INSTRUCTION:        519: baload
 
 EXAMPLE 16 | private void t(); | PC 693
-    INSTRUCTION:      693: baload
+    INSTRUCTION:        693: baload
 
 EXAMPLE 17 | private boolean b(); | PC 422
-    INSTRUCTION:      422: baload
+    INSTRUCTION:        422: baload
 
 EXAMPLE 18 | private boolean b(); | PC 512
-    INSTRUCTION:      512: baload
+    INSTRUCTION:        512: baload
 
 EXAMPLE 19 | private boolean b(); | PC 1200
-    INSTRUCTION:     1200: baload
+    INSTRUCTION:       1200: baload
 
 EXAMPLE 20 | private boolean b(); | PC 1370
-    INSTRUCTION:     1370: baload
+    INSTRUCTION:       1370: baload
 
 WRITE MATCHES: 2
 METHODS: 2
 
 EXAMPLE 1 | private void x(); | PC 646
-    INSTRUCTION:      646: bastore
+    INSTRUCTION:        646: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 2 | private void H(); | PC 740
-    INSTRUCTION:      740: bastore
+    INSTRUCTION:        740: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 WRITE VALUE SUMMARY
@@ -178,94 +178,94 @@ READ MATCHES: 332
 METHODS: 62
 
 EXAMPLE 1 | private void p(); | PC 146
-    INSTRUCTION:      146: baload
+    INSTRUCTION:        146: baload
 
 EXAMPLE 2 | private void p(); | PC 204
-    INSTRUCTION:      204: baload
+    INSTRUCTION:        204: baload
 
 EXAMPLE 3 | private void p(); | PC 222
-    INSTRUCTION:      222: baload
+    INSTRUCTION:        222: baload
 
 EXAMPLE 4 | private void p(); | PC 240
-    INSTRUCTION:      240: baload
+    INSTRUCTION:        240: baload
 
 EXAMPLE 5 | private void p(); | PC 258
-    INSTRUCTION:      258: baload
+    INSTRUCTION:        258: baload
 
 EXAMPLE 6 | private void p(); | PC 276
-    INSTRUCTION:      276: baload
+    INSTRUCTION:        276: baload
 
 EXAMPLE 7 | private void p(); | PC 294
-    INSTRUCTION:      294: baload
+    INSTRUCTION:        294: baload
 
 EXAMPLE 8 | private void p(); | PC 312
-    INSTRUCTION:      312: baload
+    INSTRUCTION:        312: baload
 
 EXAMPLE 9 | private void p(); | PC 330
-    INSTRUCTION:      330: baload
+    INSTRUCTION:        330: baload
 
 EXAMPLE 10 | private void p(); | PC 364
-    INSTRUCTION:      364: baload
+    INSTRUCTION:        364: baload
 
 EXAMPLE 11 | private void p(); | PC 383
-    INSTRUCTION:      383: baload
+    INSTRUCTION:        383: baload
 
 EXAMPLE 12 | private void p(); | PC 664
-    INSTRUCTION:      664: baload
+    INSTRUCTION:        664: baload
 
 EXAMPLE 13 | private void p(); | PC 682
-    INSTRUCTION:      682: baload
+    INSTRUCTION:        682: baload
 
 EXAMPLE 14 | private void p(); | PC 700
-    INSTRUCTION:      700: baload
+    INSTRUCTION:        700: baload
 
 EXAMPLE 15 | private byte a(int, int, int); | PC 459
-    INSTRUCTION:      459: baload
+    INSTRUCTION:        459: baload
 
 EXAMPLE 16 | private byte a(int, int, int); | PC 626
-    INSTRUCTION:      626: baload
+    INSTRUCTION:        626: baload
 
 EXAMPLE 17 | private void h(int); | PC 94
-    INSTRUCTION:       94: baload
+    INSTRUCTION:         94: baload
 
 EXAMPLE 18 | private void h(int); | PC 116
-    INSTRUCTION:      116: baload
+    INSTRUCTION:        116: baload
 
 EXAMPLE 19 | private void h(int); | PC 133
-    INSTRUCTION:      133: baload
+    INSTRUCTION:        133: baload
 
 EXAMPLE 20 | private void h(int); | PC 667
-    INSTRUCTION:      667: baload
+    INSTRUCTION:        667: baload
 
 WRITE MATCHES: 7
 METHODS: 5
 
 EXAMPLE 1 | private boolean f(); | PC 232
-    INSTRUCTION:      232: bastore
+    INSTRUCTION:        232: bastore
     VALUE CANDIDATE: constant 87
 
 EXAMPLE 2 | private void H(); | PC 1041
-    INSTRUCTION:     1041: bastore
+    INSTRUCTION:       1041: bastore
     VALUE CANDIDATE: constant 87
 
 EXAMPLE 3 | private boolean m(); | PC 169
-    INSTRUCTION:      169: bastore
+    INSTRUCTION:        169: bastore
     VALUE CANDIDATE: constant 87
 
 EXAMPLE 4 | private boolean m(); | PC 728
-    INSTRUCTION:      728: bastore
+    INSTRUCTION:        728: bastore
     VALUE CANDIDATE: constant 87
 
 EXAMPLE 5 | private void Z(); | PC 755
-    INSTRUCTION:      755: bastore
+    INSTRUCTION:        755: bastore
     VALUE CANDIDATE: constant 59
 
 EXAMPLE 6 | private void aw(); | PC 154
-    INSTRUCTION:      154: bastore
+    INSTRUCTION:        154: bastore
     VALUE CANDIDATE: constant 87
 
 EXAMPLE 7 | private void aw(); | PC 376
-    INSTRUCTION:      376: bastore
+    INSTRUCTION:        376: bastore
     VALUE CANDIDATE: constant 69
 
 WRITE VALUE SUMMARY
@@ -281,110 +281,110 @@ READ MATCHES: 70
 METHODS: 25
 
 EXAMPLE 1 | private void r(); | PC 392
-    INSTRUCTION:      392: baload
+    INSTRUCTION:        392: baload
 
 EXAMPLE 2 | final void e(); | PC 505
-    INSTRUCTION:      505: baload
+    INSTRUCTION:        505: baload
 
 EXAMPLE 3 | private boolean a(); | PC 68
-    INSTRUCTION:       68: baload
+    INSTRUCTION:         68: baload
 
 EXAMPLE 4 | private boolean a(); | PC 757
-    INSTRUCTION:      757: baload
+    INSTRUCTION:        757: baload
 
 EXAMPLE 5 | private boolean a(); | PC 775
-    INSTRUCTION:      775: baload
+    INSTRUCTION:        775: baload
 
 EXAMPLE 6 | private boolean a(); | PC 793
-    INSTRUCTION:      793: baload
+    INSTRUCTION:        793: baload
 
 EXAMPLE 7 | private boolean b(); | PC 186
-    INSTRUCTION:      186: baload
+    INSTRUCTION:        186: baload
 
 EXAMPLE 8 | private boolean b(); | PC 455
-    INSTRUCTION:      455: baload
+    INSTRUCTION:        455: baload
 
 EXAMPLE 9 | private void u(); | PC 125
-    INSTRUCTION:      125: baload
+    INSTRUCTION:        125: baload
 
 EXAMPLE 10 | private void u(); | PC 361
-    INSTRUCTION:      361: baload
+    INSTRUCTION:        361: baload
 
 EXAMPLE 11 | private boolean c(); | PC 783
-    INSTRUCTION:      783: baload
+    INSTRUCTION:        783: baload
 
 EXAMPLE 12 | private void v(); | PC 155
-    INSTRUCTION:      155: baload
+    INSTRUCTION:        155: baload
 
 EXAMPLE 13 | private void v(); | PC 250
-    INSTRUCTION:      250: baload
+    INSTRUCTION:        250: baload
 
 EXAMPLE 14 | private void v(); | PC 316
-    INSTRUCTION:      316: baload
+    INSTRUCTION:        316: baload
 
 EXAMPLE 15 | private void w(); | PC 42
-    INSTRUCTION:       42: baload
+    INSTRUCTION:         42: baload
 
 EXAMPLE 16 | private void w(); | PC 164
-    INSTRUCTION:      164: baload
+    INSTRUCTION:        164: baload
 
 EXAMPLE 17 | private void w(); | PC 287
-    INSTRUCTION:      287: baload
+    INSTRUCTION:        287: baload
 
 EXAMPLE 18 | private void w(); | PC 330
-    INSTRUCTION:      330: baload
+    INSTRUCTION:        330: baload
 
 EXAMPLE 19 | private void w(); | PC 353
-    INSTRUCTION:      353: baload
+    INSTRUCTION:        353: baload
 
 EXAMPLE 20 | private void w(); | PC 371
-    INSTRUCTION:      371: baload
+    INSTRUCTION:        371: baload
 
 WRITE MATCHES: 11
 METHODS: 9
 
 EXAMPLE 1 | private void v(); | PC 210
-    INSTRUCTION:      210: bastore
+    INSTRUCTION:        210: bastore
     VALUE CANDIDATE: constant 34
 
 EXAMPLE 2 | private boolean f(); | PC 370
-    INSTRUCTION:      370: bastore
+    INSTRUCTION:        370: bastore
     VALUE CANDIDATE: constant -109
 
 EXAMPLE 3 | private boolean f(); | PC 852
-    INSTRUCTION:      852: bastore
+    INSTRUCTION:        852: bastore
     VALUE CANDIDATE: constant -102
 
 EXAMPLE 4 | private boolean b(int); | PC 222
-    INSTRUCTION:      222: bastore
+    INSTRUCTION:        222: bastore
     VALUE CANDIDATE: constant -111
 
 EXAMPLE 5 | private boolean a(byte, boolean); | PC 533
-    INSTRUCTION:      533: bastore
+    INSTRUCTION:        533: bastore
     VALUE CANDIDATE: constant -108
 
 EXAMPLE 6 | private boolean h(); | PC 570
-    INSTRUCTION:      570: bastore
+    INSTRUCTION:        570: bastore
     VALUE CANDIDATE: constant -107
 
 EXAMPLE 7 | private boolean h(); | PC 689
-    INSTRUCTION:      689: bastore
+    INSTRUCTION:        689: bastore
     VALUE CANDIDATE: constant -106
 
 EXAMPLE 8 | private void H(); | PC 929
-    INSTRUCTION:      929: bastore
+    INSTRUCTION:        929: bastore
     VALUE CANDIDATE: constant -95
 
 EXAMPLE 9 | private boolean i(); | PC 978
-    INSTRUCTION:      978: bastore
+    INSTRUCTION:        978: bastore
     VALUE CANDIDATE: constant -110
 
 EXAMPLE 10 | private boolean n(); | PC 523
-    INSTRUCTION:      523: bastore
+    INSTRUCTION:        523: bastore
     VALUE CANDIDATE: constant 40
 
 EXAMPLE 11 | private void Z(); | PC 726
-    INSTRUCTION:      726: bastore
+    INSTRUCTION:        726: bastore
     VALUE CANDIDATE: constant 71
 
 WRITE VALUE SUMMARY
@@ -408,146 +408,146 @@ READ MATCHES: 22
 METHODS: 17
 
 EXAMPLE 1 | private void o(); | PC 99
-    INSTRUCTION:       99: baload
+    INSTRUCTION:         99: baload
 
 EXAMPLE 2 | private void p(); | PC 534
-    INSTRUCTION:      534: baload
+    INSTRUCTION:        534: baload
 
 EXAMPLE 3 | private void g(int); | PC 178
-    INSTRUCTION:      178: baload
+    INSTRUCTION:        178: baload
 
 EXAMPLE 4 | private void h(int); | PC 32
-    INSTRUCTION:       32: baload
+    INSTRUCTION:         32: baload
 
 EXAMPLE 5 | private void q(); | PC 396
-    INSTRUCTION:      396: baload
+    INSTRUCTION:        396: baload
 
 EXAMPLE 6 | private void t(); | PC 93
-    INSTRUCTION:       93: baload
+    INSTRUCTION:         93: baload
 
 EXAMPLE 7 | private boolean b(); | PC 473
-    INSTRUCTION:      473: baload
+    INSTRUCTION:        473: baload
 
 EXAMPLE 8 | private boolean b(); | PC 791
-    INSTRUCTION:      791: baload
+    INSTRUCTION:        791: baload
 
 EXAMPLE 9 | private void x(); | PC 620
-    INSTRUCTION:      620: baload
+    INSTRUCTION:        620: baload
 
 EXAMPLE 10 | private boolean e(); | PC 80
-    INSTRUCTION:       80: baload
+    INSTRUCTION:         80: baload
 
 EXAMPLE 11 | private void y(); | PC 381
-    INSTRUCTION:      381: baload
+    INSTRUCTION:        381: baload
 
 EXAMPLE 12 | final boolean a(int, int, int, int); | PC 849
-    INSTRUCTION:      849: baload
+    INSTRUCTION:        849: baload
 
 EXAMPLE 13 | private boolean k(); | PC 440
-    INSTRUCTION:      440: baload
+    INSTRUCTION:        440: baload
 
 EXAMPLE 14 | private boolean k(); | PC 550
-    INSTRUCTION:      550: baload
+    INSTRUCTION:        550: baload
 
 EXAMPLE 15 | private void K(); | PC 502
-    INSTRUCTION:      502: baload
+    INSTRUCTION:        502: baload
 
 EXAMPLE 16 | private boolean m(); | PC 227
-    INSTRUCTION:      227: baload
+    INSTRUCTION:        227: baload
 
 EXAMPLE 17 | private boolean m(); | PC 572
-    INSTRUCTION:      572: baload
+    INSTRUCTION:        572: baload
 
 EXAMPLE 18 | private void a(byte, byte, int, int); | PC 60
-    INSTRUCTION:       60: baload
+    INSTRUCTION:         60: baload
 
 EXAMPLE 19 | private void am(); | PC 83
-    INSTRUCTION:       83: baload
+    INSTRUCTION:         83: baload
 
 EXAMPLE 20 | private void f(boolean); | PC 308
-    INSTRUCTION:      308: baload
+    INSTRUCTION:        308: baload
 
 WRITE MATCHES: 24
 METHODS: 19
 
 EXAMPLE 1 | private void p(); | PC 617
-    INSTRUCTION:      617: bastore
+    INSTRUCTION:        617: bastore
     VALUE CANDIDATE: field l:B
 
 EXAMPLE 2 | private void g(int); | PC 248
-    INSTRUCTION:      248: bastore
+    INSTRUCTION:        248: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 3 | private void q(); | PC 676
-    INSTRUCTION:      676: bastore
+    INSTRUCTION:        676: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 4 | private void r(); | PC 425
-    INSTRUCTION:      425: bastore
+    INSTRUCTION:        425: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 5 | private void b(boolean); | PC 166
-    INSTRUCTION:      166: bastore
+    INSTRUCTION:        166: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 6 | private int a(int, int, int); | PC 395
-    INSTRUCTION:      395: bastore
+    INSTRUCTION:        395: bastore
     VALUE CANDIDATE: field v:B
 
 EXAMPLE 7 | private void t(); | PC 669
-    INSTRUCTION:      669: bastore
+    INSTRUCTION:        669: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 8 | private boolean b(); | PC 970
-    INSTRUCTION:      970: bastore
+    INSTRUCTION:        970: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 9 | private boolean b(); | PC 1127
-    INSTRUCTION:     1127: bastore
+    INSTRUCTION:       1127: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 10 | private boolean d(); | PC 84
-    INSTRUCTION:       84: bastore
+    INSTRUCTION:         84: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 11 | private void F(); | PC 372
-    INSTRUCTION:      372: bastore
+    INSTRUCTION:        372: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 12 | private void N(); | PC 414
-    INSTRUCTION:      414: bastore
+    INSTRUCTION:        414: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 13 | private void O(); | PC 95
-    INSTRUCTION:       95: bastore
+    INSTRUCTION:         95: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 14 | private void O(); | PC 793
-    INSTRUCTION:      793: bastore
+    INSTRUCTION:        793: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 15 | private void O(); | PC 857
-    INSTRUCTION:      857: bastore
+    INSTRUCTION:        857: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 16 | final boolean a(int); | PC 832
-    INSTRUCTION:      832: bastore
+    INSTRUCTION:        832: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 17 | private boolean m(); | PC 96
-    INSTRUCTION:       96: bastore
+    INSTRUCTION:         96: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 18 | private boolean m(); | PC 506
-    INSTRUCTION:      506: bastore
+    INSTRUCTION:        506: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 19 | private boolean n(); | PC 381
-    INSTRUCTION:      381: bastore
+    INSTRUCTION:        381: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 20 | private boolean n(); | PC 473
-    INSTRUCTION:      473: bastore
+    INSTRUCTION:        473: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 WRITE VALUE SUMMARY
@@ -564,146 +564,146 @@ READ MATCHES: 22
 METHODS: 17
 
 EXAMPLE 1 | private void o(); | PC 86
-    INSTRUCTION:       86: baload
+    INSTRUCTION:         86: baload
 
 EXAMPLE 2 | private void p(); | PC 563
-    INSTRUCTION:      563: baload
+    INSTRUCTION:        563: baload
 
 EXAMPLE 3 | private void g(int); | PC 191
-    INSTRUCTION:      191: baload
+    INSTRUCTION:        191: baload
 
 EXAMPLE 4 | private void h(int); | PC 49
-    INSTRUCTION:       49: baload
+    INSTRUCTION:         49: baload
 
 EXAMPLE 5 | private void q(); | PC 431
-    INSTRUCTION:      431: baload
+    INSTRUCTION:        431: baload
 
 EXAMPLE 6 | private void t(); | PC 106
-    INSTRUCTION:      106: baload
+    INSTRUCTION:        106: baload
 
 EXAMPLE 7 | private boolean b(); | PC 500
-    INSTRUCTION:      500: baload
+    INSTRUCTION:        500: baload
 
 EXAMPLE 8 | private boolean b(); | PC 820
-    INSTRUCTION:      820: baload
+    INSTRUCTION:        820: baload
 
 EXAMPLE 9 | private void x(); | PC 645
-    INSTRUCTION:      645: baload
+    INSTRUCTION:        645: baload
 
 EXAMPLE 10 | private boolean e(); | PC 107
-    INSTRUCTION:      107: baload
+    INSTRUCTION:        107: baload
 
 EXAMPLE 11 | private void y(); | PC 408
-    INSTRUCTION:      408: baload
+    INSTRUCTION:        408: baload
 
 EXAMPLE 12 | final boolean a(int, int, int, int); | PC 875
-    INSTRUCTION:      875: baload
+    INSTRUCTION:        875: baload
 
 EXAMPLE 13 | private boolean k(); | PC 426
-    INSTRUCTION:      426: baload
+    INSTRUCTION:        426: baload
 
 EXAMPLE 14 | private boolean k(); | PC 563
-    INSTRUCTION:      563: baload
+    INSTRUCTION:        563: baload
 
 EXAMPLE 15 | private void K(); | PC 531
-    INSTRUCTION:      531: baload
+    INSTRUCTION:        531: baload
 
 EXAMPLE 16 | private boolean m(); | PC 254
-    INSTRUCTION:      254: baload
+    INSTRUCTION:        254: baload
 
 EXAMPLE 17 | private boolean m(); | PC 600
-    INSTRUCTION:      600: baload
+    INSTRUCTION:        600: baload
 
 EXAMPLE 18 | private void a(byte, byte, int, int); | PC 79
-    INSTRUCTION:       79: baload
+    INSTRUCTION:         79: baload
 
 EXAMPLE 19 | private void am(); | PC 54
-    INSTRUCTION:       54: baload
+    INSTRUCTION:         54: baload
 
 EXAMPLE 20 | private void f(boolean); | PC 338
-    INSTRUCTION:      338: baload
+    INSTRUCTION:        338: baload
 
 WRITE MATCHES: 24
 METHODS: 19
 
 EXAMPLE 1 | private void p(); | PC 634
-    INSTRUCTION:      634: bastore
+    INSTRUCTION:        634: bastore
     VALUE CANDIDATE: field m:B
 
 EXAMPLE 2 | private void g(int); | PC 273
-    INSTRUCTION:      273: bastore
+    INSTRUCTION:        273: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 3 | private void q(); | PC 701
-    INSTRUCTION:      701: bastore
+    INSTRUCTION:        701: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 4 | private void r(); | PC 450
-    INSTRUCTION:      450: bastore
+    INSTRUCTION:        450: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 5 | private void b(boolean); | PC 191
-    INSTRUCTION:      191: bastore
+    INSTRUCTION:        191: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 6 | private int a(int, int, int); | PC 412
-    INSTRUCTION:      412: bastore
+    INSTRUCTION:        412: bastore
     VALUE CANDIDATE: field w:B
 
 EXAMPLE 7 | private void t(); | PC 694
-    INSTRUCTION:      694: bastore
+    INSTRUCTION:        694: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 8 | private boolean b(); | PC 996
-    INSTRUCTION:      996: bastore
+    INSTRUCTION:        996: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 9 | private boolean b(); | PC 1153
-    INSTRUCTION:     1153: bastore
+    INSTRUCTION:       1153: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 10 | private boolean d(); | PC 105
-    INSTRUCTION:      105: bastore
+    INSTRUCTION:        105: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 11 | private void F(); | PC 397
-    INSTRUCTION:      397: bastore
+    INSTRUCTION:        397: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 12 | private void N(); | PC 448
-    INSTRUCTION:      448: bastore
+    INSTRUCTION:        448: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 13 | private void O(); | PC 120
-    INSTRUCTION:      120: bastore
+    INSTRUCTION:        120: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 14 | private void O(); | PC 819
-    INSTRUCTION:      819: bastore
+    INSTRUCTION:        819: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 15 | private void O(); | PC 892
-    INSTRUCTION:      892: bastore
+    INSTRUCTION:        892: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 16 | final boolean a(int); | PC 857
-    INSTRUCTION:      857: bastore
+    INSTRUCTION:        857: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 17 | private boolean m(); | PC 121
-    INSTRUCTION:      121: bastore
+    INSTRUCTION:        121: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 18 | private boolean m(); | PC 528
-    INSTRUCTION:      528: bastore
+    INSTRUCTION:        528: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 19 | private boolean n(); | PC 416
-    INSTRUCTION:      416: bastore
+    INSTRUCTION:        416: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 20 | private boolean n(); | PC 498
-    INSTRUCTION:      498: bastore
+    INSTRUCTION:        498: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 WRITE VALUE SUMMARY
@@ -720,98 +720,98 @@ READ MATCHES: 171
 METHODS: 34
 
 EXAMPLE 1 | private void p(); | PC 173
-    INSTRUCTION:      173: baload
+    INSTRUCTION:        173: baload
 
 EXAMPLE 2 | private void p(); | PC 188
-    INSTRUCTION:      188: baload
+    INSTRUCTION:        188: baload
 
 EXAMPLE 3 | private void q(); | PC 13
-    INSTRUCTION:       13: baload
+    INSTRUCTION:         13: baload
 
 EXAMPLE 4 | private void q(); | PC 251
-    INSTRUCTION:      251: baload
+    INSTRUCTION:        251: baload
 
 EXAMPLE 5 | private void r(); | PC 173
-    INSTRUCTION:      173: baload
+    INSTRUCTION:        173: baload
 
 EXAMPLE 6 | private int a(int, int, int); | PC 16
-    INSTRUCTION:       16: baload
+    INSTRUCTION:         16: baload
 
 EXAMPLE 7 | private void t(); | PC 440
-    INSTRUCTION:      440: baload
+    INSTRUCTION:        440: baload
 
 EXAMPLE 8 | private void t(); | PC 492
-    INSTRUCTION:      492: baload
+    INSTRUCTION:        492: baload
 
 EXAMPLE 9 | private boolean b(); | PC 528
-    INSTRUCTION:      528: baload
+    INSTRUCTION:        528: baload
 
 EXAMPLE 10 | private boolean b(); | PC 545
-    INSTRUCTION:      545: baload
+    INSTRUCTION:        545: baload
 
 EXAMPLE 11 | private boolean b(); | PC 1287
-    INSTRUCTION:     1287: baload
+    INSTRUCTION:       1287: baload
 
 EXAMPLE 12 | private boolean b(); | PC 1310
-    INSTRUCTION:     1310: baload
+    INSTRUCTION:       1310: baload
 
 EXAMPLE 13 | private void v(); | PC 451
-    INSTRUCTION:      451: baload
+    INSTRUCTION:        451: baload
 
 EXAMPLE 14 | private void v(); | PC 478
-    INSTRUCTION:      478: baload
+    INSTRUCTION:        478: baload
 
 EXAMPLE 15 | private void v(); | PC 500
-    INSTRUCTION:      500: baload
+    INSTRUCTION:        500: baload
 
 EXAMPLE 16 | private void w(); | PC 137
-    INSTRUCTION:      137: baload
+    INSTRUCTION:        137: baload
 
 EXAMPLE 17 | private void x(); | PC 19
-    INSTRUCTION:       19: baload
+    INSTRUCTION:         19: baload
 
 EXAMPLE 18 | private void x(); | PC 46
-    INSTRUCTION:       46: baload
+    INSTRUCTION:         46: baload
 
 EXAMPLE 19 | private void x(); | PC 75
-    INSTRUCTION:       75: baload
+    INSTRUCTION:         75: baload
 
 EXAMPLE 20 | private void x(); | PC 114
-    INSTRUCTION:      114: baload
+    INSTRUCTION:        114: baload
 
 WRITE MATCHES: 8
 METHODS: 8
 
 EXAMPLE 1 | private void h(int); | PC 18
-    INSTRUCTION:       18: bastore
+    INSTRUCTION:         18: bastore
     VALUE CANDIDATE: ('loaded-byte',)
 
 EXAMPLE 2 | private void b(boolean); | PC 123
-    INSTRUCTION:      123: bastore
+    INSTRUCTION:        123: bastore
     VALUE CANDIDATE: i2b(field s:I)
 
 EXAMPLE 3 | final boolean a(int, int, int, int); | PC 696
-    INSTRUCTION:      696: bastore
+    INSTRUCTION:        696: bastore
     VALUE CANDIDATE: constant -1
 
 EXAMPLE 4 | private void N(); | PC 463
-    INSTRUCTION:      463: bastore
+    INSTRUCTION:        463: bastore
     VALUE CANDIDATE: constant 0
 
 EXAMPLE 5 | private void O(); | PC 928
-    INSTRUCTION:      928: bastore
+    INSTRUCTION:        928: bastore
     VALUE CANDIDATE: constant -6
 
 EXAMPLE 6 | private void Z(); | PC 630
-    INSTRUCTION:      630: bastore
+    INSTRUCTION:        630: bastore
     VALUE CANDIDATE: i2b(field aH:I)
 
 EXAMPLE 7 | private void am(); | PC 186
-    INSTRUCTION:      186: bastore
+    INSTRUCTION:        186: bastore
     VALUE CANDIDATE: constant -1
 
 EXAMPLE 8 | private void an(); | PC 301
-    INSTRUCTION:      301: bastore
+    INSTRUCTION:        301: bastore
     VALUE CANDIDATE: constant 0
 
 WRITE VALUE SUMMARY
