@@ -11,7 +11,7 @@ OUTPUT_DIR = Path("analysis/sprites")
 TABLE_DIR = Path("analysis/pd0_tables")
 COMMANDS_CSV = Path("analysis/pd0_sprite_commands.csv")
 
-RESOURCES = ["pi0", "pi8"]
+RESOURCES = ["pi0", "pi9", "pi8"]
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
