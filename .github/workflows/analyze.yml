@@ -1,11 +1,12 @@
+
 name: Analyze JAR
 
 on:
   workflow_dispatch:
-  
+
 permissions:
   contents: write
-  
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -17,10 +18,13 @@ jobs:
       - name: Run JAR analysis
         run: python3 tools/analyze_jar.py
 
-      - name: Commit analysis report
+      - name: Dump /pd0 graphics tables
+        run: python3 tools/dump_pd0.py
+
+      - name: Commit analysis reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add analysis/jar_report.txt
-          git diff --cached --quiet || git commit -m "Add JAR analysis report"
+          git add analysis/jar_report.txt analysis/pd0_graphics.txt analysis/pd0_tables/
+          git diff --cached --quiet || git commit -m "Dump pd0 graphics tables"
           git push
