@@ -13,9 +13,13 @@ EXPECTED_BLOB_SIZE = 17770
 
 
 def read_u16(data, pos):
+    """Read an unsigned 16-bit little-endian integer."""
     if pos + 2 > len(data):
-        raise ValueError(f"Unexpected end of resource at offset {pos}")
-    return (data[pos] << 8) | data[pos + 1], pos + 2
+        raise ValueError(
+            f"Unexpected end of resource at offset {pos}"
+        )
+
+    return data[pos] | (data[pos + 1] << 8), pos + 2
 
 
 def parse_resource(data):
@@ -23,14 +27,16 @@ def parse_resource(data):
     blob = bytearray()
     records = []
 
-    # First 312 entries: length (u16 BE) + payload.
+    # Parse 312 records: 2-byte length followed by payload.
     for index in range(RECORD_COUNT):
         length, pos = read_u16(data, pos)
         offset = len(blob)
 
         if pos + length > len(data):
             raise ValueError(
-                f"Record {index}: length {length} exceeds resource bounds"
+                f"Record {index}: length {length} exceeds "
+                f"resource bounds (offset={pos}, "
+                f"resource_size={len(data)})"
             )
 
         payload = data[pos:pos + length]
@@ -49,10 +55,11 @@ def parse_resource(data):
     if len(blob) != EXPECTED_BLOB_SIZE:
         raise ValueError(
             f"Blob size mismatch: got {len(blob)}, "
-            f"expected {EXPECTED_BLOB_SIZE}"
+            f"expected {EXPECTED_BLOB_SIZE}. "
+            "The resource format may need further analysis."
         )
 
-    # Five additional groups of unsigned 16-bit values.
+    # Parse five additional groups.
     groups = []
     cumulative = 0
 
@@ -70,6 +77,7 @@ def parse_resource(data):
             "count": count,
             "values": values,
         })
+
         cumulative += count
 
     if pos != len(data):
@@ -96,7 +104,12 @@ def main():
                 "Resource '/a' was not found in the original JAR"
             )
 
+    print(f"JAR: {JAR}")
+    print(f"Resource size: {len(data)} bytes")
+    print(f"First 32 bytes: {data[:32].hex(' ')}")
+
     blob, records, groups = parse_resource(data)
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     (OUT_DIR / "a_blob.bin").write_bytes(blob)
@@ -105,13 +118,17 @@ def main():
         "w", newline="", encoding="utf-8"
     ) as f:
         writer = csv.DictWriter(
-            f, fieldnames=["index", "offset", "length", "hex"]
+            f,
+            fieldnames=["index", "offset", "length", "hex"],
         )
         writer.writeheader()
+
         for record in records:
             writer.writerow({
-                key: record[key]
-                for key in ("index", "offset", "length", "hex")
+                "index": record["index"],
+                "offset": record["offset"],
+                "length": record["length"],
+                "hex": record["hex"],
             })
 
     result = {
@@ -129,13 +146,17 @@ def main():
     )
 
     record = records[154]
-    print(f"Resource size: {len(data)}")
-    print(f"Blob size: {len(blob)}")
-    print(f"Record 154 offset: {record['offset']}")
-    print(f"Record 154 length: {record['length']}")
-    print(f"Record 154 bytes: {record['hex']}")
+
+    print()
+    print("=== Record 154 ===")
+    print(f"Offset: {record['offset']}")
+    print(f"Length: {record['length']}")
+    print(f"Bytes: {record['hex']}")
+
+    print()
+    print("=== Additional groups ===")
     print(f"Group sizes: {[g['count'] for g in groups]}")
-    print(f"Output: {OUT_DIR}")
+    print(f"Output directory: {OUT_DIR}")
 
 
 if __name__ == "__main__":
