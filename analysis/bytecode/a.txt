@@ -1,0 +1,353 @@
+Classfile /home/runner/work/Prehistoric-tribes-re/Prehistoric-tribes-re/work/a.class
+  Last modified Oct 11, 2026; size 1828 bytes
+  SHA-256 checksum 646d5bb303065d974df312226f8e0127464b5ed3164ae56a08d9b9e3558b7a9c
+public final class a implements javax.microedition.media.PlayerListener
+  minor version: 3
+  major version: 45
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #1                          // a
+  super_class: #5                         // java/lang/Object
+  interfaces: 1, fields: 1, methods: 7, attributes: 0
+Constant pool:
+    #1 = Class              #71           // a
+    #2 = Class              #83           // g
+    #3 = Class              #85           // java/io/ByteArrayInputStream
+    #4 = Class              #86           // java/lang/Exception
+    #5 = Class              #87           // java/lang/Object
+    #6 = Class              #88           // java/lang/String
+    #7 = Class              #89           // java/lang/System
+    #8 = Class              #90           // javax/microedition/media/Manager
+    #9 = Class              #91           // javax/microedition/media/Player
+   #10 = Class              #92           // javax/microedition/media/PlayerListener
+   #11 = Fieldref           #1.#36        // a.a:Ljavax/microedition/media/Player;
+   #12 = Fieldref           #2.#43        // g.e:[S
+   #13 = Fieldref           #2.#45        // g.f:[S
+   #14 = Fieldref           #2.#46        // g.f:B
+   #15 = Fieldref           #2.#53        // g.w:[B
+   #16 = Methodref          #5.#34        // java/lang/Object."<init>":()V
+   #17 = Methodref          #3.#35        // java/io/ByteArrayInputStream."<init>":([BII)V
+   #18 = Methodref          #1.#37        // a.a:()V
+   #19 = Methodref          #1.#39        // a.c:()V
+   #20 = Methodref          #3.#40        // java/io/ByteArrayInputStream.close:()V
+   #21 = Methodref          #8.#41        // javax/microedition/media/Manager.createPlayer:(Ljava/io/InputStream;Ljava/lang/String;)Ljavax/microedition/media/Player;
+   #22 = Methodref          #7.#42        // java/lang/System.currentTimeMillis:()J
+   #23 = Methodref          #6.#44        // java/lang/String.equals:(Ljava/lang/Object;)Z
+   #24 = InterfaceMethodref #9.#38        // javax/microedition/media/Player.addPlayerListener:(Ljavax/microedition/media/PlayerListener;)V
+   #25 = InterfaceMethodref #9.#40        // javax/microedition/media/Player.close:()V
+   #26 = InterfaceMethodref #9.#47        // javax/microedition/media/Player.getState:()I
+   #27 = InterfaceMethodref #9.#48        // javax/microedition/media/Player.prefetch:()V
+   #28 = InterfaceMethodref #9.#49        // javax/microedition/media/Player.realize:()V
+   #29 = InterfaceMethodref #9.#50        // javax/microedition/media/Player.setMediaTime:(J)J
+   #30 = InterfaceMethodref #9.#51        // javax/microedition/media/Player.start:()V
+   #31 = InterfaceMethodref #9.#52        // javax/microedition/media/Player.stop:()V
+   #32 = String             #78           // deviceAvailable
+   #33 = String             #79           // deviceUnavailable
+   #34 = NameAndType        #65:#56       // "<init>":()V
+   #35 = NameAndType        #65:#64       // "<init>":([BII)V
+   #36 = NameAndType        #71:#68       // a:Ljavax/microedition/media/Player;
+   #37 = NameAndType        #71:#56       // a:()V
+   #38 = NameAndType        #72:#63       // addPlayerListener:(Ljavax/microedition/media/PlayerListener;)V
+   #39 = NameAndType        #74:#56       // c:()V
+   #40 = NameAndType        #75:#56       // close:()V
+   #41 = NameAndType        #76:#59       // createPlayer:(Ljava/io/InputStream;Ljava/lang/String;)Ljavax/microedition/media/Player;
+   #42 = NameAndType        #77:#55       // currentTimeMillis:()J
+   #43 = NameAndType        #80:#70       // e:[S
+   #44 = NameAndType        #81:#60       // equals:(Ljava/lang/Object;)Z
+   #45 = NameAndType        #82:#70       // f:[S
+   #46 = NameAndType        #82:#66       // f:B
+   #47 = NameAndType        #84:#54       // getState:()I
+   #48 = NameAndType        #94:#56       // prefetch:()V
+   #49 = NameAndType        #95:#56       // realize:()V
+   #50 = NameAndType        #96:#58       // setMediaTime:(J)J
+   #51 = NameAndType        #97:#56       // start:()V
+   #52 = NameAndType        #98:#56       // stop:()V
+   #53 = NameAndType        #99:#69       // w:[B
+   #54 = Utf8               ()I
+   #55 = Utf8               ()J
+   #56 = Utf8               ()V
+   #57 = Utf8               (I)V
+   #58 = Utf8               (J)J
+   #59 = Utf8               (Ljava/io/InputStream;Ljava/lang/String;)Ljavax/microedition/media/Player;
+   #60 = Utf8               (Ljava/lang/Object;)Z
+   #61 = Utf8               (Ljava/lang/String;)V
+   #62 = Utf8               (Ljavax/microedition/media/Player;Ljava/lang/String;Ljava/lang/Object;)V
+   #63 = Utf8               (Ljavax/microedition/media/PlayerListener;)V
+   #64 = Utf8               ([BII)V
+   #65 = Utf8               <init>
+   #66 = Utf8               B
+   #67 = Utf8               Code
+   #68 = Utf8               Ljavax/microedition/media/Player;
+   #69 = Utf8               [B
+   #70 = Utf8               [S
+   #71 = Utf8               a
+   #72 = Utf8               addPlayerListener
+   #73 = Utf8               b
+   #74 = Utf8               c
+   #75 = Utf8               close
+   #76 = Utf8               createPlayer
+   #77 = Utf8               currentTimeMillis
+   #78 = Utf8               deviceAvailable
+   #79 = Utf8               deviceUnavailable
+   #80 = Utf8               e
+   #81 = Utf8               equals
+   #82 = Utf8               f
+   #83 = Utf8               g
+   #84 = Utf8               getState
+   #85 = Utf8               java/io/ByteArrayInputStream
+   #86 = Utf8               java/lang/Exception
+   #87 = Utf8               java/lang/Object
+   #88 = Utf8               java/lang/String
+   #89 = Utf8               java/lang/System
+   #90 = Utf8               javax/microedition/media/Manager
+   #91 = Utf8               javax/microedition/media/Player
+   #92 = Utf8               javax/microedition/media/PlayerListener
+   #93 = Utf8               playerUpdate
+   #94 = Utf8               prefetch
+   #95 = Utf8               realize
+   #96 = Utf8               setMediaTime
+   #97 = Utf8               start
+   #98 = Utf8               stop
+   #99 = Utf8               w
+  #100 = Utf8               StackMap
+{
+  javax.microedition.media.Player a;
+    descriptor: Ljavax/microedition/media/Player;
+    flags: (0x0000)
+
+  public a(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=3, args_size=2
+         0: aload_0
+         1: invokespecial #16                 // Method java/lang/Object."<init>":()V
+         4: new           #3                  // class java/io/ByteArrayInputStream
+         7: dup
+         8: getstatic     #15                 // Field g.w:[B
+        11: getstatic     #13                 // Field g.f:[S
+        14: getstatic     #14                 // Field g.f:B
+        17: saload
+        18: getstatic     #12                 // Field g.e:[S
+        21: getstatic     #14                 // Field g.f:B
+        24: saload
+        25: invokespecial #17                 // Method java/io/ByteArrayInputStream."<init>":([BII)V
+        28: astore_2
+        29: aload_0
+        30: aload_2
+        31: aload_1
+        32: invokestatic  #21                 // Method javax/microedition/media/Manager.createPlayer:(Ljava/io/InputStream;Ljava/lang/String;)Ljavax/microedition/media/Player;
+        35: putfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        38: aload_2
+        39: invokevirtual #20                 // Method java/io/ByteArrayInputStream.close:()V
+        42: aload_0
+        43: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        46: invokeinterface #28,  1           // InterfaceMethod javax/microedition/media/Player.realize:()V
+        51: aload_0
+        52: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        55: aload_0
+        56: invokeinterface #24,  2           // InterfaceMethod javax/microedition/media/Player.addPlayerListener:(Ljavax/microedition/media/PlayerListener;)V
+        61: return
+        62: pop
+        63: return
+      Exception table:
+         from    to  target type
+             4    61    62   Class java/lang/Exception
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 62
+          locals = [ class a, class java/lang/String ]
+          stack = [ class java/lang/Exception ]
+
+  private void c();
+    descriptor: ()V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+         4: ifnonnull     8
+         7: return
+         8: aload_0
+         9: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        12: invokeinterface #26,  1           // InterfaceMethod javax/microedition/media/Player.getState:()I
+        17: sipush        300
+        20: if_icmpne     27
+        23: aload_0
+        24: invokevirtual #18                 // Method a:()V
+        27: aload_0
+        28: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        31: invokeinterface #26,  1           // InterfaceMethod javax/microedition/media/Player.getState:()I
+        36: sipush        400
+        39: if_icmpeq     60
+        42: aload_0
+        43: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        46: invokeinterface #27,  1           // InterfaceMethod javax/microedition/media/Player.prefetch:()V
+        51: aload_0
+        52: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        55: invokeinterface #30,  1           // InterfaceMethod javax/microedition/media/Player.start:()V
+        60: return
+        61: pop
+        62: return
+      Exception table:
+         from    to  target type
+             0     7    61   Class java/lang/Exception
+             8    60    61   Class java/lang/Exception
+      StackMap: number_of_entries = 4
+        frame_type = 255 offset = 8
+          locals = [ class a ]
+          stack = []
+        frame_type = 255 offset = 27
+          locals = [ class a ]
+          stack = []
+        frame_type = 255 offset = 60
+          locals = [ class a ]
+          stack = []
+        frame_type = 255 offset = 61
+          locals = [ class a ]
+          stack = [ class java/lang/Exception ]
+
+  final void a();
+    descriptor: ()V
+    flags: (0x0010) ACC_FINAL
+    Code:
+      stack=3, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+         4: ifnonnull     8
+         7: return
+         8: aload_0
+         9: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        12: invokeinterface #26,  1           // InterfaceMethod javax/microedition/media/Player.getState:()I
+        17: sipush        400
+        20: if_icmpne     43
+        23: aload_0
+        24: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        27: lconst_0
+        28: invokeinterface #29,  3           // InterfaceMethod javax/microedition/media/Player.setMediaTime:(J)J
+        33: pop2
+        34: aload_0
+        35: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        38: invokeinterface #31,  1           // InterfaceMethod javax/microedition/media/Player.stop:()V
+        43: return
+        44: pop
+        45: return
+      Exception table:
+         from    to  target type
+             0     7    44   Class java/lang/Exception
+             8    43    44   Class java/lang/Exception
+      StackMap: number_of_entries = 3
+        frame_type = 255 offset = 8
+          locals = [ class a ]
+          stack = []
+        frame_type = 255 offset = 43
+          locals = [ class a ]
+          stack = []
+        frame_type = 255 offset = 44
+          locals = [ class a ]
+          stack = [ class java/lang/Exception ]
+
+  final int a();
+    descriptor: ()I
+    flags: (0x0010) ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+         4: ifnonnull     9
+         7: iconst_m1
+         8: ireturn
+         9: aload_0
+        10: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        13: invokeinterface #26,  1           // InterfaceMethod javax/microedition/media/Player.getState:()I
+        18: ireturn
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 9
+          locals = [ class a ]
+          stack = []
+
+  final void b();
+    descriptor: ()V
+    flags: (0x0010) ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+         4: ifnonnull     8
+         7: return
+         8: aload_0
+         9: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        12: invokeinterface #26,  1           // InterfaceMethod javax/microedition/media/Player.getState:()I
+        17: ifeq          29
+        20: aload_0
+        21: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+        24: invokeinterface #25,  1           // InterfaceMethod javax/microedition/media/Player.close:()V
+        29: return
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 8
+          locals = [ class a ]
+          stack = []
+        frame_type = 255 offset = 29
+          locals = [ class a ]
+          stack = []
+
+  final void a(int);
+    descriptor: (I)V
+    flags: (0x0010) ACC_FINAL
+    Code:
+      stack=1, locals=3, args_size=2
+         0: aload_0
+         1: getfield      #11                 // Field a:Ljavax/microedition/media/Player;
+         4: ifnonnull     8
+         7: return
+         8: iload_1
+         9: ifne          17
+        12: aload_0
+        13: invokevirtual #18                 // Method a:()V
+        16: return
+        17: aload_0
+        18: invokespecial #19                 // Method c:()V
+        21: return
+        22: pop
+        23: return
+      Exception table:
+         from    to  target type
+             0     7    22   Class java/lang/Exception
+             8    21    22   Class java/lang/Exception
+      StackMap: number_of_entries = 3
+        frame_type = 255 offset = 8
+          locals = [ class a, int ]
+          stack = []
+        frame_type = 255 offset = 17
+          locals = [ class a, int ]
+          stack = []
+        frame_type = 255 offset = 22
+          locals = [ class a, int ]
+          stack = [ class java/lang/Exception ]
+
+  public final void playerUpdate(javax.microedition.media.Player, java.lang.String, java.lang.Object);
+    descriptor: (Ljavax/microedition/media/Player;Ljava/lang/String;Ljava/lang/Object;)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=4, args_size=4
+         0: aload_2
+         1: ldc           #33                 // String deviceUnavailable
+         3: invokevirtual #23                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+         6: ifeq          17
+         9: aload_0
+        10: invokevirtual #18                 // Method a:()V
+        13: invokestatic  #22                 // Method java/lang/System.currentTimeMillis:()J
+        16: pop2
+        17: aload_2
+        18: ldc           #32                 // String deviceAvailable
+        20: invokevirtual #23                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        23: ifeq          30
+        26: aload_0
+        27: invokespecial #19                 // Method c:()V
+        30: return
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 17
+          locals = [ class a, class javax/microedition/media/Player, class java/lang/String, class java/lang/Object ]
+          stack = []
+        frame_type = 255 offset = 30
+          locals = [ class a, class javax/microedition/media/Player, class java/lang/String, class java/lang/Object ]
+          stack = []
+}
