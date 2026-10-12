@@ -1,0 +1,47 @@
+
+name: Analyze JAR
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Python dependencies
+        run: python3 -m pip install Pillow
+
+      - name: Run JAR analysis
+        run: python3 tools/analyze_jar.py
+
+      - name: Dump game bytecode
+        run: python3 tools/dump_game_bytecode.py
+
+      - name: Dump /pd0 graphics tables
+        run: python3 tools/dump_pd0.py
+
+      - name: Extract sprites and map commands
+        run: python3 tools/extract_sprites.py
+
+      - name: Commit analysis reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add analysis/jar_report.txt
+          git add analysis/bytecode/
+          git add analysis/pd0_graphics.txt
+          git add analysis/pd0_tables/
+          git add analysis/sprites/
+          git add analysis/pd0_sprite_commands.csv
+
+          git diff --cached --quiet || git commit -m "Extract sprites and map graphics commands"
+
+          git push
