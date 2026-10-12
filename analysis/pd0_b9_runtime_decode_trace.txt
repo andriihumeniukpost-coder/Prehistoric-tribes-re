@@ -1,0 +1,17 @@
+Runtime decode trace for g.b[9] (short table)
+Source: analysis/bytecode/g.txt, method headers and JVM bytecode offsets.
+
+Confirmed direct consumers:
+1) final void a(int,int,int), descriptor (III)V, bytecode offsets 0..: reads b[9][arg1], masks with 8191 and stores the result in local 4. It also reads the same packed short unsigned (mask 65535), shifts right by 14, and uses the upper two bits as a separate value. Therefore b[9] entries are packed 16-bit records, not plain byte-stream offsets.
+
+2) private void aN(): reads b[9][local6] as unsigned 16-bit, extracts bits 14..15 (value = (word & 0xC000) >>> 14), and uses this as part of a later lookup. This independently confirms packed flags in the high bits.
+
+3) private void d(int,int,int,int): reads b[5], not b[9], in the relevant lookup shown nearby; do not confuse this with the b[9] decoding path.
+
+Implication: the earlier boundary validation that treated each b[9] word as a direct command-stream offset was not a valid semantic test. Low 13 bits (0x1FFF) form an index/value, while high bits carry flags. Exact meaning of each high-bit combination still requires tracing call arguments and target tables.
+
+Evidence snippets:
+- g.final void a(int,int,int): b[9][arg1] & 8191; same word & 65535, >>>14.
+- g.private void aN(): b[9][local6] & 65535, >>>14.
+
+No game source or original JAR was modified.

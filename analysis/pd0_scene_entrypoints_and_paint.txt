@@ -1,0 +1,24 @@
+PREHISTORIC TRIBES v0.1.38 — SCENE GRAPH ENTRYPOINTS / PAINT PATH
+Evidence: decompiled g.class bytecode and parsed /pd0 tables.
+
+1. Verified scene traversal API
+- final void a(int index, int x, int y) traverses a b[9] node and its b[10] children, with offsets from j[18]/j[19].
+- private void b(int commandIndex, int x, int y) dispatches a leaf command using j[20]..j[24].
+These are internal rendering primitives; their existence alone does not identify which node is the main world scene.
+
+2. Calls into a(int,int,int) from the class
+Bytecode call sites were found in methods:
+m(), o(), a(int,byte), a(int,byte,byte,int,int,byte), p(), a(), q(),
+d(int,int,int,int), i(int), u(), c(int,int), j(int), a(int,byte,int),
+c(int,int,int), G(), O(), among others.
+This broad spread means a(int,int,int) is a shared scene/node renderer called by multiple UI/game paths, not a unique screen renderer.
+
+3. paint(Graphics) does not directly invoke the recursive scene traversal in the inspected method body.
+The paint body instead:
+- if v == 1, draws a 240-wide background region using image a[1], then loops over 20 flags in a[Z and draws enabled entries using a common drawRegion wrapper;
+- otherwise draws a 240 x 300 region from image a[M];
+- finally sets z=false.
+This is direct bytecode behavior. It suggests paint(Graphics) handles a separate cached/background/UI composition path; it should not be mislabelled as the root for the b[9] scene graph without a caller-level trace.
+
+4. Next reliable tracing target
+Trace callers that invoke m()/o()/q()/G()/O() and the state field v to determine which call path corresponds to title/menu/world screens. Then inspect the index arguments passed to a(int,int,int), rather than assuming b[9][0] is the main root.

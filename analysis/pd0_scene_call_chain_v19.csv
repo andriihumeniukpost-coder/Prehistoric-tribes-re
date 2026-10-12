@@ -1,0 +1,8 @@
+caller,callee,relationship,bytecode_evidence,interpretation
+run(),m(),direct,offset 152,Per-loop call; recurring update/render stage
+run(),l(),direct,offset 156,Called immediately after m()
+m(),"a(int,int,int)",direct,"offsets 144,174,221",Calls recursive scene-tree walker with runtime-computed indices/coordinates
+"a(int,int,int)","b(int,int,int)",direct,"offsets 57,172",Leaf/command renderer
+n(),o(),direct,"offsets 77,223,283,336",Overlay/composition branch; not proven complete scene root
+dispatch/update method,p(),direct,offset 439,Conditional helper call; caller identity/state still to resolve
+dispatch/update method,q(),direct,offset 450,Conditional helper call; caller identity/state still to resolve

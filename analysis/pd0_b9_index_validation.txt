@@ -1,0 +1,19 @@
+PREHISTORIC TRIBES v0.1.38 — b[9] index validation
+=================================================================
+
+Evidence: original /pd0 parsed by tools/dump_pd0.py; b[9], j[16], j[20] arrays.
+
+b[9] entries: 1731
+j[20] command parameter entries: 1832
+Packed b[9] fields used in prior inventory: low 13 bits = raw & 8191; top two bits = (raw & 0xffff) >> 14.
+j[16] low six bits are treated as a count candidate: (value & 255) & 63.
+
+Validation results:
+- 636 entries have index+count <= 1832.
+- 1095 entries exceed the j[20] array if interpreted as direct ranges.
+- First direct-range overflow is b[9] record 636, raw=1832, index=1832.
+- Maximum low-13-bit index: 5558; maximum index+count: 5559.
+
+Conclusion: b[9] must not be treated uniformly as a direct offset into j[20]–j[24]. Some records may be references to a different table/domain, use a different interpretation, or be reached only through a decoding/selection step. The raw table and packed bits alone do not prove which. Next trace the exact d methods that read b[9] and identify their bounds/branch conditions before labeling scenes.
+
+No game source or original JAR modified; this is static bytecode/resource analysis.

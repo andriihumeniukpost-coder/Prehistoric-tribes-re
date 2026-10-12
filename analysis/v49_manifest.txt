@@ -1,0 +1,5 @@
+v49 additions:
+- analysis/entity_slot_region_write_audit_v49.txt
+- analysis/entity_slot_region_write_candidates_v49.csv
+- analysis/array_field_trace_cfg_v49.txt
+- tools/slot_region_write_inventory_v49.py (reproducible candidate scanner)

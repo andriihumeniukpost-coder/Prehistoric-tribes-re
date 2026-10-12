@@ -1,0 +1,28 @@
+Prehistoric Tribes v0.1.38 — mode 12 visibility gate (field g.s)
+Generated from analysis/bytecode/g.txt; static bytecode analysis only.
+
+1. Renderer gate
+Method: private void b(int commandIndex, int x, int y), descriptor (III)V.
+After computing mode = j[20][commandIndex] & 31 and handling modes 27–30, mode 12 takes this branch:
+- if g.s == true: skip drawArc and return from the method.
+- if g.s == false: call Graphics.drawArc(x + (j[21][i] & 127), y + j[22][i], j[23][i], j[24][i], 0, 360).
+Thus s is a global visibility/suppression gate for mode-12 commands, not a per-command flag.
+
+2. All writes to g.s found in g.txt
+A. Constructor/initialization path: sets s=true after invoking private a(ZZZZ).
+B. Method U(): when ag==26, temporarily sets s=false, calls c(), then restores s=true.
+C. Method U(): in common transition cleanup, sets s=false, then calls aK().
+No other putfield writes to s were found in this decompiled g.txt.
+
+3. Interpretation and limits
+- ag==26 temporarily disables suppression while c() runs, then restores suppression. That is a scoped exception, not a persistent state change.
+- U() sets s=false in common cleanup; later behavior may therefore allow mode-12 arcs until another path sets s=true.
+- The field is not just a simple permanent “hide arcs” setting; it is toggled in lifecycle/transition code.
+- This report does not identify the visual semantic purpose of the arcs. The evidence only proves that the field gates all mode-12 drawArc commands handled by this renderer.
+- Coordinates and dimensions are command-local plus accumulated x/y; no claim is made about which gameplay object the arcs depict.
+
+Bytecode anchors:
+- g.b(III)V: mode 12 test at offsets 425–480; getfield s at 432–436; branch if true to 480; drawArc invocation at 477.
+- g.U()V: ag==26 path sets s=false at offsets 16–18, calls c() at 21–22, sets s=true at 25–27.
+- g.U()V: common cleanup sets s=false at offsets 518–520 before invoking aK() at 523–524.
+- initialization write s=true appears around offsets 378–390 in the relevant constructor/setup method.

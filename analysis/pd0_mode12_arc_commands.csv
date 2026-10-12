@@ -1,0 +1,26 @@
+command_index,mode,color_index,r,g,b,command_x_offset,command_y_offset,width,height,parent_tree_offset_x,parent_tree_offset_y,relative_final_x,relative_final_y,drawArc_start,drawArc_extent,visibility_condition
+1445,12,0,0,0,0,2,21,36,2,-11,0,-9,21,0,360,draw only when g.s == false
+1445,12,0,0,0,0,2,21,36,2,88,128,90,149,0,360,draw only when g.s == false
+1446,12,0,0,0,0,2,22,42,1,25,0,27,22,0,360,draw only when g.s == false
+1446,12,0,0,0,0,2,22,42,1,47,128,49,150,0,360,draw only when g.s == false
+1409,12,0,0,0,0,4,7,11,3,-6,0,-2,7,0,360,draw only when g.s == false
+1410,12,0,0,0,0,6,8,7,2,42,0,48,8,0,360,draw only when g.s == false
+1410,12,0,0,0,0,6,8,7,2,86,-1,92,7,0,360,draw only when g.s == false
+1419,12,0,0,0,0,63,8,7,2,16,127,79,135,0,360,draw only when g.s == false
+1419,12,0,0,0,0,63,8,7,2,63,128,126,136,0,360,draw only when g.s == false
+1418,12,0,0,0,0,60,7,11,3,107,128,167,135,0,360,draw only when g.s == false
+1447,12,0,0,0,0,2,19,42,1,27,-1,29,18,0,360,draw only when g.s == false
+1444,12,0,0,0,0,0,19,48,2,-21,-2,-21,17,0,360,draw only when g.s == false
+1447,12,0,0,0,0,2,19,42,1,43,127,45,146,0,360,draw only when g.s == false
+1444,12,0,0,0,0,0,19,48,2,85,126,85,145,0,360,draw only when g.s == false
+1427,12,0,0,0,0,4,9,11,3,-6,-3,-2,6,0,360,draw only when g.s == false
+1429,12,0,0,0,0,6,9,7,2,42,-2,48,7,0,360,draw only when g.s == false
+1429,12,0,0,0,0,6,9,7,2,86,-1,92,8,0,360,draw only when g.s == false
+1438,12,0,0,0,0,63,9,7,2,17,127,80,136,0,360,draw only when g.s == false
+1438,12,0,0,0,0,63,9,7,2,63,126,126,135,0,360,draw only when g.s == false
+1436,12,0,0,0,0,60,9,11,3,107,125,167,134,0,360,draw only when g.s == false
+1484,12,0,0,0,0,69,23,6,7,71,22,140,45,0,360,draw only when g.s == false
+1467,12,0,0,0,0,76,20,5,27,66,1,142,21,0,360,draw only when g.s == false
+1446,12,0,0,0,0,2,22,42,1,-17,28,-15,50,0,360,draw only when g.s == false
+1419,12,0,0,0,0,63,8,7,2,36,27,99,35,0,360,draw only when g.s == false
+1410,12,0,0,0,0,6,8,7,2,6,28,12,36,0,360,draw only when g.s == false

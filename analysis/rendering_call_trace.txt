@@ -1,0 +1,24 @@
+Rendering call trace — Prehistoric Tribes v0.1.38
+Generated from decompiled JVM bytecode in analysis/bytecode/g.txt.
+
+1. Confirmed drawRegion wrapper
+Method:
+  static boolean a(Graphics, Image, int, int, int, int, int, int, int)
+Descriptor:
+  (Graphics, Image, 7 ints) -> boolean
+Bytecode forwards the image and source/destination rectangle parameters to Graphics.drawRegion(...), with transform argument fixed to 0. It returns true on success; catches java.lang.Exception and returns false.
+This is a guarded crop/region drawing primitive, not itself the sprite-selection algorithm.
+
+2. Other direct drawImage callers in class g
+The bytecode scan found calls in:
+  d(int,int), D(), F(), G(), M()
+These are not all the same rendering path: F/G/M contain UI/state-specific drawing and graphics buffers. Do not interpret every drawImage call as the main animated character renderer.
+
+3. Important distinction for the coordinate reconstruction
+The current static evidence is enough to establish that the game uses both:
+  - direct Graphics.drawImage for whole images / overlays;
+  - Graphics.drawRegion via the static wrapper for source-region drawing.
+But the method signature alone does not prove that /pi8 is passed to this wrapper, nor that I/K are the final screen coordinates. Those require tracing the actual call sites and values.
+
+4. Next concrete target
+Trace invocations of static a(Graphics, Image, int, int, int, int, int, int, int) and the arguments derived from fields in g. Then identify the call site whose image argument comes from the loaded image array and compare its coordinates with I/K and dimensions O/P.

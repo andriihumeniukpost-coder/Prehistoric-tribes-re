@@ -1,0 +1,41 @@
+caller_method,bytecode_line,invocation
+private void m();,5051,144: invokevirtual #453                // Method a:(III)V
+private void m();,5068,174: invokevirtual #453                // Method a:(III)V
+private void m();,5094,221: invokevirtual #453                // Method a:(III)V
+private void o();,5517,167: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte);",6232,1107: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, byte, int, int, byte);",6480,174: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, byte, int, int, byte);",6632,428: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, byte, int, int, byte);",6682,512: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, byte, int, int, byte);",6747,616: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, byte, int, int, byte);",6785,679: invokevirtual #453                // Method a:(III)V
+private void p();,7882,371: invokespecial #554                // Method b:(III)V
+private void p();,7915,429: invokevirtual #453                // Method a:(III)V
+private boolean a();,8040,139: invokevirtual #453                // Method a:(III)V
+private void q();,8891,623: invokevirtual #453                // Method a:(III)V
+private void q();,9046,921: invokevirtual #453                // Method a:(III)V
+private void q();,9055,938: invokevirtual #453                // Method a:(III)V
+"private void d(int, int, int, int);",10230,58: invokevirtual #453                // Method a:(III)V
+"final void a(int, int, int);",10275,57: invokespecial #554                // Method b:(III)V
+"final void a(int, int, int);",10343,172: invokespecial #554                // Method b:(III)V
+"final void a(int, int, int);",10368,213: invokevirtual #453                // Method a:(III)V
+private void i(int);,10889,264: invokevirtual #453                // Method a:(III)V
+private void u();,11567,1208: invokevirtual #453                // Method a:(III)V
+private void u();,11856,1722: invokevirtual #453                // Method a:(III)V
+private void u();,11896,1789: invokespecial #554                // Method b:(III)V
+private void u();,11962,1906: invokespecial #554                // Method b:(III)V
+"private void c(int, int);",13337,758: invokevirtual #453                // Method a:(III)V
+"private void d(int, int);",14220,17: invokespecial #554                // Method b:(III)V
+private void j(int);,14872,179: invokevirtual #453                // Method a:(III)V
+private void j(int);,14982,358: invokevirtual #453                // Method a:(III)V
+private void j(int);,15072,525: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, int);",17026,82: invokespecial #554                // Method b:(III)V
+"private void a(int, byte, int);",17036,100: invokevirtual #453                // Method a:(III)V
+"private void a(int, byte, int);",17101,217: invokevirtual #453                // Method a:(III)V
+"private void c(int, int, int);",17394,153: invokespecial #554                // Method b:(III)V
+private void C();,17697,66: invokespecial #554                // Method b:(III)V
+private void D();,17892,74: invokespecial #554                // Method b:(III)V
+private void G();,18908,414: invokevirtual #453                // Method a:(III)V
+private void G();,18988,574: invokevirtual #453                // Method a:(III)V
+private void O();,19536,146: invokevirtual #453                // Method a:(III)V
+private void O();,19556,183: invokevirtual #453                // Method a:(III)V

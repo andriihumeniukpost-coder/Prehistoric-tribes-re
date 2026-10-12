@@ -1,0 +1,28 @@
+Render command table follow-up (g.class bytecode)
+
+Confirmed dispatcher: private void b(int commandIndex, int x, int y), descriptor (III)V.
+
+For commandIndex == 0 it returns immediately. Otherwise mode = j[20][commandIndex] & 31.
+
+Modes 0..26:
+- source image = a[0][mode]
+- source X = j[21][index] & 127
+- source Y = j[22][index]
+- source width = j[23][index]
+- source height = j[24][index]
+- destination = passed x,y
+- final argument to the drawRegion wrapper is literal 20.
+- j[21]'s high bit is not part of source X; it is reused by the special-mode colour calculation.
+
+Modes 27..30 use the non-image drawing branch. Colour index is assembled as:
+((j[20][index] & 255) >> 5) | ((j[21][index] & 128) >> 4).
+RGB is read from j[17] at colourIndex*3 + {0,1,2}, unsigned per channel, then Graphics.setColor(r,g,b) is called.
+Position for these modes is x + (j[21][index] & 127), y + j[22][index].
+- mode 27 calls d(Graphics,x,y,width,height)
+- mode 28 calls b(Graphics,x,y,width,height)
+- mode 29 calls a(Graphics,x,y,width,height)
+- mode 30 uses scaled values: x + 4*(j[21][index]&127), y + 4*j[22][index], 4*width, 4*height, then calls a(Graphics,...).
+
+Resource loader c(byte index): opens /pi8, iterates at most 12 length-prefixed entries. Each entry length is big-endian (first byte high, second byte low). It stores only the selected entry in a[2][0], then closes and returns. Therefore /pi8 is not loaded into a[2] as a 12-image array in this method; it loads the requested image into slot 0 of bank 2 on demand. This is a significant correction to earlier loose wording.
+
+Limitations: the exact mapping from draw command indexes to semantic objects is not proven here. This report documents bytecode mechanics, not visual meanings.

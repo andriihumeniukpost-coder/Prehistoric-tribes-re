@@ -1,0 +1,24 @@
+Rendering trace: drawRegion wrapper and verified call sites
+Prehistoric Tribes v0.1.38 — static bytecode analysis
+
+1. Wrapper
+Class g contains static helper a(Graphics, Image, x, y, width, height, destX, destY): boolean.
+Its bytecode invokes Graphics.drawRegion(image, x, y, width, height, transform=0, destX, destY, anchor), returns true on success, catches java.lang.IllegalArgumentException and returns false.
+Important: transform is hard-coded to 0. The helper does not itself select a frame; callers choose image and source rectangle.
+
+2. Confirmed callers
+- protected final void paint(Graphics): calls helper three times in the main paint path. Arguments are computed from fields such as ba, aw, ah, ai and other layout/state fields. This is the primary Canvas paint path and is the strongest confirmed connection between dynamic state and region rendering.
+- private void n(): calls helper in multiple places, including a region with height 242 and fields A/ah/ai; likely a secondary render/update path, but purpose requires full call-chain analysis.
+- private void b(int,int,int): loads image from j[24][arg1], passes arg2/arg3 and constant 20 to helper. This is a direct image-table-driven drawRegion call; image source is selected from j[24].
+- private void d(int,int): calls helper with geometry derived from aG/aH/aI and fields, likely UI/game-object drawing.
+- private void D(), M(), O(), R(): each has helper calls in their own drawing paths. Their image/rectangle arguments are calculated from distinct fields; do not assume they are all the main animated actor.
+
+3. Separate drawImage callers
+Graphics.drawImage calls occur in g.d(int,int), D(), F(), G(), M(). These are separate full-image drawing paths and should not be conflated with drawRegion.
+
+4. What is established vs not established
+Established: drawRegion is wrapped; transform is always 0; paint(Graphics) and several other methods invoke it; b(int,int,int) explicitly indexes j[24].
+Not yet established: whether each j[24] entry corresponds to /pi8, which callers draw the main character, or the semantic meaning of each image index. Those need image-array initialization tracing and runtime/static correlation.
+
+5. Suggested next trace
+Trace writes/initialization of j:[[B and j[24], then follow where the byte values in j[24] originate (resource tables and state selectors). Then correlate paint(Graphics)'s selected image and rectangle dimensions to extracted /pi8 records.

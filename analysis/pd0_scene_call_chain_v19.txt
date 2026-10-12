@@ -1,0 +1,27 @@
+Scene-root call-chain follow-up — Prehistoric Tribes v0.1.38
+Scope: static inspection of decompiled JVM bytecode; no game runtime executed.
+
+Confirmed high-level loop:
+- public final run() performs initialization, then enters a loop while field b is true.
+- Each loop iteration calls aU(), h(), then m(), then l(); it subsequently handles z/ad and frame timing before looping.
+- Therefore m() is a recurring per-frame/update-stage method called directly by run(), not a one-off screen root.
+- m() invokes the recursive renderer a(int,int,int) at three sites (bytecode offsets 144, 174, 221), with indices/coordinates assembled from lookup arrays and fields such as aw, aZ, and g.
+
+State-dependent rendering:
+- n() prepares several overlay/cropping coordinates (ah, ai, aj, ak) and calls o() in branches controlled by A, ad, ae, C, and B. It directly draws portions of image a[0] through Graphics wrapper before/around calls to o(). This is evidence that o() handles a composited/overlay rendering path, not necessarily a complete scene root.
+- Other calls to o() appear inside methods that manage state transitions and rendering. Treat them as helper calls until their caller context is resolved.
+- p() and q() are reached from the method spanning bytecode around offsets 439/450 (likely an update/render dispatch routine); they should not be labeled as screen roots without tracing the surrounding conditions and fields.
+
+Practical call chain established:
+run() -> m() -> a(int,int,int) -> b(int,int,int) for the recurring primary rendering/update path.
+Other observed chain: methods that invoke n()/o() compose additional regions and overlays. paint(Graphics) remains a separate Java ME screen-paint path; static evidence still does not establish that paint directly invokes the recursive tree walker.
+
+Important limits:
+- This is static call-graph evidence only; no live game was run.
+- The numeric first arguments passed to a(...) are computed from runtime fields/arrays; they are not all constant roots.
+- To assign named scenes (title/menu/world/dialogue), trace state fields and caller conditions, then decode candidate root indices through b[9]/b[10] and compare rendered command output. No scene names are asserted here.
+
+Evidence snippets:
+1) run(): calls m() at bytecode offset 152, l() at 156, then performs frame timing and loops to offset 123.
+2) m(): recursive walker calls at offsets 144, 174, 221.
+3) n(): sets crop/overlay fields and calls o() at offsets 77, 223, 283, 336 and further branches.

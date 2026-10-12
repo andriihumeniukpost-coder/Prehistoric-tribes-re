@@ -1,0 +1,25 @@
+Render command dispatcher: g.b(int,int,int)
+Prehistoric Tribes v0.1.38 — static bytecode evidence
+
+Correction to earlier interpretation:
+j[24] is NOT the image selector in this method. It is read as the final geometry operand (height in the drawRegion path / height or dimension in other paths). The image is selected from a[0][mode], where mode = j[20][index] & 31, for mode 0..26. The index argument 0 returns immediately.
+
+Inputs:
+- arg1: command-record index; zero means no-op.
+- arg2,arg3: destination base coordinates.
+- mode: j[20][arg1] & 31.
+
+Confirmed mode branches:
+- mode 0..26: drawRegion wrapper with image a[0][mode], source x = j[21][i] & 127, source y = j[22][i], source width = j[23][i], source height = j[24][i], destination x = arg2, destination y = arg3, anchor=20.
+- mode 27: calls helper d(Graphics, x, y, width, height) with destination x=arg2+(j[21][i]&127), y=arg3+j[22][i], width=arg2+j[23][i], height=arg3+j[24][i]. The unusual width/height expressions are literal bytecode behavior; do not normalize them without inspecting helper d.
+- mode 28: calls helper b(Graphics, x, y, width, height) with the same offset destination and j[23]/j[24] dimensions.
+- mode 29: calls helper a(Graphics, x, y, width, height) with offset destination and j[23]/j[24] dimensions.
+- mode 30: calls helper a(Graphics, x, y, width, height), with x=arg2+4*(j[21][i]&127), y=arg3+4*j[22][i], width=4*j[23][i], height=4*j[24][i].
+- mode 12 has a separate drawArc path when s==false: x=arg2, y=arg3, width=j[23][i], height=j[24][i], start angle 0, arc angle 360.
+- mode 31 enters the non-image branch because mode>=27; it is not automatically a sprite index.
+
+Other details:
+- For mode >=27, color index is assembled from high bits in j[20] and bit 7 of j[21], then RGB is read from j[17] at colorIndex*3.
+- The mode>=27 path offsets destination x by j[21]&127 and y by j[22].
+- Method catches no exceptions itself in the shown body; helper behavior depends on called static methods.
+- This report is static bytecode analysis. It does not identify semantic sprite names or prove that a[0] corresponds to resource /pi8.

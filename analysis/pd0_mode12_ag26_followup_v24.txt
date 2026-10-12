@@ -1,0 +1,31 @@
+Follow-up: ag==26 branch, c(), and aP() — bytecode-confirmed notes
+Game: Prehistoric Tribes v0.1.38
+
+1. U() branch for ag == 26:
+- writes s=false
+- calls final void c()
+- writes s=true
+The temporary flag window is exact. The method does not leave s enabled after c() returns.
+
+2. What final void c() actually does:
+- copies field e:S into c:S
+- copies field f:S into d:S
+- increments q:B by one (byte arithmetic)
+- calls private aP()
+- sets c.G:I to a[219] + q*4
+
+Therefore c() is a state/parameter update routine, not itself a direct Graphics drawing call. It advances q and refreshes dependent values before returning to U().
+
+3. aP() follow-up:
+- if q == 3, resets av:B to 0
+- reads a short-table value from a[250 + q]
+- reads a byte count from blob[a[262] + q]
+- loops over that count and consumes per-q records from the blob, skipping entries whose first byte is -1.
+This establishes q-dependent table processing; identifying the semantic names of those records requires tracing the rest of aP() and their consumers.
+
+4. Interpretation limits:
+- The ag==26 branch temporarily clears s around c(); it then restores s=true. This alone does not prove the arc commands are drawn during c(), because c() does not directly call the renderer in its visible bytecode.
+- Separately, U() later has a common write s=false at bytecode offset 518. That is a distinct write site and should not be conflated with the temporary ag==26 toggle.
+- No claim is made here about the visual purpose of the arcs.
+
+Evidence locations: analysis/bytecode/g.txt, method U(), final void c(), private void aP().

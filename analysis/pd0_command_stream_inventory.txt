@@ -1,0 +1,62 @@
+PREHISTORIC TRIBES v0.1.38 — /pd0 COMMAND STREAM INVENTORY
+========================================================================
+
+Evidence sources: f.class private void b() bytecode; tools/dump_pd0.py; parsed original JAR resource /pd0.
+
+RESOURCE LAYOUT
+- /pd0 size: 97,417 bytes; parser consumes all 97417 bytes.
+- First byte is skipped by loader.
+- Next 11 tables are big-endian signed-short arrays; their lengths are the first 11 entries of the loader's size table.
+- Next 25 tables are signed-byte arrays; their lengths are the remaining 25 entries.
+- j[17] has 42 bytes, i.e. 14 RGB triplets by size. The render code indexes this array as RGB triples; semantic names for colors are not present in this resource.
+- j[20]–j[24] are five parallel arrays, each 1,832 entries, and form the geometry/command parameter stream used by g.b(int,int,int).
+
+MODE FREQUENCIES IN j[20]
+Mode is computed exactly as (j20[index] & 255) & 31.
+mode,count,interpretation
+0,206,drawRegion using a[0][mode]
+1,246,drawRegion using a[0][mode]
+2,20,drawRegion using a[0][mode]
+3,7,drawRegion using a[0][mode]
+4,36,drawRegion using a[0][mode]
+5,113,drawRegion using a[0][mode]
+6,64,drawRegion using a[0][mode]
+7,132,drawRegion using a[0][mode]
+8,24,drawRegion using a[0][mode]
+9,49,drawRegion using a[0][mode]
+10,112,drawRegion using a[0][mode]
+11,59,drawRegion using a[0][mode]
+12,106,drawRegion using a[0][mode]
+13,44,drawRegion using a[0][mode]
+14,124,drawRegion using a[0][mode]
+15,38,drawRegion using a[0][mode]
+16,6,drawRegion using a[0][mode]
+17,2,drawRegion using a[0][mode]
+18,2,drawRegion using a[0][mode]
+19,108,drawRegion using a[0][mode]
+20,52,drawRegion using a[0][mode]
+21,34,drawRegion using a[0][mode]
+22,56,drawRegion using a[0][mode]
+23,36,drawRegion using a[0][mode]
+24,36,drawRegion using a[0][mode]
+25,4,drawRegion using a[0][mode]
+27,65,helper d(Graphics,...)
+29,20,helper a(Graphics,...)
+30,31,scaled helper a(Graphics,...)
+
+SPECIAL-MODE COLOUR INDEXES
+For mode >= 27, bytecode computes colourIndex = ((j20 & 255) >> 5) | ((j21 & 255 & 128) >> 4). The observed colour-index frequencies are:
+- index 0: 14 commands; RGB bytes j[17][0:3]
+- index 1: 34 commands; RGB bytes j[17][3:6]
+- index 2: 13 commands; RGB bytes j[17][6:9]
+- index 3: 14 commands; RGB bytes j[17][9:12]
+- index 4: 5 commands; RGB bytes j[17][12:15]
+- index 5: 30 commands; RGB bytes j[17][15:18]
+- index 6: 4 commands; RGB bytes j[17][18:21]
+- index 10: 1 commands; RGB bytes j[17][30:33]
+- index 11: 1 commands; RGB bytes j[17][33:36]
+
+BOUNDARIES / LIMITATIONS
+- This report inventories the resource and dispatcher, not a semantic mapping from command index to named game object.
+- b[9] contains 1,731 entries, but its low-13-bit values are not all direct offsets into the 1,832-entry j[20] stream; many exceed its bounds. Do not treat every b[9] record as a draw-command span without tracing the other dispatch tables and flags.
+- No original game code or JAR resource was modified.

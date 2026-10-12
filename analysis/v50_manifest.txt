@@ -1,0 +1,7 @@
+v50 additions
+=============
+- entity_slot_map_caller_audit_v50.txt
+- entity_slot_callee_callsite_map_v50.csv (6 direct call sites)
+- entity_slot_marker_literal_write_candidates_v50.csv (3 candidate instruction windows)
+
+Generated from the included v49 bytecode dumps. No original game code modified.

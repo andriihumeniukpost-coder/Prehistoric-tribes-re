@@ -1,0 +1,4 @@
+class_method,descriptor,table,operation,interpretation,confidence
+"g.final void a(int,int,int)",(III)V,b[9],word & 8191,low 13 bits used as index/value,direct bytecode evidence
+"g.final void a(int,int,int)",(III)V,b[9],(word & 65535) >>> 14,high 2 bits extracted separately,direct bytecode evidence
+g.private void aN(),()V,b[9],(word & 65535) >>> 14,high-bit flag participates in lookup,direct bytecode evidence

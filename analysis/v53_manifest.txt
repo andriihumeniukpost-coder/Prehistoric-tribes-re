@@ -1,0 +1,8 @@
+Prehistoric Tribes v0.1.38 — v53 additions
+
+- analysis/entity_slot_post_failure_path_v53.txt
+- analysis/entity_slot_post_failure_evidence_v53.csv
+- tools/audit_slot_post_failure_v53.py
+
+Focus: inspect c.C() and its transitive effects, clarify full-group failure control flow, and document the conditional c.k() -> c.i() -> c.I() path.
+No original game code modified.

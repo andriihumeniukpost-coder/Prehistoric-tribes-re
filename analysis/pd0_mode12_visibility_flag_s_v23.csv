@@ -1,0 +1,9 @@
+method,bytecode offsets,write/read,value/condition,effect
+g.b(III)V,425-480,read,mode==12 && s==true,skip drawArc
+g.b(III)V,432-436,read,s,visibility/suppression gate
+g.b(III)V,447-477,draw,s==false,draw full 360-degree arc
+g.U()V,16-18,write,ag==26 -> false,temporarily enable mode-12 drawing
+g.U()V,21-22,call,ag==26 -> c(),runs while s=false
+g.U()V,25-27,write,after c() -> true,restore suppression
+g.U()V,518-520,write,common cleanup -> false,allow mode-12 drawing after cleanup
+setup/constructor,378-390,write,true,initial suppression state

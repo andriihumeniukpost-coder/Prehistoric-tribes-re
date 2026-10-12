@@ -1,0 +1,48 @@
+Prehistoric Tribes v0.1.38 — decoded nodes 525, 530, 558
+Static decoding from original /pd0 and g.class bytecode; coordinates are accumulated relative offsets, not absolute screen coordinates.
+
+NODE 525: packed=1557, start=1557, pre-command flags=0, child count=1
+Child entries (b[10]) decode target low13, recursion bit13, y-shift bits14-15*128.
+  entry 1557: packed=8716, target=524, recursive=True, yShift=0, xoff=0, yoff=0
+Expanded leaf count: 10; modes={12: 10}
+  leaf target=1445 rel=(-11,0) mode=12 source=(2,21) size=(36,2)
+  leaf target=1445 rel=(88,128) mode=12 source=(2,21) size=(36,2)
+  leaf target=1446 rel=(25,0) mode=12 source=(2,22) size=(42,1)
+  leaf target=1446 rel=(47,128) mode=12 source=(2,22) size=(42,1)
+  leaf target=1409 rel=(-6,0) mode=12 source=(4,7) size=(11,3)
+  leaf target=1410 rel=(42,0) mode=12 source=(6,8) size=(7,2)
+  leaf target=1410 rel=(86,-1) mode=12 source=(6,8) size=(7,2)
+  leaf target=1419 rel=(16,127) mode=12 source=(63,8) size=(7,2)
+  leaf target=1419 rel=(63,128) mode=12 source=(63,8) size=(7,2)
+  leaf target=1418 rel=(107,128) mode=12 source=(60,7) size=(11,3)
+
+NODE 530: packed=1581, start=1581, pre-command flags=0, child count=1
+Child entries (b[10]) decode target low13, recursion bit13, y-shift bits14-15*128.
+  entry 1581: packed=8721, target=529, recursive=True, yShift=0, xoff=0, yoff=0
+Expanded leaf count: 10; modes={12: 10}
+  leaf target=1447 rel=(27,-1) mode=12 source=(2,19) size=(42,1)
+  leaf target=1444 rel=(-21,-2) mode=12 source=(0,19) size=(48,2)
+  leaf target=1447 rel=(43,127) mode=12 source=(2,19) size=(42,1)
+  leaf target=1444 rel=(85,126) mode=12 source=(0,19) size=(48,2)
+  leaf target=1427 rel=(-6,-3) mode=12 source=(4,9) size=(11,3)
+  leaf target=1429 rel=(42,-2) mode=12 source=(6,9) size=(7,2)
+  leaf target=1429 rel=(86,-1) mode=12 source=(6,9) size=(7,2)
+  leaf target=1438 rel=(17,127) mode=12 source=(63,9) size=(7,2)
+  leaf target=1438 rel=(63,126) mode=12 source=(63,9) size=(7,2)
+  leaf target=1436 rel=(107,125) mode=12 source=(60,9) size=(11,3)
+
+NODE 558: packed=1650, start=1650, pre-command flags=0, child count=5
+Child entries (b[10]) decode target low13, recursion bit13, y-shift bits14-15*128.
+  entry 1650: packed=1484, target=1484, recursive=False, yShift=0, xoff=71, yoff=22
+  entry 1651: packed=1467, target=1467, recursive=False, yShift=0, xoff=66, yoff=1
+  entry 1652: packed=1446, target=1446, recursive=False, yShift=0, xoff=-17, yoff=28
+  entry 1653: packed=1419, target=1419, recursive=False, yShift=0, xoff=36, yoff=27
+  entry 1654: packed=1410, target=1410, recursive=False, yShift=0, xoff=6, yoff=28
+Expanded leaf count: 5; modes={12: 5}
+  leaf target=1484 rel=(71,22) mode=12 source=(69,23) size=(6,7)
+  leaf target=1467 rel=(66,1) mode=12 source=(76,20) size=(5,27)
+  leaf target=1446 rel=(-17,28) mode=12 source=(2,22) size=(42,1)
+  leaf target=1419 rel=(36,27) mode=12 source=(63,8) size=(7,2)
+  leaf target=1410 rel=(6,28) mode=12 source=(6,8) size=(7,2)
+
+Interpretation: 525 and 530 each contain one recursive child (524 and 529 respectively); expansion reaches ten mode-12 leaves each. Node 558 contains five direct mode-12 leaves. Mode 12's exact visual effect depends on the dispatcher branch and runtime conditions; this table alone does not establish object names or screen labels.

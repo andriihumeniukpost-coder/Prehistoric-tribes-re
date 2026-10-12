@@ -1,0 +1,11 @@
+MODE 12 — VERIFIED GRAPHICS SEMANTICS
+
+Bytecode method g.b(int,int,int): mode=(j[20][i] & 255) & 31. For mode 12, if field s is false, the renderer calls Graphics.drawArc(x,y,width,height,0,360). If s is true, it skips drawing and returns. This is an outline arc/ellipse path, not drawRegion and not an image frame.
+
+The mode-12 branch still computes color from packed high bits of j[20] and bit 7 of j[21]: colorIndex=((j20_unsigned >> 5) | ((j21_unsigned & 128) >> 4)); RGB comes from j[17][colorIndex*3 .. +2]. In the resource, all 106 mode-12 commands resolve to color index 0 = RGB(0,0,0), so they draw black outlines when enabled.
+
+Geometry passed to drawArc: x = parentX + (j[21] & 127); y = parentY + j[22]; width=j[23]; height=j[24]; startAngle=0; arcAngle=360. The tree walker adds b[10] child offsets to parentX/parentY before leaf dispatch, so final coordinates are cumulative tree offsets plus these command-local values.
+
+Mode-12 command count in j[20]–j[24]: 106. All have color index 0. Their actual visibility depends on runtime field s.
+
+Selected nodes 525/530/558: their expanded leaves are listed in the CSV, including cumulative relative coordinates from the previous tree expansion plus command-local x/y and dimensions. Coordinates are relative, not screen-space.

@@ -1,0 +1,6 @@
+Prehistoric Tribes analysis bundle v51
+Base archive: Prehistoric-tribes-analysis-bundle-20261012-v50.zip
+Added:
+- analysis/entity_slot_retry_control_flow_v51.txt
+- analysis/entity_slot_retry_control_flow_evidence_v51.csv
+Original game code unchanged.
