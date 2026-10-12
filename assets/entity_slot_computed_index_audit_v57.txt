@@ -1,0 +1,28 @@
+Prehistoric Tribes v0.1.38 — computed-index and alias audit v57
+=============================================================
+
+Input: v56 analysis bundle and its original javap disassembly. No game code changed.
+
+Scope
+-----
+This pass broadens the v56 literal-base audit by inventorying every `bastore` whose preceding local bytecode context contains a load of c.a:[B (constant-pool field #66 in class c), the array previously linked to g.e:[B, and by preserving every literal `sipush 1919` site. It is a context inventory, not a full verifier-grade JVM operand-stack analysis; a field load in the context is a candidate indicator, not proof that it is the array reference consumed by that particular `bastore`.
+
+Results
+-------
+- Total `bastore` instructions across the supplied disassembly files: 1492.
+- `bastore` sites with a nearby reference to c.a:[B (#66): 555 candidates in entity_slot_computed_index_store_candidates_v57.csv.
+- Literal `sipush 1919` references recorded: 69 in entity_slot_literal1919_context_v57.csv.
+- The known marker write/update sites remain: g allocator writes e[1919 + slot] with the computed marker; g.a(byte) writes -1 at e[1919 + slot]; c.c(byte) writes 0 at c.a[1919 + argument] only on the successful replacement branch; c.a(int,int) contains a marker-adjustment write based on e[1919 + index] and the companion marker limit at 6767 + index.
+- The computed-index candidate inventory did not yield a separately confirmed write-to-zero targeting e[1919 + slot] other than c.c(byte)'s successful replacement branch. It also did not produce a verifier-grade proof that no such path exists.
+
+Interpretation of the full-pool failure
+---------------------------------------
+The v55 path remains a concrete conditional failure: when all 50 candidate slots are nonzero, c.c(byte) returns at bytecode offset 429 before clearing the old marker and mapping. The resource-derived state transition 107 -> 69 -> 69 supports that the normal state transition does not itself return the entity to state 107. The audit has not identified a separate direct marker-zero write for that stranded slot, but computed aliases, indirect calls, and whole-array replacement are not exhaustively ruled out.
+
+Limits
+------
+This is not a complete JVM abstract-interpretation pass. In particular, bytecode lines nearby can include unrelated array stores, and a true proof requires tracking operand-stack types/values and array aliases across control-flow joins. Thus: a likely stranded-slot defect on the specific full-pool path is strongly supported; a program-wide permanent leak remains unproven.
+
+Reproduction
+------------
+Run `python3 tools/entity_slot_computed_index_audit_v57.py` from the extracted bundle root to regenerate both CSV inventories and the report counts.

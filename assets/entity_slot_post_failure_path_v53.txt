@@ -1,0 +1,72 @@
+Prehistoric Tribes v0.1.38 — post-failure control-flow and C() audit (v53)
+============================================================================
+
+Input: v52 analysis bundle. This report uses the supplied javap-style bytecode. It does not modify original game code.
+
+1. c.C()V: direct effects and callers
+-------------------------------------
+Class c, private void C(), bytecode offsets 0–211.
+
+Direct effects observed:
+- Reads state at a[2828 + v] and another field at a[2929 + v]. If state == 78 and the second value is in [113,116], returns at offset 54.
+- Otherwise reads b[aS[40] + state].
+- If that lookup is not -1 and differs from a[3535 + v], writes 0 to a[3636 + v] at offsets 127–140, then writes the lookup value to a[3535 + v] at offsets 141–179, and returns.
+- On the alternate branch, if a[3636 + v] == 0, writes 0 to a[3535 + v] at offsets 197–210.
+- The method has no invoke* instructions: it has no direct callees.
+- It contains no writes to marker region 1919 + slot and no writes to mapping region 4444 + index.
+
+Direct call sites in supplied disassemblies:
+- c.a(int, byte), offset 111: invokes c.C()V when the requested state is outside [83,85], after the new state has already been stored at offsets 29–35.
+- g.C()V is a distinct method in another class; it is not the c.C()V discussed here.
+
+Implication for state 107:
+- If c.a(int, byte) is called with new state 107 and the state differs from the current state, it stores 107, then calls c.C() because 107 > 85.
+- c.C() may update offsets 3535 + v and 3636 + v, depending on lookup values, but does not directly clear the slot marker or mapping.
+- This is a direct-effects result only. It does not establish the effects of other methods called later by the main update loop.
+
+2. Full-group failure in c.c(B)V and the continuation in c.k()Z
+-----------------------------------------------------------------
+Class c, private void c(byte), bytecode offsets 0–429.
+- Slot scan starts at R = 50*u + 1 (offsets 0–10) and scans through (u+1)*50 (offsets 13–426).
+- A nonzero marker at a[1919 + R] advances the scan (offsets 29–45, then 416–426).
+- If the scan passes the group's upper bound, it returns at offset 429.
+- The successful path instead writes 0 to a[4444 + argument] at offsets 88–98 and writes 0 to a[1919 + argument] at offsets 346–356.
+- Therefore, on the full-group path, both successful-path cleanup writes are skipped. This is directly shown by control flow.
+
+In c.k()Z:
+- The state-107 check is at offsets 326–341; it passes a[4444 + v] to c.c(B)V at offsets 344–358.
+- Execution continues at offset 361 after c.c(B)V returns.
+- It is not valid to say that k() always returns false after this: later branches include a separate condition at offsets 580–620 that can return true, and the earlier p() path can return true before reaching the state-107 check. If none of those early-return conditions is met and state remains 107, the later state comparisons fall through to the final false return at offsets 731–732.
+- Thus the direct, proven result is that c.k() continues after a full-group failure; its final boolean depends on other state/data conditions.
+
+3. c.i()Z dispatch after k()
+----------------------------
+Class c, private boolean i(), offsets 1014–1028:
+- invokes c.k()Z at offset 1014.
+- If k() returns true, i() returns true immediately (offsets 1018–1022), and c.I() is not called on that path.
+- If k() returns false, i() invokes c.I() at offsets 1023–1026, then returns true.
+
+4. c.I()V after a failed replacement
+-------------------------------------
+- c.I() reads state a[2828 + v] and can call the shared state setter c.a(int, byte) at offsets 137–157 and 345.
+- For a state such as 107, the generic branch at offsets 254–345 computes a target state from b[aS[160] + currentState] and passes it to the setter. The exact target requires resolving the actual table contents for the active runtime arrays; this report does not guess that value.
+- The setter may call c.C() for a target outside [83,85]. c.C() itself does not write marker/mapping regions.
+- This creates a possible indirect state transition after a failed replacement, but does not prove that the transition always happens or that the same entity stops being retried.
+
+5. Defensible conclusion
+------------------------
+Confirmed:
+- c.C() has no callees and does not directly write the slot marker or mapping.
+- On a full-group scan, c.c(B)V returns before both successful-path cleanup writes.
+- c.k() continues after c.c(B)V returns; it may return true or false depending on subsequent branches.
+- c.i() calls c.I() only when c.k() returns false.
+- c.I() can change state through c.a(int, byte), but the concrete target state for state 107 has not been resolved here.
+
+Not confirmed:
+- Whether every full-group failure leaves state 107 unchanged through the rest of the tick.
+- Whether the next update retries the same entity under all relevant conditions.
+- Whether all possible indirect writes across the whole program can or cannot reset a marker.
+- A permanent/global slot leak.
+
+Next decisive task:
+Resolve the table entry b[aS[160] + 107] from the actual runtime data initialization, then trace the state setter and following update scheduling. Separately continue computed-index write analysis for the marker interval 1920–1969.

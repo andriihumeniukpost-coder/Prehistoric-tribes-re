@@ -1,0 +1,12 @@
+class,method,bytecode_offset,evidence,interpretation,certainty
+c,private void m(int),6-16,"getfield a:[B; sipush 1919; iload_1; iadd; iconst_0; bastore",Direct marker reset e[1919+slot],confirmed
+c,final void l(),44-89,"loop slot 1..100; if marker != 0 call g.a(slot), then m(slot)",Bulk cleanup of nonzero markers for slots 1..100,confirmed
+c,final void m(),6-51,"loop slot 51..100; if marker != 0 call g.a(slot), then m(slot)",Bulk cleanup of nonzero markers for slots 51..100,confirmed
+g,private void T(),115-130,"if ag == 37 invoke c.l()",Scene-state 37 triggers cleanup,confirmed
+g,private void T(),273-288,"if ag == 38 invoke c.l()",Scene-state 38 triggers cleanup,confirmed
+g,private void T(),404-420,"if ag == 45 invoke c.m()",Scene-state 45 triggers cleanup,confirmed
+g,final void b(int),0-22,"invoke i(); if arg >= 0 set ag=arg; invoke S() and T()",Scene change dispatches corresponding handler synchronously,confirmed
+g,private void ... (caller of b(int)),667,"increments ag then passes it to b(int)",Potential dynamic global-state transition; exact reaching of cleanup state not established,conditional
+g,private void ... (caller of b(int)),75,"passes resource-table-derived value to b(int)",Possible transition depends on resource data,conditional
+g,private void ... (caller of b(int)),178,"passes -1 to b(int)",Does not set ag via nonnegative branch,confirmed
+g,private void ... (caller of b(int)),227,"passes literal 59 to b(int)",Transition to state 59,confirmed

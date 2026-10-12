@@ -1,0 +1,36 @@
+Prehistoric Tribes v0.1.38 — entity slot marker write audit (v32)
+
+Scope
+-----
+Static audit of the g class disassembly in analysis/bytecode/g.txt. The marker under investigation is e[1919 + slot]. This is bytecode evidence, not a runtime trace.
+
+Confirmed marker accesses
+-------------------------
+1. Allocation method: final byte a(byte, byte, byte, byte, byte), source listing around lines 32206 and 32773/32815.
+   - At bytecode offsets 12–25 it scans e[1919 + base + candidate] and branches onward only when the value equals zero.
+   - At offsets around 982–1000 and 1059 onward, it writes/derives the marker for a selected slot. The expression is conditional and uses helper a(255,10); it should not be simplified to a fixed marker without emulating the full stack and branch.
+2. Release method: final void a(byte), around listing line 33333.
+   - calls e(slot), f(slot), stores -1 into e[1919 + slot], then calls c(slot).
+3. The remaining occurrences of constant 1919 in g.txt are reads / guards / render or gameplay checks, not an obvious additional direct zero store in the nearby instruction windows.
+
+Important nuance
+----------------
+The disassembly search for the literal constant 1919 finds the explicit -1 release store and allocation logic, but it does not prove that no reset exists. A reset could use a previously computed array index, a bulk initialization loop, or another method/class. In particular, the array e is a byte array and its allocation/initialization lifecycle must be checked before declaring a slot leak.
+
+Other relevant code paths
+-------------------------
+- private boolean a() (around line 8099) counts/recognizes slots only when marker > 0.
+- private void q() (around lines 8897–9108) checks marker <= 0 before active-slot behavior and uses the marker in render calculations.
+- private void r() (around line 9444) has a marker <= 0 branch.
+- private void d(byte) (around line 23675) branches based on marker > 0.
+- private void ad() (around lines 25964 and 26014) has active-marker guards.
+- private void aj() (around line 27636) branches based on marker > 0.
+- private void aF() (around line 31294) skips inactive markers.
+- final void b(int,int) (around lines 33615 and 33650) processes slots only when marker > 0.
+- private boolean d(int) (around line 39577) treats marker == 0 as a special case in a separate context; this is not a marker write.
+
+Conclusion
+----------
+Evidence supports three marker categories at the call sites: zero is allocatable, positive is active, and -1 is inactive/released. The unresolved question is whether any initialization or indirect write turns -1 back into 0. Do not label this a confirmed leak until all writes to e and the full lifecycle of the e array have been audited.
+
+Method names are obfuscated; semantic labels above are based on behavior, not original source names.

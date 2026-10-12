@@ -1,0 +1,1353 @@
+CONTROL-FLOW-AWARE JVM ARRAY TRACE REPORT
+Input reports: 8
+Methods parsed: 402
+Reachable a:[B accesses: 3365
+Only exact C + this.v:I indices are classified.
+Unclassified means the array was traced but its index was not proven.
+
+SUMMARY BY BASE OFFSET
+base | reads | writes | methods
+    0 |   110 |      3 |      51
+  101 |   110 |      3 |      51
+  202 |    14 |      6 |      13
+  303 |    14 |      6 |      13
+  404 |     3 |      6 |       5
+  505 |     9 |      1 |       6
+  606 |    24 |      7 |      11
+  707 |    15 |      2 |       4
+  808 |     8 |      7 |      12
+ 1010 |     6 |      1 |       5
+ 1111 |    16 |      8 |       9
+ 1313 |    14 |     17 |      21
+ 1414 |    34 |      1 |      20
+ 1515 |     6 |      0 |       5
+ 1616 |     8 |      1 |       7
+ 1717 |     8 |      1 |       7
+ 1818 |     5 |      3 |       4
+ 1919 |    17 |      6 |      13
+ 2020 |    11 |      2 |       6
+ 2121 |     7 |      1 |       4
+ 2222 |     3 |      1 |       1
+ 2525 |     1 |      0 |       1
+ 2626 |     1 |      0 |       1
+ 2828 |   334 |     10 |      63
+ 2929 |    70 |     21 |      32
+ 3030 |    16 |     20 |      17
+ 3131 |    23 |     39 |      34
+ 3232 |    21 |     37 |      34
+ 3333 |     5 |     10 |       4
+ 3434 |    11 |      2 |       6
+ 3535 |     5 |      7 |       8
+ 3636 |    11 |      8 |      14
+ 3737 |     2 |      0 |       1
+ 3838 |     4 |      0 |       3
+ 3939 |    13 |      3 |       6
+ 4040 |     3 |      3 |       4
+ 4444 |   166 |     12 |      39
+ 4545 |    12 |      7 |       9
+ 4646 |    31 |      9 |      18
+ 4747 |     9 |      8 |      11
+ 4848 |     6 |      7 |       8
+ 4949 |     9 |      1 |       8
+ 5050 |     4 |      3 |       4
+ 5252 |     6 |      2 |       4
+ 5353 |     6 |      2 |       4
+ 5454 |     4 |      3 |       2
+ 5555 |     4 |      3 |       2
+ 5656 |     1 |      1 |       2
+ 5757 |     1 |      1 |       2
+ 5858 |     4 |      2 |       3
+ 5959 |    16 |      2 |       7
+ 6060 |     0 |      1 |       1
+ 6161 |    27 |     26 |      24
+ 6262 |     9 |      9 |      12
+ 6363 |     9 |      9 |      12
+ 6464 |    23 |     10 |      19
+ 6565 |    22 |      2 |      18
+ 6666 |     2 |      2 |       2
+ 6767 |    10 |      4 |       6
+ 7272 |     2 |      0 |       1
+ 7373 |     2 |      0 |       1
+ 7575 |    12 |      0 |       6
+ 7676 |     0 |      1 |       1
+ 7777 |     5 |      5 |       7
+ 7878 |     2 |      2 |       2
+ 7979 |    58 |     19 |      26
+ 8080 |     4 |      3 |       1
+ 8181 |     2 |      2 |       1
+ 8282 |     9 |      2 |       6
+ 8383 |     2 |      0 |       2
+ 8444 |     2 |      0 |       2
+ 8505 |     6 |      0 |       3
+ 8566 |     1 |      0 |       1
+ 8627 |    13 |      1 |       6
+ 8749 |     8 |      0 |       4
+ 8810 |     2 |      1 |       3
+ 8932 |     3 |      1 |       3
+ 9054 |     4 |      2 |       2
+ 9115 |     2 |      1 |       2
+ 9237 |     9 |      2 |       4
+ 9298 |     4 |      2 |       1
+ 9359 |    15 |      1 |       4
+ 9381 |    14 |      1 |       4
+ 9403 |     2 |      2 |       2
+ 9425 |     2 |      2 |       2
+ 9447 |     9 |      5 |       2
+ 9469 |     4 |      2 |       3
+ 9491 |    11 |      2 |       3
+ 9513 |     1 |      0 |       1
+ 9535 |    21 |      0 |       5
+ 9557 |     6 |      7 |       4
+ 9579 |     3 |      6 |       2
+ 9601 |    20 |      4 |       5
+ 9623 |     4 |      2 |       2
+ 9645 |     3 |      4 |       4
+ 9667 |     3 |      4 |       4
+ 9689 |     4 |      5 |       3
+ 9711 |     8 |      3 |       1
+
+UNCLASSIFIED ACCESSES
+READ: 1064
+WRITE: 213
+
+EXAMPLES
+
+[READ] base 0
+  analysis/bytecode/c.txt | private void o(); @ bytecode 73: 73: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 15: 15: baload
+  analysis/bytecode/c.txt | private byte a(int, int, int); @ bytecode 39: 39: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 151: 151: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 247: 247: baload
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 196: 196: baload
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 212: 212: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 137: 137: baload
+
+[WRITE] base 0
+  analysis/bytecode/c.txt | private void x(); @ bytecode 621: 621: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 287: 287: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 706: 706: bastore
+
+[READ] base 101
+  analysis/bytecode/c.txt | private void o(); @ bytecode 62: 62: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 31: 31: baload
+  analysis/bytecode/c.txt | private byte a(int, int, int); @ bytecode 24: 24: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 139: 139: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 272: 272: baload
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 230: 230: baload
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 247: 247: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 149: 149: baload
+
+[WRITE] base 101
+  analysis/bytecode/c.txt | private void x(); @ bytecode 646: 646: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 331: 331: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 740: 740: bastore
+
+[READ] base 202
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 687: 687: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 29: 29: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 71: 71: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 159: 159: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 38: 38: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 445: 445: baload
+
+[WRITE] base 202
+  analysis/bytecode/c.txt | private void x(); @ bytecode 660: 660: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 478: 478: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 630: 630: bastore
+  analysis/bytecode/c.txt | private void E(); @ bytecode 218: 218: bastore
+  analysis/bytecode/c.txt | private void E(); @ bytecode 562: 562: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 13: 13: bastore
+
+[READ] base 303
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 703: 703: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 45: 45: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 87: 87: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 28: 28: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 175: 175: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 28: 28: baload
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 54: 54: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 492: 492: baload
+
+[WRITE] base 303
+  analysis/bytecode/c.txt | private void x(); @ bytecode 674: 674: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 526: 526: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 737: 737: bastore
+  analysis/bytecode/c.txt | private void E(); @ bytecode 371: 371: bastore
+  analysis/bytecode/c.txt | private void E(); @ bytecode 642: 642: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 27: 27: bastore
+
+[READ] base 404
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 634: 634: baload
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 30: 30: baload
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 185: 185: baload
+
+[WRITE] base 404
+  analysis/bytecode/c.txt | private void y(); @ bytecode 260: 260: bastore
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 1011: 1011: bastore
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 139: 139: bastore
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 805: 805: bastore
+  analysis/bytecode/c.txt | private void I(); @ bytecode 250: 250: bastore
+  analysis/bytecode/c.txt | private void K(); @ bytecode 13: 13: bastore
+
+[READ] base 505
+  analysis/bytecode/c.txt | private void t(); @ bytecode 233: 233: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1009: 1009: baload
+  analysis/bytecode/c.txt | private void B(); @ bytecode 441: 441: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 193: 193: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 594: 594: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 668: 668: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 732: 732: baload
+  analysis/bytecode/c.txt | private boolean a(boolean); @ bytecode 49: 49: baload
+
+[WRITE] base 505
+  analysis/bytecode/c.txt | private void W(); @ bytecode 370: 370: bastore
+
+[READ] base 606
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 657: 657: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 702: 702: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 220: 220: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 261: 261: baload
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 90: 90: baload
+  analysis/bytecode/c.txt | private boolean g(); @ bytecode 392: 392: baload
+  analysis/bytecode/c.txt | private boolean g(); @ bytecode 440: 440: baload
+  analysis/bytecode/c.txt | private void z(); @ bytecode 42: 42: baload
+
+[WRITE] base 606
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 155: 155: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 722: 722: bastore
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 296: 296: bastore
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 105: 105: bastore
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 462: 462: bastore
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 313: 313: bastore
+  analysis/bytecode/c.txt | private boolean g(); @ bytecode 367: 367: bastore
+
+[READ] base 707
+  analysis/bytecode/c.txt | final void e(); @ bytecode 475: 475: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1419: 1419: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 94: 94: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 136: 136: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 207: 207: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 233: 233: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 266: 266: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 291: 291: baload
+
+[WRITE] base 707
+  analysis/bytecode/c.txt | private byte a(int, int, int, int, int, int); @ bytecode 549: 549: bastore
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 818: 818: bastore
+
+[READ] base 808
+  analysis/bytecode/c.txt | private void p(); @ bytecode 47: 47: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 648: 648: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 620: 620: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 462: 462: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1406: 1406: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 75: 75: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 520: 520: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 713: 713: baload
+
+[WRITE] base 808
+  analysis/bytecode/c.txt | private void o(); @ bytecode 103: 103: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 588: 588: bastore
+  analysis/bytecode/c.txt | private void u(); @ bytecode 283: 283: bastore
+  analysis/bytecode/c.txt | private void u(); @ bytecode 421: 421: bastore
+  analysis/bytecode/c.txt | private boolean a(byte, boolean); @ bytecode 518: 518: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 971: 971: bastore
+  analysis/bytecode/c.txt | private void am(); @ bytecode 200: 200: bastore
+
+[READ] base 1010
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 156: 156: baload
+  analysis/bytecode/c.txt | private void x(); @ bytecode 919: 919: baload
+  analysis/bytecode/c.txt | private void E(); @ bytecode 32: 32: baload
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 292: 292: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 287: 287: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 338: 338: baload
+
+[WRITE] base 1010
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 342: 342: bastore
+
+[READ] base 1111
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 720: 720: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 398: 398: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 67: 67: baload
+  analysis/bytecode/c.txt | private void x(); @ bytecode 888: 888: baload
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 339: 339: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 48: 48: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 140: 140: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 16: 16: baload
+
+[WRITE] base 1111
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 726: 726: bastore
+  analysis/bytecode/c.txt | private void u(); @ bytecode 403: 403: bastore
+  analysis/bytecode/c.txt | private void w(); @ bytecode 72: 72: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 894: 894: bastore
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 345: 345: bastore
+  analysis/bytecode/c.txt | private void y(); @ bytecode 145: 145: bastore
+  analysis/bytecode/c.txt | private void E(); @ bytecode 67: 67: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 61: 61: bastore
+
+[READ] base 1313
+  analysis/bytecode/c.txt | private void u(); @ bytecode 44: 44: baload
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 44: 44: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 376: 376: baload
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 84: 84: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 686: 686: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 727: 727: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 913: 913: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 236: 236: baload
+
+[WRITE] base 1313
+  analysis/bytecode/c.txt | private void u(); @ bytecode 297: 297: bastore
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 359: 359: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 770: 770: bastore
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 310: 310: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 470: 470: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 837: 837: bastore
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 1266: 1266: bastore
+  analysis/bytecode/c.txt | private boolean a(byte, boolean); @ bytecode 683: 683: bastore
+
+[READ] base 1414
+  analysis/bytecode/c.txt | private byte a(int, int, int); @ bytecode 363: 363: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 543: 543: baload
+  analysis/bytecode/c.txt | private void r(); @ bytecode 259: 259: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 304: 304: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 378: 378: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 338: 338: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 463: 463: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 49: 49: baload
+
+[WRITE] base 1414
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 61: 61: bastore
+
+[READ] base 1515
+  analysis/bytecode/c.txt | private boolean a(boolean); @ bytecode 148: 148: baload
+  analysis/bytecode/c.txt | private boolean a(boolean); @ bytecode 690: 690: baload
+  analysis/bytecode/c.txt | private boolean o(); @ bytecode 68: 68: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 118: 118: baload
+  analysis/bytecode/c.txt | private void Z(); @ bytecode 475: 475: baload
+  analysis/bytecode/c.txt | private void av(); @ bytecode 442: 442: baload
+
+[READ] base 1616
+  analysis/bytecode/c.txt | final void b(); @ bytecode 154: 154: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 151: 151: baload
+  analysis/bytecode/c.txt | private void A(); @ bytecode 367: 367: baload
+  analysis/bytecode/c.txt | private void L(); @ bytecode 26: 26: baload
+  analysis/bytecode/c.txt | private void S(); @ bytecode 185: 185: baload
+  analysis/bytecode/c.txt | private void at(); @ bytecode 1116: 1116: baload
+  analysis/bytecode/c.txt | private void av(); @ bytecode 495: 495: baload
+  analysis/bytecode/c.txt | private void av(); @ bytecode 630: 630: baload
+
+[WRITE] base 1616
+  analysis/bytecode/c.txt | private void av(); @ bytecode 640: 640: bastore
+
+[READ] base 1717
+  analysis/bytecode/c.txt | final void b(); @ bytecode 137: 137: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 134: 134: baload
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 342: 342: baload
+  analysis/bytecode/c.txt | private void L(); @ bytecode 13: 13: baload
+  analysis/bytecode/c.txt | private void c(int, int, int); @ bytecode 70: 70: baload
+  analysis/bytecode/c.txt | private void at(); @ bytecode 1103: 1103: baload
+  analysis/bytecode/c.txt | private void av(); @ bytecode 473: 473: baload
+  analysis/bytecode/c.txt | private void av(); @ bytecode 595: 595: baload
+
+[WRITE] base 1717
+  analysis/bytecode/c.txt | private void av(); @ bytecode 605: 605: bastore
+
+[READ] base 1818
+  analysis/bytecode/c.txt | private void q(); @ bytecode 195: 195: baload
+  analysis/bytecode/c.txt | private void x(); @ bytecode 784: 784: baload
+  analysis/bytecode/c.txt | private void A(); @ bytecode 353: 353: baload
+  analysis/bytecode/c.txt | private void A(); @ bytecode 415: 415: baload
+  analysis/bytecode/c.txt | private void F(); @ bytecode 426: 426: baload
+
+[WRITE] base 1818
+  analysis/bytecode/c.txt | private void x(); @ bytecode 788: 788: bastore
+  analysis/bytecode/c.txt | private void A(); @ bytecode 377: 377: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 430: 430: bastore
+
+[READ] base 1919
+  analysis/bytecode/c.txt | final void c(); @ bytecode 57: 57: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 181: 181: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 261: 261: baload
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 386: 386: baload
+  analysis/bytecode/c.txt | private boolean a(byte, byte, byte, byte); @ bytecode 197: 197: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 849: 849: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 226: 226: baload
+
+[WRITE] base 1919
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 293: 293: bastore
+  analysis/bytecode/c.txt | private boolean a(byte, byte, byte, byte); @ bytecode 218: 218: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 233: 233: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 386: 386: bastore
+  analysis/bytecode/c.txt | private boolean s(); @ bytecode 115: 115: bastore
+  analysis/bytecode/c.txt | private void av(); @ bytecode 726: 726: bastore
+
+[READ] base 2020
+  analysis/bytecode/c.txt | private void B(); @ bytecode 474: 474: baload
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 716: 716: baload
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 666: 666: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 581: 581: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 110: 110: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 129: 129: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 227: 227: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 244: 244: baload
+
+[WRITE] base 2020
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 133: 133: bastore
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 248: 248: bastore
+
+[READ] base 2121
+  analysis/bytecode/c.txt | private void B(); @ bytecode 504: 504: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 180: 180: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 450: 450: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 467: 467: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 497: 497: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 711: 711: baload
+  analysis/bytecode/c.txt | private void W(); @ bytecode 136: 136: baload
+
+[WRITE] base 2121
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 471: 471: bastore
+
+[READ] base 2222
+  analysis/bytecode/c.txt | private void A(); @ bytecode 608: 608: baload
+  analysis/bytecode/c.txt | private void A(); @ bytecode 626: 626: baload
+  analysis/bytecode/c.txt | private void A(); @ bytecode 647: 647: baload
+
+[WRITE] base 2222
+  analysis/bytecode/c.txt | private void A(); @ bytecode 38: 38: bastore
+
+[READ] base 2525
+  analysis/bytecode/c.txt | private void A(); @ bytecode 552: 552: baload
+
+[READ] base 2626
+  analysis/bytecode/c.txt | private void A(); @ bytecode 572: 572: baload
+
+[READ] base 2828
+  analysis/bytecode/c.txt | private void p(); @ bytecode 146: 146: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 204: 204: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 222: 222: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 240: 240: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 258: 258: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 276: 276: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 294: 294: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 312: 312: baload
+
+[WRITE] base 2828
+  analysis/bytecode/c.txt | private void r(); @ bytecode 340: 340: bastore
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 365: 365: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 232: 232: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 1041: 1041: bastore
+  analysis/bytecode/c.txt | private boolean k(); @ bytecode 86: 86: bastore
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 169: 169: bastore
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 728: 728: bastore
+  analysis/bytecode/c.txt | private void Z(); @ bytecode 755: 755: bastore
+
+[READ] base 2929
+  analysis/bytecode/c.txt | private void r(); @ bytecode 392: 392: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 505: 505: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 68: 68: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 757: 757: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 775: 775: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 793: 793: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 186: 186: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 455: 455: baload
+
+[WRITE] base 2929
+  analysis/bytecode/c.txt | private void u(); @ bytecode 99: 99: bastore
+  analysis/bytecode/c.txt | private void u(); @ bytecode 255: 255: bastore
+  analysis/bytecode/c.txt | private void v(); @ bytecode 210: 210: bastore
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 163: 163: bastore
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 403: 403: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 370: 370: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 852: 852: bastore
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 222: 222: bastore
+
+[READ] base 3030
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 29: 29: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 46: 46: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 208: 208: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 33: 33: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 228: 228: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 13: 13: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 182: 182: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 308: 308: baload
+
+[WRITE] base 3030
+  analysis/bytecode/c.txt | private byte a(int, int, int, int, int, int); @ bytecode 563: 563: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 293: 293: bastore
+  analysis/bytecode/c.txt | private void r(); @ bytecode 215: 215: bastore
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 33: 33: bastore
+  analysis/bytecode/c.txt | private void u(); @ bytecode 269: 269: bastore
+  analysis/bytecode/c.txt | private void u(); @ bytecode 384: 384: bastore
+  analysis/bytecode/c.txt | private void v(); @ bytecode 272: 272: bastore
+  analysis/bytecode/c.txt | private void w(); @ bytecode 17: 17: bastore
+
+[READ] base 3131
+  analysis/bytecode/c.txt | private void o(); @ bytecode 99: 99: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 534: 534: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 178: 178: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 32: 32: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 737: 737: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 815: 815: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 396: 396: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 93: 93: baload
+
+[WRITE] base 3131
+  analysis/bytecode/c.txt | private void p(); @ bytecode 617: 617: bastore
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 248: 248: bastore
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 741: 741: bastore
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 819: 819: bastore
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 343: 343: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 326: 326: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 487: 487: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 676: 676: bastore
+
+[READ] base 3232
+  analysis/bytecode/c.txt | private void o(); @ bytecode 86: 86: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 563: 563: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 191: 191: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 49: 49: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 431: 431: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 106: 106: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 500: 500: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 820: 820: baload
+
+[WRITE] base 3232
+  analysis/bytecode/c.txt | private void p(); @ bytecode 634: 634: bastore
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 273: 273: bastore
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 389: 389: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 360: 360: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 521: 521: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 701: 701: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 768: 768: bastore
+  analysis/bytecode/c.txt | private void r(); @ bytecode 450: 450: bastore
+
+[READ] base 3333
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 739: 739: baload
+  analysis/bytecode/c.txt | private void B(); @ bytecode 67: 67: baload
+  analysis/bytecode/c.txt | private void B(); @ bytecode 114: 114: baload
+  analysis/bytecode/c.txt | private void B(); @ bytecode 132: 132: baload
+  analysis/bytecode/c.txt | private void B(); @ bytecode 149: 149: baload
+
+[WRITE] base 3333
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 812: 812: bastore
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 619: 619: bastore
+  analysis/bytecode/c.txt | private void B(); @ bytecode 98: 98: bastore
+  analysis/bytecode/c.txt | private void B(); @ bytecode 136: 136: bastore
+  analysis/bytecode/c.txt | private void B(); @ bytecode 222: 222: bastore
+  analysis/bytecode/c.txt | private void B(); @ bytecode 411: 411: bastore
+  analysis/bytecode/c.txt | private void B(); @ bytecode 461: 461: bastore
+  analysis/bytecode/c.txt | private void B(); @ bytecode 491: 491: bastore
+
+[READ] base 3434
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 446: 446: baload
+  analysis/bytecode/c.txt | private void B(); @ bytecode 424: 424: baload
+  analysis/bytecode/c.txt | private void O(); @ bytecode 854: 854: baload
+  analysis/bytecode/c.txt | private void O(); @ bytecode 889: 889: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 289: 289: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 312: 312: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 337: 337: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 378: 378: baload
+
+[WRITE] base 3434
+  analysis/bytecode/c.txt | private void V(); @ bytecode 32: 32: bastore
+  analysis/bytecode/c.txt | private void V(); @ bytecode 163: 163: bastore
+
+[READ] base 3535
+  analysis/bytecode/c.txt | private void a(int, int, boolean); @ bytecode 163: 163: baload
+  analysis/bytecode/c.txt | private void a(int, int, boolean); @ bytecode 197: 197: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 582: 582: baload
+  analysis/bytecode/c.txt | private boolean g(); @ bytecode 266: 266: baload
+  analysis/bytecode/c.txt | private void C(); @ bytecode 97: 97: baload
+
+[WRITE] base 3535
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 777: 777: bastore
+  analysis/bytecode/c.txt | private void C(); @ bytecode 179: 179: bastore
+  analysis/bytecode/c.txt | private void C(); @ bytecode 210: 210: bastore
+  analysis/bytecode/c.txt | private boolean k(); @ bytecode 325: 325: bastore
+  analysis/bytecode/c.txt | private void I(); @ bytecode 86: 86: bastore
+  analysis/bytecode/c.txt | private void I(); @ bytecode 207: 207: bastore
+  analysis/bytecode/c.txt | private void f(boolean); @ bytecode 142: 142: bastore
+
+[READ] base 3636
+  analysis/bytecode/c.txt | private void a(int, int, boolean); @ bytecode 147: 147: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 598: 598: baload
+  analysis/bytecode/c.txt | private void w(); @ bytecode 653: 653: baload
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 566: 566: baload
+  analysis/bytecode/c.txt | private void C(); @ bytecode 193: 193: baload
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 992: 992: baload
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 965: 965: baload
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 1035: 1035: baload
+
+[WRITE] base 3636
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 250: 250: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 763: 763: bastore
+  analysis/bytecode/c.txt | private void C(); @ bytecode 140: 140: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 957: 957: bastore
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 996: 996: bastore
+  analysis/bytecode/c.txt | private boolean k(); @ bytecode 260: 260: bastore
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 376: 376: bastore
+  analysis/bytecode/c.txt | private void f(boolean); @ bytecode 156: 156: bastore
+
+[READ] base 3737
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 978: 978: baload
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 1048: 1048: baload
+
+[READ] base 3838
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 882: 882: baload
+  analysis/bytecode/c.txt | private boolean j(); @ bytecode 781: 781: baload
+  analysis/bytecode/c.txt | private void J(); @ bytecode 653: 653: baload
+  analysis/bytecode/c.txt | private void J(); @ bytecode 717: 717: baload
+
+[READ] base 3939
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 741: 741: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 176: 176: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 194: 194: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 212: 212: baload
+  analysis/bytecode/c.txt | private void y(); @ bytecode 231: 231: baload
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 176: 176: baload
+  analysis/bytecode/c.txt | private void I(); @ bytecode 30: 30: baload
+  analysis/bytecode/c.txt | private void I(); @ bytecode 48: 48: baload
+
+[WRITE] base 3939
+  analysis/bytecode/c.txt | private void I(); @ bytecode 136: 136: bastore
+  analysis/bytecode/c.txt | private void I(); @ bytecode 222: 222: bastore
+  analysis/bytecode/c.txt | private void M(); @ bytecode 25: 25: bastore
+
+[READ] base 4040
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 42: 42: baload
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 295: 295: baload
+  analysis/bytecode/c.txt | private void O(); @ bytecode 203: 203: baload
+
+[WRITE] base 4040
+  analysis/bytecode/c.txt | private void b(int, int); @ bytecode 423: 423: bastore
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 325: 325: bastore
+  analysis/bytecode/c.txt | private int a(int); @ bytecode 834: 834: bastore
+
+[READ] base 4444
+  analysis/bytecode/c.txt | private void p(); @ bytecode 173: 173: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 188: 188: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 13: 13: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 251: 251: baload
+  analysis/bytecode/c.txt | private void r(); @ bytecode 173: 173: baload
+  analysis/bytecode/c.txt | private int a(int, int, int); @ bytecode 16: 16: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 440: 440: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 492: 492: baload
+
+[WRITE] base 4444
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 18: 18: bastore
+  analysis/bytecode/c.txt | private void b(boolean); @ bytecode 123: 123: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 356: 356: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 722: 722: bastore
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 696: 696: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 808: 808: bastore
+  analysis/bytecode/c.txt | private void N(); @ bytecode 463: 463: bastore
+  analysis/bytecode/c.txt | private void O(); @ bytecode 392: 392: bastore
+
+[READ] base 4545
+  analysis/bytecode/c.txt | final void e(); @ bytecode 210: 210: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 228: 228: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 191: 191: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 209: 209: baload
+  analysis/bytecode/c.txt | private void u(); @ bytecode 252: 252: baload
+  analysis/bytecode/c.txt | private void x(); @ bytecode 89: 89: baload
+  analysis/bytecode/c.txt | private void x(); @ bytecode 191: 191: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 112: 112: baload
+
+[WRITE] base 4545
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 754: 754: bastore
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 373: 373: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 456: 456: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 173: 173: bastore
+  analysis/bytecode/c.txt | private void D(); @ bytecode 209: 209: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 469: 469: bastore
+  analysis/bytecode/c.txt | private void Z(); @ bytecode 678: 678: bastore
+
+[READ] base 4646
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 341: 341: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 269: 269: baload
+  analysis/bytecode/c.txt | private void r(); @ bytecode 191: 191: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 527: 527: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 285: 285: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 412: 412: baload
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 68: 68: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 69: 69: baload
+
+[WRITE] base 4646
+  analysis/bytecode/c.txt | private void v(); @ bytecode 303: 303: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 442: 442: bastore
+  analysis/bytecode/c.txt | private boolean g(); @ bytecode 445: 445: bastore
+  analysis/bytecode/c.txt | private void G(); @ bytecode 434: 434: bastore
+  analysis/bytecode/c.txt | private void G(); @ bytecode 688: 688: bastore
+  analysis/bytecode/c.txt | private void G(); @ bytecode 719: 719: bastore
+  analysis/bytecode/c.txt | private void G(); @ bytecode 893: 893: bastore
+  analysis/bytecode/c.txt | private void G(); @ bytecode 991: 991: bastore
+
+[READ] base 4747
+  analysis/bytecode/c.txt | private void t(); @ bytecode 329: 329: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 342: 342: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 381: 381: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 426: 426: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 476: 476: baload
+  analysis/bytecode/c.txt | private boolean c(byte); @ bytecode 13: 13: baload
+  analysis/bytecode/c.txt | private boolean k(); @ bytecode 454: 454: baload
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 373: 373: baload
+
+[WRITE] base 4747
+  analysis/bytecode/c.txt | private void a(int, int, boolean); @ bytecode 24: 24: bastore
+  analysis/bytecode/c.txt | private void b(boolean); @ bytecode 142: 142: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 393: 393: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 721: 721: bastore
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1170: 1170: bastore
+  analysis/bytecode/c.txt | private void H(); @ bytecode 757: 757: bastore
+  analysis/bytecode/c.txt | private void N(); @ bytecode 532: 532: bastore
+  analysis/bytecode/c.txt | private void O(); @ bytecode 391: 391: bastore
+
+[READ] base 4848
+  analysis/bytecode/c.txt | private void o(); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void p(); @ bytecode 88: 88: baload
+  analysis/bytecode/c.txt | private byte a(int, int, int); @ bytecode 402: 402: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 64: 64: baload
+  analysis/bytecode/c.txt | private void D(); @ bytecode 378: 378: baload
+  analysis/bytecode/c.txt | private void E(); @ bytecode 416: 416: baload
+
+[WRITE] base 4848
+  analysis/bytecode/c.txt | private void o(); @ bytecode 30: 30: bastore
+  analysis/bytecode/c.txt | private void p(); @ bytecode 92: 92: bastore
+  analysis/bytecode/c.txt | private void p(); @ bytecode 490: 490: bastore
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 613: 613: bastore
+  analysis/bytecode/c.txt | private boolean e(); @ bytecode 359: 359: bastore
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 122: 122: bastore
+  analysis/bytecode/c.txt | private void E(); @ bytecode 435: 435: bastore
+
+[READ] base 4949
+  analysis/bytecode/c.txt | private void p(); @ bytecode 403: 403: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 378: 378: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 539: 539: baload
+  analysis/bytecode/c.txt | private void A(); @ bytecode 402: 402: baload
+  analysis/bytecode/c.txt | private void H(); @ bytecode 1234: 1234: baload
+  analysis/bytecode/c.txt | private void N(); @ bytecode 547: 547: baload
+  analysis/bytecode/c.txt | private void N(); @ bytecode 746: 746: baload
+  analysis/bytecode/c.txt | private boolean p(); @ bytecode 76: 76: baload
+
+[WRITE] base 4949
+  analysis/bytecode/c.txt | private void A(); @ bytecode 424: 424: bastore
+
+[READ] base 5050
+  analysis/bytecode/c.txt | final void e(); @ bytecode 362: 362: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 670: 670: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 143: 143: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1390: 1390: baload
+
+[WRITE] base 5050
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 674: 674: bastore
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1184: 1184: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 920: 920: bastore
+
+[READ] base 5252
+  analysis/bytecode/c.txt | private void R(); @ bytecode 102: 102: baload
+  analysis/bytecode/c.txt | private void S(); @ bytecode 27: 27: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 73: 73: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 96: 96: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 222: 222: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 274: 274: baload
+
+[WRITE] base 5252
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 1401: 1401: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 129: 129: bastore
+
+[READ] base 5353
+  analysis/bytecode/c.txt | private void R(); @ bytecode 143: 143: baload
+  analysis/bytecode/c.txt | private void S(); @ bytecode 40: 40: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 127: 127: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 150: 150: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 200: 200: baload
+  analysis/bytecode/c.txt | private void T(); @ bytecode 252: 252: baload
+
+[WRITE] base 5353
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 1415: 1415: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 170: 170: bastore
+
+[READ] base 5454
+  analysis/bytecode/c.txt | private void R(); @ bytecode 42: 42: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 115: 115: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 184: 184: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 197: 197: baload
+
+[WRITE] base 5454
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 1386: 1386: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 58: 58: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 214: 214: bastore
+
+[READ] base 5555
+  analysis/bytecode/c.txt | private void R(); @ bytecode 72: 72: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 156: 156: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 228: 228: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 241: 241: baload
+
+[WRITE] base 5555
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 1384: 1384: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 88: 88: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 258: 258: bastore
+
+[READ] base 5656
+  analysis/bytecode/c.txt | private void R(); @ bytecode 55: 55: baload
+
+[WRITE] base 5656
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 884: 884: bastore
+
+[READ] base 5757
+  analysis/bytecode/c.txt | private void R(); @ bytecode 85: 85: baload
+
+[WRITE] base 5757
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 953: 953: bastore
+
+[READ] base 5858
+  analysis/bytecode/c.txt | private void v(); @ bytecode 177: 177: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 272: 272: baload
+  analysis/bytecode/c.txt | private void R(); @ bytecode 289: 289: baload
+
+[WRITE] base 5858
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 1387: 1387: bastore
+  analysis/bytecode/c.txt | private void R(); @ bytecode 276: 276: bastore
+
+[READ] base 5959
+  analysis/bytecode/c.txt | final void e(); @ bytecode 665: 665: baload
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 97: 97: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 17: 17: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 192: 192: baload
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 683: 683: baload
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 782: 782: baload
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 864: 864: baload
+
+[WRITE] base 5959
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 294: 294: bastore
+  analysis/bytecode/c.txt | private void S(); @ bytecode 13: 13: bastore
+
+[WRITE] base 6060
+  analysis/bytecode/c.txt | private void T(); @ bytecode 232: 232: bastore
+
+[READ] base 6161
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 41: 41: baload
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 290: 290: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 645: 645: baload
+  analysis/bytecode/c.txt | final void c(); @ bytecode 91: 91: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 415: 415: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 445: 445: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 12: 12: baload
+
+[WRITE] base 6161
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 52: 52: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 561: 561: bastore
+  analysis/bytecode/c.txt | private void t(); @ bytecode 645: 645: bastore
+  analysis/bytecode/c.txt | private boolean c(); @ bytecode 396: 396: bastore
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 197: 197: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 963: 963: bastore
+  analysis/bytecode/c.txt | private boolean f(); @ bytecode 217: 217: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 159: 159: bastore
+
+[READ] base 6262
+  analysis/bytecode/c.txt | private void p(); @ bytecode 521: 521: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 804: 804: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 850: 850: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 969: 969: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1126: 1126: baload
+  analysis/bytecode/c.txt | private void O(); @ bytecode 792: 792: baload
+  analysis/bytecode/c.txt | private void an(); @ bytecode 96: 96: baload
+  analysis/bytecode/c.txt | private void an(); @ bytecode 155: 155: baload
+
+[WRITE] base 6262
+  analysis/bytecode/c.txt | private void p(); @ bytecode 583: 583: bastore
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 513: 513: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 845: 845: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 1113: 1113: bastore
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 850: 850: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 495: 495: bastore
+  analysis/bytecode/c.txt | private void at(); @ bytecode 784: 784: bastore
+  analysis/bytecode/c.txt | private void au(); @ bytecode 193: 193: bastore
+
+[READ] base 6363
+  analysis/bytecode/c.txt | private void p(); @ bytecode 550: 550: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 833: 833: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 863: 863: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 995: 995: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1152: 1152: baload
+  analysis/bytecode/c.txt | private void O(); @ bytecode 818: 818: baload
+  analysis/bytecode/c.txt | private void an(); @ bytecode 122: 122: baload
+  analysis/bytecode/c.txt | private void an(); @ bytecode 141: 141: baload
+
+[WRITE] base 6363
+  analysis/bytecode/c.txt | private void p(); @ bytecode 600: 600: bastore
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 530: 530: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 870: 870: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 1148: 1148: bastore
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 876: 876: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 534: 534: bastore
+  analysis/bytecode/c.txt | private void at(); @ bytecode 835: 835: bastore
+  analysis/bytecode/c.txt | private void au(); @ bytecode 227: 227: bastore
+
+[READ] base 6464
+  analysis/bytecode/c.txt | private void p(); @ bytecode 503: 503: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 252: 252: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 282: 282: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 605: 605: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 635: 635: baload
+  analysis/bytecode/c.txt | final void b(); @ bytecode 97: 97: baload
+  analysis/bytecode/c.txt | private void t(); @ bytecode 146: 146: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 912: 912: baload
+
+[WRITE] base 6464
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 496: 496: bastore
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 1101: 1101: bastore
+  analysis/bytecode/c.txt | private void w(); @ bytecode 711: 711: bastore
+  analysis/bytecode/c.txt | private void w(); @ bytecode 785: 785: bastore
+  analysis/bytecode/c.txt | private void x(); @ bytecode 821: 821: bastore
+  analysis/bytecode/c.txt | private void F(); @ bytecode 1078: 1078: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 442: 442: bastore
+  analysis/bytecode/c.txt | private void an(); @ bytecode 287: 287: bastore
+
+[READ] base 6565
+  analysis/bytecode/c.txt | private void a(int, int, boolean); @ bytecode 384: 384: baload
+  analysis/bytecode/c.txt | private void r(); @ bytecode 284: 284: baload
+  analysis/bytecode/c.txt | final void b(); @ bytecode 119: 119: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 576: 576: baload
+  analysis/bytecode/c.txt | private void v(); @ bytecode 49: 49: baload
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 297: 297: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 478: 478: baload
+  analysis/bytecode/c.txt | private boolean b(int); @ bytecode 598: 598: baload
+
+[WRITE] base 6565
+  analysis/bytecode/c.txt | private void L(); @ bytecode 210: 210: bastore
+  analysis/bytecode/c.txt | private void at(); @ bytecode 182: 182: bastore
+
+[READ] base 6666
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 378: 378: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 12: 12: baload
+
+[WRITE] base 6666
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 382: 382: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 43: 43: bastore
+
+[READ] base 6767
+  analysis/bytecode/c.txt | private boolean i(); @ bytecode 694: 694: baload
+  analysis/bytecode/c.txt | private boolean a(byte, byte, byte, byte); @ bytecode 115: 115: baload
+  analysis/bytecode/c.txt | private boolean a(byte, byte, byte, byte); @ bytecode 210: 210: baload
+  analysis/bytecode/c.txt | private boolean n(); @ bytecode 862: 862: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 168: 168: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 246: 246: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 264: 264: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 381: 381: baload
+
+[WRITE] base 6767
+  analysis/bytecode/c.txt | private boolean a(byte, byte, byte, byte); @ bytecode 183: 183: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 205: 205: bastore
+  analysis/bytecode/c.txt | private boolean s(); @ bytecode 114: 114: bastore
+  analysis/bytecode/c.txt | private void av(); @ bytecode 725: 725: bastore
+
+[READ] base 7272
+  analysis/bytecode/c.txt | private void j(int); @ bytecode 88: 88: baload
+  analysis/bytecode/c.txt | private void j(int); @ bytecode 139: 139: baload
+
+[READ] base 7373
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 566: 566: baload
+  analysis/bytecode/c.txt | private boolean r(); @ bytecode 623: 623: baload
+
+[READ] base 7575
+  analysis/bytecode/c.txt | final void b(); @ bytecode 171: 171: baload
+  analysis/bytecode/c.txt | final void e(); @ bytecode 250: 250: baload
+  analysis/bytecode/c.txt | private void x(); @ bytecode 989: 989: baload
+  analysis/bytecode/c.txt | private boolean h(); @ bytecode 300: 300: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 1176: 1176: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 1206: 1206: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 1492: 1492: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 1525: 1525: baload
+
+[WRITE] base 7676
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 1345: 1345: bastore
+
+[READ] base 7777
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 169: 169: baload
+  analysis/bytecode/c.txt | private boolean b(); @ bytecode 759: 759: baload
+  analysis/bytecode/c.txt | private boolean h(); @ bytecode 533: 533: baload
+  analysis/bytecode/c.txt | private boolean h(); @ bytecode 671: 671: baload
+  analysis/bytecode/c.txt | private void E(); @ bytecode 45: 45: baload
+
+[WRITE] base 7777
+  analysis/bytecode/c.txt | private void p(); @ bytecode 770: 770: bastore
+  analysis/bytecode/c.txt | private void g(int); @ bytecode 109: 109: bastore
+  analysis/bytecode/c.txt | private boolean d(); @ bytecode 211: 211: bastore
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 459: 459: bastore
+  analysis/bytecode/c.txt | private boolean m(); @ bytecode 641: 641: bastore
+
+[READ] base 7878
+  analysis/bytecode/c.txt | private void S(); @ bytecode 236: 236: baload
+  analysis/bytecode/c.txt | private void S(); @ bytecode 253: 253: baload
+
+[WRITE] base 7878
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 329: 329: bastore
+  analysis/bytecode/c.txt | private void a(byte, byte, int, int); @ bytecode 620: 620: bastore
+
+[READ] base 7979
+  analysis/bytecode/c.txt | private void p(); @ bytecode 116: 116: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 151: 151: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 171: 171: baload
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 190: 190: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 567: 567: baload
+  analysis/bytecode/c.txt | private void q(); @ bytecode 600: 600: baload
+  analysis/bytecode/c.txt | private void r(); @ bytecode 47: 47: baload
+  analysis/bytecode/c.txt | final void b(); @ bytecode 198: 198: baload
+
+[WRITE] base 7979
+  analysis/bytecode/c.txt | private void p(); @ bytecode 122: 122: bastore
+  analysis/bytecode/c.txt | private void h(int); @ bytecode 196: 196: bastore
+  analysis/bytecode/c.txt | private void q(); @ bytecode 606: 606: bastore
+  analysis/bytecode/c.txt | final void b(); @ bytecode 237: 237: bastore
+  analysis/bytecode/c.txt | final void c(); @ bytecode 44: 44: bastore
+  analysis/bytecode/c.txt | private void i(int); @ bytecode 542: 542: bastore
+  analysis/bytecode/c.txt | private boolean h(); @ bytecode 48: 48: bastore
+  analysis/bytecode/c.txt | private boolean h(); @ bytecode 482: 482: bastore
+
+[READ] base 8080
+  analysis/bytecode/c.txt | private void X(); @ bytecode 48: 48: baload
+  analysis/bytecode/c.txt | private void X(); @ bytecode 65: 65: baload
+  analysis/bytecode/c.txt | private void X(); @ bytecode 151: 151: baload
+  analysis/bytecode/c.txt | private void X(); @ bytecode 205: 205: baload
+
+[WRITE] base 8080
+  analysis/bytecode/c.txt | private void X(); @ bytecode 69: 69: bastore
+  analysis/bytecode/c.txt | private void X(); @ bytecode 192: 192: bastore
+  analysis/bytecode/c.txt | private void X(); @ bytecode 242: 242: bastore
+
+[READ] base 8181
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 718: 718: baload
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 735: 735: baload
+
+[WRITE] base 8181
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 722: 722: bastore
+  analysis/bytecode/c.txt | private boolean q(); @ bytecode 754: 754: bastore
+
+[READ] base 8282
+  analysis/bytecode/c.txt | private boolean a(); @ bytecode 239: 239: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 380: 380: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 443: 443: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 622: 622: baload
+  analysis/bytecode/c.txt | private void N(); @ bytecode 667: 667: baload
+  analysis/bytecode/c.txt | private void N(); @ bytecode 803: 803: baload
+  analysis/bytecode/c.txt | private boolean a(boolean); @ bytecode 548: 548: baload
+  analysis/bytecode/c.txt | private boolean o(); @ bytecode 13: 13: baload
+
+[WRITE] base 8282
+  analysis/bytecode/c.txt | private boolean a(boolean); @ bytecode 559: 559: bastore
+  analysis/bytecode/c.txt | private boolean s(); @ bytecode 149: 149: bastore
+
+[READ] base 8383
+  analysis/bytecode/c.txt | final void g(); @ bytecode 681: 681: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 620: 620: baload
+
+[READ] base 8444
+  analysis/bytecode/c.txt | final void g(); @ bytecode 694: 694: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 660: 660: baload
+
+[READ] base 8505
+  analysis/bytecode/c.txt | final void g(); @ bytecode 75: 75: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 397: 397: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 596: 596: baload
+  analysis/bytecode/c.txt | private void aa(); @ bytecode 164: 164: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 624: 624: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 878: 878: baload
+
+[READ] base 8566
+  analysis/bytecode/c.txt | final void g(); @ bytecode 410: 410: baload
+
+[READ] base 8627
+  analysis/bytecode/c.txt | final void g(); @ bytecode 168: 168: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 249: 249: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 308: 308: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 363: 363: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 380: 380: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 764: 764: baload
+  analysis/bytecode/c.txt | private void aa(); @ bytecode 54: 54: baload
+  analysis/bytecode/c.txt | private void aa(); @ bytecode 566: 566: baload
+
+[WRITE] base 8627
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 98: 98: bastore
+
+[READ] base 8749
+  analysis/bytecode/c.txt | final void g(); @ bytecode 95: 95: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 451: 451: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 469: 469: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 561: 561: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 606: 606: baload
+  analysis/bytecode/c.txt | private void ac(); @ bytecode 109: 109: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 93: 93: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 127: 127: baload
+
+[READ] base 8810
+  analysis/bytecode/c.txt | private void ac(); @ bytecode 93: 93: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 174: 174: baload
+
+[WRITE] base 8810
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 124: 124: bastore
+
+[READ] base 8932
+  analysis/bytecode/c.txt | final void g(); @ bytecode 643: 643: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 158: 158: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 202: 202: baload
+
+[WRITE] base 8932
+  analysis/bytecode/c.txt | private void ac(); @ bytecode 163: 163: bastore
+
+[READ] base 9054
+  analysis/bytecode/c.txt | final void g(); @ bytecode 125: 125: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 426: 426: baload
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 12: 12: baload
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 78: 78: baload
+
+[WRITE] base 9054
+  analysis/bytecode/c.txt | final void g(); @ bytecode 130: 130: bastore
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 84: 84: bastore
+
+[READ] base 9115
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 60: 60: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 74: 74: baload
+
+[WRITE] base 9115
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 64: 64: bastore
+
+[READ] base 9237
+  analysis/bytecode/c.txt | final void g(); @ bytecode 625: 625: baload
+  analysis/bytecode/c.txt | final void g(); @ bytecode 668: 668: baload
+  analysis/bytecode/c.txt | private void aa(); @ bytecode 193: 193: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 174: 174: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 293: 293: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 487: 487: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 659: 659: baload
+  analysis/bytecode/c.txt | private void ab(); @ bytecode 913: 913: baload
+
+[WRITE] base 9237
+  analysis/bytecode/c.txt | final void g(); @ bytecode 730: 730: bastore
+  analysis/bytecode/c.txt | private void ad(); @ bytecode 138: 138: bastore
+
+[READ] base 9298
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 145: 145: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 216: 216: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 266: 266: baload
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 720: 720: baload
+
+[WRITE] base 9298
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 203: 203: bastore
+  analysis/bytecode/c.txt | private void ae(); @ bytecode 724: 724: bastore
+
+[READ] base 9359
+  analysis/bytecode/c.txt | private void af(); @ bytecode 120: 120: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 630: 630: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 879: 879: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 960: 960: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 1045: 1045: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 181: 181: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 556: 556: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 695: 695: baload
+
+[WRITE] base 9359
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 639: 639: bastore
+
+[READ] base 9381
+  analysis/bytecode/c.txt | private void af(); @ bytecode 159: 159: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 643: 643: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 892: 892: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 986: 986: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 1058: 1058: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 168: 168: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 601: 601: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 652: 652: baload
+
+[WRITE] base 9381
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 684: 684: bastore
+
+[READ] base 9403
+  analysis/bytecode/c.txt | private void af(); @ bytecode 318: 318: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 781: 781: baload
+
+[WRITE] base 9403
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 275: 275: bastore
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 786: 786: bastore
+
+[READ] base 9425
+  analysis/bytecode/c.txt | private void af(); @ bytecode 334: 334: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 884: 884: baload
+
+[WRITE] base 9425
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 494: 494: bastore
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 889: 889: bastore
+
+[READ] base 9447
+  analysis/bytecode/c.txt | private void af(); @ bytecode 364: 364: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 381: 381: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 400: 400: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 424: 424: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 445: 445: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 460: 460: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 822: 822: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 858: 858: baload
+
+[WRITE] base 9447
+  analysis/bytecode/c.txt | private void af(); @ bytecode 405: 405: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 530: 530: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 756: 756: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 881: 881: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 896: 896: bastore
+
+[READ] base 9469
+  analysis/bytecode/c.txt | final void h(); @ bytecode 563: 563: baload
+  analysis/bytecode/c.txt | private void ai(); @ bytecode 138: 138: baload
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 23: 23: baload
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 151: 151: baload
+
+[WRITE] base 9469
+  analysis/bytecode/c.txt | final void h(); @ bytecode 580: 580: bastore
+  analysis/bytecode/c.txt | private void ai(); @ bytecode 156: 156: bastore
+
+[READ] base 9491
+  analysis/bytecode/c.txt | private void af(); @ bytecode 143: 143: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 185: 185: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 678: 678: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 718: 718: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 35: 35: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 219: 219: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 438: 438: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 634: 634: baload
+
+[WRITE] base 9491
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 606: 606: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 917: 917: bastore
+
+[READ] base 9513
+  analysis/bytecode/c.txt | final void h(); @ bytecode 630: 630: baload
+
+[READ] base 9535
+  analysis/bytecode/c.txt | private void a(int, int, byte, int); @ bytecode 24: 24: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 102: 102: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 282: 282: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 499: 499: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 565: 565: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 1097: 1097: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 92: 92: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 318: 318: baload
+
+[READ] base 9557
+  analysis/bytecode/c.txt | private void af(); @ bytecode 52: 52: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 87: 87: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 584: 584: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 257: 257: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 770: 770: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 12: 12: baload
+
+[WRITE] base 9557
+  analysis/bytecode/c.txt | private void af(); @ bytecode 502: 502: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 1100: 1100: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 321: 321: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 481: 481: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 635: 635: bastore
+  analysis/bytecode/c.txt | private void ai(); @ bytecode 81: 81: bastore
+  analysis/bytecode/c.txt | private void ai(); @ bytecode 114: 114: bastore
+
+[READ] base 9579
+  analysis/bytecode/c.txt | private void af(); @ bytecode 13: 13: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 30: 30: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 806: 806: baload
+
+[WRITE] base 9579
+  analysis/bytecode/c.txt | private void af(); @ bytecode 17: 17: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 74: 74: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 516: 516: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 335: 335: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 495: 495: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 793: 793: bastore
+
+[READ] base 9601
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 931: 931: baload
+  analysis/bytecode/c.txt | final boolean a(int, int, int, int); @ bytecode 1042: 1042: baload
+  analysis/bytecode/c.txt | private void a(int, int, byte, int); @ bytecode 44: 44: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 202: 202: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 223: 223: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 239: 239: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 255: 255: baload
+  analysis/bytecode/c.txt | private void af(); @ bytecode 660: 660: baload
+
+[WRITE] base 9601
+  analysis/bytecode/c.txt | private void a(int, int, byte, int); @ bytecode 91: 91: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 781: 781: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 935: 935: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 1030: 1030: bastore
+
+[READ] base 9623
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 54: 54: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 194: 194: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 412: 412: baload
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 507: 507: baload
+
+[WRITE] base 9623
+  analysis/bytecode/c.txt | private void af(); @ bytecode 351: 351: bastore
+  analysis/bytecode/c.txt | private void ah(); @ bytecode 58: 58: bastore
+
+[READ] base 9645
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 207: 207: baload
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 522: 522: baload
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 547: 547: baload
+
+[WRITE] base 9645
+  analysis/bytecode/c.txt | private void a(int, int, byte, int); @ bytecode 62: 62: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 817: 817: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 961: 961: bastore
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 333: 333: bastore
+
+[READ] base 9667
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 194: 194: baload
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 508: 508: baload
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 560: 560: baload
+
+[WRITE] base 9667
+  analysis/bytecode/c.txt | private void a(int, int, byte, int); @ bytecode 77: 77: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 851: 851: bastore
+  analysis/bytecode/c.txt | private void af(); @ bytecode 987: 987: bastore
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 491: 491: bastore
+
+[READ] base 9689
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 57: 57: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 227: 227: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 288: 288: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 361: 361: baload
+
+[WRITE] base 9689
+  analysis/bytecode/c.txt | private void af(); @ bytecode 865: 865: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 142: 142: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 214: 214: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 451: 451: bastore
+  analysis/bytecode/c.txt | private void e(boolean); @ bytecode 100: 100: bastore
+
+[READ] base 9711
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 44: 44: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 275: 275: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 348: 348: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 392: 392: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 418: 418: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 542: 542: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 586: 586: baload
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 738: 738: baload
+
+[WRITE] base 9711
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 141: 141: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 450: 450: bastore
+  analysis/bytecode/c.txt | private void ag(); @ bytecode 742: 742: bastore
+
+LIMITATIONS
+- This is a partial interpreter, not a complete JVM verifier.
+- Stack operations assume common category-1 values.
+- Unknown invocation descriptors can stop tracing a stack path.
+- Treat counts as candidates until verified against bytecode.
+- Unclassified accesses are not evidence of a particular field meaning.

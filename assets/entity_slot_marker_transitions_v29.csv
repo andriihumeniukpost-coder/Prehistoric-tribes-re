@@ -1,0 +1,5 @@
+phase,method,marker_location,condition_or_value,result,evidence
+allocation,"a(byte,byte,byte,byte,byte)",e[1919+slot],== 0,candidate slot; returns -1 if all 50 nonzero,bytecode offsets 12-47 in method
+initialization,"a(byte,byte,byte,byte,byte)",e[1919+slot],existing marker + 5 + helper result,writes computed byte marker,bytecode offsets 972-1002
+release,a(byte),e[1919+slot],-1,"marks record after e(slot), f(slot), c(slot) cleanup calls",bytecode offsets 220-240
+consumer,"b(int,int)",e[1919+slot],> 0,slot treated as active,bytecode offsets 2-20

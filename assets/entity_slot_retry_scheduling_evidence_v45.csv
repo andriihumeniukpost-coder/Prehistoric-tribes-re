@@ -1,0 +1,7 @@
+claim,file,method,bytecode_offsets,evidence,confidence
+outer processing chain,analysis/bytecode/g.txt,g.j()V,0-25,c.g(); c.e(); c.h(); c.i() called in sequence,direct
+entity update reaches v,analysis/bytecode/c.txt,c.e()V,314-327,c.e() invokespecial v()V at 324 after gates,direct
+state-107 handler identity,analysis/bytecode/c.txt,c.k()Z,326-361,reads g.e[2828+v], compares with 107, then passes g.e[4444+v] to c.c(B)V,direct
+retry candidate path,analysis/bytecode/c.txt,c.c(B)V,29-48;416-429,full group scans 50 nonzero markers and returns without source map/marker reset,control-flow proof
+conditional nature of retry,analysis/bytecode/c.txt,c.v()V;c.y()V;c.i()Z;c.k()Z,branch path,each caller has additional state/gating branches; repeated attempt not unconditional,qualified
+no permanent leak conclusion,analysis/bytecode/c.txt plus g.txt,multiple,combined,failed path leaves source state in place but future update and state persistence are not guaranteed by this evidence,qualified

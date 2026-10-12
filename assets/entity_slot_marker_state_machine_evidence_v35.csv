@@ -1,0 +1,7 @@
+method,bytecode_offset,operation,interpretation
+"f.i()",15,"putfield g.e:[B after newarray byte 9983","new array starts zero-filled"
+"g.a(byte,byte,byte,byte,byte)",25,"baload e[1919 + base + scan] then ifeq","allocator accepts exactly zero"
+"g.a(byte,byte,byte,byte,byte)",46,"iconst_m1; ireturn","returns -1 if no zero slot found in 50 scans"
+"g.a(byte,byte,byte,byte,byte)",1000,"bastore to marker region","allocation writes computed nonzero marker"
+"g.a(byte,byte,byte,byte,byte)",1113,"consecutive bastore","allocation writes marker/parallel field values"
+"g.a(byte)",239,"iconst_m1; bastore e[1919 + slot]","release marker set to -1"

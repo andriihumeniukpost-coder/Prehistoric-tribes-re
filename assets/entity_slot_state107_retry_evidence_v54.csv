@@ -1,0 +1,9 @@
+claim,class,method,bytecode_offsets,evidence,status
+state-107 enters generic transition branch,c,private void I(),254-345,"special branch only handles states 19..26; state 107 falls through to b[aS[160]+state]",confirmed
+transition table index,c,private void I(),318-344,"loads b[aS[160] + a[2828+v]]",confirmed
+transition target for state 107,c,private void I(),318-345,"target is b[aS[160]+107] if generic branch is reached",formula confirmed; runtime value unresolved
+array ownership,c,final void a(g),39-59,"c.b:[B receives g.a:[B and c.a:[S receives g.a:[S",confirmed
+full-group early return,c,private void c(byte),416-429,"group scan exits before successful cleanup writes",confirmed
+post-call continuation,c,private boolean k(),344-361,"call c(byte) returns and control continues",confirmed
+I dispatch conditional,c,private boolean i(),1014-1028,"k true returns early; k false invokes I",confirmed
+permanent leak,whole program,n/a,n/a,"runtime target state and all lifecycle paths not yet resolved",unproven

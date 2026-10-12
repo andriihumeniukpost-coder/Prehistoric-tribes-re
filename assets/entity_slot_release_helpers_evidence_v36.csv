@@ -1,0 +1,5 @@
+method,bytecode_or_line,observation,marker_1919_direct_write
+"final void a(byte)","g.txt around line 33333; offsets 226-246","calls e(slot), f(slot), writes -1 to e[1919+slot], then calls c(slot)",yes
+"final void c(int)","g.txt around line 24173; offsets 75-96 and following","writes to e[8810+index] and e[9298+index] in inspected section",no
+"final void e(int)","g.txt around line 31800; offsets 161-171","writes zero to e[909+slot]; clears separate a:[[B array",no
+"final void f(int)","g.txt around line 34002; offsets 0-79","updates control fields; no 1919-based write in method body",no

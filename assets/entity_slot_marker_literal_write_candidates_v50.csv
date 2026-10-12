@@ -1,0 +1,4 @@
+class_dump,method_header,bytecode_offset_of_1919,instruction_window
+c.txt,private void c(byte);,350,350: sipush        1919 | 353: iload_1 | 354: iadd | 355: iconst_0 | 356: bastore | 357: aload_0 | 358: getfield      #134                // Field b:[[B | 361: aload_0 | 362: getfield      #66                 // Field a:[B
+c.txt,private void m(int);,10,10: sipush        1919 | 13: iload_1 | 14: iadd | 15: iconst_0 | 16: bastore | 17: aload_0 | 18: getfield      #66                 // Field a:[B | 21: sipush        5959 | 24: iload_1
+g.txt,final void a(byte);,234,234: sipush        1919 | 237: iload_1 | 238: iadd | 239: iconst_m1 | 240: bastore | 241: aload_0 | 242: iload_1 | 243: invokevirtual #580                // Method c:(I)V | 246: aload_0

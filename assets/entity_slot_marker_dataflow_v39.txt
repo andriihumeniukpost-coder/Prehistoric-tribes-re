@@ -1,0 +1,32 @@
+Prehistoric Tribes v0.1.38 — slot-marker dataflow follow-up (v39)
+
+Scope
+-----
+Continued from v38 using the bundled javap-style disassemblies. A partial control-flow-aware JVM stack tracer was adapted to inspect byte-array accesses in g.txt that directly resolve to this.e:[B. Raw tracer output is preserved in analysis/array_field_trace_e_v39.txt.
+
+Results
+-------
+- The tracer parsed 182 methods in g.txt and traced 626 reachable accesses (reads and writes) to this.e:[B. This is a candidate inventory, not a complete JVM proof: stack operations and method-call effects are only partially modelled, and symbolic index expressions often remain unresolved.
+- The allocator remains directly confirmed at g.a(BBBBB)B, descriptor (BBBBB)B: offsets 12–26 scan e[1919 + groupBase + scan] and accept only marker == 0; offsets 972–1002 perform the allocation-side marker write (previously audited in v37).
+- Release remains directly confirmed in g.a(B)V: the marker write at offsets 230–240 stores -1 at e[1919 + slot], between helper calls e(slot), f(slot), and c(slot), as documented in v37.
+- The zero store previously found in g.d(I)Z is at e[808 + i], not the marker band e[1920..1969].
+- g.i()V at g.txt around line 4287 resets a set of boolean/state fields (offsets 0–63) and does not write to the byte-array field e:[B. It is therefore not itself a marker reset routine.
+- f.i()V at f.txt offsets 6–17 allocates a fresh byte[9983] and assigns it to g.e. That is a genuine all-zero initialization by Java semantics, but the call timing and whether active slots are expected to survive this reset are not established here.
+
+Interpretation
+--------------
+No new confirmed write of 0 to e[1920..1969] was established in this pass. The partial tracer is not sufficient to rule out indirect aliases or prove that every bastore has been attributed. Therefore neither a marker leak nor correct reuse is conclusively proven.
+
+Next decisive work
+------------------
+1. Improve operand-stack simulation for dup-family instructions and invocation effects, and seed method argument locals symbolically, so indexes like 1919 + slot survive dataflow.
+2. Classify all writes whose arrayref is g.e or an alias of it and whose index may fall in [1920,1969].
+3. Build caller contexts for f.i() and determine whether it is invoked on initial startup, scene changes, reset, or other paths.
+4. Verify whether the allocator's computed marker can wrap to zero or collide with the free sentinel under Java byte arithmetic.
+
+Evidence paths
+--------------
+- analysis/bytecode/g.txt: g.a(BBBBB)B; g.a(B)V; g.d(I)Z; g.i()V
+- analysis/bytecode/f.txt: f.i()V
+- analysis/entity_slot_marker_write_audit_evidence_v37.csv
+- analysis/array_field_trace_e_v39.txt

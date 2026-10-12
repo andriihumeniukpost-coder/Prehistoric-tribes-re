@@ -1,0 +1,30 @@
+Prehistoric Tribes v0.1.38 — marker-region write audit v56
+=======================================================
+
+Input: extracted v55 bundle, including original disassembly files. No game code changed.
+
+Scope and method
+----------------
+Scanned all supplied analysis/bytecode/*.txt files for every literal `sipush 1919` and recorded nearby instruction context in entity_slot_marker_base1919_audit_v56.csv. This is a focused constant-based pass, not a proof against arbitrary computed indices or aliases.
+
+Confirmed marker writes
+-----------------------
+1. g allocator, method `final byte a(byte, byte, byte, byte, byte)`, bytecode offsets 972–1002 (exact write to e[1919 + slot] at 1002). The preceding stack computes old marker + 5 + a(255,10), then stores the marker; the adjacent bastore at 1001 writes the derived marker to the companion table at 6767 + slot.
+2. g release, method `final void a(byte)`, bytecode offsets 234–240: `e[1919 + slot] = -1`. The subsequent call to `c(slot)` occurs after this write.
+3. c replacement helper, method `private void c(byte)`, bytecode offsets 346–356: `c.a[1919 + argument] = 0`. Constructor/field-link evidence in earlier bundles associates `c.a` with the same `g.e` byte array. This reset is reached only on the successful replacement path; full-group return at offset 429 bypasses it.
+
+Other marker-region references
+-------------------------------
+The disassembly also contains reads from `e[1919 + index]`, including checks that treat negative marker values specially. Those reads do not themselves clear the marker. The `a()` helper in c checks a negative marker and updates other state/counters, but the inspected branch does not write zero back to `e[1919 + v]`.
+
+Conclusion for the v55 full-pool path
+------------------------------------
+The concrete path established in v55 remains: when the destination group is full, `c.c(byte)` returns before both mapping cleanup and marker reset; the entity then transitions 107 -> 69 according to resource /a, and 69 -> 69 on the same generic transition path. The new constant-based audit did not identify another direct write-to-zero using the literal base 1919 beyond the successful branch in `c.c(byte)`.
+
+Limits (important)
+------------------
+This does NOT yet prove a program-wide permanent leak. A computed index that does not use literal 1919 at the write site, a write through an aliased array reference, or whole-array replacement could evade this focused pass. The full array is 9983 bytes and is initially zeroed when allocated, but whole-array replacement timing and every alias must be considered separately. Therefore the supported conclusion remains: a full-pool failure can strand a marker/mapping on the normal state path; no independent cleanup path has yet been proven for that exact slot.
+
+Reproduction
+------------
+`entity_slot_marker_base1919_audit_v56.py` performs the literal-base scan over the supplied disassembly and writes the CSV inventory.

@@ -1,0 +1,13 @@
+Entity-slot reuse audit v30
+Source: decompiled g.class bytecode in analysis/bytecode/g.txt.
+
+Confirmed facts:
+1. The slot marker is addressed as e[1919 + slot] in the examined pool logic.
+2. One allocator loop scans slot indices 1..50 and advances while the marker is nonzero; it accepts the slot only when the marker is exactly zero. If the scan reaches 50, it returns the failure value.
+3. A release path calls e(slot) and f(slot), writes -1 to e[1919 + slot], then calls c(slot).
+4. Other loops treat marker <= 0 as inactive, while a separate path tests marker > 0 as active. Therefore 0 and -1 are equivalent for some readers but not for the strict-zero allocator.
+5. This establishes a lifecycle mismatch at the interface between that allocator and the release path. It does NOT yet prove a bug: the -1 marker may be normalized by c(slot), another cleanup method, or a separate reset pass.
+
+Next concrete trace target:
+- inspect c(slot), e(slot), and f(slot), and search all writes to e[1919 + slot], to establish whether the release path or a later cleanup restores zero before allocation.
+- Until that is verified, do not assume -1 slots are permanently leaked.

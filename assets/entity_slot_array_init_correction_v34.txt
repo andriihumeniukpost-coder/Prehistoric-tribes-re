@@ -1,0 +1,31 @@
+Prehistoric Tribes v0.1.38 — correction: entity marker array initialization (v34)
+
+Purpose
+-------
+Re-check the v33 statement that no direct assignment to g.e:[B appears in the inspected bytecode. That statement was too narrowly scoped to g.class and should not be read as evidence that the array is uninitialized.
+
+Verified bytecode evidence
+--------------------------
+1. In analysis/bytecode/f.txt, method `private void i();` allocates a byte array of length 9983 and stores it into the game object's field:
+
+   6:  aload_0
+   7:  getfield      #30  // Field a:Lg;
+   10: sipush        9983
+   13: newarray       byte
+   15: putfield      #67  // Field g.e:[B
+
+2. Java byte-array allocation initializes every element to zero. Therefore, immediately after this allocation, the marker range used by the slot pool (1919 + slot) begins at zero, absent later writes.
+
+3. This resolves the apparent initialization gap from v33: the assignment occurs in class `f`, in method `i()`, on the `g` instance held in `f.a`.
+
+4. In g.class, the slot allocator reads marker positions based at 1919 and accepts a marker exactly equal to zero. The release method writes -1 to that region after invoking cleanup helpers.
+
+What this does and does not establish
+------------------------------------
+- Confirmed: the array is allocated with a zero-filled initial state in the observed initialization path.
+- Not yet confirmed: whether any later path resets a released marker from -1 to zero, or whether slots marked -1 are intentionally retired until a broader reinitialization.
+- Consequently, this is not sufficient evidence of a permanent slot leak. The next audit should focus on every write to `g.e[1919 + slot]`, including indirect indexes and control-flow conditions.
+
+Correction to v33
+-----------------
+The v33 observation (“no direct assignment to e:[B in g.class”) was literally scoped to one class, but its interpretation could suggest that the field's initialization was missing. The cross-class search corrects that: `f.i()` initializes `g.e` explicitly.

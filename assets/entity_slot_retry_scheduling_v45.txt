@@ -1,0 +1,61 @@
+Prehistoric Tribes v0.1.38 — retry scheduling and state-107 path (v45)
+====================================================================
+
+Input: v44 analysis bundle; no original game code modified.
+
+1. Periodic/outer processing chain
+----------------------------------
+Class g, private void j(), bytecode 0–25 (analysis/bytecode/g.txt):
+  invokes c.g() at 4, c.e() at 11, c.h() at 18, c.i() at 25.
+
+Class c, final void e(), bytecode 0–34 begins a two-pass loop over field u:
+  u = 0; while (u < 2) { ... }
+At bytecode 324 in c.e(), it calls private c.v()V when preceding gates allow it. c.v()V then calls private c.y()V at bytecode 524 only along its relevant branch. c.y()V calls private c.i()Z at bytecode 328 when its own gates allow it. The processing route is therefore part of the recurring g.j() → c.e() update path, not solely construction-time setup.
+
+2. Exact state-107 handler (corrected method identity)
+------------------------------------------------------
+The state-107 test is in class c, private boolean k(), not private boolean i(). See analysis/bytecode/c.txt around method header at line 28239; bytecode offsets 326–361:
+  326 getfield c.a:[B
+  330 sipush 2828
+  333 getfield c.v:I
+  336 iadd
+  338 baload
+  339 bipush 107
+  341 if_icmpne 361
+  344 aload_0
+  349 sipush 4444
+  352 getfield c.v:I
+  355 iadd
+  357 baload
+  358 invokespecial c.c:(B)V
+
+The v44 report's description of this bytecode as belonging to private boolean i()Z was a method-name attribution error. The bytecode offsets and behavior were right; this report corrects the method identity.
+
+3. Full-group failure and what remains unchanged
+------------------------------------------------
+In c.c(B)V, destination scan uses R = 50*u + 1 through 50*(u+1). For each nonzero marker at g.e[1919+R], control goes to 416 and increments R. If all 50 are nonzero, execution reaches return at 429. Source map g.e[4444+argument] and source marker g.e[1919+argument] are cleared only after a free destination has been found and populated (map clear at 88–98; marker clear at 346–356).
+
+The failed call itself therefore leaves the source mapping and marker untouched. Since c.k() does not branch on a success result from c.c(B)V (the callee is void), it continues through its later checks. The handler's state byte at 2828+v is not changed by c.c(B)V on the full-group path. Other logic later in c.k() can still affect execution, so this is not proof that state 107 persists unconditionally across all game states.
+
+4. Retry conclusion
+-------------------
+The evidence establishes a retry opportunity: c.k() can be reached through the entity-processing route during g.j() updates; on a full group, c.c(B)V does not clear the old marker/map or change state 107 itself. If the same entity remains eligible and c.k() is executed again after a destination slot becomes free, the state-107 branch can call c.c(B)V again.
+
+Not proven from static bytecode alone:
+- that g.j() is invoked every frame or at a fixed cadence;
+- that all gates in c.e(), c.v(), c.y(), c.i(), and c.k() remain satisfied on the next update;
+- that state 107 cannot be changed by other logic between attempts;
+- that every failed replacement is eventually retried or succeeds.
+
+5. Mapping writes found in c.txt
+--------------------------------
+At least these direct writes to map region 4444+index appear in class c:
+- c.h(I)V, bytecode 0–18: writes k[2] to g.e[4444+v].
+- c.c(B)V, bytecode 88–98: clears g.e[4444+argument] after destination selection.
+- c.k()Z, bytecode 326–358: reads g.e[4444+v] as argument to c.c(B)V.
+- c.v()V includes writes around bytecode 699–718; this assignment derives from another map region (4747+v), so the value is not necessarily a literal slot constant.
+- other candidate map writes exist in methods shown by the 4444 references; each needs full expression tracing before assigning semantic meaning.
+
+6. Bottom line
+--------------
+The strongest supported model is conditional recycling, with a possible deferred retry when the group is full. A permanent leak is not demonstrated. Conversely, guaranteed eventual recycling is not demonstrated because retry scheduling and state persistence depend on other gates and state transitions. Next: enumerate every write to 2828+index that can set/clear 107, trace every write to 4444+index, and inspect all call sites of g.j() to establish actual cadence and eligibility.

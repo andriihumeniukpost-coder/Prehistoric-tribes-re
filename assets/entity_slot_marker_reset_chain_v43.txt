@@ -1,0 +1,72 @@
+Prehistoric Tribes v0.1.38 — marker reset chain and conditionality (v43)
+=======================================================================
+
+Scope
+-----
+This stage follows the concrete reset instruction identified in v42 and verifies its control flow against the supplied disassemblies. No game code was changed.
+
+1. Alias proof (retained from v42)
+----------------------------------
+File: analysis/bytecode/c.txt
+Constructor c.<init>(g)V, bytecode 17–26:
+  getfield g.e:[B
+  putfield c.a:[B
+The array field c.a is assigned the same byte-array reference as g.e.
+
+2. Reset instruction is conditional on finding a free slot
+----------------------------------------------------------
+Method: c.c(B)V (private void c(byte)), analysis/bytecode/c.txt.
+
+Group search:
+  0–10: R = u * 50 + 1
+  13–26: continue while R <= (u + 1) * 50
+  29–45: read c.a[1919 + R]; if nonzero, branch to 416 and increment R
+  48 onward: if marker is zero, perform the slot/entity initialization path
+
+The method therefore scans the 50-slot group selected by field u. A nonzero marker is skipped. A zero marker allows the initialization path to proceed.
+
+Reset store (bytecode 346–356):
+  346: aload_0
+  347: getfield #66 // Field a:[B
+  350: sipush 1919
+  353: iload_1
+  354: iadd
+  355: iconst_0
+  356: bastore
+
+At this point the arrayref is c.a (alias of g.e), index is 1919 + method argument, and stored value is 0. The store is reached only after the method has passed the free-slot test and followed the initialization branch. If all slots in the selected group are nonzero, the loop advances at 416–426 and exits at 429 without reaching the reset store.
+
+3. Call site and argument origin
+--------------------------------
+Caller: c.k()Z, analysis/bytecode/c.txt, bytecode 326–360.
+  326–341: checks c.a[2828 + v] == 107
+  344–358: loads c.a[4444 + v] and passes that byte to this.c(B)V
+Thus the argument to the reset method is the value stored in g.e[4444 + v]. The reset target is 1919 + that byte value, not 1919 + v.
+
+This call site is state-gated: it is only reached when c.a[2828 + v] equals 107. The reset then depends on the slot-search method finding an available zero marker in the group selected by c.u.
+
+4. What this proves — and does not prove
+---------------------------------------
+Proven:
+- There is a reachable bytecode path that writes zero to g.e[1919 + argument].
+- In the identified call path, argument comes from g.e[4444 + v] and is passed only when state g.e[2828 + v] is 107.
+- The reset occurs after the method finds a free slot (marker 0) in the current group and enters the initialization path.
+- If no zero marker is found in that group, the loop exits without executing this reset instruction.
+
+Not proven:
+- That this is the only reset path in all possible execution states.
+- That every release through g.a(B)V eventually reaches this c.k()Z -> c.c(B)V path.
+- That the value at g.e[4444 + v] always denotes the exact released slot in every state.
+- That a slot leak occurs globally. The code instead supports a conditional replacement/reset path; behavior under a full group remains a key boundary case.
+
+5. Lifecycle model updated
+--------------------------
+A. Allocation: g.a(BBBBB)B searches for marker 0 and writes a computed marker (previous marker + 5 + result of a(255,10)).
+B. Release: g.a(B)V writes -1 into g.e[1919 + slot] and invokes g.c(slot).
+C. Conditional replacement: c.k()Z checks entity state 107 and calls c.c(g.e[4444 + v]).
+D. c.c(B)V scans the group selected by u. If it finds a marker 0, it initializes that slot and then writes 0 to g.e[1919 + passed_argument]. If no free slot exists in the group, it exits without this reset.
+E. Reuse: the allocator can reuse a slot after its marker has become exactly 0, but the end-to-end conditions that guarantee this for all release paths remain unresolved.
+
+Conclusion
+----------
+The previous statement “a reset path exists” is confirmed but must be qualified: the reset is not unconditional. It is embedded in a slot replacement routine and follows successful discovery of a free slot in a 50-slot group. The current evidence neither proves a global leak nor guarantees that every released slot is eventually reusable.

@@ -1,0 +1,234 @@
+class_file,method,bastore_count,bastore_offsets,byte_array_field_ref_count,field_ref_note
+c.txt,final void a();,5,151;190;266;305;346,0,
+c.txt,"private byte a(int, int, int, int, int, int);",12,105;135;147;164;285;338;403;440;480;517;549;563,0,
+c.txt,"private byte a(int, int, int, int);",10,9;19;139;200;276;391;435;495;508;584,1,field e:[B
+c.txt,private void o();,3,30;37;103,0,
+c.txt,private void p();,8,92;122;490;583;600;617;634;770,0,
+c.txt,"private void a(int, int, int, int, int);",14,36;51;130;160;177;374;419;439;453;498;515;535;559;581,3,field e:[B
+c.txt,"private void a(int, int);",4,74;82;93;101,0,
+c.txt,private void e(int);,14,35;45;160;204;231;260;339;535;565;619;649;691;710;762,3,field e:[B
+c.txt,private void f(int);,14,40;52;183;209;509;521;681;717;831;909;921;951;980;994,2,field e:[B
+c.txt,private void a(boolean);,15,64;75;136;172;212;306;354;410;432;443;630;683;744;801;822,2,field e:[B
+c.txt,private void g(int);,4,52;109;248;273,0,
+c.txt,private void h(int);,7,18;196;496;513;530;741;819,0,
+c.txt,"private void a(int, int, boolean);",1,24,0,
+c.txt,"private void a(int, byte);",4,24;35;51;171,0,
+c.txt,"private void b(int, int);",3,343;389;423,0,
+c.txt,private void q();,10,293;326;360;487;521;606;676;701;734;768,0,
+c.txt,private void r();,4,215;340;425;450,0,
+c.txt,private void b(boolean);,4,123;142;166;191,0,
+c.txt,"private int a(int, int, int);",2,395;412,0,
+c.txt,final void b();,1,237,0,
+c.txt,final void c();,1,44,0,
+c.txt,private boolean a();,5,33;382;674;726;812,0,
+c.txt,private void t();,11,356;393;443;495;561;588;645;669;694;721;722,0,
+c.txt,private boolean b();,8,250;970;996;1101;1127;1153;1170;1184,0,
+c.txt,private void u();,8,99;255;269;283;297;384;403;421,0,
+c.txt,private boolean c();,8,155;177;365;396;613;754;770;818,0,
+c.txt,private void v();,3,210;272;303,0,
+c.txt,private void w();,4,17;72;711;785,0,
+c.txt,private boolean d();,8,84;105;197;211;293;341;359;373,0,
+c.txt,private void x();,21,26;90;192;266;405;442;456;621;646;660;674;722;756;770;788;821;845;870;894;920;963,0,
+c.txt,private boolean e();,7,163;270;296;310;325;345;359,0,
+c.txt,private void y();,2,145;260,0,
+c.txt,private void i(int);,5,105;403;462;542;619,0,
+c.txt,private boolean f();,11,200;217;232;370;470;672;749;763;777;837;852,0,
+c.txt,private boolean b(int);,6,122;222;313;858;1013;1266,0,
+c.txt,private boolean g();,4,294;367;399;445,0,
+c.txt,private void z();,4,242;274;304;350,0,
+c.txt,"private boolean a(byte, boolean);",5,518;533;547;683;706,0,
+c.txt,private boolean h();,9,48;322;390;482;570;584;689;703;734,0,
+c.txt,private void A();,10,38;83;262;299;377;424;710;747;835;889,0,
+c.txt,private void B();,7,98;136;222;411;461;491;521,0,
+c.txt,private void C();,3,140;179;210,0,
+c.txt,private void a(byte);,17,46;77;92;126;142;209;228;246;265;298;322;351;368;380;395;410;439,0,
+c.txt,private void D();,12,99;159;173;209;223;287;331;365;478;526;630;737,0,
+c.txt,private void E();,6,67;218;371;435;562;642,0,
+c.txt,private void F();,20,13;27;41;61;159;266;280;314;348;372;397;412;430;469;496;1078;1113;1148;1245;1414,0,
+c.txt,private void G();,10,130;271;417;434;461;493;688;719;893;991,0,
+c.txt,private void b(byte);,3,10;126;194,0,
+c.txt,"final boolean a(int, int, int, int);",12,67;448;469;631;663;696;850;876;1275;1598;1714;1858,0,
+c.txt,private void H();,15,210;518;557;706;740;757;808;887;901;929;943;957;971;1041;1055,0,
+c.txt,"private void a(int, int, byte, int);",3,62;77;91,0,
+c.txt,"private void b(int, int, int, int);",3,242;280;299,0,
+c.txt,"private void b(int, int, int);",8,27;28;39;79;81;83;84;210,0,
+c.txt,private void c(boolean);,8,84;85;344;368;397;413;555;581,0,
+c.txt,"private void c(int, int);",5,9;64;183;234;244,0,
+c.txt,final void f();,3,11;96;151,0,
+c.txt,private boolean i();,4,910;978;996;1011,0,
+c.txt,private boolean j();,7,139;546;791;805;890;1174;1222,0,
+c.txt,private boolean k();,5,86;224;260;325;392,0,
+c.txt,private void I();,6,86;136;207;222;236;250,0,
+c.txt,private void J();,2,459;668,0,
+c.txt,private void K();,9,13;206;254;294;448;503;532;549;572,0,
+c.txt,"private boolean a(int, int);",4,16;33;90;127,0,
+c.txt,private void c(byte);,6,98;147;203;232;356;390,0,
+c.txt,private void j(int);,4,101;152;210;224,0,
+c.txt,"private boolean a(byte, byte, byte, byte);",3,97;183;218,0,
+c.txt,"private boolean a(int, boolean, int);",7,568;588;635;646;762;821;848,0,
+c.txt,"private boolean b(int, boolean, int);",3,216;367;570,0,
+c.txt,private void L();,1,210,0,
+c.txt,private void M();,2,25;154,0,
+c.txt,private void N();,7,144;158;284;414;448;463;532,0,
+c.txt,private void O();,15,95;120;306;346;391;392;425;457;657;684;793;819;857;892;928,0,
+c.txt,final boolean a(int);,4,717;806;832;857,0,
+c.txt,private boolean m();,16,96;121;141;169;183;376;445;459;481;506;528;548;627;641;728;742,0,
+c.txt,private boolean n();,7,381;416;473;498;523;537;825,0,
+c.txt,private boolean a(boolean);,9,502;518;534;559;586;602;616;643;670,0,
+c.txt,private boolean o();,24,85;568;583;598;612;626;647;668;690;711;783;798;812;826;907;940;973;1006;1021;1036;1050;1064;1076;1174,0,
+c.txt,"private void d(int, int);",5,59;124;151;178;223,0,
+c.txt,private void k(int);,4,25;85;104;123,0,
+c.txt,final byte b(int);,3,80;138;151,0,
+c.txt,private void P();,1,27,0,
+c.txt,"private void a(byte, byte, byte, byte);",2,836;850,0,
+c.txt,"private void a(byte, byte, int, int);",14,294;329;620;884;953;1131;1284;1345;1384;1386;1387;1401;1415;1431,0,
+c.txt,private void R();,7,58;88;129;170;214;258;276,0,
+c.txt,private void S();,1,13,0,
+c.txt,"private void a(int, int, int, byte);",4,268;317;343;356,0,
+c.txt,private void l(int);,4,244;271;282;339,0,
+c.txt,private void m(int);,3,16;27;79,0,
+c.txt,"private void c(int, int, int);",3,249;265;291,0,
+c.txt,"private boolean a(int, int, int, int, int, int, int, int);",6,643;900;920;980;1036;1078,0,
+c.txt,private void T();,2,232;288,0,
+c.txt,private void U();,8,106;139;171;416;430;445;489;514,0,
+c.txt,private void V();,3,32;163;181,0,
+c.txt,final void b(int);,2,48;59,0,
+c.txt,private boolean q();,16,43;61;205;233;342;386;442;457;494;495;533;534;666;722;754;774,0,
+c.txt,private boolean r();,3,133;248;471,0,
+c.txt,private boolean s();,4,114;115;129;149,0,
+c.txt,private void W();,1,370,0,
+c.txt,private void X();,4,69;192;228;242,0,
+c.txt,private void Y();,1,234,0,
+c.txt,private void Z();,10,242;517;630;648;678;696;711;726;740;755,0,
+c.txt,final void g();,5,130;535;574;730;742,0,
+c.txt,private void aa();,3,242;256;273,0,
+c.txt,private void ab();,7,97;98;136;244;425;523;582,0,
+c.txt,private void ac();,1,163,0,
+c.txt,private void ad();,6,64;84;98;124;138;150,0,
+c.txt,final boolean a(byte);,3,40;52;63,0,
+c.txt,final boolean b(byte);,6,40;52;64;84;95;106,0,
+c.txt,private void ae();,10,203;622;623;662;663;691;692;706;724;775,0,
+c.txt,final void c(int);,1,40,0,
+c.txt,private void d(boolean);,6,64;78;92;153;205;219,0,
+c.txt,final void h();,2,580;603,0,
+c.txt,private void af();,16,17;74;351;405;502;516;530;781;817;851;865;935;961;987;1030;1100,0,
+c.txt,private void ag();,18,141;142;214;321;335;450;451;481;495;606;635;724;742;756;793;881;896;917,0,
+c.txt,private void ah();,9,58;275;494;595;639;684;786;889;929,0,
+c.txt,private void ai();,3,81;114;156,0,
+c.txt,private void e(boolean);,3,100;333;491,0,
+c.txt,final void i();,3,98;194;367,0,
+c.txt,private void aj();,4,47;80;148;176,0,
+c.txt,private boolean t();,3,87;131;329,0,
+c.txt,private boolean u();,1,238,0,
+c.txt,private boolean v();,9,719;749;779;810;948;962;983;1004;1121,0,
+c.txt,"private void a(int, boolean);",7,17;36;187;226;237;261;281,0,
+c.txt,final void j();,2,76;218,0,
+c.txt,private void am();,2,186;200,0,
+c.txt,private void an();,4,97;123;287;301,0,
+c.txt,private boolean b(boolean);,2,334;348,0,
+c.txt,private int a(int);,8,268;293;719;763;834;865;922;936,0,
+c.txt,private void f(boolean);,5,142;156;409;459;530,0,
+c.txt,private void ao();,3,212;256;270,0,
+c.txt,"private void e(int, int);",1,72,0,
+c.txt,private void aq();,11,369;510;619;641;663;687;711;985;1012;1039;1059,0,
+c.txt,private void as();,5,422;685;698;844;865,0,
+c.txt,private void at();,8,182;441;475;489;784;835;879;1231,0,
+c.txt,private void au();,4,49;193;227;252,0,
+c.txt,private void o(int);,1,114,0,
+c.txt,private void av();,5,570;605;640;725;726,0,
+c.txt,private void aw();,8,154;168;308;309;346;347;361;376,0,
+c.txt,"final void a(int, int, int, byte, byte);",3,109;159;182,0,
+c.txt,"private void e(int, int, int);",5,7;50;87;164;172,0,
+c.txt,final void n();,3,33;333;347,0,
+d.txt,final void a();,1,71,0,
+d.txt,final void b(int);,4,241;399;477;496,0,
+d.txt,"final void a(int, int, int, java.lang.String, int);",1,58,0,
+d.txt,"final void a(int, int, int, int, int);",4,72;84;221;243,1,field e:[B
+d.txt,final void b();,1,266,0,
+e.txt,final void a();,20,75;79;83;87;91;101;105;109;113;117;128;133;137;141;145;155;159;163;167;171,0,
+f.txt,public f(g);,3,263;268;273,0,
+f.txt,private void b();,1,131,0,
+f.txt,private void c();,26,465;469;473;477;481;485;490;495;500;505;510;515;520;535;539;544;548;552;556;561;566;571;576;581;586;591,0,
+f.txt,private void g();,6,95;99;103;107;111;115,0,
+g.txt,public final void run();,1,97,0,
+g.txt,private void j();,1,128,0,
+g.txt,private void o();,1,79,0,
+g.txt,"private void a(int, byte);",32,330;468;685;692;699;709;719;729;738;747;757;767;777;787;803;819;835;845;855;864;873;883;892;916;918;919;943;945;946;1206;1208;1209,35,field e:[B
+g.txt,"private void a(int, byte, byte, int, int, byte);",3,965;1078;1557,20,field e:[B
+g.txt,"final void a(int, int, int, int);",5,31;43;54;66;77,0,
+g.txt,private void r();,4,155;268;737;773,16,field e:[B
+g.txt,"final void a(int, int);",3,27;37;47,0,
+g.txt,private void s();,3,130;160;294,5,field e:[B
+g.txt,private void t();,1,16,0,
+g.txt,private void u();,6,421;621;637;727;857;1774,33,field e:[B
+g.txt,private void v();,2,24;48,3,field e:[B
+g.txt,"private void a(byte, int, int);",3,27;324;1038,1,field e:[B
+g.txt,private boolean c();,8,134;480;538;716;807;966;1023;1110,2,field e:[B
+g.txt,private void x();,6,10;58;81;108;190;205,0,
+g.txt,private void y();,3,140;183;184,4,field e:[B
+g.txt,private void z();,5,31;32;97;98;226,1,field e:[B
+g.txt,private void A();,6,83;85;86;101;102;126,0,
+g.txt,private void B();,8,121;194;229;254;300;346;418;433,1,field e:[B
+g.txt,final void a(int);,3,38;40;41,0,
+g.txt,private void F();,5,162;170;251;252;366,0,
+g.txt,private void G();,12,149;157;168;176;184;496;504;542;550;558;566;614,0,
+g.txt,private void H();,6,32;40;51;59;67;75,0,
+g.txt,private void I();,3,19;33;49,0,
+g.txt,private void J();,2,26;27,0,
+g.txt,private void K();,1,36,0,
+g.txt,private void L();,3,19;35;58,0,
+g.txt,private void M();,1,48,0,
+g.txt,private void N();,3,33;41;57,0,
+g.txt,private void O();,5,14;15;78;208;209,0,
+g.txt,private void P();,1,143,0,
+g.txt,private void Q();,6,197;256;273;383;399;415,6,field e:[B
+g.txt,private void R();,1,108,0,
+g.txt,private void S();,10,126;295;304;313;322;331;341;352;363;374,0,
+g.txt,private void T();,13,31;48;64;81;97;113;172;181;224;247;641;651;668,13,field e:[B
+g.txt,private void U();,4,194;318;338;345,5,field e:[B
+g.txt,"private void e(int, int, int);",6,11;23;35;46;57;74,6,field e:[B
+g.txt,"final void a(byte, byte, byte);",11,109;118;127;136;145;155;166;177;188;257;279,0,
+g.txt,private void X();,12,88;104;143;169;193;207;281;316;339;362;396;414,6,field e:[B
+g.txt,"private void a(byte, byte);",9,184;318;446;457;477;497;514;525;536,27,field e:[B
+g.txt,final void c(int);,3,85;96;150,9,field e:[B
+g.txt,private void f(byte);,1,38,2,field e:[B
+g.txt,private void Z();,3,51;172;288,0,
+g.txt,private void aa();,7,189;238;316;388;491;511;584,7,field e:[B
+g.txt,private void ab();,4,14;94;198;260,11,field e:[B
+g.txt,private void ac();,5,27;121;160;232;254,9,field e:[B
+g.txt,private void ad();,7,25;59;100;122;150;225;319,4,field e:[B
+g.txt,private void ae();,4,246;276;345;375,0,
+g.txt,private void af();,5,494;549;668;686;724,22,field e:[B
+g.txt,private void g(byte);,4,19;39;62;76,4,field e:[B
+g.txt,private void ai();,7,6;180;188;254;255;297;298,0,
+g.txt,private void l(int);,11,33;55;64;73;82;91;101;112;123;134;232,0,
+g.txt,"final void b(int, boolean);",2,65;116,6,field e:[B
+g.txt,private void ao();,5,441;747;795;886;926,0,
+g.txt,private void ap();,2,113;363,1,field e:[B
+g.txt,private void aq();,1,45,0,
+g.txt,private void as();,2,65;157,0,
+g.txt,private void av();,3,32;55;77,0,
+g.txt,private void az();,2,50;72,0,
+g.txt,private void aF();,4,145;159;253;274,3,field e:[B
+g.txt,private void aG();,5,129;153;168;243;260,2,field e:[B
+g.txt,private void aH();,1,173,1,field e:[B
+g.txt,final void e(int);,2,107;171,2,field e:[B
+g.txt,private void aI();,2,36;45,1,field e:[B
+g.txt,"final byte a(byte, byte, byte, byte, byte);",66,98;100;101;133;135;136;159;160;172;184;196;215;227;239;252;280;308;327;358;389;420;489;524;559;593;632;667;698;711;723;735;747;769;782;794;806;819;831;843;891;920;954;967;1001;1002;1015;1031;1044;1113;1114;1147;1160;1173;1205;1225;1268;1280;1303;1304;1316;1369;1371;1373;1375;1376;1409,71,field e:[B
+g.txt,final void a(byte);,2,219;240,15,field e:[B
+g.txt,"final void b(int, int);",16,44;362;391;393;394;424;426;427;448;449;460;472;484;495;506;530,37,field e:[B
+g.txt,final void b(byte);,2,142;162,5,field e:[B
+g.txt,final void g(int);,1,76,2,field e:[B
+g.txt,"final byte a(byte, int, int, int, int, boolean, int);",29,117;246;257;269;280;312;332;357;420;444;458;471;483;495;507;519;531;594;606;618;630;667;668;714;735;772;808;820;964,25,field e:[B
+g.txt,"final void c(int, boolean);",6,123;285;296;333;437;540,14,field e:[B
+g.txt,"private void a(int, int, boolean, boolean);",14,102;150;164;185;204;226;245;257;272;283;297;396;407;419,31,field e:[B
+g.txt,"final byte a(int, byte);",1,98,1,field e:[B
+g.txt,"final void b(int, int, int, int);",18,43;82;95;119;120;144;145;168;169;192;193;205;226;240;266;278;290;304,17,field e:[B
+g.txt,"final void a(int, int, int, byte);",6,117;130;143;156;169;183,9,field e:[B
+g.txt,"final void c(int, int, int, int);",1,54,0,
+g.txt,"private void a(boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean);",28,12;13;26;27;40;41;55;56;70;71;87;88;104;105;121;122;138;139;154;155;181;182;197;198;225;226;239;240,0,
+g.txt,"final void a(byte, byte, byte, byte);",9,54;64;74;85;221;241;261;281;307,0,
+g.txt,private void aM();,18,34;60;71;82;120;122;123;144;168;191;268;279;319;355;356;405;406;449,4,field e:[B
+g.txt,private void aN();,8,282;340;365;409;435;523;648;699,1,field e:[B
+g.txt,private void aP();,2,450;459,2,field e:[B
+g.txt,private boolean d(int);,12,361;377;984;1054;1120;1162;1204;1455;1483;1531;1790;1923,43,field e:[B

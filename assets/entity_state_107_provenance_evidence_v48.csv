@@ -1,0 +1,15 @@
+file,method_or_location,bytecode_offset,instruction_or_operation,dataflow_or_condition,classification
+c.txt,"private void a(int, int, boolean)",113,putfield c.r:B,lookup from b[] with p and k[] table indices,conditional; first assignment family
+c.txt,"private void a(int, int, boolean)",200,putfield c.r:B,lookup from b[] using a[121] and a[3535+v],conditional; alternate lookup
+c.txt,"private void a(int, int, boolean)",268,putfield c.r:B,constant 69,conditional branch
+c.txt,"private void a(int, int, boolean)",335,putfield c.r:B,table-derived byte plus boolean argument,conditional branch
+c.txt,"private void a(int, int, boolean)",344,putfield c.r:B,constant 107,branch at 341; may later be overwritten at 426
+c.txt,"private void a(int, int, boolean)",389,putfield c.r:B,adjusted table value when r <= 9,conditional; not taken for 107
+c.txt,"private void a(int, int, boolean)",426,putfield c.r:B,constant 69,if g.q == 3 and b[a[41]+r] != 0
+c.txt,caller near source line 6860,201,invokespecial a:(IIZ)V,"a[3131+v], a[3232+v], (arg>0)",direct caller
+c.txt,caller near source line 11220,108,invokespecial a:(IIZ)V,"a[3131+v], a[3232+v], true",direct caller
+c.txt,caller near source line 12060,865,invokespecial a:(IIZ)V,"a[6262+v], a[6363+v], true",direct caller
+c.txt,caller near source line 18570,95,invokespecial a:(IIZ)V,"a[8383+index], a[8444+index], true",direct caller
+c.txt,private void h(int),652,invokespecial a:(IB)V,"this.v, this.r; only if lookup == 7",guarded transfer to shared state
+g.txt,private void j(),0-27,invokes c.g/e/h/i,sequential update calls,concrete call sequence; cadence unknown
+g.txt,method containing Q call,458,invokespecial Q:()V,guarded table-derived branch,conditional call only

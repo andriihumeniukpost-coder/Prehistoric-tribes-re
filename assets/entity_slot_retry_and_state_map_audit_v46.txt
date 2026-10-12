@@ -1,0 +1,43 @@
+Prehistoric Tribes v0.1.38 — state-107 transitions, mapping writes, and scheduler call sites (v46)
+==============================================================================================
+
+Input: v45 bundle, using the included javap-style disassemblies. Original game code was not modified.
+
+1. Exact state-107 production is not a literal write to g.e[2828+index]
+-----------------------------------------------------------------------
+The state-107 branch seen in c.k() reads g.e[2828+v] and compares it to 107. A relevant producer appears in c's private void r() (file line ~7760): field r:B is assigned bipush 107 at bytecode 341–344. This is an object field assignment, not itself a write to the shared g.e state region. Elsewhere c.a(int,byte) writes its second argument to g.e[2828+index] at bytecode 29–35, so the remaining data-flow question is which call sites pass 107 (or pass a field whose value can be 107) to that method. Do not conflate the field r with the state-array byte.
+
+2. Direct array-state updates found in c
+----------------------------------------
+c.a(int,byte), bytecode 29–35:
+  getfield c.a:[B; sipush 2828; iload_1; iadd; iload_2; bastore
+This is a general state setter. The value is dynamic (argument 2), so static search for literal 107 is insufficient. At bytecode 14–24 it also clears g.e[404+index] when the previous state differs.
+
+c.r(), bytecode 198–215 writes -1 to g.e[3030+v], not to the state region. The same method reads state values 2, 7, 93, 92, 106 and toggles certain low-valued states, but this path does not itself directly write 107 to g.e[2828+v].
+
+The CSV entity_slot_state_map_write_candidates_v46.csv inventories nearby bastore instructions in the provided dumps whose preceding bytecode context includes 2828 or 4444. These are candidates with context, not a claim that every one writes the target field: the actual stack operands must be evaluated per instruction.
+
+3. g.j() call sites and cadence
+-------------------------------
+In g.txt, private void j() performs c.g(), c.e(), c.h(), c.i() (bytecode 0–25).
+Two direct internal call sites to g.j() are visible in the provided g disassembly:
+- g constructor/initialization path: invokespecial j()V at bytecode 543 (g.txt around file line 4078), after initialization fields and a call to a(BBBB)V have been set.
+- another g method: invokespecial j()V at bytecode 487 (g.txt around file line 20207), reached only if field aQ:I is positive after it is incremented (branch at 483–490).
+
+These call sites do NOT establish per-frame execution or a fixed interval. The second call is explicitly gated by aQ > 0. This narrows the scheduler claim: the update path exists, but its cadence and relation to scene/frame callbacks need the caller chain of the containing method, not just the presence of g.j().
+
+4. c.j() is a different method
+------------------------------
+Calls at c.txt file lines around 2155 and 48904 invoke c.j()V (virtual call on c), not g.j()V. Keep these method identities separate when building the scheduler graph.
+
+5. Current lifecycle conclusion
+-------------------------------
+- A conditional reset to 0 at c.c(B)V bytecode 346–356 is still directly established by v42 onward.
+- A full 50-slot group causes c.c(B)V to return at bytecode 429 before the source marker/map are cleared.
+- The retry opportunity exists only if the entity remains eligible and the relevant processing method is called again.
+- v46 does not establish eventual retry or prove a permanent leak. The next decisive analysis is call-site/data-flow analysis for c.a(int,byte), specifically whether 107 reaches its second argument, and the callers of the gated g method that invokes g.j() at bytecode 487.
+
+Evidence locations:
+- analysis/bytecode/c.txt: c.a(int,byte) around lines 7862–7900; c.r() around lines 8718–8985; state-107 compare/handler in c.k() around line 11800+ (method identity should be verified against header).
+- analysis/bytecode/g.txt: g.j() around lines 4331+; direct call sites around lines 4078 and 20207.
+- analysis/entity_slot_state_map_write_candidates_v46.csv: context inventory for candidate stores.

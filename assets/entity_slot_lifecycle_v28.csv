@@ -1,0 +1,7 @@
+method,bytecode_evidence,interpretation,confidence
+final void a(byte),e[1919+slot] = -1,explicit deactivate/removal path,high
+"final void b(int,int)",search for e[1919+base+slot] == 0; return -1 if none,allocation requires exact zero,high
+private void aj(),advance l while e[1919+l] <= 0; then Q=true,find next active positive slot,high
+private void q(),process an only if e[1919+an] > 0,active-slot processing gate,high
+private void ad(),scan 1..50; active slots then check e[1414+slot] vs 12,secondary per-slot threshold check,high
+multiple methods,"some branches use <=0, others ==0",free/inactive semantics are context-dependent,high

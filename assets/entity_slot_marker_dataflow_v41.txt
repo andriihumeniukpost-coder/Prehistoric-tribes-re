@@ -1,0 +1,36 @@
+Prehistoric Tribes v0.1.38 — marker slot lifecycle audit (v41)
+
+Scope
+-----
+Continued from v40. This pass cross-checked all literal 1919 references in g.txt, enumerated methods containing both reads of the instance byte array field e:[B and bastore instructions, and checked object f construction call sites in the available disassemblies.
+
+Findings supported by bytecode
+-------------------------------
+1. Marker band is e[1919 + slot]. The allocator method g.a(BBBBB)B reads the marker at bytecode 12–26 and accepts only zero. Its allocation store is at bytecode 982–1004; the marker value is computed as old marker + 5 + g.a(255,10), where g.a(II)I is (Random.nextInt() & arg1) % arg2. Thus on the accepted path the written marker is 5..14.
+2. Release method g.a(B)V stores -1 into e[1919 + slot] at bytecode 226–240, then calls g.c(I)V at 241–243.
+3. Other literal 1919 occurrences in g.txt are reads/conditions or the two stores above; the cleanup loop around bytecode 1137–1162 reads e[1919+i] but its zero store is to e[808+i]. The nearby store therefore is not a marker reset.
+4. Methods g.e(I)V and g.f(I)V do contain byte-array writes, but inspection shows the relevant write in e(I)V is to e[909 + arg] (bytecode 161–171), not the marker band. Other writes in these methods target other arrays, including a:[[B. The c(I)V path shown in the disassembly clears e[8810 + i], e[9298 + i], or e[9237 + i], not e[1919 + slot].
+5. The available disassemblies show one direct f construction call site: g constructor bytecode 17–21 invokes f.<init>(Lg;)V. f.i()V assigns a new byte[9983] to g.e, so the full array is zeroed when that constructor path executes. No separate f construction call site was found in the supplied disassemblies. This does not prove f can never be reconstructed through a broader lifecycle not represented in these files.
+6. analysis/bastore_candidate_methods_v41.csv inventories methods in g.txt that contain both a read of e:[B and at least one bastore. It is deliberately a candidate list, not a claim that every listed bastore stores into e: methods may access multiple arrays, so each instruction needs operand-stack/alias proof before assigning its target array.
+
+Interpretation
+--------------
+The concrete allocation/release pair is asymmetric: zero is required to allocate; allocation writes 5..14; release writes -1. In the reviewed literal-1919 contexts, no store of zero to e[1919+slot] was identified. The known zero stores in nearby code target distinct offsets/fields. This makes a reuse defect highly plausible for a slot that has been released and whose marker array remains the same.
+
+Proof boundary
+--------------
+Do not yet label this a proven global leak. The available disassembly supports the local transition (free 0 -> allocated 5..14 -> released -1), but a whole-program proof still requires stack/alias analysis for all candidate bastore instructions across every class, including dynamic index expressions, and proof that no other reference can write into the marker band. Runtime reconstruction of g/f also remains untested.
+
+Next decisive work
+------------------
+- Run full operand-stack dataflow on every bastore in g and c, tracking array provenance and integer intervals for the index.
+- Check all other classes for aliases of g.e and stores through locals/parameters.
+- Trace constructor and scene/game restart paths to determine whether g/f are recreated after release.
+- If no reset exists, write a minimal bytecode-level witness: allocate slot s with e[1919+s]==0; release s -> -1; allocator scan rejects s because marker != 0.
+
+Evidence
+--------
+- analysis/bytecode/g.txt: allocator g.a(BBBBB)B, bytecode 12–26 and 982–1004; helper g.a(II)I; release g.a(B)V, bytecode 226–243; cleanup-like loop bytecode 1137–1162; g.e(I)V, bytecode 161–171; g.c(I)V, bytecode 79–96 and 144–150.
+- analysis/bytecode/g.txt: constructor bytecode 17–21, sole observed invokespecial f.<init>(Lg;)V.
+- analysis/bytecode/f.txt: f.i()V, bytecode 0–17, allocates byte[9983] and assigns it to g.e.
+- analysis/bastore_candidate_methods_v41.csv: candidate method inventory; array provenance is not inferred from co-occurrence alone.

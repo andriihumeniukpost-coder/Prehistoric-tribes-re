@@ -1,0 +1,9 @@
+class_file,method,bytecode_offset,instruction_pattern,interpretation
+c.txt,private void m(int);,10,getfield c.a:[B; index 1919 + local_1; iconst_0; bastore,Direct zero write to slot marker e[1919 + slot].
+c.txt,private boolean a();,77,invokespecial m:(I)V with local slot v,Conditional per-slot cleanup; only entered on marker-negative branch and a resource threshold condition.
+c.txt,final void l();,53,"read e[1919 + loopIndex]; if nonzero call g.a((byte)loopIndex), then c.m(loopIndex)",Bulk cleanup for slots 1..100; clears any nonzero marker reached by this loop.
+c.txt,final void m();,15,"read e[1919 + loopIndex]; if nonzero call g.a((byte)loopIndex), then c.m(loopIndex)",Bulk cleanup for slots 51..100; clears any nonzero marker reached by this loop.
+g.txt,private void ... scene handler (state 37),128,invokevirtual c.l:()V,Scene handler state 37 invokes bulk cleanup.
+g.txt,private void ... scene handler (state 38),286,invokevirtual c.l:()V,Scene handler state 38 invokes bulk cleanup.
+g.txt,private void ... scene handler (state 45),417,invokevirtual c.m:()V,Scene handler state 45 invokes bulk cleanup.
+f.txt,private void i();,15,putfield g.e:[B after newarray byte 9983,Only direct replacement of the shared marker array found in provided disassembly.
