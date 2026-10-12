@@ -1,0 +1,13 @@
+index,offset,length,detected_format,decoded,used_by_original_loader,raw_file,png_file
+0,2,10910,PNG,True,True,image_000.bin,image_000.png
+1,10914,9773,PNG,True,False,image_001.bin,image_001.png
+2,20689,9140,PNG,True,False,image_002.bin,image_002.png
+3,29831,10527,PNG,True,False,image_003.bin,image_003.png
+4,40360,11405,PNG,True,False,image_004.bin,image_004.png
+5,51767,12594,PNG,True,False,image_005.bin,image_005.png
+6,64363,10920,PNG,True,False,image_006.bin,image_006.png
+7,75285,8534,PNG,True,False,image_007.bin,image_007.png
+8,83821,12191,PNG,True,False,image_008.bin,image_008.png
+9,96014,13570,PNG,True,False,image_009.bin,image_009.png
+10,109586,9207,PNG,True,False,image_010.bin,image_010.png
+11,118795,11013,PNG,True,False,image_011.bin,image_011.png
