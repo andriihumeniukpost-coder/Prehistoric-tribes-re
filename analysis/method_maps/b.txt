@@ -1,0 +1,20 @@
+PREHISTORIC TRIBES - METHOD MAP: b
+======================================================================
+
+final boolean a();
+  calls:
+    -> java/lang/Thread."<init>"
+    -> java/lang/Thread.start
+
+public final void run();
+  calls:
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/String.toString
+    -> java/lang/StringBuffer.toString
+    -> javax/microedition/io/Connector.open
+    -> javax/wireless/messaging/MessageConnection.newMessage
+    -> javax/wireless/messaging/TextMessage.setPayloadText
+    -> javax/wireless/messaging/MessageConnection.send
+    -> javax/microedition/io/Connection.close
+

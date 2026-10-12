@@ -1,0 +1,723 @@
+PREHISTORIC TRIBES - METHOD MAP: g
+======================================================================
+
+public final void a();
+  calls:
+    -> java/lang/Thread."<init>"
+    -> java/lang/Thread.start
+
+public final void b();
+  calls:
+    -> javax/microedition/midlet/MIDlet.notifyDestroyed
+
+private void f();
+  calls:
+    -> c."<init>"
+    -> java/lang/System.gc
+    -> java/lang/Thread.yield
+    -> f."<init>"
+    -> javax/microedition/lcdui/Display.setCurrent
+
+private void g();
+  calls:
+    -> java/lang/System.gc
+    -> java/lang/Thread.yield
+
+public final void run();
+  calls:
+    -> c.a
+    -> java/lang/Thread.yield
+    -> tribes.a
+
+private void h();
+  calls:
+    -> java/lang/Thread.yield
+
+private void i();
+  calls: none
+
+private void j();
+  calls:
+    -> c.g
+    -> c.e
+    -> c.h
+    -> c.i
+
+private void k();
+  calls: none
+
+private void l();
+  calls:
+    -> javax/microedition/lcdui/Canvas.repaint
+    -> java/lang/Thread.yield
+
+protected final void paint(javax.microedition.lcdui.Graphics);
+  calls: none
+
+private void m();
+  calls: none
+
+private void n();
+  calls: none
+
+private void o();
+  calls: none
+
+private void a(int, byte);
+  calls: none
+
+private void a(int, byte, byte, int, int, byte);
+  calls: none
+
+private void a(int, int, int, int, byte);
+  calls: none
+
+private void p();
+  calls: none
+
+private boolean a();
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+
+private boolean b();
+  calls: none
+
+private void q();
+  calls:
+    -> d.a
+    -> javax/microedition/lcdui/Graphics.setColor
+
+final void a(int, int, int, int);
+  calls: none
+
+private void r();
+  calls: none
+
+final void a(int, int);
+  calls: none
+
+private void s();
+  calls: none
+
+private boolean a(int, int);
+  calls: none
+
+private void t();
+  calls: none
+
+private void d(int, int, int, int);
+  calls: none
+
+final void a(int, int, int);
+  calls: none
+
+private void b(int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+    -> javax/microedition/lcdui/Graphics.drawArc
+
+private void i(int);
+  calls: none
+
+private void u();
+  calls:
+    -> c.a
+    -> javax/microedition/lcdui/Graphics.setColor
+
+private void v();
+  calls: none
+
+private void w();
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+
+private void c(int, int);
+  calls:
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+    -> d.a
+
+private void a(byte, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+    -> d.b
+    -> d.a
+
+private void d(int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+    -> javax/microedition/lcdui/Graphics.drawImage
+    -> d.a
+
+private void j(int);
+  calls:
+    -> java/lang/String.valueOf
+    -> d.a
+
+private void k(int);
+  calls:
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/String.valueOf
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+    -> d.a
+
+private boolean c();
+  calls: none
+
+private void x();
+  calls: none
+
+private void y();
+  calls: none
+
+private void z();
+  calls: none
+
+private void A();
+  calls: none
+
+private void B();
+  calls: none
+
+private void a(int, byte, int);
+  calls:
+    -> java/lang/String.valueOf
+    -> d.a
+
+private void c(int, int, int);
+  calls:
+    -> d.a
+
+final void a(int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+    -> e.a
+    -> java/lang/Thread.yield
+
+private void c(byte);
+  calls:
+    -> java/lang/System.gc
+    -> java/lang/Thread.yield
+    -> java/lang/Object.getClass
+    -> java/lang/Class.getResourceAsStream
+    -> java/io/DataInputStream."<init>"
+    -> java/io/DataInputStream.readByte
+    -> java/io/DataInputStream.read
+    -> javax/microedition/lcdui/Image.createImage
+    -> java/io/DataInputStream.close
+
+private void C();
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+
+private void D();
+  calls:
+    -> javax/microedition/lcdui/Graphics.drawImage
+    -> javax/microedition/lcdui/Graphics.setColor
+
+private void e(int, int);
+  calls: none
+
+private void E();
+  calls: none
+
+private void F();
+  calls:
+    -> javax/microedition/lcdui/Image.createImage
+    -> javax/microedition/lcdui/Graphics.drawImage
+
+private void G();
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+    -> javax/microedition/lcdui/Graphics.drawImage
+
+private void H();
+  calls: none
+
+private void I();
+  calls: none
+
+private void J();
+  calls: none
+
+private void K();
+  calls: none
+
+private void L();
+  calls: none
+
+private void M();
+  calls:
+    -> javax/microedition/lcdui/Graphics.drawImage
+
+private void N();
+  calls: none
+
+private void O();
+  calls: none
+
+private void P();
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+
+private void Q();
+  calls: none
+
+private void R();
+  calls:
+    -> javax/microedition/lcdui/Graphics.setColor
+
+final void b(int);
+  calls: none
+
+private void S();
+  calls:
+    -> d.a
+    -> java/lang/System.arraycopy
+
+private void T();
+  calls:
+    -> c.l
+    -> c.a
+    -> d.a
+    -> c.m
+
+private void U();
+  calls:
+    -> c.d
+    -> c.f
+    -> d.a
+
+private void d(int, int, int);
+  calls: none
+
+private void e(int, int, int);
+  calls: none
+
+final void c();
+  calls: none
+
+final void a(byte, byte, byte);
+  calls: none
+
+protected final void keyPressed(int);
+  calls:
+    -> javax/microedition/lcdui/Canvas.getGameAction
+
+protected final void keyReleased(int);
+  calls:
+    -> javax/microedition/lcdui/Canvas.getGameAction
+
+private static boolean a(int);
+  calls: none
+
+private void V();
+  calls: none
+
+private void W();
+  calls: none
+
+private void X();
+  calls:
+    -> c.b
+
+private void d(byte);
+  calls: none
+
+private void e(byte);
+  calls: none
+
+private void a(byte, byte);
+  calls:
+    -> c.a
+    -> c.b
+
+final void c(int);
+  calls: none
+
+final void a(int, boolean);
+  calls: none
+
+private void f(byte);
+  calls: none
+
+private void Y();
+  calls: none
+
+private void Z();
+  calls: none
+
+private void aa();
+  calls: none
+
+private void ab();
+  calls: none
+
+private void ac();
+  calls: none
+
+private void ad();
+  calls: none
+
+private void ae();
+  calls: none
+
+private void af();
+  calls:
+    -> c.b
+    -> c.c
+
+private void ag();
+  calls: none
+
+private void g(byte);
+  calls: none
+
+private void ah();
+  calls: none
+
+private void ai();
+  calls: none
+
+private void aj();
+  calls: none
+
+private void l(int);
+  calls: none
+
+final void d(int);
+  calls: none
+
+final void b(int, boolean);
+  calls:
+    -> c.b
+
+private void ak();
+  calls: none
+
+private void al();
+  calls: none
+
+private void am();
+  calls: none
+
+private void an();
+  calls: none
+
+private void ao();
+  calls:
+    -> d.b
+    -> d.a
+    -> javax/microedition/midlet/MIDlet.getAppProperty
+    -> javax/microedition/midlet/MIDlet.platformRequest
+    -> java/lang/Thread.yield
+
+private void ap();
+  calls:
+    -> c.a
+
+private void aq();
+  calls:
+    -> d.a
+
+private void ar();
+  calls: none
+
+private void as();
+  calls:
+    -> a.a
+
+private void at();
+  calls: none
+
+private void au();
+  calls: none
+
+private void av();
+  calls:
+    -> d.a
+
+private void aw();
+  calls: none
+
+private void ax();
+  calls: none
+
+private void ay();
+  calls: none
+
+private void az();
+  calls: none
+
+private void aA();
+  calls: none
+
+private void aB();
+  calls: none
+
+private void aC();
+  calls: none
+
+private void aD();
+  calls: none
+
+private void aE();
+  calls: none
+
+private void aF();
+  calls: none
+
+private void aG();
+  calls: none
+
+private void aH();
+  calls: none
+
+final void e(int);
+  calls: none
+
+private void aI();
+  calls: none
+
+private void aJ();
+  calls: none
+
+private void aK();
+  calls: none
+
+private void aL();
+  calls: none
+
+private static byte a(int);
+  calls: none
+
+final byte a(byte, byte, byte, byte, byte);
+  calls:
+    -> c.a
+
+final void a(byte);
+  calls: none
+
+private void f(int, int);
+  calls: none
+
+final void b(int, int);
+  calls:
+    -> c.a
+
+final void f(int);
+  calls: none
+
+final void b(byte);
+  calls: none
+
+final void g(int);
+  calls: none
+
+private static byte b(int);
+  calls: none
+
+final byte a(byte, int, int, int, int, boolean, int);
+  calls:
+    -> c.a
+
+final void c(int, boolean);
+  calls:
+    -> c.a
+    -> c.c
+
+private boolean a(int, int, int, boolean);
+  calls: none
+
+private void a(int, int, boolean, boolean);
+  calls: none
+
+final void h(int);
+  calls: none
+
+final byte a(int, byte);
+  calls: none
+
+private static boolean b(int);
+  calls: none
+
+final void b(int, int, int, int);
+  calls: none
+
+private static boolean c(int);
+  calls: none
+
+final void a(int, int, int, byte);
+  calls: none
+
+private static byte c(int);
+  calls: none
+
+private boolean b(int, int);
+  calls: none
+
+private byte a(int, int);
+  calls: none
+
+final void c(int, int, int, int);
+  calls: none
+
+private void a(boolean, boolean, boolean, boolean);
+  calls: none
+
+private void a(boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean, boolean);
+  calls: none
+
+final void a(byte, byte, byte, byte);
+  calls: none
+
+private void h(byte);
+  calls: none
+
+private void aM();
+  calls:
+    -> c.a
+
+private void aN();
+  calls:
+    -> java/lang/System.gc
+    -> java/lang/Thread.yield
+
+private void aO();
+  calls:
+    -> c.d
+
+private void aP();
+  calls: none
+
+static boolean a(javax.microedition.lcdui.Graphics, javax.microedition.lcdui.Image, int, int, int, int, int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.drawRegion
+
+private static void a(javax.microedition.lcdui.Graphics, int, int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.fillRect
+
+private static void b(javax.microedition.lcdui.Graphics, int, int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.drawRect
+
+private static void c(javax.microedition.lcdui.Graphics, int, int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.setClip
+
+private static void d(javax.microedition.lcdui.Graphics, int, int, int, int);
+  calls:
+    -> javax/microedition/lcdui/Graphics.drawLine
+
+private boolean d(int);
+  calls:
+    -> java/lang/System.gc
+    -> java/lang/Thread.yield
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+    -> javax/microedition/rms/RecordStore.openRecordStore
+    -> javax/microedition/rms/RecordStore.getNumRecords
+    -> javax/microedition/rms/RecordStore.closeRecordStore
+    -> javax/microedition/rms/RecordStore.getRecord
+    -> java/io/ByteArrayInputStream."<init>"
+    -> java/io/DataInputStream."<init>"
+    -> java/io/DataInputStream.readInt
+    -> java/io/DataInputStream.readBoolean
+    -> java/io/DataInputStream.readByte
+    -> java/io/DataInputStream.read
+    -> java/io/DataInputStream.readShort
+    -> c.n
+    -> c.j
+    -> c.d
+    -> java/io/DataInputStream.close
+    -> javax/microedition/rms/RecordStore.deleteRecordStore
+
+private boolean e(int);
+  calls:
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+    -> javax/microedition/rms/RecordStore.deleteRecordStore
+    -> javax/microedition/rms/RecordStore.openRecordStore
+    -> java/io/ByteArrayOutputStream."<init>"
+    -> java/io/DataOutputStream."<init>"
+    -> java/io/DataOutputStream.writeInt
+    -> java/io/DataOutputStream.writeBoolean
+    -> java/io/DataOutputStream.writeByte
+    -> java/io/OutputStream.write
+    -> java/io/DataOutputStream.writeShort
+    -> java/io/ByteArrayOutputStream.toByteArray
+    -> java/io/ByteArrayOutputStream.size
+    -> javax/microedition/rms/RecordStore.addRecord
+    -> javax/microedition/rms/RecordStore.closeRecordStore
+    -> java/io/ByteArrayOutputStream.close
+    -> java/io/DataOutputStream.close
+
+private void aQ();
+  calls:
+    -> b."<init>"
+    -> b.a
+    -> java/lang/Thread.yield
+
+private void aR();
+  calls:
+    -> java/lang/String.length
+    -> java/lang/Object.getClass
+    -> java/lang/Class.getResourceAsStream
+    -> java/io/InputStream.read
+    -> java/lang/String.substring
+    -> java/lang/String.equals
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+    -> java/io/InputStream.close
+    -> javax/microedition/midlet/MIDlet.getAppProperty
+    -> java/lang/String.toLowerCase
+
+final int a(int, int);
+  calls:
+    -> java/util/Random.nextInt
+
+private static long a();
+  calls:
+    -> java/lang/System.currentTimeMillis
+
+public final void hideNotify();
+  calls: none
+
+public final void showNotify();
+  calls: none
+
+public final void d();
+  calls: none
+
+public final void e();
+  calls: none
+
+private void aS();
+  calls:
+    -> c.k
+    -> a.a
+    -> java/lang/StringBuffer."<init>"
+    -> java/lang/StringBuffer.append
+    -> java/lang/StringBuffer.toString
+    -> a."<init>"
+
+private void aT();
+  calls:
+    -> a.a
+    -> a.b
+
+private void aU();
+  calls:
+    -> java/lang/Thread.yield
+    -> tribes.a
+    -> a.a
+
+private void m(int);
+  calls: none
+
