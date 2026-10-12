@@ -1,6 +1,0 @@
-Pattern,Observed expression,Evidence,Interpretation,Confidence
-50-slot occupancy scan,e[1919 + slot],loop increments slot until byte is zero; limit 50; returns -1 if full,slot allocation marker,high
-Property table A,e[202 + id],read in same code path as e[303 + id] for identifiers 1..50,parallel per-identifier field,high
-Property table B,e[303 + id],read in same code path as e[202 + id],parallel per-identifier field,high
-Other strided regions,multiples/near-multiples of 101,repeated constant offsets in g.txt,candidate fixed-width/column-major regions; schema not yet proven,medium
-Handler pools,"30, 50, 22 slots",previous aP() handler audit,separate pools; do not conflate,high

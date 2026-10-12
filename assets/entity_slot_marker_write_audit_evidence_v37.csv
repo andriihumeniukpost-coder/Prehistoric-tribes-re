@@ -1,5 +1,0 @@
-method,bytecode_offsets,operation,index_expression,value_or_condition,interpretation
-"final byte a(byte, byte, byte, byte, byte)","972-1002","bastore","e[1919 + slot]","old marker + 5 + a(255,10)","allocation-side computed marker write"
-"final void a(byte)","230-240","bastore","e[1919 + slot]","-1","release-side marker write"
-"final void b(int,int)","8-18","baload","e[1919 + slot]","> 0","active-slot gate; no marker write here"
-"private boolean d(int)","1137-1162","baload then bastore","read e[1919 + i]; write e[808 + i]","0 written to offset 808 + i","not a marker reset"

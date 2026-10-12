@@ -1,7 +1,0 @@
-claim,file,method,bytecode_offsets,evidence,confidence
-state 107 gates replacement,analysis/bytecode/c.txt,c.i()Z,326-361,"reads g.e[2828+v], compares with 107, passes g.e[4444+v] to c.c(B)V",direct
-argument used as source slot,analysis/bytecode/c.txt,c.c(B)V,113-147;175-233,"copies source data indexed by argument into destination R",strong structural
-old mapping cleared after destination setup,analysis/bytecode/c.txt,c.c(B)V,88-98;346-356,"clears g.e[4444+argument] and marker g.e[1919+argument] only on successful free-slot branch",direct
-full group exits without reset,analysis/bytecode/c.txt,c.c(B)V,29-45;416-429,"nonzero markers skip to increment; loop exits at 429",control-flow proof
-processing method calls i,analysis/bytecode/c.txt,c.y()V,328,"invokespecial i()Z",direct
-failed-attempt retry not proven,analysis/bytecode/c.txt,c.y()V and c.i()Z,call chain,"call chain exists, but scheduling/state persistence not established from this evidence alone",unresolved

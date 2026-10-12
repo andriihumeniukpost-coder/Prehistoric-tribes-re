@@ -1,6 +1,0 @@
-arg1 condition,bytecode-derived operation,interpretation
-arg1 > 100,I=e[9359+arg1-101]-C; K=e[9381+arg1-101]-D+arg2,lookup-table coordinate target
-1 <= arg1 <= 100,I=e[arg1]-C; K=e[101+arg1]-D+arg2,lookup-table coordinate target
-arg1 == -100,I=I-C; K=K-(D-arg2),relative movement
-arg1 < 0 and arg1 != -100,I=e[8383+abs(arg1)] + (a[h+104+e[8749+abs(arg1)]] >> 1)-C; K=e[8444+abs(arg1)] + (a[h+130+e[8749+abs(arg1)]] >> 1)-D+arg2,table-driven relative/target coordinate calculation
-arg1 == 0,return,no coordinate update

@@ -1,4 +1,0 @@
-source_file,method,bytecode_offset,evidence,interpretation
-analysis/bytecode/f.txt,"private void i()",10-15,"sipush 9983; newarray byte; putfield // Field g.e:[B","Allocates g.e as byte[9983]; all elements initially zero"
-analysis/bytecode/g.txt,"final byte a(byte, byte, byte, byte, byte)",16-21,"reads e[1919 + slot] while searching for marker == 0","Allocator accepts zero marker only"
-analysis/bytecode/g.txt,"final void a(byte)",230-240,"writes -1 to e[1919 + slot] after cleanup calls","Release marker is negative; reset path still to be found"

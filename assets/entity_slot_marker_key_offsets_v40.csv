@@ -1,9 +1,0 @@
-class,method,descriptor,bytecode_start,bytecode_end,operation,index_or_expression,value_or_condition,interpretation
-g,a,(BBBBB)B,12,26,baload,1919+groupBase+scan,ifne continue else accept,allocator accepts marker exactly 0
-g,a,(BBBBB)B,982,1004,bastore,1919+slot,oldMarker+5+a(255,10),allocation marker write; helper result 0..9
-g,a,(II)I,0,11,ireturn,(Random.nextInt() & arg1) % arg2,arg1=255 arg2=10,result 0..9
-g,a,(B)V,226,240,bastore,1919+slot,-1,release marker write
-g,a,(B)V,241,243,invokevirtual,c(slot),n/a,post-release helper call
-g,unknown cleanup-like method,()V,1137,1162,bastore,808+i,0,not marker band; marker read at 1919+i
- f,i,()V,6,17,putfield,g.e=new byte[9983],all zero,whole-array initialization
-g,i,()V,0,63,putfield scalar state fields only,n/a,no g.e marker reset

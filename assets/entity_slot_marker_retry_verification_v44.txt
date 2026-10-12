@@ -1,8 +1,0 @@
-Verification record v44
-=======================
-- Input ZIP: Prehistoric-tribes-analysis-bundle-20261012-v43.zip
-- Input ZIP integrity: passed (unzip -t, no errors)
-- Added report: analysis/entity_slot_marker_retry_analysis_v44.txt
-- Added evidence table: analysis/entity_slot_marker_retry_evidence_v44.csv
-- Game bytecode/source files were not modified; only analysis artifacts were added.
-- Scope limitation: static disassembly only; no runtime instrumentation or execution trace was performed.

@@ -1,6 +1,0 @@
-Automated checks for v42 report
-==============================
-PASS: c.<init>(g)V loads g.e:[B at bytecode 21 and stores it into c.a:[B at bytecode 24.
-PASS: only one explicit putfield to c.a:[B (#66) appears in c.txt (constructor assignment).
-PASS: private void c(byte) contains arrayref this.a:[B, index 1919 + local_1, value 0, bastore at bytecode 346–356.
-Interpretation: a conditional marker reset path is proven. Global slot reuse correctness remains unproven.

@@ -1,7 +1,0 @@
-evidence,observation,confidence
-"Field declaration","byte[] e; near listing line 2248",high
-"Field access","getfield #297 resolves to Field e:[B",high
-"Direct field assignments","0 putfield instructions matching Field e:[B in g.txt",high
-"Marker allocator","requires e[1919 + slot] == 0",high
-"Release marker","writes -1 to e[1919 + slot]",high
-"Slot leak conclusion","not proven; initialization/reset path unresolved",high
