@@ -1,0 +1,14 @@
+Automated verification for v43
+==============================
+Source archive: Prehistoric-tribes-analysis-bundle-20261012-v42.zip
+
+PASS: archive v42 was present and passed unzip integrity test before analysis.
+PASS: analysis/bytecode/c.txt exists in extracted v42 bundle.
+PASS: c.c(B)V contains the marker reset sequence at bytecode offsets 346–356.
+PASS: c.c(B)V checks marker 1919+R and branches to the increment path when it is nonzero.
+PASS: c.c(B)V increments R at 416–426 and returns at 429.
+PASS: c.k()Z checks state at 2828+v against 107 before its call to c.c(B)V.
+PASS: c.k()Z obtains the c.c(B)V argument from the byte at 4444+v.
+PASS: c.<init>(g)V aliases g.e:[B into c.a:[B.
+
+Interpretation: a conditional reset/replacement path is proven. A global leak or universal-reuse guarantee is not proven.

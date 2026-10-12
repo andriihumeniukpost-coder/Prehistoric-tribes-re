@@ -1,0 +1,58 @@
+Prehistoric Tribes v0.1.38 — independent marker-reset paths (v58)
+=================================================================
+
+Input: v57 bundle and its supplied original JAR/disassembly. No game code changed.
+
+Key correction to earlier audit
+-------------------------------
+The v57 literal-1919 inventory included c.m(int) but the summary did not classify its direct marker reset. That omission matters: c.m(int) writes zero to the marker region independently of c.c(byte)'s successful replacement branch.
+
+1. Direct per-slot reset
+------------------------
+In analysis/bytecode/c.txt, private void m(int), bytecode offsets 6–16:
+  6:  aload_0
+  7:  getfield #66 // Field a:[B
+  10: sipush 1919
+  13: iload_1
+  14: iadd
+  15: iconst_0
+  16: bastore
+
+The receiver field c.a:[B is aliased to g.e:[B by c.a(g)V at offsets 17–24. Therefore c.m(slot) directly writes zero to g.e[1919 + slot]. The same method clears g.e[5959 + slot] at offsets 18–27 and updates other per-slot bookkeeping before returning.
+
+2. Calls to c.m(int)
+--------------------
+The supplied c.txt contains three direct call sites for m:(I)V:
+- private boolean a() at bytecode offset 82: calls m(v) only after the marker e[1919+v] was read as negative and the resource-threshold comparison succeeds. This does not directly match the stranded-full-pool case, whose old marker remains positive at the immediate failure point.
+- final void l() at offset 86: in a loop over indices 1..100, if the marker is nonzero, calls g.a(slot) then c.m(slot).
+- final void m() at offset 48: in a loop over indices 51..100, if the marker is nonzero, calls g.a(slot) then c.m(slot).
+
+3. Bulk cleanup lifecycle
+-------------------------
+The class g invokes c.l() from scene-handler branches for state values 37 and 38, and c.m() from the branch for state value 45. Those methods scan ranges of slot indices and call g.a(slot) plus c.m(slot) for each nonzero marker. Thus the game has an independent bulk-reset path that can clear a stranded marker if one of these cleanup handlers is reached and scans that index.
+
+This disproves the earlier broad wording that the only marker-zero path is c.c(byte). It does NOT by itself prove that the specific state-107 -> 69 full-pool failure will necessarily reach one of these scene handlers. The scene transitions are conditional and are not shown to be inevitable from the failure path.
+
+4. Whole-array replacement
+--------------------------
+A search across the supplied class disassemblies finds one direct assignment to g.e:[B:
+- f.i()V, bytecode offset 15, allocates new byte[9983] and stores it into g.e.
+No other putfield/putstatic assignment to g.e:[B was found in the supplied disassembled classes. This is bounded to the supplied class set and does not establish reachability/frequency of f.i().
+
+5. Updated conclusion
+---------------------
+Confirmed:
+- A full 50-slot destination group makes c.c(byte) return before clearing the old marker/mapping.
+- The normal state transition from 107 to 69 does not itself retry through state 107, based on the decoded /a table evidence from v55.
+- There is a separate direct marker-zero method c.m(int), and bulk scene-cleanup methods c.l()/c.m() can call it for nonzero slots.
+
+Not proven:
+- That the full-pool failure is a permanent program-wide leak.
+- That a stranded slot is eventually cleaned on every gameplay path.
+- That f.i() is called again during ordinary gameplay after such a failure.
+
+Precise conclusion: the failure path can strand a slot during normal state dispatch, but independent conditional cleanup paths exist. A global/permanent leak claim requires proving reachability (or unreachability) of those cleanup paths from the stranded state and checking every remaining computed-index write.
+
+Reproduction
+------------
+The CSV evidence was generated from the supplied javap disassemblies. Original game files were not modified.

@@ -1,0 +1,38 @@
+/pd0 table preparation: method g.aP() — bytecode-grounded notes
+==============================================================
+
+Method aP() reads the active table selected by q:
+  base = signed-short a[250 + q]
+  stride/count = signed-byte a[a[262] + q]
+  record field r[k] = signed-byte a[base + k*count + i]
+
+The loop processes i from 0 up to count-1. It interprets each record as a fixed-width record with at least five byte columns; the access pattern is column-major (base + column*count + row), not row-major.
+
+Dispatch by record column 1 (second column):
+1) If column 1 >= 0:
+   calls a(byte, int, int, int, int, boolean, int) with column 0 and columns 1..4,
+   plus literal true and -1.
+2) If column 1 == -1:
+   calls a(byte, byte, byte, byte, byte) with:
+     (column0 & 1), column2, column3, column4,
+     (column0 >> 1) + (column0 & 1 ? field b : 0)
+3) If column 1 == -2:
+   calls b(int,int,int,int) with (1, column2, column3, column0).
+
+A row whose column 0 is -1 skips these dispatch branches.
+After processing a row, when i <= 10 and q is neither 1 nor 6, it updates two short tables:
+  a[0][i] = signed-byte a[a[263] + 11*q*2 + i]
+  a[1][i] = signed-byte a[a[263] + 11*(q*2 + 1) + i] * 20
+The source expression shows that the lookup stride is 11, with q-dependent pairs of columns; the destination tables store signed short values.
+
+Special cases:
+- q == 0: writes e[7476]=4 and e[7479]=5, then returns.
+- q == 3: sets av=2 before returning.
+- q == 3 also resets av=0 at entry, so its final value after the method is 2 (assuming no exception).
+- q == 3 has no special table-update exclusion; only q==1 and q==6 skip the short-table updates.
+
+Interpretation and limits:
+- aP() is a table-driven command preparation/dispatch routine, not a direct graphics draw call.
+- The second record column acts as a command discriminator: nonnegative, -1, and -2 have separate handlers.
+- Do not label these records as sprite records yet: handler names are obfuscated and their full effects must be followed separately.
+- These conclusions are based on the decompiled bytecode in analysis/bytecode/g.txt; original JAR/game source remains unchanged.

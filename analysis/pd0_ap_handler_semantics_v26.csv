@@ -1,0 +1,4 @@
+handler,descriptor,confirmed_behavior,direct_graphics_call_seen,confidence
+A,(BIIIIZI)B,"scans 30-slot region at e[8505 + base + slot], updates f[][] and related arrays; may call validation a(IIIZ)Z",No in inspected body,High for state mutation; semantic entity type unknown
+B,(BBBBB)B,"scans 50-slot region at e[1919 + base + slot], initializes parallel e[] fields",No in inspected body,High for slot initialization; semantic entity type unknown
+C,(IIII)V,"scans up to 22 slots using e[9513+slot], initializes parallel e[] fields and writes c[arg3][arg2]=101+slot",No in inspected body,High for slot initialization; semantic entity type unknown

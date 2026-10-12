@@ -1,0 +1,45 @@
+Prehistoric Tribes v0.1.38 — entity-record lifecycle cross-reference (v27)
+Generated from the repository's g.txt bytecode listing. No game code or original JAR modified.
+
+Purpose
+-------
+Cross-reference the slot allocator patterns found in the three aP() handlers with
+other reads/writes of g.e:[B. This is a static bytecode audit, not a runtime trace.
+
+Confirmed patterns
+------------------
+1) 50-slot allocator:
+   A method scans e[1919 + slot] until it finds a zero byte. The scan is bounded
+   at 50 slots; if no zero slot is found, it returns -1. It then derives a slot
+   index and sets Q when G is true. This is a concrete allocation/occupancy pattern.
+
+2) Indexed per-entity properties:
+   Reads at e[202 + id] and e[303 + id] occur together in code that processes
+   identifiers in the range 1..50. These are separate parallel property arrays,
+   not a packed per-record structure of adjacent bytes.
+
+3) Strided regions:
+   Repeated offsets in e[] include multiples of 101 (e.g. 101, 606, 909, 1313,
+   1919, 2929, 3131, 4545, 6161, 7474, 8749, 9090+). The pattern is consistent
+   with multiple fixed-width or column-major regions. It does NOT, by itself,
+   prove all such regions share one schema; each base must be tied to its
+   consuming method before naming fields.
+
+4) aP() handler allocations:
+   The previously documented handlers allocate from slot pools with capacities
+   30, 50, and 22. These capacities differ, so they must not be merged into a
+   single entity pool. The 50-slot scan above is one concrete independent pool.
+
+Interpretation
+--------------
+The strongest evidence for a lifecycle is the zero-slot scan followed by writes
+to parallel e[] regions. A complete field schema requires mapping every base
+offset through its consumers and identifying all initialization, update, draw,
+and release sites. This report deliberately does not assign semantic names such
+as "enemy", "particle", or "projectile" without proof.
+
+Next investigation
+------------------
+Trace the 50-slot occupancy marker e[1919 + slot] from writes to zero/nonzero,
+then map methods that read the same marker and the companion arrays e[202+id]
+and e[303+id]. This should establish creation -> update -> draw/use -> release.

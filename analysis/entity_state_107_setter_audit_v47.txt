@@ -1,0 +1,35 @@
+Prehistoric Tribes v0.1.38 — state-107 setter callsite audit (v47)
+====================================================================
+
+Input: verified v46 bundle. Original game code was not modified.
+
+1. Strong producer candidate for state 107
+-----------------------------------------
+In analysis/bytecode/c.txt, method private void a(int, int, boolean), bytecode 341–344:
+  341: aload_0
+  342: bipush 107
+  344: putfield c.r:B
+This proves the object field c.r can be assigned 107. It does NOT alone prove the shared state byte g.e[2828+index] has become 107; these are different storage locations.
+
+2. Dynamic transfer to shared state
+-----------------------------------
+The general setter private void a(int, byte), bytecode 25–35, writes its second argument to c.a:[B at index 2828 + first argument. The instance field c.a:[B aliases the shared g.e array as established in prior bundle evidence.
+
+A call site in private void h(int), bytecode 643–652, passes this.v as the first argument and this.r as the second argument to a(int,byte), on the branch reached after a table lookup compares equal to 7. Since c.r can be 107 on another path, this is a viable dynamic path for writing state 107. It is not yet proven that the field assignment at bytecode 341–344 in a(int,int,boolean) reaches this particular call in the same entity lifecycle; callers and intervening mutations of c.r must still be traced.
+
+3. Other setter callsites
+-------------------------
+entity_state_setter_calls_v47.csv inventories every direct invokespecial a:(IB)V found in c.txt, including caller method, source line, instruction, and preceding bytecode context. The calls are mostly state constants, table-derived values, or dynamic fields/array values. The inventory is a candidate list, not a complete interprocedural value analysis.
+
+4. Retry scheduler remains conditional
+--------------------------------------
+In g.txt, private void Q(), bytecode 469–490, aQ is incremented, then g.j() is called only if aQ > 0. This establishes a gated call site, not a frame cadence. The call chain from external scene/frame entry to Q() remains unproven from these local instructions alone.
+
+5. Slot lifecycle conclusion
+----------------------------
+- Direct zero write to slot marker: c.c(B)V bytecode 346–356, index 1919 + argument (previously established).
+- Full 50-slot group: c.c(B)V returns at bytecode 429 before cleanup.
+- State 107 handler: the checked method tests g.e[2828+v] == 107 and passes g.e[4444+v] to c.c(B)V (previously established).
+- v47 narrows a plausible state-107 producer via c.r:B and the generic setter, but does not prove a permanent leak or guaranteed retry.
+
+Next decisive step: resolve callers of c.a(int,int,boolean), all writes to c.r:B, and the caller chain into g.Q() from the game's update/scene entry point. Then verify whether the same entity's state and source-slot mapping remain intact after a failed replacement.

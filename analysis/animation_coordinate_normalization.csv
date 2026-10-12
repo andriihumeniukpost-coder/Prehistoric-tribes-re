@@ -1,0 +1,6 @@
+step,bytecode_condition_or_operation,effect
+1,C -> y; D -> A,Copies base coordinate fields
+2,I < 0,Increment I until nonnegative
+3,K < 0 and s == false,Increment K until nonnegative
+4,I + O > c.S,Decrement I until I + O <= c.S
+5,K + P >= d - 1,Decrement K until K + P < d - 1

@@ -1,0 +1,50 @@
+Entity-slot lifecycle: allocation and release evidence (v29)
+
+Scope
+------
+This report follows the bytecode for the 50-slot pool whose marker is stored at
+e[1919 + slot]. It does not assign a gameplay name (enemy/projectile/effect)
+without further evidence.
+
+Confirmed allocation path
+-------------------------
+Method: final byte a(byte, byte, byte, byte, byte)
+
+1. Computes a base slot offset as (arg1 * 50) + 1.
+2. Scans e[1919 + base + candidate] until it finds a byte equal to zero.
+3. If all 50 positions are nonzero, returns -1.
+4. Converts the free candidate to an absolute slot index.
+5. In the initialization path around bytecode offsets 972-1002, writes a
+   marker calculated from the existing marker plus 5 plus a helper result.
+   The bytecode stores this calculated value into e[1919 + slot].
+6. Other fields in the same record are initialized in parallel arrays at
+   offsets such as 2929, 6767, 1010, and 2828. Those fields have not all
+   been semantically named.
+
+Confirmed release path
+----------------------
+Method: final void a(byte)
+
+After calling e(slot), f(slot), and c(slot), it writes -1 to
+e[1919 + slot]. Thus the negative marker is written after cleanup work,
+rather than being the only cleanup action.
+
+Confirmed consumer behavior
+---------------------------
+Method: final void b(int, int)
+
+It iterates slots 1..50 and processes a slot only when
+e[1919 + slot] > 0. It uses the parallel arrays to reset/update associated
+entries. Other methods use <= 0 or == 0 checks, so these conditions are not
+interchangeable.
+
+Interpretation
+--------------
+The marker has at least three operationally distinct conditions:
+- exactly 0: available for allocation;
+- positive: considered active by the consumer b(int,int);
+- -1: explicitly written by the release method after cleanup.
+
+Because allocation specifically searches for zero, a released -1 slot is not
+automatically available to that allocator unless another path normalizes it
+back to zero. Finding that normalization is the next investigation target.

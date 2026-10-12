@@ -1,0 +1,47 @@
+Prehistoric Tribes v0.1.38 — aP() handler semantics (v26)
+Source: analysis/bytecode/g.txt, JVM descriptors and bytecode.
+
+Summary
+-------
+aP() dispatches column-major records selected by q. Its three branches are NOT all direct drawing operations. They mutate runtime state / entity slots, which are later consumed by the game loop and renderer.
+
+Record layout used by aP()
+--------------------------
+base = a[262] + q
+count = unsigned byte a[base]
+field c for record i = a[base + c*count + i], c=0..4.
+Records with field0 == -1 are skipped.
+field1 >= 0 -> a(byte,int,int,int,int,boolean,int), called with boolean true and final int -1.
+field1 == -1 -> a(byte,byte,byte,byte,byte), with field0 masked to bit0 and additional fields from columns 2/3/4 plus derived values.
+field1 == -2 -> b(int,int,int,int), called with leading int 1 and fields 2,3,0.
+Other negative field1 values are ignored by these three dispatch branches.
+
+Handler A: a(byte,int,int,int,int,boolean,int)B
+------------------------------------------------
+This is a stateful operation, not simply a draw call:
+- Reads lookup bytes at a[h+104+arg2] and a[h+130+arg2].
+- With final argument -1, scans e[8505 + (1 + arg1*30) + slot] for a free slot, up to 30.
+- If no slot is free, returns -1 and, for arg1==0, also sets s=100, invokes l(-1), and may call a(10,0,0,0).
+- It invokes a(IIIZ)Z as a validation/check in one branch.
+- For arg2 20..22, it writes multiple f[][] slot fields and may update nested arrays and counters.
+- Therefore this branch appears to allocate/update a typed runtime slot/state record; its exact semantic type depends on the arguments and is not established from this method alone.
+
+Handler B: a(byte,byte,byte,byte,byte)B
+---------------------------------------
+- Computes a slot base 1 + arg1*50 and scans e[1919+base+slot] for a free entry (maximum 50).
+- Returns -1 if no free entry exists.
+- Writes the second argument into several parallel e[] fields at offsets 0, 101, 3131, 3232, 6262, 6363 relative to slot base.
+- Initializes a number of per-slot fields to zero, stores arg4 & 7 and derives further values through a(255,2).
+- This is clearly an entity/record initialization path, not a direct Graphics call.
+
+Handler C: b(int,int,int,int)V
+-------------------------------
+- Scans up to 22 entries using e[9513+slot] as occupancy markers.
+- Skips occupied slots; for q==3 it does not increment t[arg4] while searching.
+- Writes a group of parallel e[] fields (including offsets 9359, 9381, 9403, 9425, 9469, 9491, 9513, 9535, 9557, 9579, 9601, 9645, 9667, 9689, 9711).
+- Writes c[arg3][arg2] = 101 + slot.
+- This also looks like allocation/initialization of a runtime record.
+
+Interpretation and limits
+-------------------------
+The previous analysis correctly identified the three dispatch targets, but describing them as graphics primitives would be too strong. The bytecode shows these methods primarily mutate runtime arrays and allocate slots. To determine what entities/actions they represent, trace readers of the written e[] offsets and the c[][] marker 101+slot, then link those readers to update/render methods. Original source and JAR remain unchanged.

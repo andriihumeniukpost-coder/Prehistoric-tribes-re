@@ -1,0 +1,4 @@
+class,method,descriptor,bytecode_start,bytecode_end,array_provenance,index_expression,stored_value,interpretation
+c,"private void c(byte)","(B)V",346,356,"this.a:[B aliases g.e:[B via c.<init>(g)V offsets 21-24","1919 + local_1",0,"Direct proven marker reset"
+c,"private boolean k()","()Z",293,361,"this.a:[B aliases g.e:[B","reads 2828+v and 4444+v; invokes c(B)V at 358",,"Conditional caller path into reset method"
+g,"private void d(int,int)","(II)V",419,440,"g instance fields","passes this.o to g.c(B)V",,"Distinct method with same short name; not the c.c(B)V reset proof"

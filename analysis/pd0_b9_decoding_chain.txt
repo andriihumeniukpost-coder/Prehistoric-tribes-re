@@ -1,0 +1,19 @@
+/pd0 decoding chain: correction to the direct-offset hypothesis
+===============================================================
+
+The bytecode of f.b() proves that /pd0 is not a single flat stream of command records. It is loaded into separate short and byte tables.
+
+Loader evidence (class f, private void b()):
+- Opens resource /pd0 and consumes one initial byte.
+- For group index 0..10, reads g.b[group] as signed 16-bit big-endian values. The count of each group comes from g.a:[S] (the resource-table directory).
+- For group index 0..24, reads g.j[group] as signed bytes, with the corresponding group count from the same directory.
+- After loading, it follows a nested lookup chain to compute g.aU:
+  j[23][ (b[10][ b[9][550] & 8191 ]) & 8191 ] + 9
+  (the bytecode masks b[9][550] and b[10][...] with 8191; array names here follow the decompiler's g.b and g.j fields).
+
+This chain is direct evidence that b[9] is used as an intermediate table index, not necessarily as a direct offset into the 1832-entry command arrays. Therefore the earlier simple “is b[9] within the command stream?” validation is not a valid structural test by itself. Out-of-range direct values do not prove corruption; the interpretation must follow the full indirection and each use site.
+
+The same method computes:
+g.aT = (240 - 2 * j[1][1010]) / g.aU
+
+Caveat: these are formulas transcribed from bytecode, not semantic names from original source. Exact signedness follows JVM byte/short loads and masks shown above. The game code and original JAR were not modified.

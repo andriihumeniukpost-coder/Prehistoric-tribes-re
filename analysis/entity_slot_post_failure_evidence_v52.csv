@@ -1,0 +1,11 @@
+class,method,bytecode_offsets,operation,interpretation,status
+c,private boolean i(),1014-1028,invokespecial k()Z; conditional return; invokespecial I()V,If k() returns true then i() returns true without I(); if false then I() executes and i() returns true,Direct bytecode evidence
+c,private boolean k(),326-358,read g.e[2828+v] compare 107; read g.e[4444+v]; invokespecial c(B)V,State-107 dispatch passes current mapping value into replacement routine,Direct bytecode evidence
+c,private void c(byte),429,return,Full-group failure exits before successful replacement cleanup,Direct bytecode evidence carried forward from v51
+c,private void c(byte),88-98,write g.e[4444+argument]=0,Mapping cleanup is on successful replacement path only,Direct bytecode evidence carried forward from v51
+c,private void c(byte),346-356,write g.e[1919+argument]=0,Source marker reset is on successful replacement path only,Direct bytecode evidence carried forward from v51
+c,private void I(),137-157,invokespecial a(IB)V,Can change state indirectly,Direct call evidence
+c,private void I(),345,invokespecial a(IB)V,Can change state indirectly,Direct call evidence
+c,private void I(),0-498,no literal 1919 or 4444 references,No direct marker/mapping-region access in this method body,Bounded negative finding
+c,private void a(int, byte),18-35,write g.e[404+index]=0 and g.e[2828+index]=newState,State transition resets auxiliary field and updates state; no direct marker/mapping write in shown body,Direct bytecode evidence
+c,private void a(int, byte),98-111,conditional invokespecial C()V,Potential transitive side effects require further analysis,Direct call evidence; callee unresolved

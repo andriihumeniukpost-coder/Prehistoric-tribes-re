@@ -1,0 +1,8 @@
+claim,file,method,bytecode_offsets,evidence,confidence
+c.a aliases g.e,analysis/bytecode/c.txt,c.<init>(g)V,17-26,"getfield g.e:[B then putfield c.a:[B",direct
+reset writes zero to marker band,analysis/bytecode/c.txt,c.c(B)V,346-356,"arrayref c.a; index 1919 + local_1; value 0; bastore",direct
+reset requires zero marker in scanned slot,analysis/bytecode/c.txt,c.c(B)V,29-48,"baload at 1919+R; nonzero branches to 416; zero falls through",direct
+scan increments slot and retries,analysis/bytecode/c.txt,c.c(B)V,416-429,"R = R+1; goto 13; return at 429",direct
+caller checks state 107,analysis/bytecode/c.txt,c.k()Z,326-341,"baload at 2828+v compared to 107",direct
+caller argument comes from slot map,analysis/bytecode/c.txt,c.k()Z,344-360,"baload at 4444+v passed to c.c(B)V",direct
+no free slot means no reset in this method,analysis/bytecode/c.txt,c.c(B)V,29-45;416-429,"all nonzero candidates skip reset block; loop exits at 429",control-flow inference

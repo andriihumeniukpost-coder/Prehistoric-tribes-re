@@ -1,0 +1,54 @@
+Prehistoric Tribes v0.1.38 — concrete state-107 full-pool failure path (v55)
+===============================================================================
+
+Input: v54 bundle and its original target JAR. No original game code was changed.
+
+1. Runtime table values recovered from resource /a
+--------------------------------------------------
+The loader is f.f()V in analysis/bytecode/f.txt, bytecode offsets 6–189 and 191–316.
+It allocates g.a:[B with length 17770 and g.a:[S with length 312, then reads 312 little-endian length-prefixed records. For each record i, g.a:[S[i] is the cumulative payload offset and the record payload is copied into g.a:[B at that offset.
+
+Independent decode of /a from the original JAR produced:
+- /a resource size: 18974 bytes.
+- Concatenated record payload: 17770 bytes, matching g.a:[B length 17770.
+- Record 27: payload offset 960, length 112, byte at state index 107 = 49 (0x31).
+- Record 31: payload offset 1408, length 112, byte at state index 107 = 13.
+- Record 160: payload offset 7771, length 112, byte at state index 107 = 69; byte at state index 69 = 69.
+- The five trailing short-table lengths decode as [122, 121, 6, 24, 12]; this confirms the complete /a resource was consumed without truncation or trailing bytes.
+
+Therefore c.I()V's generic transition expression b[aS[160] + currentState] resolves as:
+  state 107 -> state 69
+  state 69  -> state 69
+This is data-backed, not an inferred or guessed state value.
+
+2. Control flow after a full 50-slot group
+------------------------------------------
+In c.k()Z, bytecode offsets 327–358, if g.e[2828 + v] == 107, the method calls c.c(B)V with g.e[4444 + v] as the argument.
+
+In c.c(B)V:
+- offsets 0–28 initialise the destination group start and bound;
+- offsets 29–45 test marker e[1919 + candidate] and continue scanning when nonzero;
+- if all 50 markers are nonzero, the loop reaches the conditional branch at offset 23 to the return at offset 429;
+- the successful-path cleanup writes are earlier in control-flow order only for a found zero marker: e[4444 + argument] = 0 at offsets 88–98 and e[1919 + argument] = 0 at offsets 346–356. They are not executed on the full-group return.
+
+3. Why this particular failed attempt does not retry through the same state branch
+---------------------------------------------------------------------------------
+After c.c(B)V returns, c.k()Z continues. Its state-dependent guard at offsets 580–609 reads b[aS[27] + currentState] and tests bit 8. For state 107, the decoded table byte is 49 (0x31); (49 & 8) = 0. Thus this guard cannot take its true/early-return path for state 107.
+The other return-true branches in c.k()Z are for explicit state/range cases (state <= 9, states 26/27, states 94–97, state 50, state 111, state 60, or a state-17 condition); state 107 satisfies none of those comparisons. The generic call at offsets 511–577 can run but does not itself return from c.k(). On the decoded state-107 path, c.k() reaches its false return at offsets 731–732.
+
+In c.i()Z, offsets 1014–1028, a false result from c.k()Z leads to c.I()V. c.I()V's generic transition branch at offsets 254–345 uses b[aS[160] + currentState] and sets the state to the returned byte. For state 107, this writes state 69. The next generic transition from 69 resolves to 69 again.
+
+4. Consequence and evidence limits
+---------------------------------
+For the branch where the 50-slot destination group is full, this establishes a concrete stranded-slot candidate:
+- c.c(B)V does not clear the old mapping at e[4444 + oldSlot] or the old marker at e[1919 + oldSlot];
+- the same c.k()/c.i()/c.I() cycle transitions the entity from 107 to 69;
+- state 69 maps to itself in the same transition table, so this specific state-dispatch path no longer revisits the state-107 replacement call.
+
+This is stronger than the previous unresolved transition hypothesis and demonstrates that the normal state-107 retry branch is abandoned after a full-pool failure. It supports a concrete slot-stranding defect on this path.
+
+It is still not a proof that the marker can never be cleared by any unrelated/global lifecycle path. The wider audit of all computed-index writes into e[1919..1969] remains a separate obligation before claiming a program-wide permanent leak. The precise conclusion is: **a full-pool failure can leave the old slot marker and mapping uncleared while the entity transitions to a self-looping state 69; no retry through state 107 follows from the normal transition table.**
+
+5. Reproduction
+---------------
+The accompanying script `tools/resolve_state107_full_pool_v55.py` reads the original JAR's /a resource, decodes it according to the bytecode loader, asserts the payload size and relevant table bytes, and writes the evidence CSV.

@@ -1,0 +1,27 @@
+Prehistoric Tribes v0.1.38 — entity slot marker state-machine audit (v35)
+
+Scope
+-----
+Cross-check direct writes to g.e[1919 + slot] against allocation/release bytecode in analysis/bytecode/g.txt. This is a bytecode-level audit, not a runtime proof.
+
+Confirmed transitions
+---------------------
+1. Initialization: f.i() allocates g.e as byte[9983]; Java zero-initializes it. Marker slots therefore begin at 0 after this initialization.
+
+2. Allocation search: g.a(byte,byte,byte,byte,byte) computes a group base, scans marker entries until it sees exactly 0, and returns -1 if the scan reaches 50 without finding zero. Nonzero values (including -1) are skipped.
+
+3. Allocation commit: in the same method, bytecode around offsets 968–1000 writes a marker derived from the previous marker + 5 + a(255,10), narrowed to byte. This is an allocation-time write to the marker region, not a reset-to-zero.
+
+4. Additional marker write during allocation: bytecode around offsets 1049–1114 computes a second expression from q, the argument, and e[1515 + slot], then executes two consecutive bastore instructions. The stack order indicates writes to the marker array and the parallel field at 6767 + slot; this path assigns a nonzero marker-style value, not zero. Exact numeric range depends on helper a(255,15) and byte narrowing.
+
+5. Release: g.a(byte) calls e(slot), f(slot), writes -1 to e[1919 + slot], then calls c(slot). The explicit marker write is unambiguous.
+
+6. Other observed readers: several methods treat marker > 0 as active; the allocator treats only marker == 0 as free; one method tests marker != 0. These predicates intentionally distinguish positive, zero, and negative states.
+
+Conclusion
+----------
+The directly observed state transitions are: initial 0 -> allocation writes a nonzero value; release writes -1. The current targeted bytecode scan did not identify a direct write of literal 0 to e[1919 + slot] after release. This still does not prove permanent slot loss: a bulk array reinitialization, a different computed index, or a helper side effect could reset it. Next useful check is a complete control/data-flow pass over every bastore in g.class and any method that copies/reinitializes g.e, followed by runtime instrumentation if an executable harness is available.
+
+Important correction
+--------------------
+Do not describe the allocation marker as a stable type ID: the first allocation-time formula is state-dependent and randomized through a helper. The only safe labels from this evidence are free (0), allocated/nonzero (observed positive in normal path), and released (-1).

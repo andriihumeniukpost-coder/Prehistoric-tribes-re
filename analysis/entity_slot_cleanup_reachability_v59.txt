@@ -1,0 +1,35 @@
+Prehistoric Tribes v0.1.38 — conditional cleanup reachability audit (v59)
+=====================================================================
+
+Basis: v58 bundle's supplied javap disassemblies. This is static control-flow analysis; no game code modified.
+
+Question
+--------
+Can the independent cleanup routines c.l()/c.m() clear a marker stranded when c.c(byte) fails to find a free destination slot?
+
+Confirmed cleanup mechanics
+---------------------------
+1. c.m(int), bytecode 6–16, writes 0 to c.a[1919 + slot]. c.a:[B aliases g.e:[B through c.a(g)V (offsets 17–24).
+2. c.l() scans slots 1..100. For each nonzero marker it calls g.a((byte)slot), then c.m(slot). It first performs another pass over 1..60 through g.c(index,false).
+3. c.m() scans slots 51..100 and, for each nonzero marker, calls g.a((byte)slot), then c.m(slot).
+4. g.T() invokes c.l() when g.ag is 37 (offset 128) or 38 (offset 286), and invokes c.m() when g.ag is 45 (offset 417).
+5. g.b(int), bytecode 0–22, first invokes g.i(); if argument >= 0 it stores the argument in g.ag and synchronously invokes g.S() then g.T(). Thus, if g.b(37), g.b(38), or g.b(45) is reached, the corresponding cleanup call occurs in that transition path (unless g.i()/S throws or other exceptional behavior intervenes; none established here).
+
+Caller/reachability observations
+--------------------------------
+- The provided disassembly shows four direct calls to g.b(int) from methods in g itself, at g bytecode offsets 667, 75, 178, and 227. Their arguments are respectively the current ag after increment, a resource-table lookup, -1, and literal 59.
+- The supplied c disassembly contains nine direct calls to g.b(int). Some pass literals 61, 51, 53/54, or 60/62; others pass resource-table-derived values. This establishes multiple routes for global scene changes, but does not prove that a specific state-107 -> 69 full-pool failure causes a transition to global scene states 37, 38, or 45.
+- g.ag is also restored from serialized data in the save/load method (putfield at offset 578); this is another way the global scene state can be set, but not evidence that a cleanup state is eventually reached.
+
+Relationship to stranded slot
+-----------------------------
+A full destination group makes c.c(byte) return at bytecode offset 429 before it clears the old marker/mapping. The later entity-state transition 107 -> 69 does not itself call c.m(int) according to the examined path. The independent cleanup routines scan broad slot ranges and clear any nonzero marker in their ranges, so they can recover a stranded marker IF the relevant global scene handler is entered.
+
+Conclusion
+----------
+Confirmed: independent cleanup exists and is reachable from global scene-state handlers 37, 38, and 45. It is not justified to say the slot is permanently leaked solely from the failed replacement path.
+Not proven: that any of those scene handlers is inevitably reached after a full-pool failure during ordinary gameplay; nor that every gameplay path eventually cleans the stranded slot. A global leak or guaranteed recovery claim remains unresolved.
+
+Recommended next step
+---------------------
+Resolve the resource-table expressions feeding dynamic g.b(int) call sites, and trace game-state transitions into 37/38/45. In parallel, test whether the full-pool failure can occur while global scene state remains in the ordinary gameplay range indefinitely. The evidence needed is a concrete caller path, not just the existence of cleanup handlers.
